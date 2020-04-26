@@ -4,4 +4,6 @@ collector
 resource
 cache
 log
+_collector
+_derby
 *.log
