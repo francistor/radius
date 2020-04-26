@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "alerts.dtd">
+<table>
+    <alert name="Memory-Usage" expression="$1/$2" enabled="true" sample-period="10s" average-period="1m" holdoff="5m" event-type="Quality-of-Service" probable-cause="Out-of-Memory" description="RAM usage on AAA above designed limit." recommended-action="Consider increasing MaxMem for the PolicyServer JVM">
+        <designator group="JavaMemory" instance="*" variable="HeapMemoryUsed" />
+        <designator group="JavaMemory" instance="*" variable="HeapMemoryMax" />
+        <state name="Major" rising="0.9" color="Red" />
+        <state name="Clear" falling="0.7" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Disk-Usage" expression="$1/$2" enabled="true" sample-period="10s" average-period="0s" event-type="Equipment-Alarm" probable-cause="Storage-Capacity-Problem" description="Very little disk space left on this file system." recommended-action="Delete unnecessary files, or extend the File System (if possible)">
+        <designator group="DiskSpace" instance="{*,-\*,-.}" variable="UsableSpace" />
+        <designator group="DiskSpace" instance="{*,-\*,-.}" variable="TotalSpace" />
+        <state name="Clear" rising="0.15" loglevel="Info" color="Green" />
+        <state name="Major" falling="0.10" color="Red" />
+    </alert>
+
+    <alert name="CPU-Usage" expression="$1" enabled="true" sample-period="10s" average-period="10s" holdoff="3m" event-type="Environmental-Alarm" probable-cause="CPU-Cycles-Limit-Exceeded" description="High CPU usage. Could imply congestion and high response times." recommended-action="Check if any process is using too much CPU">
+        <designator group="OperatingSystem" instance="*" variable="SystemCpuLoad" />
+        <state name="Minor" rising="0.6" color="Light Orange" />
+        <state name="Clear" falling="0.5" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Certificates-Expiration" expression="$1" enabled="true" sample-period="1h" average-period="0s" holdoff="0s" event-type="Security-Service-or-Mechanism-Violation" probable-cause="Key-Expired" description="X.509 Digital Certificate is about to expire." recommended-action="Renew the Certificate, and load it in the associated .pem file">
+        <designator group="CertificateFile" instance="{*}" variable="Expires" />
+        <state name="Major" falling="604800" loglevel="Error" color="Red" />
+        <state name="Minor" rising="604801" falling="2592000" color="Orange" />
+        <state name="Clear" rising="2592001" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="File-Descriptor-Usage" expression="$1/$2" enabled="true" sample-period="10s" average-period="10s" holdoff="10s" event-type="Communications-Alarm" probable-cause="Underlying-Resource-Unavailable" description="Too many file descriptors open (open files or established TCP/UDP connections)." recommended-action="Consider increasing the limit, or checking why there are so many descriptors opened">
+        <designator group="OperatingSystem" instance="*" variable="OpenFileDescriptorCount" />
+        <designator group="OperatingSystem" instance="*" variable="MaxFileDescriptorCount" />
+        <state name="Major" rising="0.9" color="Red" />
+        <state name="Clear" falling="0.8" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Worker-Thread-Usage" expression="$1/$2" enabled="true" sample-period="10s" average-period="30s" holdoff="3m" event-type="Processing-Error-Alarm" probable-cause="CPU-Cycles-Limit-Exceeded" description="High utilization of worker threads. Could imply congestion and high response times." recommended-action="Increase solution capacity if this situation persists for a long time">
+        <designator group="Engine" instance="*" variable="ThreadsActive" />
+        <designator group="Engine" instance="*" variable="ThreadsMaximum" />
+        <state name="Minor" rising="0.8" color="Light Orange" />
+        <state name="Clear" falling="0.6" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Engine-Latency" expression="$1/$2" enabled="true" event-type="Quality-of-Service" probable-cause="Congestion" recommended-action="Increase solution capacity if this situation persists for a long time">
+        <designator group="Engine" instance="*" variable="ItemTotalTime" />
+        <designator group="Engine" instance="*" variable="ItemTotalCount" />
+        <state name="Minor" rising="2" color="Light Orange" />
+        <state name="Clear" falling="1" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Too-Busy" expression="$1/$2" enabled="true" sample-period="10s" average-period="30s" holdoff="1m" event-type="Quality-of-Service" probable-cause="Congestion" description="AAA is rejecting/discarding requests due to Overload Condition." recommended-action="Increase solution capacity if this situation persists for a long time">
+        <designator group="Engine" instance="*" variable="BusyCount" />
+        <designator group="Engine" instance="*" variable="ItemTotalCount" />
+        <state name="Major" rising="0.10" color="Red" />
+        <state name="Minor" rising="0.01" falling="0.08" color="Orange" />
+        <state name="Clear" falling="0.005" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Radius-Auth-Latency" expression="$1/$2" enabled="true" sample-period="10s" average-period="20s" holdoff="1m" event-type="Quality-of-Service" probable-cause="Excessive-Response-Time" description="High times in the generation of RADIUS AUTH answers. Could imply congestion in AAA or in external systems." recommended-action="Investigate source of slowness, if external systems are contacted.">
+        <designator group="RadiusUdpAuthServer" instance="*" variable="ResponseTime" />
+        <designator group="RadiusUdpAuthServer" instance="*" variable="ResponseCount" />
+        <state name="Minor" rising="3" color="Light Orange" />
+        <state name="Clear" falling="2" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Radius-Acct-Latency" expression="$1/$2" enabled="true" sample-period="10s" average-period="30s" holdoff="1m" event-type="Quality-of-Service" probable-cause="Excessive-Response-Time" description="High times in the generation of RADIUS ACCT answers. Could imply congestion in AAA or in external systems." recommended-action="Investigate source of slowness, if external systems are contacted.">
+        <designator group="RadiusUdpAcctServer" instance="*" variable="ResponseTime" />
+        <designator group="RadiusUdpAcctServer" instance="*" variable="ResponseCount" />
+        <state name="Minor" rising="5" color="Light Orange" />
+        <state name="Clear" falling="3" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Diameter-Latency" expression="$1/$2" enabled="true" sample-period="10s" average-period="20s" holdoff="1m" event-type="Quality-of-Service" probable-cause="Excessive-Response-Time" description="High times in the generation of Diameter answers for all applications. Could imply congestion in AAA or in external systems." recommended-action="Investigate source of slowness, if external systems are contacted.">
+        <designator group="DiameterServer" instance="*" variable="AnswerTime" />
+        <designator group="DiameterServer" instance="*" variable="AnswerCount" />
+        <state name="Minor" rising="3" color="Light Orange" />
+        <state name="Clear" falling="2" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Session-Limit" expression="$1/($2*$3)" enabled="true" sample-period="10s" holdoff="10s" event-type="Operational-Violation" probable-cause="Underlying-Resource-Unavailable" description="AAA License has almost reached its Active-Sessions limit." recommended-action="Consider expanding the license to more Active Sessions">
+        <designator group="Engine" instance="*" variable="SessionCount" />
+        <designator group="License" instance="*" variable="Sessions" />
+        <designator group="License" instance="*" variable="EntryFactor" />
+        <state name="Major" rising="0.99" loglevel="Error" color="Red" />
+        <state name="Minor" rising="0.90" falling="0.95" color="Light Orange" />
+        <state name="Clear" falling="0.85" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="Address-Limit" expression="$1/$2" enabled="true" event-type="Operational-Violation" probable-cause="Underlying-Resource-Unavailable" description="AAA License has almost reached its IPAM limit, based on amount of provisioned IPs" recommended-action="Consider expanding the license to more IP addresses.">
+        <designator group="Engine" instance="*" variable="IpamTotal" />
+        <designator group="License" instance="*" variable="Addresses" />
+        <state name="Minor" rising="0.90" color="Light Orange" />
+        <state name="Clear" falling="0.85" loglevel="Info" color="Green" />
+    </alert>
+
+    <alert name="TCP-Limit" expression="$1/$2" enabled="true" event-type="Operational-Violation" description="Too many inbound TCP connections" recommended-action="Check for a DoS attach. Consider increasing the limit.">
+        <designator group="TcpLimit" instance="{*}" variable="Count" />
+        <designator group="TcpLimit" instance="{*}" variable="Limit" />
+        <state name="Major" rising=".9" color="Red" />
+        <state name="Minor" rising=".8" falling=".85" color="Orange" />
+        <state name="Clear" falling=".75" color="Green" />
+    </alert>
+
+    <alert name="Diameter-Link" expression="$1" enabled="true" sample-period="10s" average-period="20s" holdoff="3m" event-type="Communications-Alarm" probable-cause="FarEnd-Receiver-Failure" description="Diameter Transport State with peer is not OK" recommended-action="Check IP connectivity or operational status in remote peer">
+        <designator group="DiameterLink" instance="{*,-testhost}" variable="TransportStateOkay" />
+        <state name="Clear" rising="0.6" loglevel="Info" color="Green" />
+        <state name="Minor" falling="0.4" color="Orange" />
+    </alert>
+
+    <alert name="USS-Replication" expression="$1" enabled="true" sample-period="10s" average-period="10s" holdoff="1m" event-type="Communications-Alarm" probable-cause="FarEnd-Receiver-Failure" description="USS replication loss with remote AAA." recommended-action="Check IP connectivity or operational status of remote AAA node.">
+        <designator group="USS" instance="*" variable="Replication-State-Okay" />
+        <state name="Clear" rising="0.6" color="Green" />
+        <state name="Minor" falling="0.4" loglevel="Notice" color="Orange" />
+    </alert>
+
+    <alert name="USS2-Replication" expression="$1" enabled="false" sample-period="10s" average-period="10s" holdoff="1m" event-type="Communications-Alarm" probable-cause="FarEnd-Receiver-Failure" description="USSv2 replication loss with remote AAA." recommended-action="Check IP connectivity or operational status of remote AAA node.">
+        <designator group="USSv2-Nodes" instance="{*}" variable="Connection-State-Number" />
+        <state name="Clear" rising="2.6" color="Green" />
+        <state name="Minor" falling="2.4" loglevel="Notice" color="Orange" />
+    </alert>
+
+    <alert name="IPAM-Pool-Usage" expression="$1/$2" enabled="true" average-period="1m" event-type="Equipment-Alarm" probable-cause="Underlying-Resource-Unavailable" description="The indicated pool has very little free IPs/prefixes" recommended-action="Consider adding more ranges to the pool">
+        <designator group="IpamPool" instance="{*}" variable="Used" />
+        <designator group="IpamPool" instance="{*}" variable="Total" />
+        <state name="Minor" rising="0.9" color="Orange" />
+        <state name="Clear" falling="0.8" color="Green" />
+    </alert>
+
+    <alert name="Test" expression="$1" enabled="true" sample-period="15s" moving-average="Simple" description="A dummy alert that allows testing the SNMP Notification Targets feature and alert logging." recommended-action="For testing purposes only">
+        <designator group="Test" instance="test" variable="test" />
+        <state name="Critical" rising="3" loglevel="Error" color="Red" />
+        <state name="Major" rising="2" falling="2.9" color="Orange" />
+        <state name="Minor" rising="1" falling="1.9" color="Yellow" />
+        <state name="Off" falling=".9" color="Green" />
+    </alert>
+</table>

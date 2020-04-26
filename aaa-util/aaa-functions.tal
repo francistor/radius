@@ -1,0 +1,51 @@
+# signature = a2Hq389iTdYMcPVT3+2f8VdQHbtOMToFBmhmdW3aFZaKPF2PAjdO0Fs5MNo2lDVL/iNfA+wmicNStKLfKr3rTYYCLxznC0Pf1TTclxEkEKjd5poXc9eIEF1rLtkDoq63zzXFWXRgcUH3aswNjmwQ50HbeeVel3aroj9uei7z0kA= * 18.5.0.1
+#
+# This file is cryptographically  signed with the  above signature.
+# Depending on the type of license you have, you may or  may not be
+# allowed to make changes to the file.  Please notice  that if your
+# license does  not permit modifications,  any changes  made to the
+# content of the file will cause the server to reject it.
+#.
+/*****************************************************************************/
+// Function for trutunging True/False if the value
+// is missing or empty
+function emptyOrMissing( value )
+    return $param.value == null || $value == "" ;
+endfunction
+
+/*****************************************************************************/
+// Scan all Cisco-AVPairs passed in and return in a group
+// attribute containing all inner AVPs.
+function parseCiscoAvPair( value )
+    foreach $temp.pair in $param.value -> asList() loop
+       if $temp.pair matches #/(.+?)=(.+)/ then
+            $temp.name := "temp.Cisco-AVPs." & $match.1;
+            $$temp.name := $match.2;
+       endif
+    endloop
+    return $temp.Cisco-AVPs;
+endfunction
+
+/*****************************************************************************/
+// log a message conditionally at a specific level, to a specific channel
+function conditionalLog( enabled, message, level, channel )
+    if $param.enabled then
+        log $param.message, level => $param.level, channel => $param.channel ;
+        return true ;
+    endif
+    return false;
+endfunction
+
+/*****************************************************************************/
+// log a message conditionally at a specific level, to a specific channel
+// Use invoke to call.  Supports defaults of no message, info level and system 
+// default channel
+plugin conditionalLog( enabled => false, message => null, level => "info", channel => $system.default-channel )
+    if $param.enabled then
+        log $param.message, level => $param.level, channel => $param.channel ;
+        return success ;
+    endif
+    return success;
+endplugin
+
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "property_file.dtd">
+<table>
+    <property name="Admin-Login" value="admin" />
+    <property name="Private-Key-Password" value="{AES}qjcBAeJWWGP+Kz3Ikx25rP3nlahL/Ral+Uq0wHABfqo=" />
+    <property name="Control-Login" value="aaacontrol" />
+    <property name="Database-Login" value="aaadb" />
+</table>

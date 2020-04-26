@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "collector_rules.dtd">
+<table>
+    <rule age="1w" action="30m" />
+    <rule age="10w" action="2h" />
+    <rule age="52w" action="6h" />
+    <rule age="260w" action="drop" />
+</table>

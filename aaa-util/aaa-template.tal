@@ -1,0 +1,306 @@
+# signature = hrB7Cyo72UiU+o9vIOepKuujCyLRY8FSsf9HMKQvHrAUDFzah2nH7/NePi3l7YrJgyjfe77Gp1RfF32M26J5MVaSC175q1RfPJxQ8tCjwE2cgX2DrjnoEWqYYYIFfhEhINtWadUNF57xhquCJYZQh3pzlwxv0EG4QOQbRplYJAo= * 18.5.0.1
+#
+# This file is cryptographically  signed with the  above signature.
+# Depending on the type of license you have, you may or  may not be
+# allowed to make changes to the file.  Please notice  that if your
+# license does  not permit modifications,  any changes  made to the
+# content of the file will cause the server to reject it.
+#.
+/* ------------------------------------------------------------------------------
+ AAA user defined plug-in to process template resolution and attribute
+ assignment. The current template replaces any previous conflicting attributes.
+
+ Special template names for selecting the data to use are:
+
+      [USER-DATA]      - Attributes defined in the user profile.  Passed in as
+                        userCheckAttrs and userReplyAttrs
+     [USER-TEMPLATE]  - Template name defined in a attribute in the user profile.
+                        Only one instance supported. Names passed in using the
+                        userCheckTemplate and userReplyTemplate bindings.
+
+debugging:
+    $user.debug-utility if set to true will enable check point debugging
+    of important steps.
+
+Important temp variables used:
+    $temp.checkAttrs - Where the check attributes to return are being gathered
+    $temp.replyAttrs - Where the reply attributes to return are being gathered
+    $temp.templateResolveName - Name of the template to resolve.
+    $temp.templateName - Name of the current unresolved template being processed
+
+------------------------------------------------------------------------------ */
+
+plugin processTemplates(
+        // common bindings
+        templateSource   => file,                                           // Where templates are (File or Database)
+        checkTemplates,                                                     // List value of check templates to resolve.
+        replyTemplates,                                                     // List value of reply templates to resolve.
+        userCheckTemplate,                                                  // Check Template defined in user record
+        userReplyTemplate,                                                  // Reply Template defined in user record
+        userCheckAttrs,                                                     // check attributes defined in user record
+        userReplyAttrs,                                                     // reply attributes defined in user record
+
+        // user file Bindings
+        filename         => "users.templates",                              // filename for template
+
+        // database bindings
+        databaseDriver   => "org.apache.derby.jdbc.ClientDriver",           // DB Driver
+        databaseUrls     => "jdbc:derby://localhost:1527/provision",        // DB URL
+        databaseUser     => $security.Database_login,                       // DB User
+        databasePassword => getPlaintextPassword($security.Database_login), // DB Password
+        databaseId       => DEFAULT,                                        // Unique ID for database
+
+        // output variables accessible by calling Policy Flow.
+        checkAttrsResult => "$user.checkAttrs",                             // where to store resolved check attributes.
+        replyAttrsResult => "$user.replyAttrs"                              // where to store resolved reply attributes.
+    )
+
+    // Log what we are going in with
+    log level => info, enable => $user.debug-utility, "aaa-template: ---------------------------------------------------";
+    log level => info, enable => $user.debug-utility, "aaa-template: Starting Template Processsing.";
+    log level => info, enable => $user.debug-utility, "aaa-template: Incoming Param space: " & $param.* ;
+
+    // Check for valid source
+    switch ( toLower( $param.templateSource ) )
+
+        case file,userfile,database:
+            ;
+        case default:
+            return error: "Template source of: " & $param.templateSource & " not supported" ;
+    endswitch
+
+    log level => info, enable => $user.debug-utility, "aaa-template: Starting Check Template Processsing.";
+
+    // Do check Templates
+    invoke resolveTemplate with
+        Mode => Check,
+        TemplateList => $param.checkTemplates
+    endinvoke
+
+    log level => info, enable => $user.debug-utility, "aaa-template: Starting Reply Template Processsing.";
+
+    // Do Reply Templates
+    invoke resolveTemplate with
+        Mode => Reply,
+        TemplateList => $param.replyTemplates
+    endinvoke
+
+    // Log some debug info if enabled
+    log level => info, enable => $user.debug-utility, "aaa-template: Finishing Template Processsing.";
+    log level => info, enable => $user.debug-utility, "aaa-template: ---------------------------------------------------";
+
+    // Exit User Plug-In function
+    return success;
+
+endplugin
+
+/* ------------------------------------------------------------------------------------------------------
+ This code resolves a template into AVPs.  Only intended to be called from top level template code
+ as the parameters in super are referenced.
+------------------------------------------------------------------------------------------------------ */
+plugin resolveTemplate(Mode, TemplateList)
+
+    // Loop Over Template List
+    foreach $temp.templateName in $param.TemplateList loop
+
+        // Clean up temp attributes to prevent any old ones from
+        // leaking back to top
+        delete $temp.templateResolveName;
+
+        log level => info, enable => $user.debug-utility, "aaa-template: Resolving " & $param.Mode & " template Name: " & $temp.templateName ;
+
+        if $temp.templateName == "[USER-TEMPLATE]" then
+
+            // The Template name is in an attribute in the User Profile
+            // Assign the name to be resolved
+            switch $param.Mode
+            case Check:
+                $temp.templateResolveName := $super.param.userCheckTemplate;
+            case Reply:
+                $temp.templateResolveName := $super.param.userReplyTemplate;
+            endswitch
+
+        elsif $temp.templateName == "[USER-DATA]" then
+
+            log level => info, enable => $user.debug-utility, "aaa-template: " & $param.Mode & " template is user data" ;
+
+            // Assign the data in the user profile
+            switch $param.Mode
+            case Check:
+                $temp.checkAttrs.* := $super.param.userCheckAttrs.*;
+                log level => info, enable => $user.debug-utility, "aaa-template: Current Check attributes: "  & $temp.checkAttrs.*;
+
+            case Reply:
+                $temp.replyAttrs.* := $super.param.userReplyAttrs.*;
+                log level => info, enable => $user.debug-utility, "aaa-template: Current Reply attributes: "  & $temp.replyAttrs.*;
+
+            endswitch
+
+            // nothing to resolve since we did direct assignment
+            // so loop to next template
+            continue;
+
+        else
+
+            // Template name is not a special keyword so
+            // process as specific template name.
+            $temp.templateResolveName := $temp.templateName;
+
+        endif
+
+        if $temp.templateResolveName == null || $temp.templateResolveName == "" then
+
+            // Template Name is missing so skip resolving it
+            log level => notice, "aaa-template: " & $param.Mode & " template name resolved to empty/null. Check your data. Skipping...";
+            continue;
+        endif
+
+        // At this point we have an attribute name to resolve.
+        log level => info, enable => $user.debug-utility, "aaa-template: Resolved " & $param.Mode & " template Name: " & $temp.templateResolveName ;
+
+        switch toLower( $super.param.templateSource )
+
+        case file,userfile:
+            log level => info, enable => $user.debug-utility, "aaa-template: Retrieving " & $param.Mode & " template from file";
+
+            // Get the template from the file.
+            invoke ReadUserFile with
+                Text => "@$super.param.filename",
+                SearchKey => $temp.templateResolveName,
+                Map => """
+                    switch $super.param.mode
+                    case Check:
+                        $super.temp.checkAttrs.* := $check.*;
+                    case Reply:
+                        $super.temp.replyAttrs.* := $reply.*;
+                    endswitch
+                """
+            on failure
+                return failure: "Failure retrieving " & $param.Mode & " template: " & $temp.templateResolveName & " from file: " & $param.filename & " due to: " & $packet.Last-Disposition-Message ;
+            on error
+                return error: "Error retrieving " & $param.Mode & " template: " & $temp.templateResolveName & " from file: " & $param.filename & " due to: " & $packet.Last-Disposition-Message ;
+            endinvoke
+
+        case database:
+            log level => info, enable => $user.debug-utility, "aaa-template: Retrieving check template from database cache" ;
+
+            // Build Database Key for Goods specifying mode of Check
+            $temp.dbKey := $super.param.databaseDriver & "\n" & fromList( $super.param.databaseUrls, "\t" ) & "\n" &
+                            $super.param.databaseUser & "\n" & $super.param.databasePassword & "\n" &
+                            $super.param.databaseId & "\n" & $param.Mode ;
+
+            // Read from the cached %goods data.  Note: Mapped into section 2 always
+            // so even though check items the RHS is reply (section 2)
+            invoke ReadUserFile with
+                Text => "%cacheDbGoods,$temp.DbKey,$super.param.databaseId,$param.Mode & \" items cache for id: \" & $super.param.databaseId",
+                SearchKey => $temp.templateResolveName,
+                Map => """
+                    switch $super.param.mode
+                    case Check:
+                        $super.temp.checkAttrs.* := $reply.*;
+                    case Reply:
+                        $super.temp.replyAttrs.* := $reply.*;
+                    endswitch
+                """
+            on failure
+                return failure: "Failure retrieving template: " & $temp.templateResolveName & " from Database ID: " & $super.param.databaseId & " due to: " & $packet.Last-Disposition-Message ;
+            on error
+                return error: "Error retrieving template: " & $temp.templateResolveName & " from Database ID: " & $super.param.databaseId & " due to: " & $packet.Last-Disposition-Message ;
+            endinvoke
+
+        case default:
+            return error: "Oops, How did we get to retrieving a check template with a bad source?";
+
+        endswitch
+
+    // Log what we have built up so far
+    switch $param.Mode
+    case Check:
+        log level => info, enable => $user.debug-utility, "aaa-template: Current Check attributes: "  & $temp.checkAttrs.*;
+    case Reply:
+        log level => info, enable => $user.debug-utility, "aaa-template: Current Reply attributes: "  & $temp.replyAttrs.*;
+    endswitch
+
+    endloop
+
+    // Done resolving so pass out gathered attributes into the shared name space
+    switch $param.Mode
+    case Check:
+        $$super.param.checkAttrsResult := $temp.checkAttrs;
+
+    case Reply:
+        $$super.param.replyAttrsResult := $temp.replyAttrs;
+
+    endswitch
+    return success;
+endplugin
+
+/* -----------------------------------------------------------------------------------------------------------------
+ This section of code is the inner call for check goods processing for cached database info.
+ Key is cached so available on reload.  This should be called only from resolve code.  Since always called in a
+ new item no need to worry about variable group pollution.
+----------------------------------------------------------------------------------------------------------------- */
+cacheDbGoods:
+
+// Expand out the payload of original params passed into UserPlugin
+$temp.dbKey = toList( $request.Key, LS );
+$user.databaseDriver    := $temp.dbKey[ 1 ];
+$user.databaseUrls      := toList( $temp.dbKey[ 2 ], "\t" );
+$user.databaseUser      := $temp.dbKey[ 3 ];
+$user.databasePassword  := $temp.dbKey[ 4 ];
+$user.databaseID        := $temp.dbKey[ 5 ];
+$user.TemplateGroup     := $temp.dbKey[ 6 ];
+
+//Get the reply items from table
+invoke Failover with
+    CacheName => "aaa-template.database-status",
+    ListVariables => "user.databaseUrls",
+    Method => getGroupsFromDb,
+    SortOrder => NATURAL,
+    Retries => count( $user.databaseUrls ) - 1,
+    SuccessMap => """
+        $reply.data := $inner.reply.Data;
+    """
+endinvoke
+
+// End of FailOver return back success if we made it here.
+return success;
+
+// Inner FailOver chain to get DB data.
+getGroupsFromDb:
+invoke Jdbc with
+    Driver => $user.databaseDriver,
+    Url => $user.databaseUrls,
+    User => $user.databaseUser,
+    Password => $user.databasePassword,
+    Statement => "SELECT name, avps FROM aaadb.group_avps WHERE type = ?",
+    BindMap => """
+        switch $user.TemplateGroup
+        case Check:
+            $1 := 0;
+        case Reply:
+            $1 := 1;
+        case default:
+            return error: "Unknown mode passed into cache code: " & $user.TemplateGroup;
+        endswitch
+    """,
+    ResultMap => """
+        $user.DbGroupName := $*.1;
+        $user.dbGroupAVPs := $*.2;
+    """
+endinvoke
+
+foreach $temp.groupName in $user.DbGroupName, $temp.groupAVPs in $user.DbGroupAVPs loop
+
+    /* --------------------------------------------------------------------------------------
+        Build of a stanza/user file entry:
+        1) Add the new key
+        2) Add new line start section 2
+        3) add in the AVPs
+        5) Add a new line after last AVP and one to separate entries
+    -------------------------------------------------------------------------------------- */
+    $reply.data := $reply.data & $temp.groupName & "\n" & $temp.GroupAVPs & "\n\n";
+endloop
+
+// Done with looping over AVPs, Return
+return success;

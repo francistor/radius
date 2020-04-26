@@ -1,0 +1,259 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE assistantPanel SYSTEM "assistant.dtd">
+
+<assistantPanel title="Cassandra Clusters">
+
+    <description>
+        Panel configures sets of properties for a named cluster configuration.
+    </description>
+
+    <stanzaListPanel file="cassandra_clusters">
+        <table key="Cluster-Name">
+            <column name="Cluster-Name" label="Cluster Name"/>
+            <column name="Contact-Points" label="Contact Points"/>
+        </table>
+        <properties>
+            <String name="Cluster-Name" label="Name of the Cluster">
+                <flag name="Required"/>
+            </String>
+            <SocketAddressList name="Contact-Points" label="Contact Points" group="Basic-Options">
+                <description>
+                    This property specifies a comma separated list of socket addresses to connect to.  If port not specified for any address in list then default value of 9042 will be used.
+                </description>
+                <flag name="Required"/>
+            </SocketAddressList>
+            <String name="Keyspace" label="Keyspace" group="Basic-Options">
+                <description>
+                    This property indicates a global keyspace to use with cluster.
+            If multiple keyspaces will be accessed from Cassandra plug-in on same cluster then specify keyspace in CQL statements.
+                </description>
+            </String>
+            <SignedInteger name="Protocol-Version" label="Protocol Version" default="-1" group="Basic-Options" minValue="-1" maxValue="4">
+                <description>
+                    This property specifies the protocol version to use. Valid values are 1 (1.2.0), 2 (2.0.0), 3 (2.1.0), 4 (2.2.0) or negative (for auto-detect).
+                </description>
+            </SignedInteger>
+            <Boolean name="Metrics" label="Metrics" default="true" group="Basic-Options">
+                <description>
+                    This property specifies whether to collect metrics.
+                </description>
+            </Boolean>
+            <Boolean name="JMX-Reporting" label="JMX Reporting" default="true" group="Basic-Options">
+                <description>
+                    This property specifies whether to allow JMX reporting of metrics.
+                </description>
+            </Boolean>
+            <Strings name="Auth-Provider" label="Auth Provider">
+                <description>
+                    This property specifies the Java text required to create a com.datastax.driver.core.AuthProvider object.
+                </description>
+            </Strings>
+            <Enum name="Compression" className="com.datastax.driver.core.ProtocolOptions$Compression" default="NONE" label="Compression">
+                <description>
+                    This property specifies the compression algorithm to use with communication protocol.
+                </description>
+            </Enum>
+            <String name="Client-Cert-File" label="Client Cert File" group="TLS-Options">
+                <description>
+                    This property specifies a certificate file containing a certificate chain and private key in either PEM or PKCS#12 format for certificate-based client authentication, as an alternative to password-based authentication.
+                </description>
+            </String>
+            <String name="Client-Cert-Password" label="Client Cert Password" group="TLS-Options">
+                <description>
+                    This property specifies a password used to decrypt the private key in the file specified by the Client-Cert-File property.
+                </description>
+            </String>
+            <String name="Trusted-Certs-File" label="Trusted Certs File" group="TLS-Options">
+                <description>
+                    This property specifies a file of trusted certificates to verify the server certificates sent by cluster nodes.  This property enables TLS for communication protocol.
+                </description>
+            </String>
+            <Strings name="TLS-Cipher-Suites" label="TLS Cipher Suites" default="TLS_RSA_WITH_AES_128_CBC_SHA" group="TLS-Options">
+                <description>
+                    This property specifies a list of acceptable cipher suites to use with TLS.
+                </description>
+            </Strings>
+            <Strings name="Load-Balancing-Policy" default="import com.datastax.driver.core.policies.*;
+new TokenAwarePolicy( DCAwareRoundRobinPolicy.builder().build() );" label="Load Balancing Policy">
+                <description>
+                    This property specifies the Java text required to create a com.datastax.driver.core.policies.LoadBalancingPolicy object.
+                </description>
+            </Strings>
+            <Strings name="Reconnection-Policy" default="new com.datastax.driver.core.policies.ExponentialReconnectionPolicy(1000L, 600000L);" label="Reconnection Policy">
+                <description>
+                    This property specifies the Java text required to create a com.datastax.driver.core.policies.ReconnectionPolicy object.
+                </description>
+            </Strings>
+            <Strings name="Retry-Policy" default="com.datastax.driver.core.policies.DefaultRetryPolicy.INSTANCE;" label="Retry Policy">
+                <description>
+                    This property specifies the Java text required to create a com.datastax.driver.core.policies.RetryPolicy object.
+                </description>
+            </Strings>
+            <Strings name="Address-Translator" default="new com.datastax.driver.core.policies.IdentityTranslator();" label="Address Translator">
+                <description>
+                    This property specifies the Java text required to create a com.datastax.driver.core.policies.AddressTranslator object.
+                </description>
+            </Strings>
+            <SignedInteger name="Core-Connections-Per-Local-Host" label="Core Connections Per Local Host" default="-1" group="Pooling-Options" minValue="-1" maxValue="2147483647">
+                <description>
+                    This property specified the core, minimum, number of connections to keep open with each local host.
+            If the utilisation of those connections reaches a configurable threshold, more connections are created up to a configurable maximum number of connections.
+            Once more than core connections have been created, connections in excess are reclaimed if the utilisation of opened connections drops below the configured threshold.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="Core-Connections-Per-Remote-Host" label="Core Connections Per Remote Host" default="-1" group="Pooling-Options" minValue="-1" maxValue="2147483647">
+                <description>
+                    This property specified the core, minimum, number of connections to keep open with each remote host.
+            If the utilisation of those connections reaches a configurable threshold, more connections are created up to a configurable maximum number of connections.
+            Once more than core connections have been created, connections in excess are reclaimed if the utilisation of opened connections drops below the configured threshold.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="Max-Connections-Per-Local-Host" label="Max Connections Per Local Host" default="-1" group="Pooling-Options" minValue="-1" maxValue="2147483647">
+                <description>
+                    This property specified the maximum number of connections to keep open with each local host.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="Max-Connections-Per-Remote-Host" label="Max Connections Per Remote Host" default="-1" group="Pooling-Options" minValue="-1" maxValue="2147483647">
+                <description>
+                    This property specified the maximum number of connections to keep open with each remote host.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="New-Connection-Threshold-Local" label="New Connection Threshold Local" default="-1" group="Pooling-Options" minValue="-1" maxValue="32768">
+                <description>
+                    This property specified the maximum number of simultaneous requests per local connection.
+            This property is used to trigger the creation of a new connection.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="New-Connection-Threshold-Remote" label="New Connection Threshold Remote" default="-1" group="Pooling-Options" minValue="-1" maxValue="32768">
+                <description>
+                    This property specified the maximum number of simultaneous requests per remote connection.
+            This property is used to trigger the creation of a new connection.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="Max-Requests-Per-Connection-Local" label="Max Requests Per Connection Local" default="-1" group="Pooling-Options" minValue="-1" maxValue="32768">
+                <description>
+                    This property specified the maximum simultaneous requests per local connection.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="Max-Requests-Per-Connection-Remote" label="Max Requests Per Connection Remote" default="-1" group="Pooling-Options" minValue="-1" maxValue="32768">
+                <description>
+                    This property specified the maximum simultaneous requests per remote connection.
+            A value of -1 means let the driver pick a value appropriate for protocol version.
+                </description>
+            </SignedInteger>
+            <Duration name="Socket-Connect-Timeout" label="Socket Connect Timeout" default="5000ms" group="Socket-Options" units="ms" minValue="-9223372036854775808ms" maxValue="9223372036854775807ms">
+                <description>
+                    This property sets how long to wait while connecting to a node.
+                </description>
+            </Duration>
+            <Duration name="Socket-Read-Timeout" label="Socket Read Timeout" default="12000ms" group="Socket-Options" units="ms" minValue="-9223372036854775808ms" maxValue="9223372036854775807ms">
+                <description>
+                    This property sets how long to wait for a response from a node.
+                </description>
+            </Duration>
+            <BinarySize name="Socket-Receive-Buffer-Size" label="Socket Receive Buffer Size" default="256k" group="Socket-Options" minValue="0" maxValue="2147483647">
+                <description>
+                    This property sets the size of the receive buffer for each connection.
+                </description>
+            </BinarySize>
+            <BinarySize name="Socket-Send-Buffer-Size" label="Socket Send Buffer Size" default="256k" group="Socket-Options" minValue="0" maxValue="2147483647">
+                <description>
+                    This property sets the size of the send buffer for each connection.
+                </description>
+            </BinarySize>
+            <Duration name="Socket-Linger" label="Socket Linger" default="-1s" group="Socket-Options" units="s" minValue="-9223372036854775808ms" maxValue="9223372036854775807ms">
+                <description>
+                    This property set the linger time for connection after calling close.
+                </description>
+            </Duration>
+            <Boolean name="Socket-TCP-No-Delay" label="Socket TCP No Delay" default="true" group="Socket-Options">
+                <description>
+                    This property enables the TCP No Delay option for connections.
+                </description>
+            </Boolean>
+            <Boolean name="Socket-Reuse-Address" label="Socket Reuse Address" default="true" group="Socket-Options">
+                <description>
+                    This property enable the reuse address option for connections.
+                </description>
+            </Boolean>
+            <Boolean name="Socket-Keep-Alive" label="Socket Keep Alive" default="true" group="Socket-Options">
+                <description>
+                    This property enable the TCP keep alive option for connections.
+                </description>
+            </Boolean>
+            <SignedInteger name="Query-Fetch-Size" label="Query Fetch Size" default="5000" group="Query-Options" minValue="1" maxValue="2147483647">
+                <description>
+                    This property sets how many rows to fetch in the results for a query.
+                </description>
+            </SignedInteger>
+            <Enum name="Query-Consistency" className="com.datastax.driver.core.ConsistencyLevel" default="LOCAL_ONE" label="Query Consistency">
+                <description>
+                    This property sets the consistency level for the query.
+                </description>
+            </Enum>
+            <Enum name="Query-Serial-Consistency" className="com.datastax.driver.core.ConsistencyLevel" default="SERIAL" label="Query Serial Consistency">
+                <description>
+                    This property sets the serial consistency level for the query.
+                </description>
+            </Enum>
+        </properties>
+        <wizard title="Cluster Properties">
+        <wizardPage name="Basic-Options" title="Basic Options">
+            <property name = "Cluster-Name"/>
+            <property name = "Contact-Points"/>
+            <property name = "Keyspace"/>
+            <property name = "Protocol-Version"/>
+            <property name = "Metrics"/>
+            <property name = "JMX-Reporting"/>
+            <property name = "Auth-Provider"/>
+            <property name = "Compression"/>
+        </wizardPage>
+        <wizardPage name="TLS-Options" title="TLS Options">
+            <property name = "Client-Cert-File"/>
+            <property name = "Client-Cert-Password"/>
+            <property name = "Trusted-Certs-File"/>
+            <property name = "TLS-Cipher-Suites"/>
+        </wizardPage>
+        <wizardPage name="Policy-Options" title="Policy Options">
+            <property name = "Load-Balancing-Policy"/>
+            <property name = "Reconnection-Policy"/>
+            <property name = "Retry-Policy"/>
+            <property name = "Address-Translator"/>
+        </wizardPage>
+        <wizardPage name="Pooling-Options" title="Pooling Options">
+            <property name = "Core-Connections-Per-Local-Host"/>
+            <property name = "Core-Connections-Per-Remote-Host"/>
+            <property name = "Max-Connections-Per-Local-Host"/>
+            <property name = "Max-Connections-Per-Remote-Host"/>
+            <property name = "New-Connection-Threshold-Local"/>
+            <property name = "New-Connection-Threshold-Remote"/>
+            <property name = "Max-Requests-Per-Connection-Local"/>
+            <property name = "Max-Requests-Per-Connection-Remote"/>
+        </wizardPage>
+        <wizardPage name="Socket-Options" title="Socket Options">
+            <property name = "Socket-Connect-Timeout"/>
+            <property name = "Socket-Read-Timeout"/>
+            <property name = "Socket-Receive-Buffer-Size"/>
+            <property name = "Socket-Send-Buffer-Size"/>
+            <property name = "Socket-Linger"/>
+            <property name = "Socket-TCP-No-Delay"/>
+            <property name = "Socket-Reuse-Address"/>
+            <property name = "Socket-Keep-Alive"/>
+        </wizardPage>
+        <wizardPage name="Query-Options" title="Query Options">
+            <property name = "Query-Fetch-Size"/>
+            <property name = "Query-Consistency"/>
+            <property name = "Query-Serial-Consistency"/>
+        </wizardPage>
+        </wizard>
+    </stanzaListPanel>
+    <buttons policyFlowInstallButton="false" reloadButton="true"/>
+</assistantPanel>

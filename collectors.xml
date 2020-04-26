@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "collectors.dtd">
+<table>
+    <collector group="DiameterClient"   instance="*"        interval="5m" />
+    <collector group="DiameterLink"     instance="{*}"      interval="5m" />
+    <collector group="DiameterServer"   instance="*"        interval="5m" />
+    <collector group="DiskSpace"        instance="{*, -\*}" interval="5m" />
+    <collector group="Engine"           instance="*"        interval="5m" />
+    <collector group="GarbageCollector" instance="{*}"      interval="5m" />
+    <collector group="JavaMemory"       instance="*"        interval="5m" />
+    <collector group="Lag"              instance="{*}"      interval="5m" />
+    <collector group="LdapClient"       instance="*"        interval="5m" />
+    <collector group="LdapDataServer"   instance="*"        interval="5m" />
+    <collector group="LdapWorkServer"   instance="*"        interval="5m" />
+    <collector group="LogChannel"       instance="{*}"      interval="5m" />
+    <collector group="OperatingSystem"  instance="*"        interval="5m" />
+    <collector group="Queue"            instance="{work-resume,work-state,work-normal,work-background,log,*connectionrequests}" interval="5m" />
+    <collector group="RadiusUdpAuthClient" instance="*"   interval="5m" />
+    <collector group="RadiusUdpAcctClient" instance="*"   interval="5m" />
+    <collector group="RadiusUdpAuthServer" instance="*"   interval="5m" />
+    <collector group="RadiusUdpAcctServer" instance="*"   interval="5m" />
+    <collector group="TcpLimit"            instance="{*}" interval="5m" />
+    <collector group="TcpConnectionPool"   instance="{*}" interval="5m" />
+    <collector group="USSv2-DiameterStateModel" instance="{*}" />
+    <collector group="USSv2-GeneralStateModel"  instance="{*}" />
+    <collector group="USSv2-Nodes"              instance="{*}" />
+    <collector group="USSv2-Persistence"        instance="{*}" />
+    <collector group="USSv2-RadiusStateModel"   instance="{*}" />    
+</table>

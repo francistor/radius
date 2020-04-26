@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<monitors>
+    <monitor name="Diameter Client" interval="10s" treePath="Diameter" includeZero="false">
+        <view title="Diameter Client Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="DiameterClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Success" expression="$1" color="Green">
+                <designator group="DiameterClient" instance="*" variable="SuccessAnswers" />
+            </variable>
+            <variable name="Informationals" expression="$1" color="Magenta" visible="false">
+                <designator group="DiameterClient" instance="*" variable="InfoClassAnswers" />
+            </variable>
+            <variable name="Failures" expression="$1" color="Red" visible="false">
+                <designator group="DiameterClient" instance="*" variable="FailureAnswers" />
+            </variable>
+            <variable name="Transient Errors" expression="$1" color="Dark Red" visible="false">
+                <designator group="DiameterClient" instance="*" variable="TransientClassAnswers" />
+            </variable>
+            <variable name="Other Answers" expression="$1" color="Olive" visible="false">
+                <designator group="DiameterClient" instance="*" variable="OtherClassAnswers" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Diameter Server" interval="10s" treePath="Diameter">
+        <view title="Diameter Server Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="DiameterServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Success" expression="$1" color="Green">
+                <designator group="DiameterServer" instance="*" variable="SuccessAnswers" />
+            </variable>
+            <variable name="Informationals" expression="$1" color="Magenta" visible="false">
+                <designator group="DiameterServer" instance="*" variable="InfoClassAnswers" />
+            </variable>
+            <variable name="Permanent Failures" expression="$1" color="Red" visible="false">
+                <designator group="DiameterServer" instance="*" variable="FailureAnswers" />
+            </variable>
+            <variable name="Transient Errors" expression="$1" color="Dark Red" visible="false">
+                <designator group="DiameterServer" instance="*" variable="TransientClassAnswers" />
+            </variable>
+            <variable name="Other Answers" expression="$1" color="Olive" visible="false">
+                <designator group="DiameterServer" instance="*" variable="OtherClassAnswers" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client Accounting" interval="10s" treePath="Radius/Client">
+        <view title="Accounting Requests" subtitle="Shows Total and Interval Data in Requests per Second" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Responses" expression="$1" color="Green">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="Responses" />
+            </variable>
+            <variable name="Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Retransmissions" expression="$1" color="Magenta">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="Retransmissions" />
+            </variable>
+            <variable name="Invalid" expression="$1" color="Orange" visible="false">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="InvalidServerAddress" />
+            </variable>
+            <variable name="Bad Auth" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Unknown" expression="$1" color="Light Blue" visible="false">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="UnknownTypes" />
+            </variable>
+            <variable name="Malformed" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="MalformedResponses" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client Authentication" interval="10s" treePath="Radius/Client">
+        <view title="Authentication Requests" subtitle="Shows Totals and Interval Data for Auth Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Accepts" expression="$1" color="Green">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="Accepts" />
+            </variable>
+            <variable name="Challenges" expression="$1" color="Yellow">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="Challenges" />
+            </variable>
+            <variable name="Rejects" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="Rejects" />
+            </variable>
+            <variable name="Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Retransmissions" expression="$1" color="Magenta">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="Retransmissions" />
+            </variable>
+            <variable name="Invalid" expression="$1" color="Orange" visible="false">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="InvalidServerAddress" />
+            </variable>
+            <variable name="Bad Auth" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Unknown" expression="$1" color="Light Blue" visible="false">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="UnknownTypes" />
+            </variable>
+            <variable name="Malformed" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="MalformedResponses" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client Change of Authority" interval="10s" treePath="Radius/Client">
+        <view title="Dynamic Authorization - COA" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Auth Only Requests" expression="$1" color="Orange">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="AuthOnlyRequests" />
+            </variable>
+            <variable name="Acks" expression="$1" color="Green" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="Acks" />
+            </variable>
+            <variable name="Naks" expression="$1" color="Red" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="Naks" />
+            </variable>
+            <variable name="Auth Only Naks" expression="$1" color="Dark Red" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="AuthOnlyNaks" />
+            </variable>
+            <variable name="No Session Context Naks" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="NoSessionContextNaks" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Retransmissions" expression="$1" color="Magenta">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="Retransmissions" />
+            </variable>
+            <variable name="Bad Authenticators" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Malformed Requests" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="MalformedResponses" />
+            </variable>
+            <variable name="Invalid Servers" expression="$1" color="Dark Blue" visible="false">
+                <designator group="RadiusUdpCoAClient" instance="*" variable="InvalidServers" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client Disconnect" interval="10s" treePath="Radius/Client">
+        <view title="Dynamic Authorization - Disconnect" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Auth Only Requests" expression="$1" color="Orange">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="AuthOnlyRequests" />
+            </variable>
+            <variable name="Acks" expression="$1" color="Green" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="Acks" />
+            </variable>
+            <variable name="Naks" expression="$1" color="Red" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="Naks" />
+            </variable>
+            <variable name="Auth Only Naks" expression="$1" color="Dark Red" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="AuthOnlyNaks" />
+            </variable>
+            <variable name="No Session Context Naks" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="NoSessionContextNaks" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Retransmissions" expression="$1" color="Magenta">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="Retransmissions" />
+            </variable>
+            <variable name="Bad Authenticators" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Malformed Requests" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="MalformedResponses" />
+            </variable>
+            <variable name="Invalid Servers" expression="$1" color="Dark Blue" visible="false">
+                <designator group="RadiusUdpDiscClient" instance="*" variable="InvalidServers" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client Pending Requests" interval="10s" treePath="Radius/Client">
+        <view title="Client Pending Requests" subtitle="Shows the number of pending requests the Policy server is waiting" displayPeriod="30Seconds">
+            <variable name="Authentication Pending Requests" expression="$1" color="Light Blue">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="PendingRequests" />
+            </variable>
+            <variable name="Accounting Pending Requests" expression="$1" color="Green">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="PendingRequests" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client Roundtrip" interval="10s" treePath="Radius/Client">
+        <view title="Client Roundtrip Times" subtitle="Shows the time a particular request takes a proxied request to return" displayPeriod="30Seconds">
+            <variable name="Client Time" expression="$1" color="Blue">
+                <designator group="RadiusUdpOtherClient" instance="*" variable="RoundTripTime" />
+            </variable>
+            <variable name="Authentication Time" expression="$1" color="Light Blue">
+                <designator group="RadiusUdpAuthClient" instance="*" variable="RoundTripTime" />
+            </variable>
+            <variable name="Accounting Time" expression="$1" color="Green">
+                <designator group="RadiusUdpAcctClient" instance="*" variable="RoundTripTime" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Client USS/USSv2 Relay" interval="10s" treePath="Radius/Client">
+        <view title="Radius Client Relay for USS and USSv2" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpStateClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Accepts" expression="$1" color="Green">
+                <designator group="RadiusUdpStateClient" instance="*" variable="Accepts" />
+            </variable>
+            <variable name="Rejects" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="RadiusUdpStateClient" instance="*" variable="Rejects" />
+            </variable>
+            <variable name="Errors" expression="$1" color="Yellow">
+                <designator group="RadiusUdpStateClient" instance="*" variable="Errors" />
+            </variable>
+            <variable name="Invalid Servers" expression="$1" color="Olive" visible="false">
+                <designator group="RadiusUdpStateClient" instance="*" variable="InvalidServers" />
+            </variable>
+            <variable name="Retransmissions" expression="$1" color="Magenta" visible="false">
+                <designator group="RadiusUdpStateClient" instance="*" variable="Retransmissions" />
+            </variable>
+            <variable name="Bad Authenticators" expression="$1" color="Orange" visible="false">
+                <designator group="RadiusUdpStateClient" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Malformed Requests" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpStateClient" instance="*" variable="MalformedResponses" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Server Accounting" interval="10s" treePath="Radius/Server">
+        <view title="Accounting Requests" subtitle="Shows Total and Interval Data in Requests per Second" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Responses" expression="$1" color="Green">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="Responses" />
+            </variable>
+            <variable name="Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Duplicate" expression="$1" color="Magenta">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="DuplicateRequests" />
+            </variable>
+            <variable name="Invalid" expression="$1" color="Orange" visible="false">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="InvalidClients" />
+            </variable>
+            <variable name="Bad Auth" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Unknown" expression="$1" color="Light Blue" visible="false">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="UnknownTypes" />
+            </variable>
+            <variable name="Malformed" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="MalformedRequests" />
+            </variable>
+            <variable name="Cached" expression="$1" color="Dark Green" visible="false">
+                <designator group="RadiusUdpAcctServer" instance="*" variable="CachedResponses" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Server Authentication" interval="10s" treePath="Radius/Server">
+        <view title="Authentication Request" subtitle="Shows Total and Interval Data for Auth Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Accepts" expression="$1" color="Green">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="Accepts" />
+            </variable>
+            <variable name="Challenges" expression="$1" color="Yellow">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="Challenges" />
+            </variable>
+            <variable name="Rejects" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="Rejects" />
+            </variable>
+            <variable name="Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Duplicate" expression="$1" color="Magenta" visible="false">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="DuplicateRequests" />
+            </variable>
+            <variable name="Invalid" expression="$1" color="Orange" visible="false">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="InvalidClients" />
+            </variable>
+            <variable name="Bad Auth" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Unknown" expression="$1" color="Light Blue" visible="false">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="UnknownTypes" />
+            </variable>
+            <variable name="Malformed" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="MalformedRequests" />
+            </variable>
+            <variable name="Cached" expression="$1" color="Dark Green" visible="false">
+                <designator group="RadiusUdpAuthServer" instance="*" variable="CachedResponses" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Server Change of Authority" interval="10s" treePath="Radius/Server">
+        <view title="Dynamic Authorization - COA" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Auth Only Requests" expression="$1" color="Orange">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="AuthOnlyRequests" />
+            </variable>
+            <variable name="Acks" expression="$1" color="Green" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="Acks" />
+            </variable>
+            <variable name="Naks" expression="$1" color="Red" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="Naks" />
+            </variable>
+            <variable name="Auth Only Naks" expression="$1" color="Dark Red" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="AuthOnlyNaks" />
+            </variable>
+            <variable name="No Session Context Naks" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="NoSessionContextNaks" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Duplicate Requests" expression="$1" color="Magenta">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="DuplicateRequests" />
+            </variable>
+            <variable name="Bad Authenticators" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Malformed Requests" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="MalformedRequests" />
+            </variable>
+            <variable name="Invalid Client Address" expression="$1" color="Dark Blue" visible="false">
+                <designator group="RadiusUdpCoAServer" instance="*" variable="InvalidClients" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Server Disconnect" interval="10s" treePath="Radius/Server">
+        <view title="Dynamic Authorization - Disconnect" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Auth Only Requests" expression="$1" color="Orange">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="AuthOnlyRequests" />
+            </variable>
+            <variable name="Acks" expression="$1" color="Green" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="Acks" />
+            </variable>
+            <variable name="Naks" expression="$1" color="Red" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="Naks" />
+            </variable>
+            <variable name="Auth Only Naks" expression="$1" color="Dark Red" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="AuthOnlyNaks" />
+            </variable>
+            <variable name="No Session Context Naks" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="NoSessionContextNaks" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="PacketsDropped" />
+            </variable>
+            <variable name="Duplicate Requests" expression="$1" color="Magenta">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="DuplicateRequests" />
+            </variable>
+            <variable name="Bad Authenticators" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Malformed Requests" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="MalformedRequests" />
+            </variable>
+            <variable name="Invalid Client Address" expression="$1" color="Dark Blue" visible="false">
+                <designator group="RadiusUdpDiscServer" instance="*" variable="InvalidClients" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Radius Server USS/USSv2 Relay" interval="10s" treePath="Radius/Server">
+        <view title="Radius Server Relay for USS and USSv2" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="RadiusUdpStateServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Accepts" expression="$1" color="Green">
+                <designator group="RadiusUdpStateServer" instance="*" variable="Accepts" />
+            </variable>
+            <variable name="Rejects" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="RadiusUdpStateServer" instance="*" variable="Rejects" />
+            </variable>
+            <variable name="Errors" expression="$1" color="Yellow">
+                <designator group="RadiusUdpStateServer" instance="*" variable="Errors" />
+            </variable>
+            <variable name="Invalid Clients" expression="$1" color="Olive" visible="false">
+                <designator group="RadiusUdpStateServer" instance="*" variable="InvalidClients" />
+            </variable>
+            <variable name="Duplicate Requests" expression="$1" color="Magenta" visible="false">
+                <designator group="RadiusUdpStateServer" instance="*" variable="DuplicateRequests" />
+            </variable>
+            <variable name="Bad Authenticators" expression="$1" color="Orange" visible="false">
+                <designator group="RadiusUdpStateServer" instance="*" variable="BadAuthenticators" />
+            </variable>
+            <variable name="Malformed Requests" expression="$1" color="Purple" visible="false">
+                <designator group="RadiusUdpStateServer" instance="*" variable="MalformedRequests" />
+            </variable>
+            <variable name="Cached Responses" expression="$1" color="Light Blue" visible="false">
+                <designator group="RadiusUdpStateServer" instance="*" variable="CachedResponses" />
+            </variable>
+            <variable name="Aborted Requests" expression="$1" color="Teal" visible="false">
+                <designator group="RadiusUdpStateServer" instance="*" variable="AbortedRequests" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Tacacs+ Client" interval="10s" treePath="Tacacs+">
+        <view title="Tacacs+ Authen Client Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="TacacsPlusAuthenClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Error" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="TacacsPlusAuthenClient" instance="*" variable="Error" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="TacacsPlusAuthenClient" instance="*" variable="PacketsDropped" />
+            </variable>
+        </view>
+        <view title="Tacacs+ Author Client Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="TacacsPlusAuthorClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Error" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="TacacsPlusAuthorClient" instance="*" variable="Error" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="TacacsPlusAuthorClient" instance="*" variable="PacketsDropped" />
+            </variable>
+        </view>
+        <view title="Tacacs+ Acct Client Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="TacacsPlusAcctClient" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Error" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="TacacsPlusAcctClient" instance="*" variable="Error" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="TacacsPlusAcctClient" instance="*" variable="PacketsDropped" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Tacacs+ Server" interval="10s" treePath="Tacacs+">
+        <view title="Tacacs+ Authen Server" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="TacacsPlusAuthenServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Error" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="TacacsPlusAuthenServer" instance="*" variable="Error" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="TacacsPlusAuthenServer" instance="*" variable="PacketsDropped" />
+            </variable>
+        </view>
+        <view title="Tacacs+ Author Server" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="TacacsPlusAuthorServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Error" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="TacacsPlusAuthorServer" instance="*" variable="Error" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="TacacsPlusAuthorServer" instance="*" variable="PacketsDropped" />
+            </variable>
+        </view>
+        <view title="Tacacs+ Acct Server Requests" displayPeriod="30Minutes">
+            <variable name="Requests" expression="$1" color="Blue">
+                <designator group="TacacsPlusAcctServer" instance="*" variable="Requests" />
+            </variable>
+            <variable name="Error" expression="$1" color="Red" colorStyle="Foreground">
+                <designator group="TacacsPlusAcctServer" instance="*" variable="Error" />
+            </variable>
+            <variable name="Packets Dropped" expression="$1" color="Olive">
+                <designator group="TacacsPlusAcctServer" instance="*" variable="PacketsDropped" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="USS Replication" interval="10s" treePath="USS">
+        <view title="USS Replication" displayPeriod="30Minutes">
+            <variable name="Discovery Failures" expression="$1" color="Blue">
+                <designator group="USS" instance="*" variable="Replication-Discovery-Failures" />
+            </variable>
+            <variable name="Merged Entries" expression="$1" color="Green">
+                <designator group="USS" instance="*" variable="Replication-Entries-Merged" />
+            </variable>
+            <variable name="Entries Updated" expression="$1" color="Red">
+                <designator group="USS" instance="*" variable="Replication-Entries-Updated" />
+            </variable>
+            <variable name="Reconciliations" expression="$1" color="Olive">
+                <designator group="USS" instance="*" variable="Replication-Reconciliations" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="USS Requests" interval="10s" treePath="USS">
+        <view title="USS Requests" displayPeriod="30Minutes">
+            <variable name="Total Requests" expression="$1" color="Blue">
+                <designator group="USS" instance="*" variable="Total-Requests" />
+            </variable>
+            <variable name="Invalid Requests" expression="$1" color="Green">
+                <designator group="USS" instance="*" variable="Invalid-Requests" />
+            </variable>
+            <variable name="Limit Reject" expression="$1" color="Red">
+                <designator group="USS" instance="*" variable="Limit-Rejects" />
+            </variable>
+            <variable name="Not Handled" expression="$1" color="Yellow">
+                <designator group="USS" instance="*" variable="Not-Handled" />
+            </variable>
+            <variable name="Exceptions" expression="$1" color="Olive">
+                <designator group="USS" instance="*" variable="Exceptions" />
+            </variable>
+            <variable name="Map Evaluation Errors" expression="$1" color="Magenta">
+                <designator group="USS" instance="*" variable="Map-Evaluation-Errors" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="USS Session State" interval="10s" treePath="uss">
+        <view title="USS Session States" displayPeriod="30Seconds">
+            <variable name="Active State" expression="$1" color="Blue">
+                <designator group="USS" instance="*" variable="State-Active" />
+            </variable>
+            <variable name="Inactive State" expression="$1" color="Green">
+                <designator group="USS" instance="*" variable="State-Inactive" />
+            </variable>
+            <variable name="Waiting For Start" expression="$1" color="Yellow">
+                <designator group="USS" instance="*" variable="State-Waiting-For-Start" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Memory Usage" interval="10s">
+        <view title="Memory Usage" subtitle="Displays the Memory Usage for the Java Virtual Machine and Operating System" displayPeriod="30Minutes">
+            <variable name="Java Initial" expression="$1" color="Yellow" forcedScale="mega" visible="false">
+                <designator group="JavaMemory" instance="*" variable="HeapMemoryInit" />
+            </variable>
+            <variable name="Java Used" expression="$1" color="Green" forcedScale="mega">
+                <designator group="JavaMemory" instance="*" variable="HeapMemoryUsed" />
+            </variable>
+            <variable name="Java Committed" expression="$1" color="Red" forcedScale="mega">
+                <designator group="JavaMemory" instance="*" variable="HeapMemoryCommitted" />
+            </variable>
+            <variable name="Java Max" expression="$1" color="Blue" forcedScale="mega" visible="false">
+                <designator group="JavaMemory" instance="*" variable="HeapMemoryMax" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Work Engine" interval="10s">
+        <view title="Total Items" subtitle="Total Number of Work Items Processed" viewType="Table" displayPeriod="1Hours">
+            <variable name="Total Items" expression="$1" color="Dark Green">
+                <designator group="Engine" instance="*" variable="ItemTotalCount" />
+            </variable>
+            <variable name="Total Item Time" expression="$1" color="Green">
+                <designator group="Engine" instance="*" variable="ItemTotalTime" />
+            </variable>
+            <variable name="Average Item Time" expression="$1/$2" color="Blue">
+                <designator group="Engine" instance="*" variable="ItemTotalTime" />
+                <designator group="Engine" instance="*" variable="ItemTotalCount" />
+            </variable>
+            <variable name="Total PolicyFlow Methods" expression="$1" color="Light Blue">
+                <designator group="Engine" instance="*" variable="MethodCount" />
+            </variable>
+            <variable name="Minimum Item Time" expression="$1" color="Magenta">
+                <designator group="Engine" instance="*" variable="ItemMinTime" />
+            </variable>
+            <variable name="Maximum Item Time" expression="$1" color="Orange">
+                <designator group="Engine" instance="*" variable="ItemMaxTime" />
+            </variable>
+        </view>
+        <view title="Average Item Time" viewType="Graph" displayPeriod="30Minutes">
+            <variable name="Average Item Time" expression="$1/$2" color="Blue">
+                <designator group="Engine" instance="*" variable="ItemTotalTime" />
+                <designator group="Engine" instance="*" variable="ItemTotalCount" />
+            </variable>
+        </view>
+        <view title="Load" viewType="Graph" displayPeriod="30Minutes">
+            <variable name="Total Items" expression="$1" color="Dark Green">
+                <designator group="Engine" instance="*" variable="ItemTotalCount" />
+            </variable>
+            <variable name="CPU Load" expression="$1/$2" color="Blue">
+                <designator group="OperatingSystem" instance="*" variable="ProcessCpuTime" />
+                <designator group="OperatingSystem" instance="*" variable="AvailableProcessors" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Log Queue" interval="10s" treePath="Queues" includeZero="false">
+        <view title="Log Queue" subtitle="Current and HighWater values for logs to write to log_channels" displayPeriod="30Minutes">
+            <variable name="Log" expression="$1/$2" color="Magenta">
+                <designator group="Queue" instance="log" variable="QueueDepthCount" />
+                <designator group="Queue" instance="log" variable="QueueWriteCount" />
+            </variable>
+            <variable name="Log Highwater" expression="$1" color="Dark Magenta" lineStyle="Dashed">
+                <designator group="Queue" instance="log" variable="QueueHighwater" />
+            </variable>
+        </view>
+    </monitor>
+    <monitor name="Work Queues" interval="10s" treePath="Queues" includeZero="false">
+        <view title="Work Queues" subtitle="Current and HighWater values for queues of incoming requests" viewType="Table" displayPeriod="30Minutes">
+            <variable name="Resume" expression="$1/$2" color="Red">
+                <designator group="Queue" instance="work-resume" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-resume" variable="QueueWriteCount" />
+            </variable>
+            <variable name="Resume Highwater" expression="$1" color="Crimson" lineStyle="Dashed">
+                <designator group="Queue" instance="work-resume" variable="QueueHighwater" />
+            </variable>
+            <variable name="State" expression="$1/$2" color="Ocean Blue">
+                <designator group="Queue" instance="work-state" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-state" variable="QueueWriteCount" />
+            </variable>
+            <variable name="State Highwater" expression="$1" color="Blue" lineStyle="Dashed">
+                <designator group="Queue" instance="work-state" variable="QueueHighwater" />
+            </variable>
+            <variable name="Normal" expression="$1/$2" color="Green">
+                <designator group="Queue" instance="work-normal" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-normal" variable="QueueWriteCount" />
+            </variable>
+            <variable name="Normal Highwater" expression="$1" color="Dark Green" lineStyle="Dashed">
+                <designator group="Queue" instance="work-normal" variable="QueueHighwater" />
+            </variable>
+            <variable name="Background" expression="$1/$2" color="Tan">
+                <designator group="Queue" instance="work-background" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-background" variable="QueueWriteCount" />
+            </variable>
+            <variable name="Background Highwater" expression="$1" color="Brown" lineStyle="Dashed">
+                <designator group="Queue" instance="work-background" variable="QueueHighwater" />
+            </variable>
+        </view>
+        <view title="Work Queues - Current size" subtitle="Current values for queues of incoming requests" viewType="Graph" displayPeriod="30Minutes">
+            <variable name="Resume" expression="$1/$2" color="Red">
+                <designator group="Queue" instance="work-resume" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-resume" variable="QueueWriteCount" />
+            </variable>
+            <variable name="State" expression="$1/$2" color="Ocean Blue">
+                <designator group="Queue" instance="work-state" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-state" variable="QueueWriteCount" />
+            </variable>
+            <variable name="Normal" expression="$1/$2" color="Green">
+                <designator group="Queue" instance="work-normal" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-normal" variable="QueueWriteCount" />
+            </variable>
+            <variable name="Background" expression="$1/$2" color="Tan">
+                <designator group="Queue" instance="work-background" variable="QueueDepthCount" />
+                <designator group="Queue" instance="work-background" variable="QueueWriteCount" />
+            </variable>
+        </view>
+        <view title="Work Queues - Highwater size" subtitle="HighWater values for queues of incoming requests" viewType="Graph" displayPeriod="30Minutes">
+            <variable name="Resume Highwater" expression="$1" color="Crimson" lineStyle="Dashed">
+                <designator group="Queue" instance="work-resume" variable="QueueHighwater" />
+            </variable>
+            <variable name="State Highwater" expression="$1" color="Blue" lineStyle="Dashed">
+                <designator group="Queue" instance="work-state" variable="QueueHighwater" />
+            </variable>
+            <variable name="Normal Highwater" expression="$1" color="Dark Green" lineStyle="Dashed">
+                <designator group="Queue" instance="work-normal" variable="QueueHighwater" />
+            </variable>
+            <variable name="Background Highwater" expression="$1" color="Brown" lineStyle="Dashed">
+                <designator group="Queue" instance="work-background" variable="QueueHighwater" />
+            </variable>
+        </view>
+    </monitor>
+</monitors>

@@ -1,0 +1,1366 @@
+<?xml version="1.0" standalone="no"?>
+<!-- ? 2017 Nokia. All rights reserved. -->
+
+<!-- Note that this file will be overwritten during an upgrade. Make changes in custom.dict -->
+
+<!DOCTYPE dictionary SYSTEM "dictionary.dtd">
+
+<dictionary codec="#default" overwrite="false">
+
+<!-- USR VSAs -->
+
+    <avp name="USR-DTE-Data-Idle-Timout" vendor="USR" code="0x0048" type="Unsigned32"/>
+    <avp name="USR-Default-DTE-Data-Rate" vendor="USR" code="0x005E" type="Enumerated">
+        <enum name="110-BPS" code="1"/>
+        <enum name="300-BPS" code="2"/>
+        <enum name="600-BPS" code="3"/>
+        <enum name="1200-BPS" code="4"/>
+        <enum name="2400-BPS" code="5"/>
+        <enum name="4800-BPS" code="6"/>
+        <enum name="7200-BPS" code="7"/>
+        <enum name="9600-BPS" code="8"/>
+        <enum name="12K-BPS" code="9"/>
+        <enum name="14.4K-BPS" code="10"/>
+        <enum name="16.8-BPS" code="11"/>
+        <enum name="19.2K-BPS" code="12"/>
+        <enum name="38.4K-BPS" code="13"/>
+        <enum name="75-BPS" code="14"/>
+        <enum name="450-BPS" code="15"/>
+        <enum name="UNKNOWN-BPS" code="16"/>
+        <enum name="57.6K-BPS" code="17"/>
+        <enum name="21.6K-BPS" code="18"/>
+        <enum name="24K-BPS" code="19"/>
+        <enum name="26K-BPS" code="20"/>
+        <enum name="28K-BPS" code="21"/>
+        <enum name="115K-BPS" code="22"/>
+    </avp>
+    <avp name="USR-Last-Number-Dialed-Out" vendor="USR" code="0x0066" type="string"/>
+    <avp name="USR-Sync-Async-Mode" vendor="USR" code="0x0067" type="Enumerated">
+        <enum name="Asynchronous" code="1"/>
+        <enum name="Synchronous" code="2"/>
+    </avp>
+    <avp name="USR-Originate-Answer-Mode" vendor="USR" code="0x0068" type="Enumerated">
+        <enum name="Originate_in_Originate_Mode" code="1"/>
+        <enum name="Originate_in_Answer_Mode" code="2"/>
+        <enum name="Answer_in_Originate_Mode" code="3"/>
+        <enum name="Answer_in_Answer_Mode" code="4"/>
+    </avp>
+    <avp name="USR-Failure-to-Connect-Reason" vendor="USR" code="0x0069" type="Enumerated">
+        <enum name="dtrDrop" code="1"/>
+        <enum name="escapeSequence" code="2"/>
+        <enum name="athCommand" code="3"/>
+        <enum name="carrierLoss" code="4"/>
+        <enum name="inactivityTimout" code="5"/>
+        <enum name="mnpIncompatible" code="6"/>
+        <enum name="undefined" code="7"/>
+        <enum name="remotePassword" code="8"/>
+        <enum name="linkPassword" code="9"/>
+        <enum name="retransmitLimit" code="10"/>
+        <enum name="linkDisconnectMsgRec" code="11"/>
+        <enum name="noLoopCurrent" code="12"/>
+        <enum name="invalidSpeed" code="13"/>
+        <enum name="unableToRetrain" code="14"/>
+        <enum name="managementCommand" code="15"/>
+        <enum name="noDialTone" code="16"/>
+        <enum name="keyAbort" code="17"/>
+        <enum name="lineBusy" code="18"/>
+        <enum name="noAnswer" code="19"/>
+        <enum name="voice" code="20"/>
+        <enum name="noAnswerTone" code="21"/>
+        <enum name="noCarrier" code="22"/>
+        <enum name="undetermined" code="23"/>
+        <enum name="v42SabmeTimeout" code="24"/>
+        <enum name="v42BreakTimeout" code="25"/>
+        <enum name="v42DisconnectCmd" code="26"/>
+        <enum name="v42IdExchangeFail" code="27"/>
+        <enum name="v42BadSetup" code="28"/>
+        <enum name="v42InvalidCodeWord" code="29"/>
+        <enum name="v42StringToLong" code="30"/>
+        <enum name="v42InvalidCommand" code="31"/>
+        <enum name="None" code="32"/>
+        <enum name="v32Cleardown" code="33"/>
+        <enum name="dialSecurity" code="34"/>
+        <enum name="remoteAccessDenied" code="35"/>
+        <enum name="loopLoss" code="36"/>
+        <enum name="ds0Teardown" code="37"/>
+        <enum name="promptNotEnabled" code="38"/>
+        <enum name="noPromptingInSync" code="39"/>
+        <enum name="nonArqMode" code="40"/>
+        <enum name="modeIncompatible" code="41"/>
+        <enum name="noPromptInNonARQ" code="42"/>
+        <enum name="dialBackLink" code="43"/>
+        <enum name="linkAbort" code="44"/>
+        <enum name="autopassFailed" code="45"/>
+        <enum name="pbGenericError" code="46"/>
+        <enum name="pbLinkErrTxPreAck" code="47"/>
+        <enum name="pbLinkErrTxTardyACK" code="48"/>
+        <enum name="pbTransmitBusTimeout" code="49"/>
+        <enum name="pbReceiveBusTimeout" code="50"/>
+        <enum name="pbLinkErrTxTAL" code="51"/>
+        <enum name="pbLinkErrRxTAL" code="52"/>
+        <enum name="pbTransmitMasterTimeout" code="53"/>
+        <enum name="pbClockMissing" code="54"/>
+        <enum name="pbReceivedLsWhileLinkUp" code="55"/>
+        <enum name="pbOutOfSequenceFrame" code="56"/>
+        <enum name="pbBadFrame" code="57"/>
+        <enum name="pbAckWaitTimeout" code="58"/>
+        <enum name="pbReceivedAckSeqErr" code="59"/>
+        <enum name="pbReceiveOvrflwRNRFail" code="60"/>
+        <enum name="pbReceiveMsgBufOvrflw" code="61"/>
+        <enum name="rcvdGatewayDiscCmd" code="62"/>
+        <enum name="tokenPassingTimeout" code="63"/>
+        <enum name="dspInterruptTimeout" code="64"/>
+        <enum name="mnpProtocolViolation" code="65"/>
+        <enum name="class2FaxHangupCmd" code="66"/>
+        <enum name="hstSpeedSwitchTimeout" code="67"/>
+        <enum name="tooManyUnacked" code="68"/>
+        <enum name="timerExpired" code="69"/>
+        <enum name="t1Glare" code="70"/>
+        <enum name="priDialoutRqTimeout" code="71"/>
+        <enum name="abortAnlgDstOvrIsdn" code="72"/>
+        <enum name="normalUserCallClear" code="73"/>
+        <enum name="normalUnspecified" code="74"/>
+        <enum name="bearerIncompatibility" code="75"/>
+        <enum name="protocolErrorEvent" code="76"/>
+        <enum name="abnormalDisconnect" code="77"/>
+        <enum name="invalidCauseValue" code="78"/>
+        <enum name="resourceUnavailable" code="79"/>
+        <enum name="remoteHungUpDuringTraining" code="80"/>
+        <enum name="trainingTimeout" code="81"/>
+        <enum name="incomingModemNotAvailable" code="82"/>
+        <enum name="incomingInvalidBearerCap" code="83"/>
+        <enum name="incomingInvalidChannelID" code="84"/>
+        <enum name="incomingInvalidProgInd" code="85"/>
+        <enum name="incomingInvalidCallingPty" code="86"/>
+        <enum name="incomingInvalidCalledPty" code="87"/>
+        <enum name="incomingCallBlock" code="88"/>
+        <enum name="incomingLoopStNoRingOff" code="89"/>
+        <enum name="outgoingTelcoDisconnect" code="90"/>
+        <enum name="outgoingEMWinkTimeout" code="91"/>
+        <enum name="outgoingEMWinkTooShort" code="92"/>
+        <enum name="outgoingNoChannelAvail" code="93"/>
+        <enum name="dspReboot" code="94"/>
+        <enum name="noDSPRespToKA" code="95"/>
+        <enum name="noDSPRespToDisc" code="96"/>
+        <enum name="dspTailPtrInvalid" code="97"/>
+        <enum name="dspHeadPtrInvalid" code="98"/>
+    </avp>
+    <avp name="USR-Initial-Tx-Link-Data-Rate" vendor="USR" code="0x006A" type="Enumerated">
+        <enum name="110-BPS" code="1"/>
+        <enum name="300-BPS" code="2"/>
+        <enum name="600-BPS" code="3"/>
+        <enum name="1200-BPS" code="4"/>
+        <enum name="2400-BPS" code="5"/>
+        <enum name="4800-BPS" code="6"/>
+        <enum name="7200-BPS" code="7"/>
+        <enum name="9600-BPS" code="8"/>
+        <enum name="12000-BPS" code="9"/>
+        <enum name="14400-BPS" code="10"/>
+        <enum name="16800-BPS" code="11"/>
+        <enum name="19200-BPS" code="12"/>
+        <enum name="38400-BPS" code="13"/>
+        <enum name="75-BPS" code="14"/>
+        <enum name="450-BPS" code="15"/>
+        <enum name="UNKNOWN-BPS" code="16"/>
+        <enum name="57600-BPS" code="17"/>
+        <enum name="21600-BPS" code="18"/>
+        <enum name="24000-BPS" code="19"/>
+        <enum name="26400-BPS" code="20"/>
+        <enum name="28800-BPS" code="21"/>
+        <enum name="115200-BPS" code="22"/>
+        <enum name="31200-BPS" code="23"/>
+        <enum name="33600-BPS" code="24"/>
+        <enum name="25333-BPS" code="25"/>
+        <enum name="26666-BPS" code="26"/>
+        <enum name="28000-BPS" code="27"/>
+        <enum name="29333-BPS" code="28"/>
+        <enum name="30666-BPS" code="29"/>
+        <enum name="32000-BPS" code="30"/>
+        <enum name="33333-BPS" code="31"/>
+        <enum name="34666-BPS" code="32"/>
+        <enum name="36000-BPS" code="33"/>
+        <enum name="37333-BPS" code="34"/>
+        <enum name="38666-BPS" code="35"/>
+        <enum name="40000-BPS" code="36"/>
+        <enum name="41333-BPS" code="37"/>
+        <enum name="42666-BPS" code="38"/>
+        <enum name="44000-BPS" code="39"/>
+        <enum name="45333-BPS" code="40"/>
+        <enum name="46666-BPS" code="41"/>
+        <enum name="48000-BPS" code="42"/>
+        <enum name="49333-BPS" code="43"/>
+        <enum name="50666-BPS" code="44"/>
+        <enum name="52000-BPS" code="45"/>
+        <enum name="53333-BPS" code="46"/>
+        <enum name="54666-BPS" code="47"/>
+        <enum name="56000-BPS" code="48"/>
+        <enum name="57333-BPS" code="49"/>
+        <enum name="58666-BPS" code="50"/>
+        <enum name="60000-BPS" code="51"/>
+        <enum name="61333-BPS" code="52"/>
+        <enum name="62666-BPS" code="53"/>
+        <enum name="64000-BPS" code="54"/>
+    </avp>
+    <avp name="USR-Final-Tx-Link-Data-Rate" vendor="USR" code="0x006B" type="Enumerated">
+        <enum name="110-BPS" code="1"/>
+        <enum name="300-BPS" code="2"/>
+        <enum name="600-BPS" code="3"/>
+        <enum name="1200-BPS" code="4"/>
+        <enum name="2400-BPS" code="5"/>
+        <enum name="4800-BPS" code="6"/>
+        <enum name="7200-BPS" code="7"/>
+        <enum name="9600-BPS" code="8"/>
+        <enum name="12000-BPS" code="9"/>
+        <enum name="14400-BPS" code="10"/>
+        <enum name="16800-BPS" code="11"/>
+        <enum name="19200-BPS" code="12"/>
+        <enum name="38400-BPS" code="13"/>
+        <enum name="75-BPS" code="14"/>
+        <enum name="450-BPS" code="15"/>
+        <enum name="UNKNOWN-BPS" code="16"/>
+        <enum name="57600-BPS" code="17"/>
+        <enum name="21600-BPS" code="18"/>
+        <enum name="24000-BPS" code="19"/>
+        <enum name="26400-BPS" code="20"/>
+        <enum name="28800-BPS" code="21"/>
+        <enum name="115200-BPS" code="22"/>
+        <enum name="31200-BPS" code="23"/>
+        <enum name="33600-BPS" code="24"/>
+        <enum name="25333-BPS" code="25"/>
+        <enum name="26666-BPS" code="26"/>
+        <enum name="28000-BPS" code="27"/>
+        <enum name="29333-BPS" code="28"/>
+        <enum name="30666-BPS" code="29"/>
+        <enum name="32000-BPS" code="30"/>
+        <enum name="33333-BPS" code="31"/>
+        <enum name="34666-BPS" code="32"/>
+        <enum name="36000-BPS" code="33"/>
+        <enum name="37333-BPS" code="34"/>
+        <enum name="38666-BPS" code="35"/>
+        <enum name="40000-BPS" code="36"/>
+        <enum name="41333-BPS" code="37"/>
+        <enum name="42666-BPS" code="38"/>
+        <enum name="44000-BPS" code="39"/>
+        <enum name="45333-BPS" code="40"/>
+        <enum name="46666-BPS" code="41"/>
+        <enum name="48000-BPS" code="42"/>
+        <enum name="49333-BPS" code="43"/>
+        <enum name="50666-BPS" code="44"/>
+        <enum name="52000-BPS" code="45"/>
+        <enum name="53333-BPS" code="46"/>
+        <enum name="54666-BPS" code="47"/>
+        <enum name="56000-BPS" code="48"/>
+        <enum name="57333-BPS" code="49"/>
+        <enum name="58666-BPS" code="50"/>
+        <enum name="60000-BPS" code="51"/>
+        <enum name="61333-BPS" code="52"/>
+        <enum name="62666-BPS" code="53"/>
+        <enum name="64000-BPS" code="54"/>
+    </avp>
+    <avp name="USR-Modulation-Type" vendor="USR" code="0x006C" type="Enumerated">
+        <enum name="usRoboticsHST" code="1"/>
+        <enum name="ccittV32" code="2"/>
+        <enum name="ccittV22bis" code="3"/>
+        <enum name="bell103" code="4"/>
+        <enum name="ccittV21" code="5"/>
+        <enum name="bell212" code="6"/>
+        <enum name="ccittV32bis" code="7"/>
+        <enum name="ccittV23" code="8"/>
+        <enum name="negotiationFailed" code="9"/>
+        <enum name="bell208b" code="10"/>
+        <enum name="v21FaxClass1" code="11"/>
+        <enum name="v27FaxClass1" code="12"/>
+        <enum name="v29FaxClass1" code="13"/>
+        <enum name="v17FaxClass1" code="14"/>
+        <enum name="v21FaxClass2" code="15"/>
+        <enum name="v27FaxClass2" code="16"/>
+        <enum name="v29FaxClass2" code="17"/>
+        <enum name="v17FaxClass2" code="18"/>
+        <enum name="v32Terbo" code="19"/>
+        <enum name="v34" code="20"/>
+        <enum name="vFC" code="21"/>
+        <enum name="v34plus" code="22"/>
+        <enum name="x2" code="23"/>
+        <enum name="v110" code="24"/>
+        <enum name="v120" code="25"/>
+        <enum name="X75" code="26"/>
+        <enum name="asyncSyncPPP" code="27"/>
+        <enum name="clearChannel" code="28"/>
+        <enum name="x2client" code="29"/>
+        <enum name="x2symmetric" code="30"/>
+        <enum name="PIAFS" code="31"/>
+        <enum name="x2version2" code="32"/>
+        <enum name="v90Analog" code="33"/>
+        <enum name="v90Digital" code="34"/>
+        <enum name="v90AllDigital" code="35"/>
+    </avp>
+    <avp name="USR-Equalization-Type" vendor="USR" code="0x006F" type="Enumerated">
+        <enum name="Long" code="1"/>
+        <enum name="Short" code="2"/>
+    </avp>
+    <avp name="USR-Fallback-Enabled" vendor="USR" code="0x0070" type="Enumerated">
+        <enum name="Disabled" code="1"/>
+        <enum name="Enabled" code="2"/>
+    </avp>
+    <avp name="USR-Characters-Sent" vendor="USR" code="0x0071" type="Unsigned32"/>
+    <avp name="USR-Characters-Received" vendor="USR" code="0x0072" type="Unsigned32"/>
+    <avp name="USR-Blocks-Sent" vendor="USR" code="0x0075" type="Unsigned32"/>
+    <avp name="USR-Blocks-Received" vendor="USR" code="0x0076" type="Unsigned32"/>
+    <avp name="USR-Blocks-Resent" vendor="USR" code="0x0077" type="Unsigned32"/>
+    <avp name="USR-Retrains-Requested" vendor="USR" code="0x0078" type="Unsigned32"/>
+    <avp name="USR-Retrains-Granted" vendor="USR" code="0x0079" type="Unsigned32"/>
+    <avp name="USR-Line-Reversals" vendor="USR" code="0x007A" type="Unsigned32"/>
+    <avp name="USR-Number-Of-Characters-Lost" vendor="USR" code="0x007B" type="Unsigned32"/>
+    <avp name="USR-Back-Channel-Data-Rate" vendor="USR" code="0x007C" type="Enumerated">
+        <enum name="450BPS" code="1"/>
+        <enum name="300BPS" code="2"/>
+        <enum name="None" code="3"/>
+    </avp>
+    <avp name="USR-Number-of-Blers" vendor="USR" code="0x007D" type="Unsigned32"/>
+    <avp name="USR-Number-of-Link-Timeouts" vendor="USR" code="0x007E" type="Unsigned32"/>
+    <avp name="USR-Number-of-Fallbacks" vendor="USR" code="0x007F" type="Unsigned32"/>
+    <avp name="USR-Number-of-Upshifts" vendor="USR" code="0x0080" type="Unsigned32"/>
+    <avp name="USR-Number-of-Link-NAKs" vendor="USR" code="0x0081" type="Unsigned32"/>
+    <avp name="USR-Simplified-MNP-Levels" vendor="USR" code="0x0099" type="Enumerated">
+        <alias name="USR-Error-Control"/>
+        <enum name="None" code="1"/>
+        <enum name="mnpLevel3" code="2"/>
+        <enum name="mnpLevel4" code="3"/>
+        <enum name="ccittV42" code="4"/>
+        <enum name="usRoboticsHST" code="5"/>
+        <enum name="synchronousNone" code="6"/>
+        <enum name="mnpLevel2" code="7"/>
+        <enum name="mnp10" code="8"/>
+        <enum name="v42Etc" code="9"/>
+        <enum name="mnp10Etc" code="10"/>
+        <enum name="lapmEtc" code="11"/>
+        <enum name="v42Etc2" code="12"/>
+        <enum name="v42SRej" code="13"/>
+        <enum name="PIAFS" code="14"/>
+        <enum name="v120" code="15"/>
+        <enum name="x75" code="16"/>
+    </avp>
+    <avp name="USR-Connect-Term-Reason" vendor="USR" code="0x009B" type="Enumerated">
+        <enum name="dtrDrop" code="1"/>
+        <enum name="escapeSequence" code="2"/>
+        <enum name="athCommand" code="3"/>
+        <enum name="carrierLoss" code="4"/>
+        <enum name="inactivityTimout" code="5"/>
+        <enum name="mnpIncompatible" code="6"/>
+        <enum name="undefined" code="7"/>
+        <enum name="remotePassword" code="8"/>
+        <enum name="linkPassword" code="9"/>
+        <enum name="retransmitLimit" code="10"/>
+        <enum name="linkDisconnectMsgReceived" code="11"/>
+        <enum name="noLoopCurrent" code="12"/>
+        <enum name="invalidSpeed" code="13"/>
+        <enum name="unableToRetrain" code="14"/>
+        <enum name="managementCommand" code="15"/>
+        <enum name="noDialTone" code="16"/>
+        <enum name="keyAbort" code="17"/>
+        <enum name="lineBusy" code="18"/>
+        <enum name="noAnswer" code="19"/>
+        <enum name="voice" code="20"/>
+        <enum name="noAnswerTone" code="21"/>
+        <enum name="noCarrier" code="22"/>
+        <enum name="undetermined" code="23"/>
+        <enum name="v42SabmeTimeout" code="24"/>
+        <enum name="v42BreakTimeout" code="25"/>
+        <enum name="v42DisconnectCmd" code="26"/>
+        <enum name="v42IdExchangeFail" code="27"/>
+        <enum name="v42BadSetup" code="28"/>
+        <enum name="v42InvalidCodeWord" code="29"/>
+        <enum name="v42StringToLong" code="30"/>
+        <enum name="v42InvalidCommand" code="31"/>
+        <enum name="None" code="32"/>
+        <enum name="v32Cleardown" code="33"/>
+        <enum name="dialSecurity" code="34"/>
+        <enum name="remoteAccessDenied" code="35"/>
+        <enum name="loopLoss" code="36"/>
+        <enum name="ds0Teardown" code="37"/>
+        <enum name="promptNotEnabled" code="38"/>
+        <enum name="noPromptingInSync" code="39"/>
+        <enum name="nonArqMode" code="40"/>
+        <enum name="modeIncompatible" code="41"/>
+        <enum name="noPromptInNonARQ" code="42"/>
+        <enum name="dialBackLink" code="43"/>
+        <enum name="linkAbort" code="44"/>
+        <enum name="autopassFailed" code="45"/>
+        <enum name="pbGenericError" code="46"/>
+        <enum name="pbLinkErrTxPreAck" code="47"/>
+        <enum name="pbLinkErrTxTardyACK" code="48"/>
+        <enum name="pbTransmitBusTimeout" code="49"/>
+        <enum name="pbReceiveBusTimeout" code="50"/>
+        <enum name="pbLinkErrTxTAL" code="51"/>
+        <enum name="pbLinkErrRxTAL" code="52"/>
+        <enum name="pbTransmitMasterTimeout" code="53"/>
+        <enum name="pbClockMissing" code="54"/>
+        <enum name="pbReceivedLsWhileLinkUp" code="55"/>
+        <enum name="pbOutOfSequenceFrame" code="56"/>
+        <enum name="pbBadFrame" code="57"/>
+        <enum name="pbAckWaitTimeout" code="58"/>
+        <enum name="pbReceivedAckSeqErr" code="59"/>
+        <enum name="pbReceiveOvrflwRNRFail" code="60"/>
+        <enum name="pbReceiveMsgBufOvrflw" code="61"/>
+        <enum name="rcvdGatewayDiscCmd" code="62"/>
+        <enum name="tokenPassingTimeout" code="63"/>
+        <enum name="dspInterruptTimeout" code="64"/>
+        <enum name="mnpProtocolViolation" code="65"/>
+        <enum name="class2FaxHangupCmd" code="66"/>
+        <enum name="hstSpeedSwitchTimeout" code="67"/>
+        <enum name="tooManyUnacked" code="68"/>
+        <enum name="timerExpired" code="69"/>
+        <enum name="t1Glare" code="70"/>
+        <enum name="priDialoutRqTimeout" code="71"/>
+        <enum name="abortAnlgDstOvrIsdn" code="72"/>
+        <enum name="normalUserCallClear" code="73"/>
+        <enum name="normalUnspecified" code="74"/>
+        <enum name="bearerIncompatibility" code="75"/>
+        <enum name="protocolErrorEvent" code="76"/>
+        <enum name="abnormalDisconnect" code="77"/>
+        <enum name="invalidCauseValue" code="78"/>
+        <enum name="resourceUnavailable" code="79"/>
+        <enum name="remoteHungUpDuringTraining" code="80"/>
+        <enum name="trainingTimeout" code="81"/>
+        <enum name="incomingModemNotAvailable" code="82"/>
+        <enum name="incomingInvalidBearerCap" code="83"/>
+        <enum name="incomingInvalidChannelID" code="84"/>
+        <enum name="incomingInvalidProgInd" code="85"/>
+        <enum name="incomingInvalidCallingPty" code="86"/>
+        <enum name="incomingInvalidCalledPty" code="87"/>
+        <enum name="incomingCallBlock" code="88"/>
+        <enum name="incomingLoopStNoRingOff" code="89"/>
+        <enum name="outgoingTelcoDisconnect" code="90"/>
+        <enum name="outgoingEMWinkTimeout" code="91"/>
+        <enum name="outgoingEMWinkTooShort" code="92"/>
+        <enum name="outgoingNoChannelAvail" code="93"/>
+        <enum name="dspReboot" code="94"/>
+        <enum name="noDSPRespToKA" code="95"/>
+        <enum name="noDSPRespToDisc" code="96"/>
+        <enum name="dspTailPtrInvalid" code="97"/>
+        <enum name="dspHeadPtrInvalid" code="98"/>
+    </avp>
+    <avp name="USR-DTR-False-Timeout" vendor="USR" code="0x00BE" type="Unsigned32"/>
+    <avp name="USR-Fallback-Limit" vendor="USR" code="0x00BF" type="Unsigned32"/>
+    <avp name="USR-Block-Error-Count-Limit" vendor="USR" code="0x00C0" type="Unsigned32"/>
+    <avp name="USR-Simplified-V42bis-Usage" vendor="USR" code="0x00C7" type="Enumerated">
+        <enum name="none" code="1"/>
+        <enum name="ccittV42bis" code="2"/>
+        <enum name="mnpLevel5" code="3"/>
+    </avp>
+    <avp name="USR-DTR-True-Timeout" vendor="USR" code="0x00DA" type="Unsigned32"/>
+    <avp name="USR-Last-Number-Dialed-In-DNIS" vendor="USR" code="0x00E8" type="string"/>
+    <avp name="USR-Last-Callers-Number-ANI" vendor="USR" code="0x00E9" type="string" log="scramble"/>
+    <avp name="USR-CDMA-Call-Reference-Number" vendor="USR" code="0x0183" type="Unsigned32"/>
+    <avp name="USR-Mbi_Ct_PRI_Card_Slot" vendor="USR" code="0x0184" type="Unsigned32"/>
+    <avp name="USR-Mbi_Ct_TDM_Time_Slot" vendor="USR" code="0x0185" type="Unsigned32"/>
+    <avp name="USR-Mbi_Ct_PRI_Card_Span_Line" vendor="USR" code="0x0186" type="Unsigned32"/>
+    <avp name="USR-Mbi_Ct_BChannel_Used" vendor="USR" code="0x0187" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Status" vendor="USR" code="0x01CD" type="Enumerated">
+        <enum name="notEnabledInLocalModem" code="1"/>
+        <enum name="notDetectedInRemoteModem" code="2"/>
+        <enum name="ok" code="3"/>
+    </avp>
+    <avp name="USR-RMMIE-Num-Of-Updates" vendor="USR" code="0x01CE" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Manufacturer-ID" vendor="USR" code="0x01DF" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Product-Code" vendor="USR" code="0x01E0" type="string"/>
+    <avp name="USR-RMMIE-Serial-Number" vendor="USR" code="0x01E1" type="string" log="scramble"/>
+    <avp name="USR-RMMIE-Firmware-Version" vendor="USR" code="0x01E2" type="string"/>
+    <avp name="USR-RMMIE-Firmware-Build-Date" vendor="USR" code="0x01E3" type="string"/>
+    <avp name="USR-IWF-IP-Address" vendor="USR" code="0x03F4" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Mobile-IP-Address" vendor="USR" code="0x088E" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Calling-Party-Number" vendor="USR" code="0x088F" type="string" log="scramble"/>
+    <avp name="USR-Called-Party-Number" vendor="USR" code="0x0890" type="string" log="scramble"/>
+    <avp name="USR-Call-Type" vendor="USR" code="0x0891" type="Unsigned32"/>
+    <avp name="USR-ESN" vendor="USR" code="0x0892" type="string" log="scramble"/>
+    <avp name="USR-IWF-Call-Identifier" vendor="USR" code="0x0893" type="Unsigned32" log="scramble"/>
+    <avp name="USR-IMSI" vendor="USR" code="0x0894" type="string" log="scramble"/>
+    <avp name="USR-Service-Option" vendor="USR" code="0x0895" type="Unsigned32"/>
+    <avp name="USR-Disconnect-Cause-Indicator" vendor="USR" code="0x0896" type="Unsigned32"/>
+    <avp name="USR-Mobile-NumBytes-Txed" vendor="USR" code="0x0897" type="Unsigned32"/>
+    <avp name="USR-Mobile-NumBytes-Rxed" vendor="USR" code="0x0898" type="Unsigned32"/>
+    <avp name="USR-Num-Fax-Pages-Processed" vendor="USR" code="0x0899" type="Unsigned32"/>
+    <avp name="USR-Compression-Type" vendor="USR" code="0x089A" type="Unsigned32"/>
+    <avp name="USR-Call-Error-Code" vendor="USR" code="0x089B" type="Unsigned32"/>
+    <avp name="USR-Modem-Setup-Time" vendor="USR" code="0x089C" type="Unsigned32"/>
+    <avp name="USR-Call-Connecting-Time" vendor="USR" code="0x089D" type="Unsigned32"/>
+    <avp name="USR-Connect-Time" vendor="USR" code="0x089E" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Last-Update-Time" vendor="USR" code="0x0900" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Last-Update-Event" vendor="USR" code="0x0901" type="Enumerated">
+        <enum name="None" code="1"/>
+        <enum name="initialConnection" code="2"/>
+        <enum name="retrain" code="3"/>
+        <enum name="speedShift" code="4"/>
+        <enum name="plannedDisconnect" code="5"/>
+    </avp>
+    <avp name="USR-RMMIE-Rcv-Tot-PwrLvl" vendor="USR" code="0x0902" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Rcv-PwrLvl-3300Hz" vendor="USR" code="0x0903" type="Unsigned32"/>
+    <avp name="USR-RMMIE-Rcv-PwrLvl-3750Hz" vendor="USR" code="0x0904" type="Unsigned32"/>
+    <avp name="USR-RMMIE-PwrLvl-NearEcho-Canc" vendor="USR" code="0x0905" type="Unsigned32"/>
+    <avp name="USR-RMMIE-PwrLvl-FarEcho-Canc" vendor="USR" code="0x0906" type="Unsigned32"/>
+    <avp name="USR-RMMIE-PwrLvl-Noise-Lvl" vendor="USR" code="0x0907" type="Unsigned32"/>
+    <avp name="USR-RMMIE-PwrLvl-Xmit-Lvl" vendor="USR" code="0x0908" type="Unsigned32"/>
+    <avp name="USR-RMMIE-x2-Status" vendor="USR" code="0x0909" type="Enumerated">
+        <enum name="notOperational" code="1"/>
+        <enum name="operational" code="2"/>
+        <enum name="x2Disabled" code="3"/>
+        <enum name="v8Disabled" code="4"/>
+        <enum name="remote3200Disabled" code="5"/>
+        <enum name="invalidSpeedSetting" code="6"/>
+        <enum name="v8NotDetected" code="7"/>
+        <enum name="x2NotDetected" code="8"/>
+        <enum name="incompatibleVersion" code="9"/>
+        <enum name="incompatibleModes" code="10"/>
+        <enum name="local3200Disabled" code="11"/>
+        <enum name="excessHighFrequencyAtten" code="12"/>
+        <enum name="connectNotSupport3200" code="13"/>
+        <enum name="retrainBeforeConnection" code="14"/>
+    </avp>
+    <avp name="USR-RMMIE-Planned-Disconnect" vendor="USR" code="0x090A" type="Enumerated">
+        <enum name="None" code="1"/>
+        <enum name="dteNotReady" code="2"/>
+        <enum name="dteInterfaceError" code="3"/>
+        <enum name="dteRequest" code="4"/>
+        <enum name="escapeToOnlineCommandMode" code="5"/>
+        <enum name="athCommand" code="6"/>
+        <enum name="inactivityTimeout" code="7"/>
+        <enum name="arqProtocolError" code="8"/>
+        <enum name="arqProtocolRetransmitLim" code="9"/>
+        <enum name="invalidComprDataCodeword" code="10"/>
+        <enum name="invalidComprDataStringLen" code="11"/>
+        <enum name="invalidComprDataCommand" code="12"/>
+    </avp>
+    <avp name="USR-Initial-Modulation-Type" vendor="USR" code="0x0923" type="Enumerated">
+        <enum name="usRoboticsHST" code="1"/>
+        <enum name="ccittV32" code="2"/>
+        <enum name="ccittV22bis" code="3"/>
+        <enum name="bell103" code="4"/>
+        <enum name="ccittV21" code="5"/>
+        <enum name="bell212" code="6"/>
+        <enum name="ccittV32bis" code="7"/>
+        <enum name="ccittV23" code="8"/>
+        <enum name="negotiationFailed" code="9"/>
+        <enum name="bell208b" code="10"/>
+        <enum name="v21FaxClass1" code="11"/>
+        <enum name="v27FaxClass1" code="12"/>
+        <enum name="v29FaxClass1" code="13"/>
+        <enum name="v17FaxClass1" code="14"/>
+        <enum name="v21FaxClass2" code="15"/>
+        <enum name="v27FaxClass2" code="16"/>
+        <enum name="v29FaxClass2" code="17"/>
+        <enum name="v17FaxClass2" code="18"/>
+        <enum name="v32Terbo" code="19"/>
+        <enum name="v34" code="20"/>
+        <enum name="vFC" code="21"/>
+        <enum name="v34plus" code="22"/>
+        <enum name="x2" code="23"/>
+        <enum name="v110" code="24"/>
+        <enum name="v120" code="25"/>
+        <enum name="X75" code="26"/>
+        <enum name="asyncSyncPPP" code="27"/>
+        <enum name="clearChannel" code="28"/>
+        <enum name="x2client" code="29"/>
+        <enum name="x2symmetric" code="30"/>
+        <enum name="PIAFS" code="31"/>
+        <enum name="x2version2" code="32"/>
+        <enum name="v90Analogue" code="33"/>
+        <enum name="v90Digital" code="34"/>
+        <enum name="v90AllDigital" code="35"/>
+    </avp>
+
+    <avp name="USR-PW_USR_IFilter_IP" vendor="USR" code="0x9000" type="string"/>
+    <avp name="USR-PW_USR_IFilter_IPX" vendor="USR" code="0x9001" type="string"/>
+    <avp name="USR-SAP-Filter-In" vendor="USR" code="0x9002" type="string"/>
+    <avp name="USR-PW_USR_OFilter_IP" vendor="USR" code="0x9003" type="string"/>
+    <avp name="USR-PW_USR_OFilter_IPX" vendor="USR" code="0x9004" type="string"/>
+    <avp name="USR-PW_USR_OFilter_SAP" vendor="USR" code="0x9005" type="string"/>
+    <avp name="USR-PW_VPN_ID" vendor="USR" code="0x9006" type="Unsigned32" log="scramble"/>
+    <avp name="USR-PW_VPN_Name" vendor="USR" code="0x9007" type="string" log="scramble"/>
+    <avp name="USR-PW_VPN_Neighbor" vendor="USR" code="0x9008" type="ipv4-address" log="scramble"/>
+    <avp name="USR-PW_Framed_Routing_V2" vendor="USR" code="0x9009" type="string" log="scramble"/>
+    <avp name="USR-PW_VPN_Gateway" vendor="USR" code="0x900A" type="string" log="scramble"/>
+    <avp name="USR-PW_Tunnel_Authentication" vendor="USR" code="0x900B" type="string"/>
+    <avp name="USR-PW_Index" vendor="USR" code="0x900C" type="string"/>
+    <avp name="USR-PW_Cutoff" vendor="USR" code="0x900D" type="string"/>
+    <avp name="USR-PW_Packet" vendor="USR" code="0x900E" type="string"/>
+    <avp name="USR-Primary_DNS_Server" vendor="USR" code="0x900F" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Secondary_DNS_Server" vendor="USR" code="0x9010" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Primary_NBNS_Server" vendor="USR" code="0x9011" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Secondary_NBNS_Server" vendor="USR" code="0x9012" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Syslog-Tap" vendor="USR" code="0x9013" type="Enumerated">
+        <enum name="Off" code="0"/>
+        <enum name="On-Raw" code="1">
+            <alias name="Raw"/>
+        </enum>
+        <enum name="Framed" code="2">
+            <alias name="On-Framed"/>
+        </enum>
+    </avp>
+    <avp name="USR-MIC" vendor="USR" code="0x9014" type="string"/>
+
+    <avp name="USR-Log-Filter-Packets" vendor="USR" code="0x9017" type="string"/>
+
+    <avp name="USR-Chassis-Call-Slot" vendor="USR" code="0x9019" type="Unsigned32"/>
+    <avp name="USR-Chassis-Call-Span" vendor="USR" code="0x901A" type="Unsigned32"/>
+    <avp name="USR-Chassis-Call-Channel" vendor="USR" code="0x901B" type="Unsigned32"/>
+    <avp name="USR-Keypress-Timeout" vendor="USR" code="0x901C" type="Unsigned32"/>
+    <avp name="USR-Unauthenticated-Time" vendor="USR" code="0x901D" type="Unsigned32"/>
+    <avp name="USR-VPN-Encrypter" vendor="USR" code="0x901E" type="Unsigned32"/>
+    <avp name="USR-VPN-GW-Location-Id" vendor="USR" code="0x901F" type="string" log="scramble"/>
+    <avp name="USR-Re-Chap-Timeout" vendor="USR" code="0x9020" type="Unsigned32"/>
+    <avp name="USR-CCP-Algorithm" vendor="USR" code="0x9021" type="Enumerated">
+        <enum name="None" code="1"/>
+        <enum name="Stac" code="2"/>
+        <enum name="MS" code="3"/>
+        <enum name="Any" code="4"/>
+    </avp>
+    <avp name="USR-ACCM-Type" vendor="USR" code="0x9022" type="Unsigned32"/>
+    <avp name="USR-Connect-Speed" vendor="USR" code="0x9023" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="300_BPS" code="1"/>
+        <enum name="1200_BPS" code="2"/>
+        <enum name="2400_BPS" code="3"/>
+        <enum name="4800_BPS" code="4"/>
+        <enum name="7200_BPS" code="5"/>
+        <enum name="9600_BPS" code="6"/>
+        <enum name="12000_BPS" code="7"/>
+        <enum name="14400_BPS" code="8"/>
+        <enum name="16800_BPS" code="9"/>
+        <enum name="19200_BPS" code="10"/>
+        <enum name="21600_BPS" code="11"/>
+        <enum name="28800_BPS" code="12"/>
+        <enum name="38400_BPS" code="13"/>
+        <enum name="57600_BPS" code="14"/>
+        <enum name="115200_BPS" code="15"/>
+        <enum name="288000_BPS" code="16"/>
+        <enum name="75_1200_BPS" code="17"/>
+        <enum name="1200_75_BPS" code="18"/>
+        <enum name="24000_BPS" code="19"/>
+        <enum name="26400_BPS" code="20"/>
+        <enum name="31200_BPS" code="21"/>
+        <enum name="33600_BPS" code="22"/>
+        <enum name="33333_BPS" code="23"/>
+        <enum name="37333_BPS" code="24"/>
+        <enum name="41333_BPS" code="25"/>
+        <enum name="42666_BPS" code="26"/>
+        <enum name="44000_BPS" code="27"/>
+        <enum name="45333_BPS" code="28"/>
+        <enum name="46666_BPS" code="29"/>
+        <enum name="48000_BPS" code="30"/>
+        <enum name="49333_BPS" code="31"/>
+        <enum name="50666_BPS" code="32"/>
+        <enum name="52000_BPS" code="33"/>
+        <enum name="53333_BPS" code="34"/>
+        <enum name="54666_BPS" code="35"/>
+        <enum name="56000_BPS" code="36"/>
+        <enum name="57333_BPS" code="37"/>
+        <enum name="64000_BPS" code="38"/>
+        <enum name="25333_BPS" code="39"/>
+        <enum name="26666_BPS" code="40"/>
+        <enum name="28000_BPS" code="41"/>
+        <enum name="29333_BPS" code="42"/>
+        <enum name="30666_BPS" code="43"/>
+        <enum name="32000_BPS" code="44"/>
+        <enum name="34666_BPS" code="45"/>
+        <enum name="36000_BPS" code="46"/>
+        <enum name="38666_BPS" code="47"/>
+        <enum name="40000_BPS" code="48"/>
+        <enum name="58666_BPS" code="49"/>
+        <enum name="60000_BPS" code="50"/>
+        <enum name="61333_BPS" code="51"/>
+        <enum name="62666_BPS" code="52"/>
+    </avp>
+    <avp name="USR-Framed_IP_Address_Pool_Name" vendor="USR" code="0x9024" type="string"/>
+    <avp name="USR-MP-EDO" vendor="USR" code="0x9025" type="string"/>
+    <avp name="USR-Local-Framed-IP-Addr" vendor="USR" code="0x9026" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Framed-IPX-Route" vendor="USR" code="0x9027" type="ipv4-address" log="scramble"/>
+    <avp name="USR-MPIP-Tunnel-Originator" vendor="USR" code="0x9028" type="ipv4-address"/>
+
+    <avp name="USR-Bearer-Capabilities" vendor="USR" code="0x9800" type="Unsigned32"/>
+    <avp name="USR-Speed-Of-Connection" vendor="USR" code="0x9801" type="Enumerated">
+        <enum name="Auto" code="0"/>
+        <enum name="56" code="1"/>
+        <enum name="64" code="2"/>
+        <enum name="voice" code="3"/>
+    </avp>
+    <avp name="USR-Max-Channels" vendor="USR" code="0x9802" type="Unsigned32"/>
+    <avp name="USR-Channel-Expansion" vendor="USR" code="0x9803" type="Unsigned32"/>
+    <avp name="USR-Channel-Decrement" vendor="USR" code="0x9804" type="Unsigned32"/>
+    <avp name="USR-Expansion-Algorithm" vendor="USR" code="0x9805" type="Enumerated">
+        <enum name="Constant" code="1"/>
+        <enum name="Linear" code="2"/>
+    </avp>
+    <avp name="USR-Compression-Algorithm" vendor="USR" code="0x9806" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Stac" code="1"/>
+        <enum name="Ascend" code="2"/>
+        <enum name="Microsoft" code="3"/>
+        <enum name="Auto" code="4"/>
+    </avp>
+    <avp name="USR-Receive-Acc-Map" vendor="USR" code="0x9807" type="Unsigned32"/>
+    <avp name="USR-Transmit-Acc-Map" vendor="USR" code="0x9808" type="Unsigned32"/>
+
+    <avp name="USR-Compression-Reset-Mode" vendor="USR" code="0x980A" type="Enumerated">
+        <enum name="Auto" code="0"/>
+        <enum name="Reset-Every-Packet" code="1"/>
+        <enum name="Reset-On-Error" code="2"/>
+    </avp>
+    <avp name="USR-Min-Compression-Size" vendor="USR" code="0x980B" type="Unsigned32"/>
+    <avp name="USR-IP" vendor="USR" code="0x980C" type="Unsigned32" log="scramble"/>
+    <avp name="USR-IPX" vendor="USR" code="0x980D" type="Unsigned32" log="scramble"/>
+    <avp name="USR-Filter-Zones" vendor="USR" code="0x980E" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-Appletalk" vendor="USR" code="0x980F" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-Bridging" vendor="USR" code="0x9810" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-Spoofing" vendor="USR" code="0x9811" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-Host-Type" vendor="USR" code="0x9812" type="Unsigned32"/>
+    <avp name="USR-Send-Name" vendor="USR" code="0x9813" type="string" log="scramble"/>
+    <avp name="USR-Send-Password" vendor="USR" code="0x9814" type="string" log="scramble"/>
+    <avp name="USR-Start-Time" vendor="USR" code="0x9815" type="Unsigned32"/>
+    <avp name="USR-End-Time" vendor="USR" code="0x9816" type="Unsigned32"/>
+    <avp name="USR-Send-Script1" vendor="USR" code="0x9817" type="string"/>
+    <avp name="USR-Reply-Script1" vendor="USR" code="0x9818" type="string"/>
+    <avp name="USR-Send-Script2" vendor="USR" code="0x9819" type="string"/>
+    <avp name="USR-Reply-Script2" vendor="USR" code="0x981A" type="string"/>
+    <avp name="USR-Send-Script3" vendor="USR" code="0x981B" type="string"/>
+    <avp name="USR-Reply-Script3" vendor="USR" code="0x981C" type="string"/>
+    <avp name="USR-Send-Script4" vendor="USR" code="0x981D" type="string"/>
+    <avp name="USR-Reply-Script4" vendor="USR" code="0x981E" type="string"/>
+    <avp name="USR-Send-Script5" vendor="USR" code="0x981F" type="string"/>
+    <avp name="USR-Reply-Script5" vendor="USR" code="0x9820" type="string"/>
+    <avp name="USR-Send-Script6" vendor="USR" code="0x9821" type="string"/>
+    <avp name="USR-Reply-Script6" vendor="USR" code="0x9822" type="string"/>
+    <avp name="USR-Terminal-Type" vendor="USR" code="0x9823" type="string"/>
+    <avp name="USR-Appletalk-Network-Range" vendor="USR" code="0x9824" type="Unsigned32"/>
+    <avp name="USR-Local-IP-Address" vendor="USR" code="0x9825" type="string" log="scramble"/>
+    <avp name="USR-Routing-Protocol" vendor="USR" code="0x9826" type="Enumerated">
+        <enum name="Rip1" code="1"/>
+        <enum name="Rip2" code="2"/>
+    </avp>
+    <avp name="USR-Modem-Group" vendor="USR" code="0x9827" type="Unsigned32"/>
+    <avp name="USR-IPX-Routing" vendor="USR" code="0x9828" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="SEND" code="1"/>
+        <enum name="Listen" code="2"/>
+        <enum name="respond" code="3"/>
+        <enum name="all" code="4"/>
+    </avp>
+    <avp name="USR-IPX-WAN" vendor="USR" code="0x9829" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-IP-RIP-Policies" vendor="USR" code="0x982A" type="Enumerated">
+        <enum name="SendDefault" code="0"/>
+        <enum name="SendRoutes" code="2"/>
+        <enum name="SendSubnets" code="4"/>
+        <enum name="AcceptDefault" code="8"/>
+        <enum name="SplitHorizon" code="16"/>
+        <enum name="PoisonReserve" code="32"/>
+        <enum name="FlashUpdate" code="64"/>
+        <enum name="SimpleAuth" code="128"/>
+        <enum name="V1Send" code="256"/>
+        <enum name="V1Receive" code="512"/>
+        <enum name="V2Receive" code="1024"/>
+    </avp>
+    <avp name="USR-IP-RIP-Simple-Auth-Password" vendor="USR" code="0x982B" type="string" log="scramble"/>
+    <avp name="USR-IP-RIP-Input-Filter" vendor="USR" code="0x982C" type="string"/>
+    <avp name="USR-IP-Call-Input-Filter" vendor="USR" code="0x982D" type="string"/>
+    <avp name="USR-IPX-RIP-Input-Filter" vendor="USR" code="0x982E" type="string"/>
+    <avp name="USR-MP-MRRU" vendor="USR" code="0x982F" type="Unsigned32"/>
+    <avp name="USR-IPX-Call-Input-Filter" vendor="USR" code="0x9830" type="string"/>
+    <avp name="USR-AT-Input-Filter" vendor="USR" code="0x9831" type="string"/>
+    <avp name="USR-AT-RTMP-Input-Filter" vendor="USR" code="0x9832" type="string"/>
+    <avp name="USR-AT-Zip-Input-Filter" vendor="USR" code="0x9833" type="string"/>
+    <avp name="USR-AT-Call-Input-Filter" vendor="USR" code="0x9834" type="string"/>
+    <avp name="USR-ET-Bridge-Input-Filter" vendor="USR" code="0x9835" type="string"/>
+    <avp name="USR-IP-RIP-Output-Filter" vendor="USR" code="0x9836" type="string"/>
+    <avp name="USR-IP-Call-Output-Filter" vendor="USR" code="0x9837" type="string"/>
+    <avp name="USR-IPX-RIP-Output-Filter" vendor="USR" code="0x9838" type="string"/>
+    <avp name="USR-IPX-Call-Output-Filter" vendor="USR" code="0x9839" type="string"/>
+    <avp name="USR-AT-Output-Filter" vendor="USR" code="0x983A" type="string"/>
+    <avp name="USR-AT-RTMP-Output-Filter" vendor="USR" code="0x983B" type="string"/>
+    <avp name="USR-AT-Zip-Output-Filter" vendor="USR" code="0x983C" type="string"/>
+    <avp name="USR-AT-Call-Output-Filter" vendor="USR" code="0x983D" type="string"/>
+    <avp name="USR-ET-Bridge-Output-Filter" vendor="USR" code="0x983E" type="string"/>
+    <avp name="USR-ET-Bridge-Call-Output-Filter" vendor="USR" code="0x983F" type="string"/>
+    <avp name="USR-IP-Default-Route-Option" vendor="USR" code="0x9840" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-MP-EDO-HIPER" vendor="USR" code="0x9841" type="string"/>
+    <avp name="USR-Modem-Training-Time" vendor="USR" code="0x9842" type="Unsigned32"/>
+    <avp name="USR-Interface-Index" vendor="USR" code="0x9843" type="Unsigned32"/>
+    <avp name="USR-Tunnel-Security" vendor="USR" code="0x9844" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Control-Only" code="1"/>
+        <enum name="Data-Only" code="2"/>
+        <enum name="Both-Data-and-Control" code="3"/>
+    </avp>
+    <avp name="USR-Port-Tap" vendor="USR" code="0x9845" type="Unsigned32"/>
+    <avp name="USR-Port-Tap-Format" vendor="USR" code="0x9846" type="Unsigned32"/>
+    <avp name="USR-Port-Tap-Output" vendor="USR" code="0x9847" type="Unsigned32"/>
+    <avp name="USR-Port-Tap-Facility" vendor="USR" code="0x9848" type="Unsigned32"/>
+    <avp name="USR-Port-Tap-Priority" vendor="USR" code="0x9849" type="Unsigned32"/>
+    <avp name="USR-Port-Tap-Address" vendor="USR" code="0x984A" type="ipv4-address"/>
+    <avp name="USR-MobileIP-Home-Agent-Address" vendor="USR" code="0x984B" type="ipv4-address" log="scramble"/>
+    <avp name="USR-Tunneled-MLPP" vendor="USR" code="0x984C" type="Unsigned32"/>
+    <avp name="USR-Multicast-Proxy" vendor="USR" code="0x984D" type="Unsigned32"/>
+    <avp name="USR-Multicast-Receive" vendor="USR" code="0x984E" type="Unsigned32"/>
+    <avp name="USR-Multicast-Forwarding" vendor="USR" code="0x9850" type="Unsigned32"/>
+    <avp name="USR-IGMP-Query-Interval" vendor="USR" code="0x9851" type="Unsigned32"/>
+    <avp name="USR-IGMP-Maximum-Response-Time" vendor="USR" code="0x9852" type="Unsigned32"/>
+    <avp name="USR-IGMP-Robustness" vendor="USR" code="0x9853" type="Unsigned32"/>
+    <avp name="USR-IGMP-Version" vendor="USR" code="0x9854" type="Unsigned32"/>
+    <avp name="USR-IGMP-Routing" vendor="USR" code="0x9855" type="Unsigned32"/>
+    <avp name="USR-VTS-Session-Key" vendor="USR" code="0x9856" type="string"/>
+    <avp name="USR-Orig-NAS-Type" vendor="USR" code="0x9857" type="string"/>
+    <avp name="USR-Call-Arrival-Time" vendor="USR" code="0x9858" type="Unsigned32"/>
+    <avp name="USR-Call-End-Time" vendor="USR" code="0x9859" type="Unsigned32"/>
+    <avp name="USR-Rad-Multicast-Routing-Ttl" vendor="USR" code="0x9860" type="Unsigned32"/>
+    <avp name="USR-Rad-Multicast-Routing-RateLimit" vendor="USR" code="0x9861" type="Unsigned32"/>
+    <avp name="USR-Rad-Multicast-Routing-Protocol" vendor="USR" code="0x9862" type="Unsigned32"/>
+    <avp name="USR-Rad-Multicast-Routing-Boundary" vendor="USR" code="0x9863" type="string"/>
+    <avp name="USR-Rad-Dvmrp-Metric" vendor="USR" code="0x9864" type="Unsigned32"/>
+    <avp name="USR-Chat-Script-Name" vendor="USR" code="0x9865" type="string"/>
+    <avp name="USR-CUSR-hat-Script-Rules" vendor="USR" code="0x9866" type="string"/>
+    <avp name="USR-Rad-Location-Type" vendor="USR" code="0x9867" type="Unsigned32"/>
+    <avp name="USR-Tunnel-Switch-Endpoint" vendor="USR" code="0x9868" type="string"/>
+    <avp name="USR-OSPF-Addressless-Index" vendor="USR" code="0x9869" type="Unsigned32"/>
+    <avp name="USR-Callback-Type" vendor="USR" code="0x986A" type="Enumerated">
+        <enum name="Normal" code="1"/>
+        <enum name="ANI" code="2"/>
+        <enum name="Static" code="3"/>
+        <enum name="Dynamic" code="4"/>
+    </avp>
+    <avp name="USR-Tunnel-Auth-Hostname" vendor="USR" code="0x986B" type="string"/>
+    <avp name="USR-Acct-Reason-Code" vendor="USR" code="0x986C" type="Unsigned32"/>
+    <avp name="USR-QoS-Queuing-Method" vendor="USR" code="0x986D" type="Unsigned32"/>
+    <avp name="USR-PQ-Default-Priority" vendor="USR" code="0x986E" type="Unsigned32"/>
+    <avp name="USR-IP-Source-Address-Filter" vendor="USR" code="0x9870" type="Unsigned32"/>
+    <avp name="USR-FQ-Default-Priority" vendor="USR" code="0x9871" type="Unsigned32"/>
+    <avp name="USR-IPP-Enable" vendor="USR" code="0x9872" type="Unsigned32"/>
+    <avp name="USR-Pre-Shared-MN-Key" vendor="USR" code="0x9873" type="string" log="scramble"/>
+    <avp name="USR-MIP-NAI" vendor="USR" code="0x9874" type="string" log="scramble"/>
+    <avp name="USR-DNIS-Reauthentication" vendor="USR" code="0x9875" type="Unsigned32"/>
+    <avp name="USR-3G-Agent" vendor="USR" code="0x9876" type="Enumerated">
+        <enum name="PDSN/FA" code="1"/>
+        <enum name="HA" code="2"/>
+    </avp>
+    <avp name="USR-PQ-Parameters" vendor="USR" code="0x9877" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Prune-Lifetime" vendor="USR" code="0x9878" type="Unsigned32"/>
+    <avp name="USR-Special-Xon-Xoff-Flow" vendor="USR" code="0x9879" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Advertised-Metric" vendor="USR" code="0x987A" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Retransmit-Prunes" vendor="USR" code="0x987B" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Non-Pruners" vendor="USR" code="0x987C" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Route-Transit" vendor="USR" code="0x987D" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Input-Filter" vendor="USR" code="0x987E" type="string"/>
+    <avp name="USR-Dvmrp-Output-Filter" vendor="USR" code="0x9880" type="string"/>
+    <avp name="USR-Policy-Access" vendor="USR" code="0x9881" type="Unsigned32"/>
+    <avp name="USR-Policy-Configuration" vendor="USR" code="0x9882" type="string"/>
+    <avp name="USR-Policy-Filename" vendor="USR" code="0x9883" type="Unsigned32"/>
+    <avp name="USR-Policy-Type" vendor="USR" code="0x9884" type="Unsigned32"/>
+    <avp name="USR-Mobile-Session-ID" vendor="USR" code="0x9885" type="Unsigned32"/>
+    <avp name="USR-Mobile-Accounting-Type" vendor="USR" code="0x9886" type="Enumerated">
+        <enum name="New-Call" code="1"/>
+        <enum name="Dormancy" code="2"/>
+        <enum name="Mobile-Reactivation" code="3"/>
+        <enum name="IWU-Reactivateion" code="4"/>
+        <enum name="Call-Clearing" code="5"/>
+    </avp>
+    <avp name="USR-Mobile-Service-Option" vendor="USR" code="0x9887" type="Enumerated">
+        <enum name="Internet" code="0"/>
+        <enum name="WAP" code="1"/>
+    </avp>
+    <avp name="USR-Wallclock-Timestamp" vendor="USR" code="0x9888" type="unix-timestamp"/>
+    <avp name="USR-Supports-Tags" vendor="USR" code="0x9889" type="Unsigned32"/>
+    <avp name="USR-Dvmrp-Initial-Flooding" vendor="USR" code="0x988A" type="Unsigned32"/>
+    <avp name="USR-Disconnect-Reason" vendor="USR" code="0x988B" type="Enumerated">
+        <enum name="No-Error" code="0"/>
+        <enum name="No-Carrier" code="1"/>
+        <enum name="No-DSR" code="2"/>
+        <enum name="Timeout" code="3"/>
+        <enum name="Reset" code="4"/>
+        <enum name="Call-Drop-Req" code="5"/>
+        <enum name="Idle-Timeout" code="6"/>
+        <enum name="Session-Timeout" code="7"/>
+        <enum name="User-Req-Drop" code="8"/>
+        <enum name="Host-Req-Drop" code="9"/>
+        <enum name="Service-Interruption" code="10"/>
+        <enum name="Service-Unavailable" code="11"/>
+        <enum name="User-Input-Error" code="12"/>
+        <enum name="NAS-Drop-For-Callback" code="13"/>
+        <enum name="NAS-Drop-Misc-Non-Error" code="14"/>
+        <enum name="NAS-Internal-Error" code="15"/>
+        <enum name="Line-Busy" code="16"/>
+        <enum name="Tunnel-Term-Unreach" code="19"/>
+        <enum name="Tunnel-Refused" code="20"/>
+        <enum name="Tunnel-Auth-Failed" code="21"/>
+        <enum name="Tunnel-Session-Timeout" code="22"/>
+        <enum name="Tunnel-Timeout" code="23"/>
+        <enum name="RESERVED" code="24"/>
+        <enum name="Radius-Res-Reclaim" code="25"/>
+        <enum name="DNIS-Auth-Failed" code="26"/>
+        <enum name="PAP-Auth-Failure" code="27"/>
+        <enum name="CHAP-Auth-Failure" code="28"/>
+        <enum name="PPP-LCP-Failed" code="29"/>
+        <enum name="PPP-NCP-Failed" code="30"/>
+        <enum name="Radius-Timeout" code="31"/>
+        <enum name="DNIS/ANI-Auth-Failure" code="120"/>
+        <enum name="PAP-Auth-Failure-New" code="121"/>
+        <enum name="CHAP-Auth-Failure-New" code="122"/>
+        <enum name="Radius-Retransmission-Timeout" code="123"/>
+        <enum name="LCP-Negotiation-Timeout" code="124"/>
+        <enum name="IPCP-Negotiation-Timeout" code="125"/>
+        <enum name="PPTP/L2TP-Request-Rejected" code="126"/>
+        <enum name="No-ANswer-Tunnel-End-Point" code="127"/>
+        <enum name="Normal-Disconnection" code="128"/>
+    </avp>
+    <avp name="USR-Telnet-Options" vendor="USR" code="0x988C" type="Unsigned32"/>
+    <avp name="USR-CDMA-Packet-Data-Network-ID" vendor="USR" code="0x988D" type="Enumerated">
+        <enum name="Phase-I" code="1"/>
+        <enum name="Phase-II" code="2"/>
+    </avp>
+    <avp name="USR-Auth-Next-Server-Address" vendor="USR" code="0x988E" type="ipv4-address"/>
+    <avp name="USR-User-PPP-AODI-Type" vendor="USR" code="0x988F" type="Unsigned32"/>
+    <avp name="USR-MLPPP-Frag-Threshold" vendor="USR" code="0x9890" type="Unsigned32"/>
+    <avp name="USR-Unnumbered-Local-IP-Address" vendor="USR" code="0x9891" type="ipv4-address"/>
+    <avp name="USR-Traffic-Threshold" vendor="USR" code="0x9892" type="Unsigned32"/>
+    <avp name="USR-Keep-Alive-Interval" vendor="USR" code="0x9893" type="Unsigned32"/>
+    <avp name="USR-Tunnel-Challenge-Outgoing" vendor="USR" code="0x9894" type="Unsigned32"/>
+    <avp name="USR-X25-Trunk-Profile" vendor="USR" code="0x9895" type="string"/>
+    <avp name="USR-X25-Acct-Input-Segment-Coun" vendor="USR" code="0x9896" type="Unsigned32"/>
+    <avp name="USR-X25-Acct-Output-Segment-Count" vendor="USR" code="0x9897" type="Unsigned32"/>
+    <avp name="USR-X25-Acct-Segment-Size" vendor="USR" code="0x9898" type="Unsigned32"/>
+    <avp name="USR-X25-Acct-Termination-Code" vendor="USR" code="0x9899A" type="Unsigned32"/>
+    <avp name="USR-Nailed-B-Channel-Indicator" vendor="USR" code="0x989B" type="Unsigned32"/>
+    <avp name="USR-X25-SVC-Call-Attributes" vendor="USR" code="0x989C" type="Unsigned32"/>
+    <avp name="USR-TC-Registration-Server-Address" vendor="USR" code="0x989E" type="ipv4-address"/>
+    <avp name="USR-TC-Bytes-Transfer-Remain" vendor="USR" code="0x989F" type="Unsigned32"/>
+    <avp name="USR-TC-Bytes-Receive-Remain" vendor="USR" code="0x98A0" type="Unsigned32"/>
+    <avp name="USR-TC-Bytes-Time-Remain" vendor="USR" code="0x98A1" type="Unsigned32"/>
+    <avp name="USR-TC-Pre-Paid-Enabled" vendor="USR" code="0x98A2" type="Enumerated">
+        <enum name="Enabled" code="1"/>
+        <enum name="Disabled" code="2"/>
+    </avp>
+    <avp name="USR-TC-Reg-Server-Prov-Timeout" vendor="USR" code="0x98A3" type="Unsigned32"/>
+    <avp name="USR-TC-Redirect" vendor="USR" code="0x98A4" type="Enumerated">
+        <enum name="Soft-Redirect" code="1"/>
+        <enum name="Disconnect" code="2"/>
+    </avp>
+
+    <avp name="USR-IDS0-Call-Type" vendor="USR" code="0xBE4F" type="Unsigned32"/>
+    <avp name="USR-Call-Terminate-in-GMT" vendor="USR" code="0xBE50" type="unix-timestamp"/>
+    <avp name="USR-Call-Connect-in-GMT" vendor="USR" code="0xBE51" type="unix-timestamp"/>
+    <avp name="USR-Call-Arrival-in-GMT" vendor="USR" code="0xBE52" type="unix-timestamp"/>
+
+    <avp name="USR-Channel-Connected-To" vendor="USR" code="0xBE5D" type="Unsigned32"/>
+    <avp name="USR-Slot-Connected-To" vendor="USR" code="0xBE5E" type="Unsigned32"/>
+    <avp name="USR-Device-Connected-To" vendor="USR" code="0xBE5F" type="Enumerated">
+        <enum name="None" code="1"/>
+        <enum name="isdnGateway" code="2"/>
+        <enum name="quadModem" code="3"/>
+    </avp>
+    <avp name="USR-NFAS-ID" vendor="USR" code="0xBE60" type="Unsigned32"/>
+    <avp name="USR-Q931-Call-Reference-Value" vendor="USR" code="0xBE61" type="Unsigned32"/>
+    <avp name="USR-Call-Event-Code" vendor="USR" code="0xBE62" type="Enumerated">
+        <enum name="notSupported" code="1"/>
+        <enum name="setup" code="2"/>
+        <enum name="usrSetup" code="3"/>
+        <enum name="telcoDisconnect" code="4"/>
+        <enum name="usrDisconnect" code="5"/>
+        <enum name="noFreeModem" code="6"/>
+        <enum name="modemsNotAllowed" code="7"/>
+        <enum name="modemsRejectCall" code="8"/>
+        <enum name="modemSetupTimeout" code="9"/>
+        <enum name="noFreeIGW" code="10"/>
+        <enum name="igwRejectCall" code="11"/>
+        <enum name="igwSetupTimeout" code="12"/>
+        <enum name="noFreeTdmts" code="13"/>
+        <enum name="bcReject" code="14"/>
+        <enum name="ieReject" code="15"/>
+        <enum name="chidReject" code="16"/>
+        <enum name="progReject" code="17"/>
+        <enum name="callingPartyReject" code="18"/>
+        <enum name="calledPartyReject" code="19"/>
+        <enum name="blocked" code="20"/>
+        <enum name="analogBlocked" code="21"/>
+        <enum name="digitalBlocked" code="22"/>
+        <enum name="outOfService" code="23"/>
+        <enum name="busy" code="24"/>
+        <enum name="congestion" code="25"/>
+        <enum name="protocolError" code="26"/>
+        <enum name="noFreeBchannel" code="27"/>
+        <enum name="inOutCallCollision" code="28"/>
+        <enum name="inCallArrival" code="29"/>
+        <enum name="outCallArrival" code="30"/>
+        <enum name="inCallConnect" code="31"/>
+        <enum name="outCallConnect" code="32"/>
+    </avp>
+    <avp name="USR-DS0" vendor="USR" code="0xBE63" type="Unsigned32"/>
+    <avp name="USR-DS0s" vendor="USR" code="0xBE64" type="string"/>
+
+    <avp name="USR-Gateway-IP-Address" vendor="USR" code="0xBE66" type="ipv4-address" log="scramble"/>
+
+    <avp name="USR-Physical-State" vendor="USR" code="0xBE77" type="Unsigned32"/>
+    <avp name="USR-Call-Reference-Number" vendor="USR" code="0xBE7D" type="Unsigned32"/>
+    <avp name="USR-Chassis-Temp-Threshold" vendor="USR" code="0xBE84" type="Unsigned32"/>
+    <avp name="USR-Card-Type" vendor="USR" code="0xBE85" type="Enumerated">
+        <enum name="SlotEmpty" code="1"/>
+        <enum name="SlotUnknown" code="2"/>
+        <enum name="NetwMgtCard" code="3"/>
+        <enum name="DualT1NAC" code="4"/>
+        <enum name="DualModemNAC" code="5"/>
+        <enum name="QuadModemNAC" code="6"/>
+        <enum name="TrGatewayNAC" code="7"/>
+        <enum name="X25GatewayNAC" code="8"/>
+        <enum name="DualV34ModemNAC" code="9"/>
+        <enum name="QuadV32DigitalModemNAC" code="10"/>
+        <enum name="QuadV32AnalogModemNAC" code="11"/>
+        <enum name="QuadV32DigAnlModemNAC" code="12"/>
+        <enum name="QuadV34DigModemNAC" code="13"/>
+        <enum name="QuadV34AnlModemNAC" code="14"/>
+        <enum name="QuadV34DigAnlModemNAC" code="15"/>
+        <enum name="SingleT1NAC" code="16"/>
+        <enum name="EthernetGatewayNAC" code="17"/>
+        <enum name="AccessServer" code="18"/>
+        <enum name="486TrGatewayNAC" code="19"/>
+        <enum name="486EthernetGatewayNAC" code="20"/>
+        <enum name="DualRS232NAC" code="22"/>
+        <enum name="486X25GatewayNAC" code="23"/>
+        <enum name="ApplicationServerNAC" code="25"/>
+        <enum name="ISDNGatewayNAC" code="26"/>
+        <enum name="ISDNpriT1NAC" code="27"/>
+        <enum name="ClkedNetMgtCard" code="28"/>
+        <enum name="ModemPoolManagementNAC" code="29"/>
+        <enum name="ModemPoolNetserverNAC" code="30"/>
+        <enum name="ModemPoolV34ModemNAC" code="31"/>
+        <enum name="ModemPoolISDNNAC" code="32"/>
+        <enum name="NTServerNAC" code="33"/>
+        <enum name="QuadV34DigitalG2NAC" code="34"/>
+        <enum name="QuadV34AnalogG2NAC" code="35"/>
+        <enum name="QuadV34DigAnlgG2NAC" code="36"/>
+        <enum name="NETServerFrameRelayNAC" code="37"/>
+        <enum name="NETServerTokenRingNAC" code="38"/>
+        <enum name="X2524ChannelNAC" code="39"/>
+        <enum name="WirelessGatewayNac" code="42"/>
+        <enum name="EnhancedAccessServer" code="44"/>
+        <enum name="EnhancedISDNGatewayNAC" code="45"/>
+        <enum name="DualT1NIC" code="1001"/>
+        <enum name="DualAlogMdmNIC" code="1002"/>
+        <enum name="QuadDgtlMdmNIC" code="1003"/>
+        <enum name="QuadAlogDgtlMdmNIC" code="1004"/>
+        <enum name="TokenRingNIC" code="1005"/>
+        <enum name="SingleT1NIC" code="1006"/>
+        <enum name="EthernetNIC" code="1007"/>
+        <enum name="ShortHaulDualT1NIC" code="1008"/>
+        <enum name="DualAlogMgdIntlMdmNIC" code="1009"/>
+        <enum name="X25NIC" code="1010"/>
+        <enum name="QuadAlogNonMgdMdmNIC" code="1011"/>
+        <enum name="QuadAlogMgdIntlMdmNIC" code="1012"/>
+        <enum name="QuadAlogNonMgdIntlMdmNIC" code="1013"/>
+        <enum name="QuadLsdLiMgdMdmNIC" code="1014"/>
+        <enum name="QuadLsdLiNonMgdMdmNIC" code="1015"/>
+        <enum name="QuadLsdLiMgdIntlMdmNIC" code="1016"/>
+        <enum name="QuadLsdLiNonMgdIntlMdmNIC" code="1017"/>
+        <enum name="HSEthernetWithV35NIC" code="1018"/>
+        <enum name="HSEthernetWithoutV35NIC" code="1019"/>
+        <enum name="DualHighSpeedV35NIC" code="1020"/>
+        <enum name="QuadV35RS232LowSpeedNIC" code="1021"/>
+        <enum name="DualE1NIC" code="1022"/>
+        <enum name="ShortHaulDualE1NIC" code="1023"/>
+        <enum name="BellcoreLongHaulDualT1NIC" code="1025"/>
+        <enum name="BellcoreShrtHaulDualT1NIC" code="1026"/>
+        <enum name="SCSIEdgeServerNIC" code="1027"/>
+    </avp>
+
+    <avp name="USR-Security-Login-Limit" vendor="USR" code="0xBEDE" type="Unsigned32"/>
+    <avp name="USR-Security-Resp-Limit" vendor="USR" code="0xBEFA" type="Unsigned32"/>
+    <avp name="USR-Packet-Bus-Session" vendor="USR" code="0xBF14" type="Unsigned32"/>
+    <avp name="USR-DTE-Ring-No-Answer-Limit" vendor="USR" code="0xBF17" type="Unsigned32"/>
+    <avp name="USR-Final-Rx-Link-Data-Rate" vendor="USR" code="0xBF2C" type="Enumerated">
+        <enum name="110-BPS" code="1"/>
+        <enum name="300-BPS" code="2"/>
+        <enum name="600-BPS" code="3"/>
+        <enum name="1200-BPS" code="4"/>
+        <enum name="2400-BPS" code="5"/>
+        <enum name="4800-BPS" code="6"/>
+        <enum name="7200-BPS" code="7"/>
+        <enum name="9600-BPS" code="8"/>
+        <enum name="12000-BPS" code="9"/>
+        <enum name="14400-BPS" code="10"/>
+        <enum name="16800-BPS" code="11"/>
+        <enum name="19200-BPS" code="12"/>
+        <enum name="38400-BPS" code="13"/>
+        <enum name="75-BPS" code="14"/>
+        <enum name="450-BPS" code="15"/>
+        <enum name="UNKNOWN-BPS" code="16"/>
+        <enum name="57600-BPS" code="17"/>
+        <enum name="21600-BPS" code="18"/>
+        <enum name="24000-BPS" code="19"/>
+        <enum name="26400-BPS" code="20"/>
+        <enum name="28800-BPS" code="21"/>
+        <enum name="115200-BPS" code="22"/>
+        <enum name="31200-BPS" code="23"/>
+        <enum name="33600-BPS" code="24"/>
+        <enum name="25333-BPS" code="25"/>
+        <enum name="26666-BPS" code="26"/>
+        <enum name="28000-BPS" code="27"/>
+        <enum name="29333-BPS" code="28"/>
+        <enum name="30666-BPS" code="29"/>
+        <enum name="32000-BPS" code="30"/>
+        <enum name="33333-BPS" code="31"/>
+        <enum name="34666-BPS" code="32"/>
+        <enum name="36000-BPS" code="33"/>
+        <enum name="37333-BPS" code="34"/>
+        <enum name="38666-BPS" code="35"/>
+        <enum name="40000-BPS" code="36"/>
+        <enum name="41333-BPS" code="37"/>
+        <enum name="42666-BPS" code="38"/>
+        <enum name="44000-BPS" code="39"/>
+        <enum name="45333-BPS" code="40"/>
+        <enum name="46666-BPS" code="41"/>
+        <enum name="48000-BPS" code="42"/>
+        <enum name="49333-BPS" code="43"/>
+        <enum name="50666-BPS" code="44"/>
+        <enum name="52000-BPS" code="45"/>
+        <enum name="53333-BPS" code="46"/>
+        <enum name="54666-BPS" code="47"/>
+        <enum name="56000-BPS" code="48"/>
+        <enum name="57333-BPS" code="49"/>
+        <enum name="58666-BPS" code="50"/>
+        <enum name="60000-BPS" code="51"/>
+        <enum name="61333-BPS" code="52"/>
+        <enum name="62666-BPS" code="53"/>
+        <enum name="64000-BPS" code="54"/>
+    </avp>
+    <avp name="USR-Initial-Rx-Link-Data-Rate" vendor="USR" code="0xBF2D" type="Enumerated">
+        <enum name="110-BPS" code="1"/>
+        <enum name="300-BPS" code="2"/>
+        <enum name="600-BPS" code="3"/>
+        <enum name="1200-BPS" code="4"/>
+        <enum name="2400-BPS" code="5"/>
+        <enum name="4800-BPS" code="6"/>
+        <enum name="7200-BPS" code="7"/>
+        <enum name="9600-BPS" code="8"/>
+        <enum name="12000-BPS" code="9"/>
+        <enum name="14400-BPS" code="10"/>
+        <enum name="16800-BPS" code="11"/>
+        <enum name="19200-BPS" code="12"/>
+        <enum name="38400-BPS" code="13"/>
+        <enum name="75-BPS" code="14"/>
+        <enum name="450-BPS" code="15"/>
+        <enum name="UNKNOWN-BPS" code="16"/>
+        <enum name="57600-BPS" code="17"/>
+        <enum name="21600-BPS" code="18"/>
+        <enum name="24000-BPS" code="19"/>
+        <enum name="26400-BPS" code="20"/>
+        <enum name="28800-BPS" code="21"/>
+        <enum name="115200-BPS" code="22"/>
+        <enum name="31200-BPS" code="23"/>
+        <enum name="33600-BPS" code="24"/>
+        <enum name="25333-BPS" code="25"/>
+        <enum name="26666-BPS" code="26"/>
+        <enum name="28000-BPS" code="27"/>
+        <enum name="29333-BPS" code="28"/>
+        <enum name="30666-BPS" code="29"/>
+        <enum name="32000-BPS" code="30"/>
+        <enum name="33333-BPS" code="31"/>
+        <enum name="34666-BPS" code="32"/>
+        <enum name="36000-BPS" code="33"/>
+        <enum name="37333-BPS" code="34"/>
+        <enum name="38666-BPS" code="35"/>
+        <enum name="40000-BPS" code="36"/>
+        <enum name="41333-BPS" code="37"/>
+        <enum name="42666-BPS" code="38"/>
+        <enum name="44000-BPS" code="39"/>
+        <enum name="45333-BPS" code="40"/>
+        <enum name="46666-BPS" code="41"/>
+        <enum name="48000-BPS" code="42"/>
+        <enum name="49333-BPS" code="43"/>
+        <enum name="50666-BPS" code="44"/>
+        <enum name="52000-BPS" code="45"/>
+        <enum name="53333-BPS" code="46"/>
+        <enum name="54666-BPS" code="47"/>
+        <enum name="56000-BPS" code="48"/>
+        <enum name="57333-BPS" code="49"/>
+        <enum name="58666-BPS" code="50"/>
+        <enum name="60000-BPS" code="51"/>
+        <enum name="61333-BPS" code="52"/>
+        <enum name="62666-BPS" code="53"/>
+        <enum name="64000-BPS" code="54"/>
+    </avp>
+    <avp name="USR-Event-Date-Time" vendor="USR" code="0xBF2F" type="unix-timestamp"/>
+    <avp name="USR-Chassis-Temperature" vendor="USR" code="0xBF31" type="Unsigned32"/>
+    <avp name="USR-Actual-Voltage" vendor="USR" code="0xBF32" type="Unsigned32"/>
+    <avp name="USR-Expected-Voltage" vendor="USR" code="0xBF33" type="Unsigned32"/>
+    <avp name="USR-Power-Supply-Number" vendor="USR" code="0xBF34" type="Unsigned32"/>
+
+    <avp name="USR-Channel" vendor="USR" code="0xBF38" type="Unsigned32"/>
+    <avp name="USR-Chassis-Slot" vendor="USR" code="0xBF39" type="Unsigned32"/>
+
+    <avp name="USR-Event-Id" vendor="USR" code="0xBFBE" type="Enumerated">
+        <enum name="Module-Inserted" code="6"/>
+        <enum name="Module-Removed" code="7"/>
+        <enum name="PSU-Voltage-Alarm" code="8"/>
+        <enum name="PSU-Failed" code="9"/>
+        <enum name="HUB-Temp-Out-of-Range" code="10"/>
+        <enum name="Fan-Failed" code="11"/>
+        <enum name="Watchdog-Timeout" code="12"/>
+        <enum name="Mgmt-Bus-Failure" code="13"/>
+        <enum name="In-Connection-Est" code="14"/>
+        <enum name="Out-Connection-Est" code="15"/>
+        <enum name="In-Connection-Term" code="16"/>
+        <enum name="Out-Connection-Term" code="17"/>
+        <enum name="Connection-Failed" code="18"/>
+        <enum name="Connection-Timeout" code="19"/>
+        <enum name="DTE-Transmit-Idle" code="20"/>
+        <enum name="DTR-True" code="21"/>
+        <enum name="DTR-False" code="22"/>
+        <enum name="Block-Error-at-Threshold" code="23"/>
+        <enum name="Fallbacks-at-Threshold" code="24"/>
+        <enum name="No-Dial-Tone-Detected" code="25"/>
+        <enum name="No-Loop-Current-Detected" code="26"/>
+        <enum name="Yellow-Alarm" code="27"/>
+        <enum name="Red-Alarm" code="28"/>
+        <enum name="Loss-Of-Signal" code="29"/>
+        <enum name="Rcv-Alrm-Ind-Signal" code="30"/>
+        <enum name="Timing-Source-Switch" code="31"/>
+        <enum name="Modem-Reset-by-DTE" code="32"/>
+        <enum name="Modem-Ring-No-Answer" code="33"/>
+        <enum name="DTE-Ring-No-Answer" code="34"/>
+        <enum name="Pkt-Bus-Session-Active" code="35"/>
+        <enum name="Pkt-Bus-Session-Congestion" code="36"/>
+        <enum name="Pkt-Bus-Session-Lost" code="37"/>
+        <enum name="Pkt-Bus-Session-Inactive" code="38"/>
+        <enum name="User-Interface-Reset" code="39"/>
+        <enum name="Gateway-Port-Out-of-Service" code="40"/>
+        <enum name="Gateway-Port-Link-Active" code="41"/>
+        <enum name="Dial-Out-Login-Failure" code="42"/>
+        <enum name="Dial-In-Login-Failure" code="43"/>
+        <enum name="Dial-Out-Restricted-Number" code="44"/>
+        <enum name="Dial-Back-Restricted-Number" code="45"/>
+        <enum name="User-Blacklisted" code="46"/>
+        <enum name="Attempted-Login-Blacklisted" code="47"/>
+        <enum name="Response-Attempt-Limit-Exceeded" code="48"/>
+        <enum name="Login-Attempt-Limit-Exceeded" code="49"/>
+        <enum name="Dial-Out-Call-Duration" code="50"/>
+        <enum name="Dial-In-Call-Duration" code="51"/>
+        <enum name="Pkt-Bus-Session-Err-Status" code="52"/>
+        <enum name="NMC-AutoRespnse-Trap" code="53"/>
+        <enum name="Acct-Server-Contact-Loss" code="54"/>
+        <enum name="Yellow-Alarm-Clear" code="55"/>
+        <enum name="Red-Alarm-Clear" code="56"/>
+        <enum name="Loss-Of-Signal-Clear" code="57"/>
+        <enum name="Rcv-Alrm-Ind-Signal-Clear" code="58"/>
+        <enum name="Incoming-Connection-Established" code="59"/>
+        <enum name="Outgoing-Connection-Established" code="60"/>
+        <enum name="Incoming-Connection-Terminated" code="61"/>
+        <enum name="Outgoing-Connection-Terminated" code="62"/>
+        <enum name="Connection-Attempt-Failure" code="63"/>
+        <enum name="Continuous-CRC-Alarm" code="64"/>
+        <enum name="Continuous-CRC-Alarm-Clear" code="65"/>
+        <enum name="Physical-State-Change" code="66"/>
+        <enum name="Gateway-Network-Failed" code="71"/>
+        <enum name="Gateway-Network-Restored" code="72"/>
+        <enum name="Packet-Bus-Clock-Lost" code="73"/>
+        <enum name="Packet-Bus-Clock-Restored" code="74"/>
+        <enum name="D-Channel-In-Service" code="75"/>
+        <enum name="D-Channel-Out-of-Service" code="76"/>
+        <enum name="DS0s-In-Service" code="77"/>
+        <enum name="DS0s-Out-of-Service" code="78"/>
+        <enum name="T1/T1PRI/E1PRI-Call-Event" code="79"/>
+        <enum name="Psu-Incompatible" code="80"/>
+        <enum name="T1,T1-E1/PRI-Call-Arrive-Event" code="81"/>
+        <enum name="T1,T1-E1/PRI-Call-Connect-Event" code="82"/>
+        <enum name="T1,T1-E1/PRI-Call-Termina-Event" code="83"/>
+        <enum name="T1,T1-E1/PRI-Call-Failed-Event" code="84"/>
+        <enum name="DNS-Contact-Lost" code="85"/>
+        <enum name="NTP-Contact-Lost" code="86"/>
+        <enum name="NTP-Contact-Restored" code="87"/>
+        <enum name="IPGW-Link-Up" code="88"/>
+        <enum name="IPGW-Link-Down" code="89"/>
+        <enum name="NTP-Contact-Degraded" code="90"/>
+        <enum name="In-Connection-Failed" code="91"/>
+        <enum name="Out-Connection-Failed" code="92"/>
+        <enum name="Application-ProcessorReset" code="93"/>
+        <enum name="DSP-Reset" code="94"/>
+        <enum name="Changed-to-Maint-Srvs-State" code="95"/>
+        <enum name="Loop-Back-cleared-on-channel" code="96"/>
+        <enum name="Loop-Back-on-channel" code="97"/>
+        <enum name="Telco-Abnormal-Response" code="98"/>
+        <enum name="DNS-Contact-Restored" code="99"/>
+        <enum name="DNS-Contact-Degraded" code="100"/>
+        <enum name="RADIUS-Accounting-Restored" code="101"/>
+        <enum name="RADIUS-Accounting-Group-Restore" code="102"/>
+        <enum name="RADIUS-Accounting-Group-Degrade" code="103"/>
+        <enum name="RADIUS-Accounting-Group-NonOper" code="104"/>
+        <enum name="T1/T1-E1/PRI-InCall-Fail-Event" code="119"/>
+        <enum name="T1/T1-E1/PRI-OutCall-Fail-Event" code="120"/>
+        <enum name="RMMIE-Retrain-Event" code="121"/>
+        <enum name="RMMIE-Speed-Shift-Event" code="122"/>
+        <enum name="CDMA-Call-Start" code="191"/>
+        <enum name="CDMA-Call-End" code="192"/>
+    </avp>
+    <avp name="USR-Number-of-Rings-Limit" vendor="USR" code="0xBFE6" type="Unsigned32"/>
+    <avp name="USR-Connect-Time-Limit" vendor="USR" code="0xBFE7" type="Unsigned32"/>
+    <avp name="USR-Call-End-Date-Time" vendor="USR" code="0xBFF6" type="unix-timestamp"/>
+    <avp name="USR-Call-Start-Date-Time" vendor="USR" code="0xBFF7" type="unix-timestamp"/>
+    <avp name="USR-Server-Time" vendor="USR" code="0xF000" type="unix-timestamp"/>
+    <avp name="USR-Request-Type" vendor="USR" code="0xF001" type="Enumerated">
+        <enum name="Access-Request" code="1"/>
+        <enum name="Access-Accept" code="2"/>
+        <enum name="Access-Reject" code="3"/>
+        <enum name="Accounting-Request" code="4"/>
+        <enum name="Accounting-Response" code="5"/>
+        <enum name="Access-Password-Change" code="7"/>
+        <enum name="Access-Password-Ack" code="8"/>
+        <enum name="Access-Password-Reject" code="9"/>
+        <enum name="Access-Challenge" code="11"/>
+        <enum name="Status-Server" code="12"/>
+        <enum name="Status-Client" code="13"/>
+        <enum name="Resource-Free-Request" code="21"/>
+        <enum name="Resource-Free-Response" code="22"/>
+        <enum name="Resource-Query-Request" code="23"/>
+        <enum name="Resource-Query-Response" code="24"/>
+        <enum name="Disconnect-User" code="25"/>
+        <enum name="NAS-Reboot-Request" code="26"/>
+        <enum name="NAS-Reboot-Response" code="27"/>
+        <enum name="Tacacs-Message" code="253"/>
+        <enum name="RESERVED" code="255"/>
+    </avp>
+    <avp name="USR-NAS-Type" vendor="USR" code="0xF002" type="Enumerated">
+        <enum name="3Com-NMC" code="0"/>
+        <enum name="3Com-NETServer" code="1"/>
+        <enum name="3Com-HiPerArc" code="2"/>
+        <enum name="TACACS+-Server" code="3"/>
+        <enum name="3Com-SA-Server" code="4"/>
+        <enum name="Ascend" code="5"/>
+        <enum name="Generic-RADIUS" code="6"/>
+        <enum name="3Com-NETBuilder-II" code="7"/>
+    </avp>
+    <avp name="USR-Auth-Mode" vendor="USR" code="0xF003" type="Enumerated">
+        <enum name="Auth-3Com" code="0"/>
+        <enum name="Auth-Ace" code="1"/>
+        <enum name="Auth-Safeword" code="2"/>
+        <enum name="Auth-UNIX-PW" code="3"/>
+        <enum name="Auth-Defender" code="4"/>
+        <enum name="Auth-TACACSP" code="5"/>
+        <enum name="Auth-Netware" code="6"/>
+        <enum name="Auth-Skey" code="7"/>
+        <enum name="Auth-EAP-Proxy" code="8"/>
+        <enum name="Auth-UNIX-Crypt" code="9"/>
+    </avp>
+
+
+</dictionary>

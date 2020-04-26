@@ -1,0 +1,3742 @@
+<?xml version="1.0" standalone="no"?>
+<!-- ? 2017 Nokia. All rights reserved. -->
+
+<!-- Custom Dictionary - this file will not be discarded during upgrades -->
+<!DOCTYPE dictionary SYSTEM "dictionary.dtd">
+
+<dictionary codec="#default" overwrite="true">
+
+	<!-- ADDED NEW VSAs -->
+	<vendor name="PSA" number="21100" format="rfc" />
+	<vendor name="Sandvine" number="11610" format="rfc" />
+	<vendor name="Huawei" number="2011" format="rfc" />
+	<vendor name="Indra-Sistemas" number="8173" format="rfc" />
+
+	<!-- SMARTEDGE FAILS IF RECEIVES FILTER-ID -->
+	<avp name="Filter-Id" code="11" type="String" reference="nasreq/6.7"
+	    codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="11" />
+		<codec name="Juniper_dictionary" code="11" />
+		<codec name="Sandvine_dictionary" code="11" />
+		<codec name="All_dictionary" code="11" />
+        <alias name="Framed-Filter-Id"/>
+    </avp>
+
+	<!-- MX -->
+	<!-- Es un atributo standard que tiene un formato que no entiende el 8950 con lo que tenemos que redefinirlo nosotros -->
+	<avp name="Ascend-Data-Filter" code="242" type="hex-octetstring"/>
+	
+	<!-- Para causas de desconexion Cisco -->
+	<avp name="Ascend-Disconnect-Cause" code="195" type="Enumerated">
+        <enum name="User-Request-45" code="45" />
+        <enum name="User-Request-3" code="3" />
+        <enum name="Session-Timeout-40" code="40" />
+        <enum name="Port-Error-21" code="21" />
+        <enum name="NAS-Request-50" code="50" />
+        <enum name="NAS-Request-47" code="47" />
+        <enum name="Admin.Reset-151" code="151" />
+	</avp>
+	
+	<!-- ADDED NEW VALUES 101, 102 AND 103-->
+	<avp name="Acct-Status-Type" code="40" type="Enumerated">
+		<enum name="Start" code="1" />
+		<enum name="Stop" code="2" />
+		<enum name="Interim-Update" code="3">
+			<alias name="Alive" />
+		</enum>
+		<enum name="Modem-Start" code="4" />
+		<enum name="Modem-Stop" code="5" />
+		<enum name="Cancel" code="6" />
+		<enum name="Accounting-On" code="7" />
+		<enum name="Accounting-Off" code="8" />
+		<enum name="Tunnel-Start" code="9" />
+		<enum name="Tunnel-Stop" code="10" />
+		<enum name="Tunnel-Reject" code="11" />
+		<enum name="Tunnel-Link-Start" code="12" />
+		<enum name="Tunnel-Link-Stop" code="13" />
+		<enum name="Tunnel-Link-Reject" code="14" />
+		<enum name="Failed" code="15" />
+		<enum name="Stream" code="254" />
+		<enum name="Progress" code="255" />
+		<enum name="Service-Start" code="101" />
+		<enum name="Service-Stop" code="102" />
+		<enum name="Service-Interim-Update" code="103" />
+	</avp>
+
+	<!-- ADDED NEW VALUES 551 AND 552-->
+	<avp name="Error-Cause" code="101" type="Enumerated" reject-ok="true"
+		challenge-ok="true">
+		<enum name="Residual-Session-Context-Removed" code="201" />
+		<enum name="Invalid-EAP-Packet" code="202" />
+		<enum name="Unsupported-Attribute" code="401" />
+		<enum name="Missing-Attribute" code="402" />
+		<enum name="NAS-Identification-Mismatch" code="403" />
+		<enum name="Invalid-Request" code="404" />
+		<enum name="Unsupported-Service" code="405" />
+		<enum name="Unsupported-Extension" code="406" />
+		<enum name="Invalid-Attribute-Value" code="407" />
+		<enum name="Administratively-Prohibited" code="501" />
+		<enum name="Request-Not-Routable" code="502" />
+		<enum name="Session-Context-Not-Found" code="503" />
+		<enum name="Session-Context-Not-Removable" code="504" />
+		<enum name="Other-Proxy-Processing-Error" code="505" />
+		<enum name="Resources-Unavailable" code="506" />
+		<enum name="Request-Initiated" code="507" />
+		<enum name="Multiple-Session-Selection-Unsupported" code="508" />
+		<enum name="Location-Info-Required" code="509" />
+		<enum name="Service-Not-Found" code="551" />
+		<enum name="Service-Already-Active" code="552" />
+	</avp>
+
+	<!-- ADDED NEW VALUES FROM 23 TO 194 -->
+	<avp name="Acct-Terminate-Cause" code="49" type="Enumerated">
+		<enum name="User-Request" code="1" />
+		<enum name="Lost-Carrier" code="2" />
+		<enum name="Lost-Service" code="3" />
+		<enum name="Idle-Timeout" code="4" />
+		<enum name="Session-Timeout" code="5" />
+		<enum name="Admin-Reset" code="6" />
+		<enum name="Admin-Reboot" code="7" />
+		<enum name="Port-Error" code="8" />
+		<enum name="NAS-Error" code="9" />
+		<enum name="NAS-Request" code="10" />
+		<enum name="NAS-Reboot" code="11" />
+		<enum name="Port-Unneeded" code="12" />
+		<enum name="Port-Preempted" code="13" />
+		<enum name="Port-Suspended" code="14" />
+		<enum name="Service-Unavailable" code="15" />
+		<enum name="Callback" code="16" />
+		<enum name="User-Error" code="17" />
+		<enum name="Host-Request" code="18" />
+		<enum name="Supplicant-Restart" code="19" />
+		<enum name="Reauthentication-Failure" code="20" />
+		<enum name="Port-Reinit" code="21" />
+		<enum name="Port-Disabled" code="22" />
+		<enum name="lower-interface-down" code="23" />
+		<enum name="lower-interface-teardown" code="24" />
+		<enum name="lcp-keepalive-failure" code="25" />
+		<enum name="lcp-dynamic-interface-hold" code="26" />
+		<enum name="lcp-tunnel-disconnected" code="27" />
+		<enum name="lcp-tunnel-failed" code="28" />
+		<enum name="IpNcp-issu-in-progress" code="30" />
+		<enum name="authenticate-authenticator-timeout" code="31" />
+		<enum name="authenticate-challenge-timeout" code="32" />
+		<enum name="authenticate-chap-no-resources" code="33" />
+		<enum name="authenticate-chap-peer-authenticator-timeout" code="34" />
+		<enum name="authenticate-chap-peer-challenge-timeout" code="35" />
+		<enum name="authenticate-deny-by-peer" code="36" />
+		<enum name="authenticate-eap-challenge-larger-than-mtu" code="37" />
+		<enum name="authenticate-eap-peer-authenticator-timeout" code="38" />
+		<enum name="authenticate-eap-request-timeout" code="39" />
+		<enum name="authenticate-inactivity-timeout" code="40" />
+		<enum name="authenticate-max-requests" code="41" />
+		<enum name="authenticate-no-authenticator" code="42" />
+		<enum name="authenticate-no-resources" code="43" />
+		<enum name="authenticate-pap-peer-authenticator-timeout" code="44" />
+		<enum name="authenticate-pap-request-timeout" code="45" />
+		<enum name="authenticate-session-timeout" code="46" />
+		<enum name="authenticate-timeout-no-ingress-traffic" code="47" />
+		<enum name="authenticate-too-many-requests" code="48" />
+		<enum name="authenticate-tunnel-fail-immediate" code="49" />
+		<enum name="authenticate-tunnel-unsupported-tunnel-type" code="50" />
+		<enum name="bundle-fail-create" code="51" />
+		<enum name="bundle-fail-engine-add" code="52" />
+		<enum name="bundle-fail-fragment-size-mismatch" code="53" />
+		<enum name="bundle-fail-fragmentation-location" code="54" />
+		<enum name="bundle-fail-fragmentation-mismatch" code="55" />
+		<enum name="bundle-fail-hash-link-selection-mismatch" code="56" />
+		<enum name="bundle-fail-join" code="57" />
+		<enum name="bundle-fail-local-mped-not-set-yet" code="58" />
+		<enum name="bundle-fail-local-mrru-mismatch" code="59" />
+		<enum name="bundle-fail-local-mru-mismatch" code="60" />
+		<enum name="bundle-fail-peer-endpoint-discriminator-mismatch" code="61" />
+		<enum name="bundle-fail-peer-mrru-mismatch" code="62" />
+		<enum name="bundle-fail-reassembly-location" code="63" />
+		<enum name="bundle-fail-reassembly-mismatch" code="64" />
+		<enum name="bundle-fail-record-network" code="65" />
+		<enum name="bundle-fail-server-location-mismatch" code="66" />
+		<enum name="bundle-fail-static-link" code="67" />
+		<enum name="failover-during-authentication" code="68" />
+		<enum name="interface-admin-disable" code="69" />
+		<enum name="interface-no-hardware" code="70" />
+		<enum name="ip-admin-disable" code="71" />
+		<enum name="ip-inhibited-by-authentication" code="72" />
+		<enum name="ip-link-down" code="73" />
+		<enum name="ip-max-configure-exceeded" code="74" />
+		<enum name="ip-no-local-ip-address" code="75" />
+		<enum name="ip-no-local-ip-address-mask" code="76" />
+		<enum name="ip-no-local-primary-dns-address" code="77" />
+		<enum name="ip-no-local-primary-nbns-address" code="78" />
+		<enum name="ip-no-local-secondary-dns-address" code="79" />
+		<enum name="ip-no-local-secondary-nbns-address" code="80" />
+		<enum name="ip-no-peer-ip-address" code="81" />
+		<enum name="ip-no-peer-ip-address-mask" code="82" />
+		<enum name="ip-no-peer-primary-dns-address" code="83" />
+		<enum name="ip-no-peer-primary-nbns-address" code="84" />
+		<enum name="ip-no-peer-secondary-dns-address" code="85" />
+		<enum name="ip-no-peer-secondary-nbns-address" code="86" />
+		<enum name="ip-no-service" code="87" />
+		<enum name="ip-peer-renegotiate-rx-conf-ack" code="88" />
+		<enum name="ip-peer-renegotiate-rx-conf-nak" code="89" />
+		<enum name="ip-peer-renegotiate-rx-conf-rej" code="90" />
+		<enum name="ip-peer-renegotiate-rx-conf-req" code="91" />
+		<enum name="ip-peer-terminate-code-rej" code="92" />
+		<enum name="ip-peer-terminate-term-ack" code="93" />
+		<enum name="ip-peer-terminate-term-req" code="94" />
+		<enum name="ip-service-disable" code="95" />
+		<enum name="ip-stale-stacking" code="96" />
+		<enum name="ipv6-admin-disable" code="97" />
+		<enum name="ipv6-inhibited-by-authentication" code="98" />
+		<enum name="ipv6-link-down" code="99" />
+		<enum name="ipv6-local-and-peer-interface-ids-identical" code="100" />
+		<enum name="ipv6-max-configure-exceeded" code="101" />
+		<enum name="ipv6-no-local-ipv6-interface-id" code="102" />
+		<enum name="ipv6-no-peer-ipv6-interface-id" code="103" />
+		<enum name="ipv6-no-service" code="104" />
+		<enum name="ipv6-peer-renegotiate-rx-conf-ack" code="105" />
+		<enum name="ipv6-peer-renegotiate-rx-conf-nak" code="106" />
+		<enum name="ipv6-peer-renegotiate-rx-conf-rej" code="107" />
+		<enum name="ipv6-peer-renegotiate-rx-conf-req" code="108" />
+		<enum name="ipv6-peer-terminate-code-rej" code="109" />
+		<enum name="ipv6-peer-terminate-term-ack" code="110" />
+		<enum name="ipv6-peer-terminate-term-req" code="111" />
+		<enum name="ipv6-service-disable" code="112" />
+		<enum name="ipv6-stale-stacking" code="113" />
+		<enum name="ipv6Ncp-issu-in-progress" code="114" />
+		<enum name="lcp-authenticate-terminate-hold" code="115" />
+		<enum name="lcp-configured-mrru-too-small" code="116" />
+		<enum name="lcp-configured-mru-invalid" code="117" />
+		<enum name="lcp-configured-mru-too-small" code="118" />
+		<enum name="lcp-dynamic-interface-hold-119" code="119" />
+		<enum name="lcp-issu-in-progress" code="120" />
+		<enum name="lcp-keepalive-failure-121" code="121" />
+		<enum name="lcp-loopback-rx-conf-req" code="122" />
+		<enum name="lcp-loopback-rx-echo-reply" code="123" />
+		<enum name="lcp-loopback-rx-echo-req" code="124" />
+		<enum name="lcp-max-configure-exceeded" code="125" />
+		<enum name="lcp-mru-changed" code="126" />
+		<enum name="lcp-negotiation-timeout" code="127" />
+		<enum name="lcp-no-local-accm" code="128" />
+		<enum name="lcp-no-local-acfc" code="129" />
+		<enum name="lcp-no-local-authentication" code="130" />
+		<enum name="lcp-no-local-endpoint-discriminator" code="131" />
+		<enum name="lcp-no-local-magic-number" code="132" />
+		<enum name="lcp-no-local-mrru" code="133" />
+		<enum name="lcp-no-local-mru" code="134" />
+		<enum name="lcp-no-local-pfc" code="135" />
+		<enum name="lcp-no-peer-accm" code="136" />
+		<enum name="lcp-no-peer-acfc" code="137" />
+		<enum name="lcp-no-peer-authentication" code="138" />
+		<enum name="lcp-no-peer-endpoint-discriminator" code="139" />
+		<enum name="lcp-no-peer-magic-number" code="140" />
+		<enum name="lcp-no-peer-mrru" code="141" />
+		<enum name="lcp-no-peer-mru" code="142" />
+		<enum name="lcp-no-peer-pfc" code="143" />
+		<enum name="lcp-peer-renegotiate-rx-conf-ack" code="144" />
+		<enum name="lcp-peer-renegotiate-rx-conf-nak" code="145" />
+		<enum name="lcp-peer-renegotiate-rx-conf-rej" code="146" />
+		<enum name="lcp-peer-renegotiate-rx-conf-req" code="147" />
+		<enum name="lcp-peer-terminate-code-rej" code="148" />
+		<enum name="lcp-peer-terminate-protocol-reject" code="149" />
+		<enum name="lcp-peer-terminate-term-ack" code="150" />
+		<enum name="lcp-peer-terminate-term-req" code="151" />
+		<enum name="lcp-tunnel-disconnected-152" code="152" />
+		<enum name="lcp-tunnel-failed-153" code="153" />
+		<enum name="link-interface-no-hardware" code="154" />
+		<enum name="lower-interface-attach-failed" code="155" />
+		<enum name="lower-interface-down-156" code="156" />
+		<enum name="lower-interface-teardown-157" code="157" />
+		<enum name="mpls-admin-disable" code="158" />
+		<enum name="mpls-link-down" code="159" />
+		<enum name="mpls-max-configure-exceeded" code="160" />
+		<enum name="mpls-no-service" code="161" />
+		<enum name="mpls-peer-renegotiate-rx-conf-ack" code="162" />
+		<enum name="mpls-peer-renegotiate-rx-conf-nak" code="163" />
+		<enum name="mpls-peer-renegotiate-rx-conf-rej" code="164" />
+		<enum name="mpls-peer-renegotiate-rx-conf-req" code="165" />
+		<enum name="mpls-peer-terminate-code-rej" code="166" />
+		<enum name="mpls-peer-terminate-term-ack" code="167" />
+		<enum name="mpls-peer-terminate-term-req" code="168" />
+		<enum name="mpls-service-disable" code="169" />
+		<enum name="mpls-stale-stacking" code="170" />
+		<enum name="mplsNcp-issu-in-progress" code="171" />
+		<enum name="network-interface-admin-disable" code="172" />
+		<enum name="no-bundle" code="173" />
+		<enum name="no-interface" code="174" />
+		<enum name="no-link-interface" code="175" />
+		<enum name="no-ncps-available" code="176" />
+		<enum name="no-network-interface" code="177" />
+		<enum name="no-upper-interface" code="178" />
+		<enum name="osi-admin-disable" code="179" />
+		<enum name="osi-link-down" code="180" />
+		<enum name="osi-max-configure-exceeded" code="181" />
+		<enum name="osi-no-local-align-npdu" code="182" />
+		<enum name="osi-no-peer-align-npdu" code="183" />
+		<enum name="osi-no-service" code="184" />
+		<enum name="osi-peer-renegotiate-rx-conf-ack" code="185" />
+		<enum name="osi-peer-renegotiate-rx-conf-nak" code="186" />
+		<enum name="osi-peer-renegotiate-rx-conf-rej" code="187" />
+		<enum name="osi-peer-renegotiate-rx-conf-req" code="188" />
+		<enum name="osi-peer-terminate-code-rej" code="189" />
+		<enum name="osi-peer-terminate-term-ack" code="190" />
+		<enum name="osi-peer-terminate-term-req" code="191" />
+		<enum name="osi-service-disable" code="192" />
+		<enum name="osi-stale-stacking" code="193" />
+		<enum name="osiNcp-issu-in-progress" code="194" />
+		
+		<!-- Codigos para MX. Federico Forestale -->
+		<enum name="Admin Reset  200" code="200" />
+		<enum name="NAS request 201" code="201" />
+		<enum name="NAS request 209" code="209" />
+		<enum name="NAS request 210" code="210" />
+		<enum name="Lost Carrier 211" code="211" />
+		<enum name="User Request 220" code="220" />
+		<enum name="User Request 221" code="221" />
+		<enum name="User Request 222" code="222" />
+		<enum name="User Request 223" code="223" />         
+		<enum name="User Request 225" code="225" />
+		<enum name="User Request 240" code="240" />
+		<enum name="Lost Carrier 241" code="241" />
+		<enum name="Session Timeout 243" code="243" />
+		<enum name="NAS request 244" code="244" />
+		<enum name="User Request 245" code="245" />         
+		<enum name="NAS Error 250" code="250" />
+		<enum name="NAS Error 251" code="251" />
+
+	</avp>
+
+	<!-- ADDED PSA VSAs -->
+	<avp name="PSA-ServiceType" vendor="PSA" code="101" type="string" />
+	<avp name="PSA-ServiceName" vendor="PSA" code="102" type="string" />
+	<avp name="PSA-DefaultServiceName" vendor="PSA" code="103" type="string" />
+	<avp name="PSA-AutoActivatedBasicService" vendor="PSA" code="104"
+		type="string" />
+	<avp name="PSA-AutoActivatedCampaignService" vendor="PSA" code="105"
+		type="string" />
+	<avp name="PSA-PHONE" vendor="PSA" code="106" type="string" />
+	<avp name="PSA-CampaignData" vendor="PSA" code="107" type="string" />
+	<!-- "activate", "deactivate", "queryByIP" or "queryByPort" -->
+	<avp name="PSA-Operation" vendor="PSA" code="108" type="string" />
+	<avp name="PSA-IndexName" vendor="PSA" code="109" type="string" />
+	<avp name="PSA-IndexValue" vendor="PSA" code="110" type="string" />
+	<avp name="PSA-SessionKey" vendor="PSA" code="111" type="string" />
+	<avp name="PSA-Session-Start-Time" vendor="PSA" code="112" type="Timestamp" />
+	<avp name="PSA-Client-Class" vendor="PSA" code="113" type="string" />
+	<avp name="PSA-BRAS-NAS-IP-Address" vendor="PSA" code="114" type="ipv4-address" />
+	<avp name="PSA-BRAS-NAS-Port" vendor="PSA" code="115" type="Unsigned32" />
+	<avp name="PSA-VCPE-Tunnel-Id" vendor="PSA" code="116" type="Unsigned32" />
+	<avp name="PSA-MAC-Address" vendor="PSA" code="117" type="string" />
+	<avp name="PSA-Extended-NAS-Port" vendor="PSA" code="118" type="string" />
+	<avp name="PSA-LegacyClientId" vendor="PSA" code="119" type="string" />
+
+	<!-- PCRF -->
+	<!--
+		los avps PSA-DiameterHost y PSA-DiameterReal se ponen como MUSTNOT
+		porque en determinadas circunstancias se envian a los GGSNs
+	-->
+	<avp name="PSA-DiameterRealm" vendor="PSA" code="120" type="string"
+		mandatory="MUSTNOT" />
+	<avp name="PSA-DiameterHost" vendor="PSA" code="121" type="string"
+		mandatory="MUSTNOT" />
+	<avp name="PSA-IsRoaming" vendor="PSA" code="122" type="Unsigned32" />
+	<avp name="PSA-DPI-Rules" vendor="PSA" code="123" type="string" />
+	<avp name="PSA-Bearer-Identifier" vendor="PSA" code="124" type="string" />
+	<avp name="PSA-ServiceParameter" vendor="PSA" code="125" type="string" />
+	<avp name="PSA-RemovedService" vendor="PSA" code="126" type="string" />
+	<avp name="PSA-DeactivationTime" vendor="PSA" code="127" type="string" />
+	<avp name="PSA-DPI-Profile" vendor="PSA" code="128" type="string" />
+	<avp name="PSA-DPI-Address" vendor="PSA" code="129" type="string" />
+	<avp name="PSA-PCRF1-Last-Session" vendor="PSA" code="130" type="string" />
+	<avp name="PSA-PCRF2-Last-Session" vendor="PSA" code="131" type="string" />
+	<avp name="PSA-RoamingArea" vendor="PSA" code="132" type="string" /> <!-- area1 or area2 -->
+	<avp name="PSA-Client-Plan" vendor="PSA" code="133" type="string" />
+	<avp name="PSA-Merge-Session" vendor="PSA" code="134" type="string" />
+	<avp name="PSA-Diameter-Session-Id" vendor="PSA" code="135" type="string" />
+	<avp name="PSA-DiameterProxyServerPrimary" vendor="PSA" code="136"
+		type="string" />
+	<avp name="PSA-DiameterProxyServerSecondary" vendor="PSA" code="137"
+		type="string" />
+	<avp name="PSA-IP-CAN-Type" vendor="PSA" code="138" type="string"/>
+	<avp name="PSA-RAT-Type" vendor="PSA" code="139" type="string"/>
+	<avp name="PSA-Usage-Report-Indication" vendor="PSA" code="140" type="string"/>
+    <avp name="PSA-Current-QCI" vendor="PSA" code="141" type="string"/>
+	<avp name="PSA-Current-ARP-PL" vendor="PSA" code="142" type="string"/>
+	<avp name="PSA-Current-ARP-PEC" vendor="PSA" code="143" type="string"/>
+	<avp name="PSA-Current-ARP-PEV" vendor="PSA" code="144" type="string"/>
+	<avp name="PSA-Current-Max-Bitrate-DL" vendor="PSA" code="145" type="string"/>
+	<avp name="PSA-Current-Max-Bitrate-UL" vendor="PSA" code="146" type="string"/>
+	<avp name="PSA-LastReceived-Max-Bitrate-DL" vendor="PSA" code="147" type="string"/>
+	<avp name="PSA-LastReceived-Max-Bitrate-UL" vendor="PSA" code="148" type="string"/>
+	<avp name="PSA-LastReceived-QCI" vendor="PSA" code="149" type="string"/>
+	<avp name="PSA-LastReceived-ARP-PL" vendor="PSA" code="150" type="string"/>
+	<avp name="PSA-LastReceived-ARP-PEC" vendor="PSA" code="151" type="string"/>
+	<avp name="PSA-LastReceived-ARP-PEV" vendor="PSA" code="152" type="string"/>
+	<avp name="PSA-Rule-Definition-Sufix" vendor="PSA" code="153" type="string"/>
+	<avp name="PSA-USS-Event" vendor="PSA" code="154" type="string"/>
+	<avp name="PSA-AlwaysSubscribedEventTriggers" vendor="PSA" code="155" type="string"/>
+	<avp name="PSA-ManagedNotSubscribableEventTriggers" vendor="PSA" code="156" type="string"/>
+	<avp name="PSA-User-Location-Info" vendor="PSA" code="157" type="string"/>
+	<avp name="PSA-User-Location-Info-Timestamp" vendor="PSA" code="158" type="string"/>
+	<avp name="PSA-User-Location-Info-Tracking" vendor="PSA" code="159" type="string"/>
+	<avp name="PSA-IPv4-Domain" vendor="PSA" code="160" type="string"/>
+	<avp name="PSA-RAN-QoS-Negotiation" vendor="PSA" code="161" type="string"/>
+	
+	<!-- PSA -->
+	<!-- Holds the framed or delegated ipv6 prefix, depending on the user access mode. This must be the prefix used by sessionmgr on its IPv6Address attribute -->
+	<avp name="PSA-User-IPv6-Prefix" vendor="PSA" code="165" type="IPv6-Prefix" />
+
+	<!-- ADDED AND CHANGED Redback VSAs -->
+
+	<!-- Redback AVPs -->
+
+	<avp name="Redback-Client-DNS-Pri" vendor="Redback" code="1"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="1" />
+	</avp>
+	<avp name="Redback-Client-DNS-Sec" vendor="Redback" code="2"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="2" />
+	</avp>
+	<avp name="Redback-DHCP-Max-Leases" vendor="Redback" code="3"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="3" />
+	</avp>
+	<avp name="Redback-Context-Name" vendor="Redback" code="4" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="4" />
+	</avp>
+	<avp name="Redback-Bridge-Group" vendor="Redback" code="5" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="5" />
+	</avp>
+	<avp name="Redback-BG-Aging-Time" vendor="Redback" code="6" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="6" />
+	</avp>
+	<avp name="Redback-BG-Path-Cost" vendor="Redback" code="7" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="7" />
+	</avp>
+	<avp name="Redback-BG-Span-Dis" vendor="Redback" code="8" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="8" />
+	</avp>
+	<avp name="Redback-BG-Trans-BPDU" vendor="Redback" code="9" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="9" />
+	</avp>
+	<avp name="Redback-Rate-Limit-Rate" vendor="Redback" code="10"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="10" />
+	</avp>
+	<avp name="Redback-Rate-Limit-Burst" vendor="Redback" code="11"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="11" />
+	</avp>
+	<avp name="Redback-Police-Rate" vendor="Redback" code="12" type="Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="12" />
+	</avp>
+	<avp name="Redback-Police-Burst" vendor="Redback" code="13" type="Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="13" />
+	</avp>
+	<avp name="Redback-Source-Validation" vendor="Redback" code="14"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="Enabled" code="1" />
+		<enum name="Disabled" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="14" />
+	</avp>
+	<avp name="Redback-Tunnel-Domain" vendor="Redback" code="15"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="Enabled" code="1" />
+		<enum name="Disabled" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="15" />
+	</avp>
+	<avp name="Redback-Tunnel-Local-Name" vendor="Redback" code="16"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="16" />
+	</avp>
+	<avp name="Redback-Tunnel-Remote-Name" vendor="Redback" code="17"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="17" />
+	</avp>
+	<avp name="Redback-Tunnel-Function" vendor="Redback" code="18"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="LAC-Only" code="1" />
+		<enum name="LNS-Only" code="2" />
+		<enum name="LAC-LNS" code="3" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="18" />
+	</avp>
+	<avp name="Redback-Tunnel-Flow-Control" vendor="Redback" code="19"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="TRUE" code="1" />
+		<enum name="FALSE" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="19" />
+	</avp>
+	<avp name="Redback-Tunnel-Static" vendor="Redback" code="20"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="20" />
+	</avp>
+	<avp name="Redback-Tunnel-Max-Sessions" vendor="Redback" code="21"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="21" />
+	</avp>
+	<avp name="Redback-Tunnel-Max-Tunnels" vendor="Redback" code="22"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="22" />
+	</avp>
+	<avp name="Redback-Tunnel-Session-Auth" vendor="Redback" code="23"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="CHAP" code="1" />
+		<enum name="PAP" code="2" />
+		<enum name="CHAP-PAP" code="3" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="23" />
+	</avp>
+	<avp name="Redback-Tunnel-Window" vendor="Redback" code="24"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="24" />
+	</avp>
+	<avp name="Redback-Tunnel-Retransmit" vendor="Redback" code="25"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="25" />
+	</avp>
+	<avp name="Redback-Tunnel-Cmd-Timeout" vendor="Redback" code="26"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="26" />
+	</avp>
+	<avp name="Redback-PPPOE-URL" vendor="Redback" code="27" type="tagged-string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="27" />
+	</avp>
+	<avp name="Redback-PPPOE-MOTM" vendor="Redback" code="28"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="28" />
+	</avp>
+	<avp name="Redback-Tunnel-Group" vendor="Redback" code="29"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="Enabled" code="1" />
+		<enum name="Disabled" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="29" />
+	</avp>
+	<avp name="Redback-Tunnel-Context" vendor="Redback" code="30"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="30" />
+	</avp>
+	<avp name="Redback-Tunnel-Algorithm" vendor="Redback" code="31"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="First" code="1" />
+		<enum name="Load-Balance" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="31" />
+	</avp>
+	<avp name="Redback-Tunnel-Deadtime" vendor="Redback" code="32"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="32" />
+	</avp>
+	<avp name="Redback-Mcast-Send" vendor="Redback" code="33" type="Enumerated"
+		codec="Redback_dictionary">
+		<enum name="NO-SEND" code="1" />
+		<enum name="SEND" code="2" />
+		<enum name="UNSOLICITED-SEND" code="3" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="33" />
+	</avp>
+	<avp name="Redback-Mcast-Receive" vendor="Redback" code="34"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="NO-RECEIVE" code="1" />
+		<enum name="RECEIVE" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="34" />
+	</avp>
+	<avp name="Redback-Mcast-MaxGroups" vendor="Redback" code="35"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="35" />
+	</avp>
+	<avp name="Redback-IP-Address-Pool-Name" vendor="Redback" code="36"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="36" />
+	</avp>
+	<avp name="Redback-Tunnel-DNIS" vendor="Redback" code="37"
+		type="tagged-enumeration" codec="Redback_dictionary">
+		<enum name="DNIS" code="1" />
+		<enum name="DNIS-Only" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="37" />
+	</avp>
+	<avp name="Redback-Medium-Type" vendor="Redback" code="38" type="Enumerated"
+		codec="Redback_dictionary">
+		<enum name="DSL" code="11" />
+		<enum name="Cable" code="12" />
+		<enum name="Wireless" code="13" />
+		<enum name="Satelite" code="14" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="38" />
+	</avp>
+	<avp name="Redback-PVC-Encapsulation-Type" vendor="Redback" code="39"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="AAA-ENCAPS-ATM-RAW" code="1" />
+		<enum name="AAA-ENCAPS-ATM-ROUTE1483" code="2" />
+		<enum name="AAA-ENCAPS-ATM-AUTO1483" code="3" />
+		<enum name="AAA-ENCAPS-ATM-MULTI" code="4" />
+		<enum name="AAA-ENCAPS-ATM-BRIDGE1483" code="5" />
+		<enum name="AAA-ENCAPS-ATM-PPP" code="6" />
+		<enum name="AAA-ENCAPS-ATM-PPP-SERIAL" code="7" />
+		<enum name="AAA-ENCAPS-ATM-PPP-NLPID" code="8" />
+		<enum name="AAA-ENCAPS-ATM-PPP-AUTO" code="9" />
+		<enum name="AAA-ENCAPS-ATM-PPPOE" code="10" />
+		<enum name="AAA-ENCAPS-ATM-L2TP" code="11" />
+		<enum name="AAA-ENCAPS-ATM-PPP-LLC" code="12" />
+		<enum name="AAA-ENCAPS-FRAME-AUTO1490" code="13" />
+		<enum name="AAA-ENCAPS-FRAME-MULTI" code="14" />
+		<enum name="AAA-ENCAPS-FRAME-BRIDGE1490" code="15" />
+		<enum name="AAA-ENCAPS-FRAME-PPP" code="16" />
+		<enum name="AAA-ENCAPS-FRAME-PPP-AUTO" code="17" />
+		<enum name="AAA-ENCAPS-FRAME-PPPOE" code="18" />
+		<enum name="AAA-ENCAPS-FRAME-ROUTE1490" code="19" />
+		<enum name="AAA-ENCAPS-FRAME-L2TP" code="20" />
+		<enum name="AAA-ENCAPS-L2TP-VC-MUXED" code="21" />
+		<enum name="AAA-ENCAPS-ETH" code="22" />
+		<enum name="AAA-ENCAPS-ETH-PPPOE" code="23" />
+		<enum name="AAA-ENCAPS-ETH-MULTI" code="24" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="39" />
+	</avp>
+	<avp name="Redback-PVC-Profile-Name" vendor="Redback" code="40"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="40" />
+	</avp>
+	<avp name="Redback-PVC-Circuit-Padding" vendor="Redback" code="41"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="AAA-CIRCUIT-PADDING" code="1" />
+		<enum name="AAA-CIRCUIT-NO-PADDING" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="41" />
+	</avp>
+	<avp name="Redback-Bind-Type" vendor="Redback" code="42" type="Enumerated"
+		codec="Redback_dictionary">
+		<enum name="AAA-AUTH-BIND" code="1" />
+		<enum name="AAA-BYPASS-BIND" code="2" />
+		<enum name="AAA-INTERFACE-BIND" code="3" />
+		<enum name="AAA-SUBSCRIBE-BIND" code="4" />
+		<enum name="AAA-TUNNEL-BIND" code="5" />
+		<enum name="AAA-SESSION-BIND" code="6" />
+		<enum name="AAA-Q8021-BIND" code="7" />
+		<enum name="AAA-MULTI-BIND" code="8" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="42" />
+	</avp>
+	<avp name="Redback-Bind-Auth-Protocol" vendor="Redback" code="43"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="AAA-PPP-PAP" code="1" />
+		<enum name="AAA-PPP-CHAP" code="2" />
+		<enum name="AAA-PPP-CHAP-WAIT" code="3" />
+		<enum name="AAA-PPP-CHAP-PAP" code="4" />
+		<enum name="AAA-PPP-CHAP-WAIT-PAP" code="5" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="43" />
+	</avp>
+	<avp name="Redback-Bind-Auth-Max-Sessions" vendor="Redback" code="44"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="44" />
+	</avp>
+	<avp name="Redback-Bind-Bypass-Bypass" vendor="Redback" code="45"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="45" />
+	</avp>
+	<avp name="Redback-Bind-Auth-Context" vendor="Redback" code="46"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="46" />
+	</avp>
+	<avp name="Redback-Bind-Auth-Service-Grp" vendor="Redback" code="47"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="47" />
+	</avp>
+	<avp name="Redback-Bind-Bypass-Context" vendor="Redback" code="48"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="48" />
+	</avp>
+	<avp name="Redback-Bind-Int-Context" vendor="Redback" code="49"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="49" />
+	</avp>
+	<avp name="Redback-Bind-Tun-Context" vendor="Redback" code="50"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="50" />
+	</avp>
+	<avp name="Redback-Bind-Ses-Context" vendor="Redback" code="51"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="51" />
+	</avp>
+	<avp name="Redback-Bind-Dot1q-Slot" vendor="Redback" code="52"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="52" />
+	</avp>
+	<avp name="Redback-Bind-Dot1q-Port" vendor="Redback" code="53"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="53" />
+	</avp>
+	<avp name="Redback-Bind-Dot1q-Vlan-Tag-Id" vendor="Redback" code="54"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="54" />
+	</avp>
+	<avp name="Redback-Bind-Int-Interface-Name" vendor="Redback" code="55"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="55" />
+	</avp>
+	<avp name="Redback-Bind-L2TP-Tunnel-Name" vendor="Redback" code="56"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="56" />
+	</avp>
+	<avp name="Redback-Bind-L2TP-Flow-Control" vendor="Redback" code="57"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="57" />
+	</avp>
+	<avp name="Redback-Bind-Sub-User-At-Context" vendor="Redback" code="58"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="58" />
+	</avp>
+	<avp name="Redback-Bind-Sub-Password" vendor="Redback" code="59"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="59" />
+	</avp>
+	<avp name="Redback-IP-Host-Addr" vendor="Redback" code="60" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="60" />
+	</avp>
+	<avp name="Redback-IP-TOS-Field" vendor="Redback" code="61" type="Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="61" />
+	</avp>
+	<avp name="Redback-NAS-Real-Port" vendor="Redback" code="62"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="62" />
+	</avp>
+	<avp name="Redback-Tunnel-Session-Auth-Ctx" vendor="Redback" code="63"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="63" />
+	</avp>
+	<avp name="Redback-Tunnel-Session-Auth-Service-Grp" vendor="Redback"
+		code="64" type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="64" />
+	</avp>
+	<avp name="Redback-Tunnel-Rate-Limit-Rate" vendor="Redback" code="65"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="65" />
+	</avp>
+	<avp name="Redback-Tunnel-Rate-Limit-Burst" vendor="Redback" code="66"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="66" />
+	</avp>
+	<avp name="Redback-Tunnel-Police-Rate" vendor="Redback" code="67"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="67" />
+	</avp>
+	<avp name="Redback-Tunnel-Police-Burst" vendor="Redback" code="68"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="68" />
+	</avp>
+	<avp name="Redback-Tunnel-L2F-Second-Password" vendor="Redback"
+		code="69" type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="69" />
+	</avp>
+	<avp name="Redback-ACL-Definition" vendor="Redback" code="70" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="70" />
+	</avp>
+	<avp name="Redback-PPPoE-IP-Route-Add" vendor="Redback" code="71"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="71" />
+	</avp>
+	<avp name="Redback-TTY-Level-Max" vendor="Redback" code="72"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="72" />
+	</avp>
+	<avp name="Redback-TTY-Level-Start" vendor="Redback" code="73"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="73" />
+	</avp>
+	<avp name="Redback-Tunnel-Checksum" vendor="Redback" code="74"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="74" />
+	</avp>
+	<avp name="Redback-Tunnel-Profile" vendor="Redback" code="75" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="75" />
+	</avp>
+	<avp name="Redback-Bind-DHCP-Context" vendor="Redback" code="76"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="76" />
+	</avp>
+	<avp name="Redback-Tunnel-Mobil-Group" vendor="Redback" code="77"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="77" />
+	</avp>
+	<avp name="Redback-Tunnel-Client-VPN" vendor="Redback" code="78"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="78" />
+	</avp>
+	<avp name="Redback-Tunnel-Server-VPN" vendor="Redback" code="79"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="79" />
+	</avp>
+	<avp name="Redback-Tunnel-Client-Rhost" vendor="Redback" code="80"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="80" />
+	</avp>
+	<avp name="Redback-Tunnel-Server-Rhost" vendor="Redback" code="81"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="81" />
+	</avp>
+	<avp name="Redback-Tunnel-Client-Int-Addr" vendor="Redback" code="82"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="82" />
+	</avp>
+	<avp name="Redback-Tunnel-Server-Int-Addr" vendor="Redback" code="83"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="83" />
+	</avp>
+	<avp name="Redback-PPP-Compression" vendor="Redback" code="84"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="84" />
+	</avp>
+	<avp name="Redback-Tunnel-Hello-Timer" vendor="Redback" code="85"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="85" />
+	</avp>
+	<avp name="Redback-Bounce-Data" vendor="Redback" code="86" type="Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="86" />
+	</avp>
+	<avp name="Redback-Qos-Policing-Profile-Name" vendor="Redback"
+		code="87" type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="87" />
+	</avp>
+	<avp name="Redback-Qos-Metering-Profile-Name" vendor="Redback"
+		code="88" type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="88" />
+	</avp>
+	<avp name="Redback-Qos-Pq-Profile-Name" vendor="Redback" code="89"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="89" />
+	</avp>
+	<avp name="Redback-IGMP-Service-Profile-Name" vendor="Redback"
+		code="90" type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="90" />
+	</avp>
+	<avp name="Redback-Subscriber-Profile-Name" vendor="Redback" code="91"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="91" />
+	</avp>
+	<avp name="Redback-Forward-Policy" vendor="Redback" code="92" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="92" />
+	</avp>
+	<avp name="Redback-Remote-Port" vendor="Redback" code="93" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="93" />
+	</avp>
+	<avp name="Redback-Reauth" vendor="Redback" code="94" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="94" />
+	</avp>
+	<avp name="Redback-Reauth-More" vendor="Redback" code="95" type="Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="95" />
+	</avp>
+	<avp name="Redback-Agent-Remote-Id" vendor="Redback" code="96"
+		type="Hex-OctetString" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="96" />
+	</avp>
+	<avp name="Redback-Agent-Circuit-Id" vendor="Redback" code="97"
+		type="Hex-OctetString" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="97" />
+	</avp>
+	<avp name="Redback-Platform-Type" vendor="Redback" code="98"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="SMS" code="1" />
+		<enum name="SE-800" code="2" />
+		<enum name="SE-400" code="3" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="98" />
+	</avp>
+	<avp name="Redback-Client-NBNS-Primary" vendor="Redback" code="99"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="99" />
+	</avp>
+	<avp name="Redback-Client-NBNS-Secondary" vendor="Redback" code="100"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="100" />
+	</avp>
+	<avp name="Redback-ATM-Profile-Name" vendor="Redback" code="101"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="101" />
+	</avp>
+	<avp name="Redback-NPM-Service-Id" vendor="Redback" code="106"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="106" />
+	</avp>
+	<avp name="Redback-HTTP-Redirect-Profile-Name" vendor="Redback"
+		code="107" type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="107" />
+	</avp>
+	<avp name="Redback-Acct-Input-Octets-64" vendor="Redback" code="128"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="128" />
+	</avp>
+	<avp name="Redback-Acct-Output-Octets-64" vendor="Redback" code="129"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="129" />
+	</avp>
+	<avp name="Redback-Acct-Input-Packets-64" vendor="Redback" code="130"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="130" />
+	</avp>
+	<avp name="Redback-Acct-Output-Packets-64" vendor="Redback" code="131"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="131" />
+	</avp>
+	<avp name="Redback-Assigned-IP-Address" vendor="Redback" code="132"
+		type="ipv4-address" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="132" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-In-Octets-64" vendor="Redback" code="133"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="133" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-Out-Octets-64" vendor="Redback" code="134"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="134" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-In-Packets-64" vendor="Redback" code="135"
+		type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="135" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-Out-Packets-64" vendor="Redback"
+		code="136" type="Unsigned64" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="136" />
+	</avp>
+	<avp name="Redback-LAC-Port" vendor="Redback" code="137" type="Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="137" />
+	</avp>
+	<avp name="Redback-LAC-Real-Port" vendor="Redback" code="138"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="138" />
+	</avp>
+	<avp name="Redback-LAC-Port-Type" vendor="Redback" code="139"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="NAS-PORT-TYPE-10BT" code="40" />
+		<enum name="NAS-PORT-TYPE-100BT" code="41" />
+		<enum name="NAS-PORT-TYPE-DS3-FR" code="42" />
+		<enum name="NAS-PORT-TYPE-DS3-ATM" code="43" />
+		<enum name="NAS-PORT-TYPE-OC3" code="44" />
+		<enum name="NAS-PORT-TYPE-HSSI" code="45" />
+		<enum name="NAS-PORT-TYPE-EIA530" code="46" />
+		<enum name="NAS-PORT-TYPE-T1" code="47" />
+		<enum name="NAS-PORT-TYPE-CHAN-T3" code="48" />
+		<enum name="NAS-PORT-TYPE-DS1-FR" code="49" />
+		<enum name="NAS-PORT-TYPE-E3-ATM" code="50" />
+		<enum name="NAS-PORT-TYPE-IMA-ATM" code="51" />
+		<enum name="NAS-PORT-TYPE-DS3-ATM-2" code="52" />
+		<enum name="NAS-PORT-TYPE-OC3-ATM-2" code="53" />
+		<enum name="NAS-PORT-TYPE-1000BSX" code="54" />
+		<enum name="NAS-PORT-TYPE-E1-FR" code="55" />
+		<enum name="NAS-PORT-TYPE-E1-ATM" code="56" />
+		<enum name="NAS-PORT-TYPE-E3-FR" code="57" />
+		<enum name="NAS-PORT-TYPE-OC3-POS" code="58" />
+		<enum name="NAS-PORT-TYPE-OC12-POS" code="59" />
+		<enum name="NAS-PORT-TYPE-PPPOE" code="60" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="139" />
+	</avp>
+	<avp name="Redback-LAC-Real-Port-Type" vendor="Redback" code="140"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="NAS-PORT-TYPE-10BT" code="40" />
+		<enum name="NAS-PORT-TYPE-100BT" code="41" />
+		<enum name="NAS-PORT-TYPE-DS3-FR" code="42" />
+		<enum name="NAS-PORT-TYPE-DS3-ATM" code="43" />
+		<enum name="NAS-PORT-TYPE-OC3" code="44" />
+		<enum name="NAS-PORT-TYPE-HSSI" code="45" />
+		<enum name="NAS-PORT-TYPE-EIA530" code="46" />
+		<enum name="NAS-PORT-TYPE-T1" code="47" />
+		<enum name="NAS-PORT-TYPE-CHAN-T3" code="48" />
+		<enum name="NAS-PORT-TYPE-DS1-FR" code="49" />
+		<enum name="NAS-PORT-TYPE-E3-ATM" code="50" />
+		<enum name="NAS-PORT-TYPE-IMA-ATM" code="51" />
+		<enum name="NAS-PORT-TYPE-DS3-ATM-2" code="52" />
+		<enum name="NAS-PORT-TYPE-OC3-ATM-2" code="53" />
+		<enum name="NAS-PORT-TYPE-1000BSX" code="54" />
+		<enum name="NAS-PORT-TYPE-E1-FR" code="55" />
+		<enum name="NAS-PORT-TYPE-E1-ATM" code="56" />
+		<enum name="NAS-PORT-TYPE-E3-FR" code="57" />
+		<enum name="NAS-PORT-TYPE-OC3-POS" code="58" />
+		<enum name="NAS-PORT-TYPE-OC12-POS" code="59" />
+		<enum name="NAS-PORT-TYPE-PPPOE" code="60" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="140" />
+	</avp>
+	<avp name="Redback-Acct-Dyn-Ac-Ent" vendor="Redback" code="141"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="141" />
+	</avp>
+	<avp name="Redback-Session-Error-Code" vendor="Redback" code="142"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="142" />
+	</avp>
+	<avp name="Redback-Session-Error-Msg" vendor="Redback" code="143"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="143" />
+	</avp>
+	<avp name="Redback-Acct-Reason" vendor="Redback" code="144" type="Enumerated"
+		codec="Redback_dictionary">
+		<enum name="AAA-ACCT-SESSION-UP" code="1" />
+		<enum name="AAA-ACCT-SESSION-DOWN" code="2" />
+		<enum name="AAA-ACCT-PERIODIC" code="3" />
+		<enum name="AAA-ACCT-DYN-AC-ENT-START" code="4" />
+		<enum name="AAA-ACCT-DYN-AC-ENT-STOP" code="5" />
+		<enum name="AAA-ACCT-DYN-AC-ENT-TIMEOUT" code="6" />
+		<enum name="AAA-ACCT-SUBSCRIBER-REAUTH" code="7" />
+		<enum name="AAA-ACCT-PPP-IPCP-UP" code="8" />
+		<enum name="AAA-ACCT-PPP-MP-LINK-UP" code="9" />
+		<enum name="AAA-ACCT-DHCP-IP-ADDR-GRANTED" code="10" />
+		<enum name="AAA-ACCT-DHCP-IP-ADDR-RELEASED" code="11" />
+		<enum name="AAA-ACCT-DHCP-IP-ACL-TIMERED-ACTION" code="12" />
+		<enum name="AAA-ACCT-DHCP-IP-ACL-ACTION" code="13" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="144" />
+	</avp>
+	<avp name="Redback-MAC-Address" vendor="Redback" code="145" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="145" />
+	</avp>
+	<avp name="Redback-Vlan-Id" vendor="Redback" code="146" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="146" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-In-Octets" vendor="Redback" code="147"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="147" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-Out-Octets" vendor="Redback" code="148"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="148" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-In-Packets" vendor="Redback" code="149"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="149" />
+	</avp>
+	<avp name="Redback-Acct-Mcast-Out-Packets" vendor="Redback" code="150"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="150" />
+	</avp>
+	<avp name="Redback-Reauth-Session-Id" vendor="Redback" code="151"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+
+	<!-- ADDED NEW VALUES 16, 17, 18 AND 19 -->
+	<avp name="Redback-Acct-Reason" vendor="Redback" code="144" type="Enumerated"
+		codec="Redback_dictionary">
+		<enum name="AAA-ACCT-SESSION-UP" code="1" />
+		<enum name="AAA-ACCT-SESSION-DOWN" code="2" />
+		<enum name="AAA-ACCT-PERIODIC" code="3" />
+		<enum name="AAA-ACCT-DYN-AC-ENT-START" code="4" />
+		<enum name="AAA-ACCT-DYN-AC-ENT-STOP" code="5" />
+		<enum name="AAA-ACCT-DYN-AC-ENT-TIMEOUT" code="6" />
+		<enum name="AAA-ACCT-SUBSCRIBER-REAUTH" code="7" />
+		<enum name="AAA-ACCT-PPP-IPCP-UP" code="8" />
+		<enum name="AAA-ACCT-PPP-MP-LINK-UP" code="9" />
+		<enum name="AAA-ACCT-DHCP-IP-ADDR-GRANTED" code="10" />
+		<enum name="AAA-ACCT-DHCP-IP-ADDR-RELEASED" code="11" />
+		<enum name="AAA-ACCT-DHCP-IP-ACL-TIMERED-ACTION" code="12" />
+		<enum name="AAA-ACCT-DHCP-IP-ACL-ACTION" code="13" />
+		<enum name="AAA-LOAD-ACCT-VOLUME-INGRESS-EXCEEDED" code="16" />
+		<enum name="AAA-LOAD-ACCT-VOLUME-EGRESS-EXCEEDED" code="17" />
+		<enum name="AAA-LOAD-ACCT-IDLE-TIMEOUT" code="18" />
+		<enum name="AAA-LOAD-ACCT-TIME-EXCEEDED" code="19" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="144" />
+	</avp>
+
+	<!-- CHANGED from strunsigned32 to string -->
+	<avp name="Redback-Qos-Rate-Outbound" vendor="Redback" code="157"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="157" />
+	</avp>
+
+	<!-- CHANGED from Redback-LI-Identifier to Redback-LI-Id -->
+	<avp name="Redback-LI-Id" vendor="Redback" code="159" type="Unsigned64"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="159" />
+	</avp>
+	
+	<!-- Dotted format -->
+	<avp name="Redback-LI-Md-Address" vendor="Redback" code="160" type="Salted-IPv4-Address"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="160" />
+	</avp>
+
+	<!-- CHANGED from string to Unsigned32 -->
+	<avp name="Redback-LI-Md-Port" vendor="Redback" code="161" type="Salted-Unsigned32"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="161" />
+	</avp>
+
+	<!-- CHANGED from string to Enumerated. ADDED VALUES -->
+	<avp name="Redback-LI-Action" vendor="Redback" code="162" type="Salted-Integer-Enumeration"
+		codec="Redback_dictionary">
+		<enum name="STOP" code="0" />
+		<enum name="START" code="1" />
+		<enum name="NO-ACTION" code="2" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="162" />
+	</avp>
+	
+	<avp name="Redback-LI-Profile" vendor="Redback" code="163" type="Salted-Opaque"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="163" />
+	</avp>
+
+	<!-- NEW ATTRIBUTES -->
+	<avp name="Redback-IP-Interface-Name" vendor="Redback" code="104"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="104" />
+	</avp>
+	<avp name="Redback-NAT-Policy-Name" vendor="Redback" code="105"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="105" />
+	</avp>
+	<avp name="Redback-Qos-Rate-Inbound" vendor="Redback" code="156"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="156" />
+	</avp>
+	<avp name="Redback-Route-Tag" vendor="Redback" code="158" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="158" />
+	</avp>
+	<avp name="Redback-Dynamic-Policy-Filter" vendor="Redback" code="164"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="164" />
+	</avp>
+	<avp name="Redback-HTTP-Redirect-URL" vendor="Redback" code="165"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="165" />
+	</avp>
+	<avp name="Redback-DSL-Actual-Rate-Up" vendor="Redback" code="166"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="166" />
+	</avp>
+	<avp name="Redback-DSL-Actual-Rate-Down" vendor="Redback" code="167"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="167" />
+	</avp>
+	<avp name="Redback-DSL-Min-Rate-Up" vendor="Redback" code="168"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="168" />
+	</avp>
+	<avp name="Redback-DSL-Min-Rate-Down" vendor="Redback" code="169"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="169" />
+	</avp>
+	<avp name="Redback-DSL-Attainable-Rate-Up" vendor="Redback" code="170"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="170" />
+	</avp>
+	<avp name="Redback-DSL-Attainable-Rate-Down" vendor="Redback" code="171"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="171" />
+	</avp>
+	<avp name="Redback-DSL-Max-Rate-Up" vendor="Redback" code="172"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="172" />
+	</avp>
+	<avp name="Redback-DSL-Max-Rate-Down" vendor="Redback" code="173"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="173" />
+	</avp>
+	<avp name="Redback-DSL-Min-Low-Power-Rate-Up" vendor="Redback"
+		code="174" type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="174" />
+	</avp>
+	<avp name="Redback-DSL-Min-Low-Power-Rate-Down" vendor="Redback"
+		code="175" type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="175" />
+	</avp>
+	<avp name="Redback-DSL-Max-Inter-Delay-Up" vendor="Redback" code="176"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="176" />
+	</avp>
+	<avp name="Redback-DSL-Actual-Inter-Delay-Up" vendor="Redback"
+		code="177" type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="177" />
+	</avp>
+	<avp name="Redback-DSL-Max-Inter-Delay-Down" vendor="Redback" code="178"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="178" />
+	</avp>
+	<avp name="Redback-DSL-Actual-Inter-Delay-Down" vendor="Redback"
+		code="179" type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="179" />
+	</avp>
+	<avp name="Redback-DSL-Line-State" vendor="Redback" code="180"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="SHOWTIME" code="1" />
+		<enum name="IDLE" code="2" />
+		<enum name="TIMEOUT" code="3" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="180" />
+	</avp>
+	<avp name="Redback-DSL-L2-Encapsulation" vendor="Redback" code="181"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="181" />
+	</avp>
+	<avp name="Redback-DSL-Transmission-System" vendor="Redback" code="182"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="ADSL1" code="1" />
+		<enum name="ADSL2" code="2" />
+		<enum name="ADSL2+" code="3" />
+		<enum name="VDSL1" code="4" />
+		<enum name="VDSL2" code="5" />
+		<enum name="SDSL" code="6" />
+		<enum name="UNKNOWN" code="7" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="182" />
+	</avp>
+	<avp name="Redback-DSL-PPPOA-PPPOE-Inter-Work-Flag" vendor="Redback"
+		code="183" type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="183" />
+	</avp>
+	<avp name="Redback-DSL-combined-Line-Info" vendor="Redback" code="184"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="184" />
+	</avp>
+	<avp name="Redback-DSL-Actual-Rate-Down-Factor" vendor="Redback"
+		code="185" type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="185" />
+	</avp>
+	<avp name="Redback-Class-Traffic-Limit" vendor="Redback" code="186"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="186" />
+	</avp>
+	<avp name="Redback-Acct-Class-In-Octets-64" vendor="Redback" code="187"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="187" />
+	</avp>
+	<avp name="Redback-Acct-Class-Out-Octets-64" vendor="Redback" code="188"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="188" />
+	</avp>
+	<avp name="Redback-Flow-FAC-Profile" vendor="Redback" code="189"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="189" />
+	</avp>
+	<avp name="Redback-Service-Name" vendor="Redback" code="190"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="190" />
+	</avp>
+	<avp name="Redback-Service-Options" vendor="Redback" code="191"
+		type="tagged-integer" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="191" />
+	</avp>
+	<avp name="Redback-Service-Parameter" vendor="Redback" code="192"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="192" />
+	</avp>
+	<!--
+		<avp name="Redback-Error-Cause" vendor="Redback" code="193"
+		type="Unsigned32"/ codec="Redback_dictionary"/>
+	-->
+	<avp name="Redback-Service-Error-Cause" vendor="Redback" code="193"
+		type="Enumerated" codec="Redback_dictionary">
+		<enum name="SERVICE-SUCCESS" code="0" />
+		<enum name="UNSUPPORTED-ATTRIBUTE" code="401" />
+		<enum name="MISSING-ATTRIBUTE" code="402" />
+		<enum name="INVALID-REQUEST" code="404" />
+		<enum name="RESOURCE-UNAVAILABLE" code="506" />
+		<enum name="GENERIC-SERVICE-ERROR" code="550" />
+		<enum name="SERVICE-NOT-FOUND" code="551" />
+		<enum name="SERVICE-ALREADY-ACTIVE" code="552" />
+		<enum name="SERVICE-ACCOUNTING-DISABLED" code="553" />
+		<enum name="SERVICE-DUPLICATE-PARAMETER" code="554" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="193" />
+	</avp>
+	<avp name="Redback-Deactivate-Service-Name" vendor="Redback" code="194"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="194" />
+	</avp>
+	<avp name="Redback-QoS-Overhead" vendor="Redback" code="195" type="string"
+		codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="195" />
+	</avp>
+	<avp name="Redback-Dynamic-QoS-Param" vendor="Redback" code="196"
+		type="string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="196" />
+	</avp>
+	<avp name="Redback-Double-Authentication" vendor="Redback" code="199"
+		type="Unsigned32" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="199" />
+	</avp>
+	<avp name="Redback-DHCP-Field" vendor="Redback" code="201"
+		type="chunky-salted-opaque" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="201" />
+	</avp>
+	<avp name="Redback-DHCP-Option" vendor="Redback" code="202"
+		type="chunky-salted-opaque" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="202" />
+	</avp>
+	<avp name="Redback-Reauth-Service-Name" vendor="Redback" code="204"
+		type="tagged-string" codec="Redback_dictionary">
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="204" />
+	</avp>
+	<!-- END OF NEW ATTRIBUTES -->
+
+	<!-- ADDED Unisphere VSAs-->
+
+	<avp name="Unisphere-Ipv6-Ingress-Policy-Name" vendor="Juniper-Unisphere"
+		code="106" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="106" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Egress-Policy-Name" vendor="Juniper-Unisphere"
+		code="107" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="107" />
+	</avp>
+	<avp name="Unisphere-CoS-Parameter-Type" vendor="Juniper-Unisphere"
+		code="108" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="108" />
+	</avp>
+	<avp name="Unisphere-CoS-Scheduler-Parameter-Type" vendor="Juniper-Unisphere"
+		code="146" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="146" />
+	</avp>	
+	<avp name="Unisphere-Ipv6-Acct-Input-Octets" vendor="Juniper-Unisphere"
+		code="151" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Acct-Output-Octets" vendor="Juniper-Unisphere"
+		code="152" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="152" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Acct-Input-Packets" vendor="Juniper-Unisphere"
+		code="153" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="153" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Acct-Output-Packets" vendor="Juniper-Unisphere"
+		code="154" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="154" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Acct-Input-Gigawords" vendor="Juniper-Unisphere"
+		code="155" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="155" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Acct-Output-Gigawords" vendor="Juniper-Unisphere"
+		code="156" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="156" />
+	</avp>
+	 <avp name="Unisphere-Input-Interface-Filter" vendor="Juniper-Unisphere"
+	  code="191" type="string" codec="Juniper_dictionary">
+	  <codec name="Redback_dictionary" code="" />
+	  <codec name="Cisco_dictionary" code="" />
+	  <codec name="ME60_dictionary" code="" />
+	  <codec name="Sandvine_dictionary" code="" />
+	  <codec name="All_dictionary" code="191" />
+    </avp>
+
+	<avp name="Unisphere-Ipv6-Acct-Output-Gigawords" vendor="Juniper-Unisphere"
+		code="156" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="156" />
+	</avp>
+	<avp name="Unisphere-IPv6-Delegated-Pool-Name" vendor="Juniper-Unisphere"
+		code="161" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="161" />
+	</avp>
+	<avp name="Unisphere-Profile-Name" vendor="Juniper-Unisphere"
+		code="174" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="174" />
+	</avp>	
+	<avp name="Unisphere-Cos-Shaping-Rate" vendor="Juniper-Unisphere"
+		code="177" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="177" />
+	</avp>
+	
+	<avp name="Unisphere-Virtual-Router" vendor="Juniper-Unisphere"
+		code="1" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="1" />
+	</avp>
+	<avp name="Unisphere-Local-Address-Pool" vendor="Juniper-Unisphere"
+		code="2" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="2" />
+	</avp>
+	<avp name="Unisphere-Local-Interface" vendor="Juniper-Unisphere"
+		code="3" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="3" />
+	</avp>
+	<avp name="Unisphere-Primary-DNS" vendor="Juniper-Unisphere" code="4"
+		type="ipv4-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="4" />
+	</avp>
+	<avp name="Unisphere-Secondary-DNS" vendor="Juniper-Unisphere"
+		code="5" type="ipv4-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="5" />
+	</avp>
+	<avp name="Unisphere-Primary-WINS" vendor="Juniper-Unisphere" code="6"
+		type="ipv4-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="6" />
+	</avp>
+	<avp name="Unisphere-Secondary-WINS" vendor="Juniper-Unisphere"
+		code="7" type="ipv4-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="7" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Virtual-Router" vendor="Juniper-Unisphere"
+		code="8" type="tagged-string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="8" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Password" vendor="Juniper-Unisphere"
+		code="9" type="tagged-string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="9" />
+	</avp>
+	<avp name="Unisphere-Ingress-Policy-Name" vendor="Juniper-Unisphere"
+		code="10" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="10" />
+	</avp>
+	<avp name="Unisphere-Egress-Policy-Name" vendor="Juniper-Unisphere"
+		code="11" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="11" />
+	</avp>
+	<avp name="Unisphere-Ingress-Statistics" vendor="Juniper-Unisphere"
+		code="12" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disable" code="0" />
+		<enum name="enable" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="12" />
+	</avp>
+	<avp name="Unisphere-Egress-Statistics" vendor="Juniper-Unisphere"
+		code="13" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disable" code="0" />
+		<enum name="enable" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="13" />
+	</avp>
+	<avp name="Unisphere-Service-Category" vendor="Juniper-Unisphere"
+		code="14" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="UBR" code="1" />
+		<enum name="UBRPCR" code="2" />
+		<enum name="nrtVBR" code="3" />
+		<enum name="CBR" code="4" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="14" />
+	</avp>
+	<avp name="Unisphere-PCR" vendor="Juniper-Unisphere" code="15"
+		type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="15" />
+	</avp>
+	<avp name="Unisphere-SCR" vendor="Juniper-Unisphere" code="16"
+		type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="16" />
+	</avp>
+	<avp name="Unisphere-MBS" vendor="Juniper-Unisphere" code="17"
+		type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="17" />
+	</avp>
+	<avp name="Unisphere-Init-CLI-Access-Level" vendor="Juniper-Unisphere"
+		code="18" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="18" />
+	</avp>
+	<avp name="Unisphere-Allow-All-VR-Access" vendor="Juniper-Unisphere"
+		code="19" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disable" code="0" />
+		<enum name="enable" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="19" />
+	</avp>
+	<avp name="Unisphere-Alt-CLI-Access-Level" vendor="Juniper-Unisphere"
+		code="20" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="20" />
+	</avp>
+	<avp name="Unisphere-Alt-CLI-VRouter-Name" vendor="Juniper-Unisphere"
+		code="21" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="21" />
+	</avp>
+	<avp name="Unisphere-SA-Validate" vendor="Juniper-Unisphere" code="22"
+		type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disable" code="0" />
+		<enum name="enable" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="22" />
+	</avp>
+	<avp name="Unisphere-IGMP-Enable" vendor="Juniper-Unisphere" code="23"
+		type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disable" code="0" />
+		<enum name="enable" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="23" />
+	</avp>
+	<avp name="Unisphere-PPPoE-Description" vendor="Juniper-Unisphere"
+		code="24" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="24" />
+	</avp>
+	<avp name="Unisphere-Redirect-VRouter-Name" vendor="Juniper-Unisphere"
+		code="25" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="25" />
+	</avp>
+	<avp name="Unisphere-QoS-Profile-Name" vendor="Juniper-Unisphere"
+		code="26" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="26" />
+	</avp>
+	<avp name="Unisphere-PPPoE-URL" vendor="Juniper-Unisphere" code="28"
+		type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="28" />
+	</avp>
+	<avp name="Unisphere-Nas-Port-Method" vendor="Juniper-Unisphere"
+		code="30" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="none" code="1" />
+		<enum name="cisco-avp" code="2" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="30" />
+	</avp>
+	<avp name="Unisphere-Service-Bundle" vendor="Juniper-Unisphere"
+		code="31" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="31" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Max-Sessions" vendor="Juniper-Unisphere"
+		code="33" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="33" />
+	</avp>
+	<avp name="Unisphere-Framed-IP-Route-Tag" vendor="Juniper-Unisphere"
+		code="34" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="34" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Dialout-Number" vendor="Juniper-Unisphere"
+		code="35" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="35" />
+	</avp>
+	<avp name="Unisphere-PPP-Username" vendor="Juniper-Unisphere" code="36"
+		type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="36" />
+	</avp>
+	<avp name="Unisphere-PPP-Password" vendor="Juniper-Unisphere" code="37"
+		type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="37" />
+	</avp>
+	<avp name="Unisphere-PPP-Protocol" vendor="Juniper-Unisphere" code="38"
+		type="Enumerated" codec="Juniper_dictionary">
+		<enum name="none" code="0" />
+		<enum name="pap" code="1" />
+		<enum name="chap" code="2" />
+		<enum name="pap-chap" code="3" />
+		<enum name="chap-pap" code="4" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="38" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Min-BPS" vendor="Juniper-Unisphere"
+		code="39" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="39" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Max-BPS" vendor="Juniper-Unisphere"
+		code="40" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="40" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Bearer-Type" vendor="Juniper-Unisphere"
+		code="41" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="none" code="0" />
+		<enum name="analog" code="1" />
+		<enum name="digital" code="2" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="41" />
+	</avp>
+	<avp name="Unisphere-Input-Gigapackets" vendor="Juniper-Unisphere"
+		code="42" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="42" />
+	</avp>
+	<avp name="Unisphere-Output-Gigapackets" vendor="Juniper-Unisphere"
+		code="43" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="43" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Interface-Id" vendor="Juniper-Unisphere"
+		code="44" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="44" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Virtual-Router" vendor="Juniper-Unisphere"
+		code="45" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="45" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Local-Interface" vendor="Juniper-Unisphere"
+		code="46" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="46" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Primary-DNS" vendor="Juniper-Unisphere"
+		code="47" type="ipv6-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="47" />
+	</avp>
+	<avp name="Unisphere-Ipv6-Secondary-DNS" vendor="Juniper-Unisphere"
+		code="48" type="ipv6-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="48" />
+	</avp>
+	<avp name="Unisphere-L2TP-PPP-Disconnect-Cause" vendor="Juniper-Unisphere"
+		code="51" type="Hex-OctetString" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="51" />
+	</avp>
+	<avp name="Unisphere-Radius-Client-Address" vendor="Juniper-Unisphere"
+		code="52" type="ipv4-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="52" />
+	</avp>
+	<avp name="Unisphere-Profile-Service-Description" vendor="Juniper-Unisphere"
+		code="53" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="53" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Receive-Window-Size" vendor="Juniper-Unisphere"
+		code="54" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="54" />
+	</avp>
+	<avp name="Unisphere-DHCP-Options" vendor="Juniper-Unisphere" code="55"
+		type="Hex-OctetString" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="55" />
+	</avp>
+	<avp name="Unisphere-DHCP-MAC-Address" vendor="Juniper-Unisphere"
+		code="56" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="56" />
+	</avp>
+	<avp name="Unisphere-DHCP-GI-Address" vendor="Juniper-Unisphere"
+		code="57" type="ipv4-address" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="57" />
+	</avp>
+	<avp name="Unisphere-LI-Action" vendor="Juniper-Unisphere" code="58"
+		type="Salted-Integer-Enumeration" codec="Juniper_dictionary">
+		<alias name="Unisphere-Mirror-Action" />
+		<enum name="off" code="0" />
+		<enum name="on" code="1" />
+		<enum name="noop" code="2" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="58" />
+	</avp>
+	<avp name="Unisphere-Med-Dev-Handle" vendor="Juniper-Unisphere"
+		code="59" type="Salted-Hexed-Opaque" codec="Juniper_dictionary">
+		<alias name="Unisphere-Mirror-Identifier" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="59" />
+	</avp>
+	<avp name="Unisphere-Med-Ip-Address" vendor="Juniper-Unisphere"
+		code="60" type="Salted-IPv4-Address" codec="Juniper_dictionary">
+		<alias name="Unisphere-Analyzer-IP-Address" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="60" />
+	</avp>
+	<avp name="Unisphere-Med-Port-Number" vendor="Juniper-Unisphere"
+		code="61" type="Salted-Unsigned32" codec="Juniper_dictionary">
+		<alias name="Unisphere-Analyzer-Port-Number" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="61" />
+	</avp>
+	<avp name="Unisphere-MLPPP-Bundle-Name" vendor="Juniper-Unisphere"
+		code="62" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="62" />
+	</avp>
+	<avp name="Unisphere-Interface-Description" vendor="Juniper-Unisphere"
+		code="63" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="63" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Group" vendor="Juniper-Unisphere" code="64"
+		type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="64" />
+	</avp>
+	<avp name="Unisphere-Activate-Service" vendor="Juniper-Unisphere"
+		code="65" type="tagged-string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="65" />
+	</avp>
+	<avp name="Unisphere-Deactivate-Service" vendor="Juniper-Unisphere"
+		code="66" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="66" />
+	</avp>
+	<avp name="Unisphere-Service-Volume" vendor="Juniper-Unisphere"
+		code="67" type="tagged-integer" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="67" />
+	</avp>
+	<avp name="Unisphere-Service-Timeout" vendor="Juniper-Unisphere"
+		code="68" type="tagged-integer" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="68" />
+	</avp>
+	<avp name="Unisphere-Service-Stats" vendor="Juniper-Unisphere"
+		code="69" type="tagged-enumeration" codec="Juniper_dictionary">
+		<enum name="disabled" code="0" />
+		<enum name="timestampOnly" code="1" />
+		<enum name="timestampAndVolume" code="2" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="69" />
+	</avp>
+	<avp name="Unisphere-Ignore-DF-Bit" vendor="Juniper-Unisphere"
+		code="70" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="dont-ignore-df-bit" code="0" />
+		<enum name="ignore-df-bit" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="70" />
+	</avp>
+	<avp name="Unisphere-IGMP-Access-Group-Name" vendor="Juniper-Unisphere"
+		code="71" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="71" />
+	</avp>
+	<avp name="Unisphere-IGMP-Access-Source-Group-Name" vendor="Juniper-Unisphere"
+		code="72" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="72" />
+	</avp>
+	<avp name="Unisphere-IGMP-OIF-Map-Name" vendor="Juniper-Unisphere"
+		code="73" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="73" />
+	</avp>
+	<avp name="Unisphere-MLD-Access-Group-Name" vendor="Juniper-Unisphere"
+		code="74" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="74" />
+	</avp>
+	<avp name="Unisphere-MLD-Access-Source-Group-Name" vendor="Juniper-Unisphere"
+		code="75" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="75" />
+	</avp>
+	<avp name="Unisphere-MLD-OIF-Map-Name" vendor="Juniper-Unisphere"
+		code="76" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="76" />
+	</avp>
+	<avp name="Unisphere-MLD-Version" vendor="Juniper-Unisphere" code="77"
+		type="Enumerated" codec="Juniper_dictionary">
+		<enum name="V1" code="1" />
+		<enum name="V2" code="2" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="77" />
+	</avp>
+	<avp name="Unisphere-IGMP-Version" vendor="Juniper-Unisphere" code="78"
+		type="Enumerated" codec="Juniper_dictionary">
+		<enum name="V1" code="1" />
+		<enum name="V2" code="2" />
+		<enum name="V3" code="3" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="78" />
+	</avp>
+	<avp name="Unisphere-IP-Mcast-Adm-Bw-Limit" vendor="Juniper-Unisphere"
+		code="79" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="79" />
+	</avp>
+	<avp name="Unisphere-IPv6-Mcast-Adm-Bw-Limit" vendor="Juniper-Unisphere"
+		code="80" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="80" />
+	</avp>
+	<avp name="Unisphere-L2C-Information" vendor="Juniper-Unisphere"
+		code="81" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="81" />
+	</avp>
+	<avp name="Unisphere-QoS-Parameters" vendor="Juniper-Unisphere"
+		code="82" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="82" />
+	</avp>
+	<avp name="Unisphere-Service-Session" vendor="Juniper-Unisphere"
+		code="83" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="83" />
+	</avp>
+	<avp name="Unisphere-L2TP-Resynch-Method" vendor="Juniper-Unisphere"
+		code="90" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disable" code="0" />
+		<enum name="failover" code="1" />
+		<enum name="silent-failover" code="2" />
+		<enum name="failover-with-silent-backup" code="3" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="90" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Switch-Profile" vendor="Juniper-Unisphere"
+		code="91" type="string" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="91" />
+	</avp>
+	<avp name="Unisphere-L2c-Up-Stream-Data" vendor="Juniper-Unisphere"
+		code="92" type="Hex-OctetString" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="92" />
+	</avp>
+	<avp name="Unisphere-L2c-Down-Stream-Data" vendor="Juniper-Unisphere"
+		code="93" type="Hex-OctetString" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="93" />
+	</avp>
+	<avp name="Unisphere-Tunnel-Tx-Speed-Method" vendor="Juniper-Unisphere"
+		code="94" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="static-layer2" code="1" />
+		<enum name="dynamic-layer2" code="2" />
+		<enum name="qos" code="3" />
+		<enum name="actual" code="4" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="94" />
+	</avp>
+	<avp name="Unisphere-IGMP-Query-Interval" vendor="Juniper-Unisphere"
+		code="95" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="95" />
+	</avp>
+	<avp name="Unisphere-IGMP-Max-Resp-Time" vendor="Juniper-Unisphere"
+		code="96" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="96" />
+	</avp>
+	<avp name="Unisphere-IGMP-Immediate-Leave" vendor="Juniper-Unisphere"
+		code="97" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disabled" code="0" />
+		<enum name="enabled" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="97" />
+	</avp>
+	<avp name="Unisphere-MLD-Query-Interval" vendor="Juniper-Unisphere"
+		code="98" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="98" />
+	</avp>
+	<avp name="Unisphere-MLD-Max-Resp-Time" vendor="Juniper-Unisphere"
+		code="99" type="Unsigned32" codec="Juniper_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="99" />
+	</avp>
+	<avp name="Unisphere-MLD-Immediate-Leave" vendor="Juniper-Unisphere"
+		code="100" type="Enumerated" codec="Juniper_dictionary">
+		<enum name="disabled" code="0" />
+		<enum name="enabled" code="1" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="100" />
+	</avp>
+
+	<!-- ADDED Cisco VSAs -->
+	<avp name="Cisco-AVPair" vendor="Cisco" code="1" type="cisco-avpair"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="1" />
+	</avp>
+	<avp name="cisco-vsa-port-string" vendor="Cisco" code="2" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="2" />
+	</avp>
+	<avp name="cisco-h323-remote-address" vendor="Cisco" code="23"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="23" />
+	</avp>
+	<avp name="cisco-h323-conf-id" vendor="Cisco" code="24" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="24" />
+	</avp>
+	<avp name="cisco-h323-setup-time" vendor="Cisco" code="25" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="25" />
+	</avp>
+	<avp name="cisco-h323-call-origin" vendor="Cisco" code="26" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="26" />
+	</avp>
+	<avp name="cisco-h323-call-type" vendor="Cisco" code="27" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="27" />
+	</avp>
+	<avp name="cisco-h323-connect-time" vendor="Cisco" code="28" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="28" />
+	</avp>
+	<avp name="cisco-h323-disconnect-time" vendor="Cisco" code="29"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="29" />
+	</avp>
+	<avp name="cisco-h323-disconnect-cause" vendor="Cisco" code="30"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="30" />
+	</avp>
+	<avp name="cisco-h323-voice-quality" vendor="Cisco" code="31" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="31" />
+	</avp>
+	<avp name="cisco-h323-gw-id" vendor="Cisco" code="33" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="33" />
+	</avp>
+	<avp name="cisco-h323-incoming-conn-id" vendor="Cisco" code="35"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="35" />
+	</avp>
+	<avp name="cisco-h323-credit-amount" vendor="Cisco" code="101"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="101" />
+	</avp>
+	<avp name="cisco-h323-credit-time" vendor="Cisco" code="102" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="102" />
+	</avp>
+	<avp name="cisco-h323-return-code" vendor="Cisco" code="103" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="103" />
+	</avp>
+	<avp name="cisco-h323-prompt-id" vendor="Cisco" code="104" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="104" />
+	</avp>
+	<avp name="cisco-h323-day-and-time" vendor="Cisco" code="105" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="105" />
+	</avp>
+	<avp name="cisco-h323-redirect-number" vendor="Cisco" code="106"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="106" />
+	</avp>
+	<avp name="cisco-h323-preferred-lang" vendor="Cisco" code="107"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="107" />
+	</avp>
+	<avp name="cisco-h323-redirect-ip-addr" vendor="Cisco" code="108"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="108" />
+	</avp>
+	<avp name="cisco-h323-billing-model" vendor="Cisco" code="109"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="109" />
+	</avp>
+	<avp name="cisco-h323-currency" vendor="Cisco" code="110" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="110" />
+	</avp>
+	<avp name="Cisco-IP-Pool-Definition" vendor="Cisco" code="217"
+		type="string" codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="217" />
+	</avp>
+	<avp name="Cisco-Assign-IP-Pool" vendor="Cisco" code="218" type="Unsigned32"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="218" />
+	</avp>
+	<avp name="Cisco-Link-Compression" vendor="Cisco" code="233" type="Enumerated"
+		codec="Cisco_dictionary">
+		<enum name="None" code="0" />
+		<enum name="Stac" code="1" />
+		<enum name="Stac-LZS" code="2" />
+		<enum name="MS-Stac" code="3" />
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="233" />
+	</avp>
+	<avp name="cisco-ssg-account-info" vendor="Cisco" code="250" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="250" />
+	</avp>
+	<avp name="cisco-ssg-service-info" vendor="Cisco" code="251" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="251" />
+	</avp>
+	<avp name="cisco-ssg-control-info" vendor="Cisco" code="253" type="string"
+		codec="Cisco_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="253" />
+	</avp>
+
+
+	<!-- ADDED Huawei VSAs -->
+
+	<avp name="HW-Input-Committed-Burst-Size" vendor="Huawei" code="1"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="1" />
+	</avp>
+	<avp name="HW-Input-Committed-Information-Rate" vendor="Huawei"
+		code="2" type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="2" />
+	</avp>
+	<avp name="HW-Input-Peak-Information-Rate" vendor="Huawei" code="3"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="3" />
+	</avp>
+	<avp name="HW-Output-Committed-Burst-Size" vendor="Huawei" code="4"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="4" />
+	</avp>
+	<avp name="HW-Output-Committed-Information-Rate" vendor="Huawei"
+		code="5" type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="5" />
+	</avp>
+	<avp name="HW-Output-Peak-Information-Rate" vendor="Huawei" code="6"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="6" />
+	</avp>
+	<avp name="HW-Remanent-Volume" vendor="Huawei" code="15" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="15" />
+	</avp>
+	<avp name="HW-Priority" vendor="Huawei" code="22" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="22" />
+	</avp>
+	<avp name="HW-Connect-ID" vendor="Huawei" code="26" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="26" />
+	</avp>
+	<avp name="HW-Portal-URL" vendor="Huawei" code="27" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="27" />
+	</avp>
+	<avp name="HW-QoS-Profile-Name" vendor="Huawei" code="31" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="31" />
+	</avp>
+	<avp name="HW-Command-Mode" vendor="Huawei" code="34" type="hex-octetstring"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="34" />
+	</avp>
+	<avp name="HW-NAS-Startup-Time-Stamp" vendor="Huawei" code="59"
+		type="Timestamp" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="59" />
+	</avp>
+	<avp name="HW-IP-Host-Address" vendor="Huawei" code="60" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="60" />
+	</avp>
+	<avp name="HW-Up-Priority" vendor="Huawei" code="61" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="61" />
+	</avp>
+	<avp name="HW-Down-Priority" vendor="Huawei" code="62" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="62" />
+	</avp>
+	<avp name="HW-Input-Peak-Burst-Size" vendor="Huawei" code="77"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="77" />
+	</avp>
+	<avp name="HW-Output-Peak-Burst-Size" vendor="Huawei" code="78"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="78" />
+	</avp>
+	<avp name="HW-Data-Filter" vendor="Huawei" code="82" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="82" />
+	</avp>
+	<avp name="HW-Accounting-Level" vendor="Huawei" code="84" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="84" />
+	</avp>
+	<avp name="HW-Portal-Mode" vendor="Huawei" code="85" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="85" />
+	</avp>
+	<avp name="HW-VPN-Instance" vendor="Huawei" code="94" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="94" />
+	</avp>
+	<avp name="HW-Policy-Name" vendor="Huawei" code="95" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="95" />
+	</avp>
+	<!-- Lawful Interception -->
+	<avp name="HW-LI-ID" vendor="Huawei" code="101" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="101" />
+	</avp>
+	<avp name="HW-LI-Md-Address" vendor="Huawei" code="102" type="ipv4-address"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="102" />
+	</avp>
+		<avp name="HW-LI-Md-Port" vendor="Huawei" code="103" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="103" />
+	</avp>
+	<avp name="HW-LI-Md-VPNInstance" vendor="Huawei" code="104" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="104" />
+	</avp>
+	<avp name="HW-LI-Enable" vendor="Huawei" code="105" type="Unsigned32"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="105" />
+	</avp>
+	
+	<avp name="HW-Client-Primary-DNS" vendor="Huawei" code="135"
+		type="ipv4-address" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="135" />
+	</avp>
+	<avp name="HW-Client-Secondary-DNS" vendor="Huawei" code="136"
+		type="ipv4-address" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="136" />
+	</avp>
+	<avp name="HW-Domain-Name" vendor="Huawei" code="138" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="138" />
+	</avp>
+	<avp name="HW-HTTP-Redirect-URL" vendor="Huawei" code="140" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="140" />
+	</avp>
+	<avp name="HW-Acct-ipv6-Input-Octets" vendor="Huawei" code="144"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="144" />
+	</avp>
+	<avp name="HW-Acct-ipv6-Output-Octets" vendor="Huawei" code="145"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="145" />
+	</avp>
+	<avp name="HW-Acct-ipv6-Input-Packets" vendor="Huawei" code="146"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="146" />
+	</avp>
+	<avp name="HW-Acct-ipv6-Output-Packets" vendor="Huawei" code="147"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="147" />
+	</avp>
+	<avp name="HW-Acct-ipv6-Input-Gigawords" vendor="Huawei" code="148"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="148" />
+	</avp>
+	<avp name="HW-Acct-ipv6-Output-Gigawords" vendor="Huawei" code="149"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="149" />
+	</avp>
+	<avp name="HW-User-MAC" vendor="Huawei" code="153" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="153" />
+	</avp>
+	<avp name="HW-DNS-Server-IPv6-Address" vendor="Huawei" code="154"
+		type="ipv6-address" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="154" />
+	</avp>
+	<avp name="HW-Framed-Pool-Group" vendor="Huawei" code="157"
+		type="string" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="157" />
+	</avp>
+	<avp name="HW-Acct-Update-Address" vendor="Huawei" code="159"
+		type="ipv4-address" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="159" />
+	</avp>
+	<avp name="HW-Public-IP-Addr-State" vendor="Huawei" code="168"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="168" />
+	</avp>
+	
+	<!-- Lawful interception -->
+	<avp name="HW-LI-Enable-New" vendor="Huawei" code="170"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="170" />
+	</avp>
+	<avp name="HW-LI-Target-Id" vendor="Huawei" code="171"
+		type="Unsigned32" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="171" />
+	</avp>	
+	<avp name="HW-LI-Profile-Name" vendor="Huawei" code="174"
+		type="string" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="174" />
+	</avp>
+	
+	<avp name="HW-Acct-terminate-subcause" vendor="Huawei" code="181"
+		type="Enumerated" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="182" />
+	</avp>
+	<avp name="HW-QoS-Down-Profile-Name" vendor="Huawei" code="182"
+		type="string" codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="182" />
+	</avp>
+	<avp name="HW-Account-Info" vendor="Huawei" code="184" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="184" />
+	</avp>
+	<avp name="HW-Service-Info" vendor="Huawei" code="185" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="185" />
+	</avp>
+	<avp name="HW-AVpair" vendor="Huawei" code="188" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="188" />
+	</avp>
+	<avp name="HW-Delegated-IPv6-Prefix-Pool" vendor="Huawei" code="191" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="191" />
+	</avp> 
+	<avp name="HW-Version" vendor="Huawei" code="254" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="254" />
+	</avp>
+	<avp name="HW-Product-ID" vendor="Huawei" code="255" type="string"
+		codec="ME60_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="255" />
+	</avp>
+
+	<!-- Atributos Nokia -->
+    <!--
+        Old Nokia - Alcatel attributes. Already in alu.dict
+        Written here to avoid being sent to any BRAS but Nokia's.
+    -->
+	<avp name="Alc-Primary-Dns" vendor="Alcatel-Lucent-IPD" code="9" type="ipv4-address"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    <avp name="Alc-Secondary-Dns" vendor="Alcatel-Lucent-IPD" code="10" type="ipv4-address"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    <avp name="Alc-Client-Hardware-Addr" vendor="Alcatel-Lucent-IPD" code="27" type="string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    <avp name="Alc-Subscriber-QoS-Override" vendor="Alcatel-Lucent-IPD" code="126" type="string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    <avp name="Alc-Delegated-Ipv6-Pool" vendor="Alcatel-Lucent-IPD" code="131" type="string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    <avp name="Alc-Ipv6-Primary-Dns" vendor="Alcatel-Lucent-IPD" code="105" type="ipv6-address"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    <avp name="Alc-Ipv6-Secondary-Dns" vendor="Alcatel-Lucent-IPD" code="106" type="ipv6-address"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+    
+    <!--
+        New Nokia attributes. No present in alu.dict.
+    -->
+	<avp name="Alc-Sub-Serv-Activate" vendor="Alcatel-Lucent-IPD" code="151" type="tagged-string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="151" />
+	</avp>
+	<avp name="Alc-Sub-Serv-Deactivate" vendor="Alcatel-Lucent-IPD" code="152" type="tagged-string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="152" />
+	</avp>
+	<avp name="Alc-Sub-Serv-Acct-Stats-Type" vendor="Alcatel-Lucent-IPD" code="153" type="tagged-enumeration"
+		codec="Nokia_dictionary">
+		<enum name="off" code="1"/>
+		<enum name="volume-time" code="2"/>
+		<enum name="time" code="3"/>
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="153" />
+	</avp>
+	<avp name="Alc-Sub-Serv-Acct-Interim-Ivl" vendor="Alcatel-Lucent-IPD" code="154" type="tagged-integer"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="154" />
+	</avp>
+	<avp name="Alc-Nas-Filter-Rule-Shared" vendor="Alcatel-Lucent-IPD" code="158" type="string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="158" />
+	</avp>
+	<avp name="Alc-Acct-Triggered-Reason" vendor="Alcatel-Lucent-IPD" code="163" type="tagged-enumeration"
+		codec="Nokia_dictionary">
+		<enum name="regular" code="1"/>
+		<enum name="sla-start" code="2"/>
+		<enum name="sla-stop" code="3"/>
+		<enum name="Framed-IP-Address-up" code="4"/>
+		<enum name="Framed-IP-Address-down" code="5"/>
+		<enum name="Alc-Ipv6-Address-up" code="6"/>
+		<enum name="Alc-Ipv6-Address-down" code="7"/>
+		<enum name="Delegated-IPv6-Prefix-up" code="8"/>
+		<enum name="Delegated-IPv6-Prefix-down" code="9"/>
+		<enum name="Framed-IPv6-Prefix-up" code="10"/>
+		<enum name="Framed-IPv6-Prefix-down" code="11"/>
+		<enum name="Interval-Changed" code="12"/>
+		<enum name="DSL-Line-Attributes-Changed" code="13"/>
+		<enum name="Wlan-Mobility-Event" code="14"/>
+		<enum name="Persistence-Recover" code="15"/>
+		<enum name="SRRP-Switchover" code="16"/>
+		<enum name="Nat-Port-Range-Event" code="17"/>
+		<enum name="CoA-Triggered" code="18"/>
+		<enum name="Nat-Free" code="19"/>
+		<enum name="Nat-Map" code="20"/>
+		<enum name="Nat-Update" code="21"/>
+		<enum name="Stateless-SRRP-Switchover" code="22"/>
+		<enum name="Data-Triggered-Host-Promotion" code="23"/>
+		<enum name="Lac-Traffic-Steering-Enabled" code="24"/>
+		<enum name="Lac-Traffic-Steering-Disabled" code="25"/>
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="163" />
+	</avp>
+	<avp name="Alc-SLAAC-IPv6-Pool" vendor="Alcatel-Lucent-IPD" code="181" type="string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="181" />
+	</avp>
+	<avp name="Alc-Error-Code" vendor="Alcatel-Lucent-IPD" code="226" type="Unsigned32"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="226" />
+	</avp>
+	<avp name="Alc-Error-Message" vendor="Alcatel-Lucent-IPD" code="227" type="string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="227" />
+	</avp>
+
+    <!--
+        Indra AVPair used only for the integration with Nokia 
+    -->
+    <avp name="Indra-PCC-Rule" vendor="Indra-Sistemas" code="1" type="tagged-string"
+		codec="Nokia_dictionary">
+		<codec name="Redback_dictionary" code="" />
+		<codec name="Cisco_dictionary" code="" />
+		<codec name="Juniper_dictionary" code="" />
+		<codec name="ME60_dictionary" code="" />
+		<codec name="Sandvine_dictionary" code="" />
+		<codec name="All_dictionary" code="1" />
+	</avp>
+
+</dictionary>

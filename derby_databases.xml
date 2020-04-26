@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "stanza_file.dtd">
+<table>
+    <entry name="provision">
+        <property name="Derby-Replication-Mode" value="standalone" />
+    </entry>
+
+    <entry name="aaa">
+        <property name="Derby-Replication-Mode" value="standalone" />
+    </entry>
+
+    <entry name="log">
+        <property name="Derby-Replication-Mode" value="standalone" />
+    </entry>
+</table>

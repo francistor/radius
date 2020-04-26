@@ -1,0 +1,641 @@
+<?xml version="1.0" standalone="no"?>
+<!-- ? 2017 Nokia. All rights reserved. -->
+
+<!-- Note that this file will be overwritten during an upgrade. Make changes in custom.dict -->
+
+<!DOCTYPE dictionary SYSTEM "dictionary.dtd">
+
+<dictionary codec="#default" mandatory="should" overwrite="true">
+
+
+<!-- ETSI VSAs -->
+
+    <avp name="ETSI-Globally-Unique-Address" vendor="ETSI" code="300" type="grouped" reference="ETSI/283.034_2.2.0/7.3" >
+        <group>
+            <optional>
+                <avprule name="Framed-IP-Address" maximum="1" />
+                <avprule name="Framed-IPv6-Prefix" maximum="1" />
+                <avprule name="ETSI-Address-Realm" maximum="1" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-Address-Realm" vendor="ETSI" code="301" type="OctetString" reference="ETSI/283.034_2.2.0/7.3" log="scramble"/>
+    <avp name="ETSI-Logical-Access-Id" vendor="ETSI" code="302" type="OctetString" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-Initial-Gate-Setting" vendor="ETSI" code="303" type="grouped" reference="ETSI/283.034_2.2.0/7.3" >
+        <group>
+            <required>
+                <avprule name="NAS-Filter-Rule" />
+            </required>
+            <optional>
+                <avprule name="ETSI-Maximum-Allowed-Bandwidth-UL" maximum="1" />
+                <avprule name="ETSI-Maximum-Allowed-Bandwidth-DL" maximum="1" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-QoS-Profile-Description" vendor="ETSI" code="304" type="grouped" reference="ETSI/283.034_2.2.0/7.3" >
+        <group>
+            <optional>
+                <avprule name="ETSI-Application-Class-Id" />
+                <avprule name="3GPP-Media-Type" />
+                <avprule name="ETSI-Reservation-Priority" maximum="1" />
+                <avprule name="ETSI-Maximum-Allowed-Bandwidth-UL" maximum="1" />
+                <avprule name="ETSI-Maximum-Allowed-Bandwidth-DL" maximum="1" />
+                <avprule name="ETSI-Transport-Class" maximum="1" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-IP-Connectivity-Status" vendor="ETSI" code="305" type="Enumerated" reference="ETSI/283.034_2.2.0/7.3" >
+        <enum name="IP-CONNECTIVITY-ON" code="0"/>
+        <enum name="IP-CONNECTIVITY-LOST" code="1"/>
+    </avp>
+    <avp name="ETSI-Access-Network-Type" vendor="ETSI" code="306" type="grouped" reference="ETSI/283.034_2.2.0/7.3" >
+        <group>
+            <required>
+                <avprule name="Nas-Port-Type" maximum="1" />
+            </required>
+            <optional>
+                <avprule name="ETSI-Aggregation-Network-Type" maximum="1" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-Aggregation-Network-Type" vendor="ETSI" code="307" type="Enumerated" reference="ETSI/283.034_2.2.0/7.3">
+        <enum name="UNKNOWN" code="0"/>
+        <enum name="ATM" code="1"/>
+        <enum name="ETHERNET" code="2"/>
+    </avp>
+    <avp name="ETSI-Maximum-Allowed-Bandwidth-UL" vendor="ETSI" code="308" type="Unsigned32" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-Maximum-Allowed-Bandwidth-DL" vendor="ETSI" code="309" type="Unsigned32" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-Transport-Class" vendor="ETSI" code="311" type="Unsigned32" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-Application-Class-Id" vendor="ETSI" code="312" type="string" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-Physical-Access-Id" vendor="ETSI" code="313" type="string" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-Initial-Gate-Setting-ID" vendor="ETSI" code="314" type="Unsigned32" reference="ETSI/283.034_2.2.0/7.3" />
+    <avp name="ETSI-QoS-Profile-ID" vendor="ETSI" code="315" type="Unsigned32" reference="ETSI/283.034_2.2.0/7.3" />
+
+    <avp name="ETSI-Location-Information" vendor="ETSI" code="350" type="grouped" reference="ETSI/283.035_3.1.1/7.3" log="scramble">
+        <group>
+            <optional>
+                <avprule name="ETSI-Line-Identifier" maximum="1" />
+                <avprule name="ETSI-Civic-Location" maximum="1" />
+                <avprule name="ETSI-Geospatial-Location" maximum="1" />
+                <avprule name="ETSI-Operator-Specific-GI" maximum="1" />
+                <avprule name="ETSI-PIDF-Location-Object" maximum="1" />
+                <avprule name="AVP"/>
+            </optional>
+        </group>
+    </avp>
+   <avp name="ETSI-Policy-Control-Contact-Point" vendor="ETSI" code="351" type="DiameterIdentity" reference="ETSI/283.035_3.1.1/7.3" >
+	    <alias name="ETSI-RACS-Contact-Point" />
+   </avp>
+   <avp name="ETSI-Terminal-Type" vendor="ETSI" code="352" type="OctetString" reference="ETSI/283.035_3.1.1/7.3" />
+		<!-- value of the User Class DHCP Option (77). -->
+   <avp name="ETSI-Requested-Information" vendor="ETSI" code="353" type="Enumerated" mandatory="should-not" reference="ETSI/283.035_3.1.1/7.3.4" >
+        <enum name="NASS-USER-ID" code="0" >
+            <alias name="SUBSCRIBER-ID"/>
+        </enum>
+        <enum name="LOCATION-INFORMATION" code="1"/>
+        <enum name="POLICY-CONTROL-CONTACT-POINT" code="2" >
+            <alias name="RACS-CONTACT-POINT"/>
+        </enum>
+        <enum name="ACCESS-NETWORK-TYPE" code="3"/>
+        <enum name="TERMINAL-TYPE" code="4"/>
+        <enum name="LOGICAL-ACCESS-ID" code="5"/>
+        <enum name="PHYSICAL-ACCESS-ID" code="6"/>
+        <!-- <enum name="ACCESS-NETWORK-TYPE" code="7"/> typo in Specification and repeated with value 3 -->
+        <enum name="INITIAL-GATE-SETTING" code="8"/>
+        <enum name="QOS-PROFILE" code="9"/>
+        <enum name="IP-CONNECTIVITY-STATUS" code="10"/>
+        <enum name="EMERGENCY-CALL-ROUTING-INFO" code="11"/>
+    </avp>
+    <avp name="ETSI-Event-Type" vendor="ETSI" code="354" type="Enumerated" mandatory="should-not" reference="ETSI/283.035_3.1.1/7.3.6" >
+        <enum name="USER-LOGON" code="0"/>
+        <enum name="LOCATION-INFORMATION-CHANGED" code="1"/>
+        <enum name="POLICY-CONTROL-CONTACT-POINT-CHANGED" code="2"/>
+        <enum name="ACCESS-NETWORK-TYPE-CHANGED" code="3"/>
+        <enum name="TERMINAL-TYPE-CHANGED" code="4"/>
+        <enum name="LOGICAL-ACCESS-ID-CHANGED" code="5"/>
+        <enum name="PHYSICAL-ACCESS-ID-CHANGED" code="6"/>
+        <enum name="IP-ADDRESS-CHANGED" code="7"/>
+        <enum name="INITIAL-GATE-SETTING-CHANGED" code="8"/>
+        <enum name="QOS-PROFILE-CHANGED" code="9"/>
+        <enum name="USER-LOGOFF" code="10"/>
+    </avp>
+    <avp name="ETSI-Civic-Location" vendor="ETSI" code="355" type="civic-location-profile" reference="ETSI/283.035_3.1.1/7.3" >
+        <!-- Note CC attribute set to 2-letter ISO country code is also required in this grouped value -->
+        <enum name="Language" code="0"/>
+        <enum name="A1" code="1"/>
+        <enum name="A2" code="2"/>
+        <enum name="A3" code="3"/>
+        <enum name="A4" code="4"/>
+        <enum name="A5" code="5"/>
+        <enum name="A6" code="6"/>
+        <enum name="PRD" code="16"/>
+        <enum name="POD" code="17"/>
+        <enum name="STS" code="18"/>
+        <enum name="HNO" code="19"/>
+        <enum name="HNS" code="20"/>
+        <enum name="LMK" code="21"/>
+        <enum name="LOC" code="22"/>
+        <enum name="NAM" code="23"/>
+        <enum name="PC" code="24"/>
+        <enum name="Bldg" code="25"/>
+        <enum name="Unit" code="26"/>
+        <enum name="FLR" code="27"/>
+        <enum name="Room" code="28"/>
+        <enum name="Place-Type" code="29"/>
+        <enum name="PCN" code="30"/>
+        <enum name="POB" code="31"/>
+        <enum name="Additional-Code" code="32"/>
+        <enum name="SEAT" code="33"/>
+        <enum name="Primary-Road" code="34"/>
+        <enum name="Road-Section" code="35"/>
+        <enum name="Branch-Road" code="36"/>
+        <enum name="Sub-Branch-Road" code="37"/>
+        <enum name="Street-Prefix" code="38"/>
+        <enum name="Street-Suffix" code="39"/>
+        <enum name="Script" code="128"/>
+    </avp>
+    <avp name="ETSI-Geospatial-Location" vendor="ETSI" code="356" type="geospatial-location-profile" reference="ETSI/283.035_3.1.1/7.3" log="scramble">
+        <avp name="Lat-Res" type="Byte"/>
+        <avp name="Latitude" type="Fixed-Point-I32-F32"/>
+        <avp name="Lon-Res" type="Byte"/>
+        <avp name="Longitude" type="Fixed-Point-I32-F32"/>
+        <avp name="Alt-Type" type="Byte-Enumeration">
+            <enum name="Meters" code="1"/>
+            <enum name="Floors" code="2"/>
+        </avp>
+        <avp name="Alt-Res" type="Byte"/>
+        <avp name="Altitude" type="Fixed-Point-I32-F32"/>
+        <avp name="Datum" type="Byte-Enumeration">
+            <enum name="WGS84" code="1"/>
+            <enum name="NAD83-Land" code="2"/>
+            <enum name="NAD83-Water" code="3"/>
+        </avp>
+    </avp>
+    <avp name="ETSI-Global-Access-Id" vendor="ETSI" code="357" type="grouped" reference="ETSI/283.035_3.1.1/7.3.7" >
+        <group>
+            <optional>
+                <avprule name="ETSI-Fixed-Access-ID" maximum="1" />
+                <avprule name="3GPP-User-Location-Info" maximum="1" />
+                <avprule name="AVP"/>
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-Fixed-Access-ID" vendor="ETSI" code="358" type="grouped" reference="ETSI/283.035_3.1.1/7.3.8" >
+        <group>
+            <required>
+                <avprule name="ETSI-Relay-Agent" maximum="1"/>
+            </required>
+            <optional>
+                <avprule name="ETSI-Logical-Access-ID" maximum="1" />
+                <avprule name="ETSI-Physical-Access-ID" maximum="1" />
+                <avprule name="AVP"/>
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-Relay-Agent" vendor="ETSI" code="359" type="OctetString" reference="ETSI/283.035_3.1.1/7.3.9" />
+    <avp name="ETSI-Operator-Specific-GI" vendor="ETSI" code="360" type="OctetString" reference="ETSI/283.035_3.1.1/7.3.10" />
+    <avp name="ETSI-Emergency-Call-Routing-Info" vendor="ETSI" code="361" type="String" reference="ETSI/283.035_3.1.1/7.3.11" />
+    <avp name="ETSI-Port-Number" vendor="ETSI" code="362" type="Unsigned32" reference="ETSI/283.035_3.1.1/7.3.12" />
+    <avp name="ETSI-PIDF-Location-Object" vendor="ETSI" code="363" type="String" reference="ETSI/283.035_3.1.1/7.3.13 and RFC 4119" log="scramble" />
+
+    <avp name="ETSI-Binding-information" vendor="ETSI" code="450" type="grouped" reference="ETSI/183.017_3.2.1/7.3.1" >
+        <group>
+            <required>
+                <avprule name="ETSI-Binding-Input-List" maximum="1" />
+            </required>
+            <optional>
+                <avprule name="ETSI-Binding-Output-List" maximum="1" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-Binding-Input-List" vendor="ETSI" code="451" type="grouped" reference="ETSI/183.017_3.2.1/7.3.2" >
+        <group>
+            <optional>
+                <avprule name="ETSI-V6-Transport-Address" />
+                <avprule name="ETSI-V4-Transport-Address" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-Binding-Output-List" vendor="ETSI" code="452" type="grouped" reference="ETSI/183.017_3.2.1/7.3.3" >
+        <group>
+            <optional>
+                <avprule name="ETSI-V6-Transport-Address" />
+                <avprule name="ETSI-V4-Transport-Address" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-V6-Transport-Address" vendor="ETSI" code="453" type="grouped" reference="ETSI/183.017_3.2.1/7.3.4" >
+        <group>
+            <required>
+                <avprule name="Framed-IPv6-Prefix" maximum="1" />
+                <avprule name="ETSI-Port-Number"   maximum="1" />
+            </required>
+        </group>
+    </avp>
+    <avp name="ETSI-V4-Transport-Address" vendor="ETSI" code="454" type="grouped" reference="ETSI/183.017_3.2.1/7.3.5" >
+        <group>
+            <required>
+                <avprule name="Framed-IP-Address" maximum="1" />
+                <avprule name="ETSI-Port-Number"  maximum="1" />
+            </required>
+        </group>
+    </avp>
+    <avp name="ETSI-Port-Number" vendor="ETSI" code="455" type="Unsigned32" reference="ETSI/183.017_3.2.1/7.3.6" />
+    <avp name="ETSI-Reservation-Class" vendor="ETSI" code="456" type="Unsigned32" reference="ETSI/183.017_3.2.1/7.3.7" />
+    <avp name="ETSI-Latching-indication" vendor="ETSI" code="457" type="Enumerated" reference="ETSI/183.017_3.2.1/7.3.8" >
+        <enum name="LATCH"   code="0"/>
+        <enum name="RELATCH" code="1"/>
+    </avp>
+    <avp name="ETSI-Reservation-Priority" vendor="ETSI" code="458" type="Enumerated" reference="ETSI/183.017_3.2.1/7.3.9" >
+        <enum name="DEFAULT"           code="0"/>
+        <enum name="PRIORITY-ONE"      code="1"/>
+        <enum name="PRIORITY-TWO"      code="2"/>
+        <enum name="PRIORITY-THREE"    code="3"/>
+        <enum name="PRIORITY-FOUR"     code="4"/>
+        <enum name="PRIORITY-FIVE"     code="5"/>
+        <enum name="PRIORITY-SIX"      code="6"/>
+        <enum name="PRIORITY-SEVEN"    code="7"/>
+        <enum name="PRIORITY-EIGHT"    code="8"/>
+        <enum name="PRIORITY-NINE"     code="9"/>
+        <enum name="PRIORITY-TEN"      code="10"/>
+        <enum name="PRIORITY-ELEVEN"   code="11"/>
+        <enum name="PRIORITY-TWELVE"   code="12"/>
+        <enum name="PRIORITY-THIRTEEN" code="13"/>
+        <enum name="PRIORITY-FOURTEEN" code="14"/>
+        <enum name="PRIORITY-FIFTEEN"  code="15"/>
+     </avp>
+    <avp name="ETSI-Service-Class" vendor="ETSI" code="459" type="String" reference="ETSI/183.017_3.2.1/7.3.33" />
+    <avp name="ETSI-Overbooking-Indicator" vendor="ETSI" code="460" type="Enumerated" reference="ETSI/183.017_3.2.1/7.3.35" >
+        <enum name="DISABLED"   code="0"/>
+        <enum name="ENABLED"    code="1"/>
+    </avp>
+    <avp name="ETSI-Authorization-Package-Id" vendor="ETSI" code="461" type="String" reference="ETSI/183.017_3.2.1/7.3.37" />
+    <avp name="ETSI-Media-Authorization-Context-Id" vendor="ETSI" code="462" type="String" reference="ETSI/183.017_3.2.1/7.3.38" />
+
+    <avp name="ETSI-Line-Identifier" vendor="ETSI" code="500" type="OctetString" reference="ETSI/283.035_3.1.1/7.3.5 see details for coding" />
+
+    <avp name="ETSI-CNGCF-Address" vendor="ETSI" code="600" type="grouped" reference="ETSI/183.059_2.1.1/7.3.5" >
+        <group>
+            <optional>
+                <avprule name="ETSI-TFTP-server" maximum="1" />
+                <avprule name="ETSI-ACS-server" maximum="1" />
+            </optional>
+        </group>
+    </avp>
+    <avp name="ETSI-SIP-Outbound-Proxy" vendor="ETSI" code="601" type="OctetString" reference="ETSI/183.059_2.1.1/7.3.6" log="scramble"/>
+    <avp name="ETSI-TFTP-Server" vendor="ETSI" code="602" type="String" reference="ETSI/183.059_2.1.1/7.3.9" log="scramble"/>
+    <avp name="ETSI-ACS-Server" vendor="ETSI" code="603" type="String" reference="ETSI/183.059_2.1.1/7.3.10" log="scramble"/>
+
+
+<!-- Diameter ETSI E2_E4 application -->
+    <application name="ETSI-e2e4" description="ETSI e2 and e4 interfaces" type="Auth" vendor="ETSI">
+        <command name="ETSI-User-Data" nickName="ETSI-UD" code="306" proxy-ok="TRUE" reference="e2: ES 283.035_3.1.1/7.1 and e4: ES 283.034_2.2.0/7.1">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Vendor-Specific-Application-Id" maximum="1" />
+                    <avprule name="Auth-Session-State" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Destination-Host" maximum="1" />
+                    <avprule name="ETSI-Globally-Unique-Address" maximum="1" />
+                    <avprule name="User-Name" maximum="1" />
+                    <avprule name="ETSI-Global-Access-Id" maximum="1" />
+                    <avprule name="3GPP-AF-Application-Identifier" maximum="1" />
+                    <avprule name="ETSI-Requested-Information" maximum="1" />
+                    <avprule name="AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Vendor-Specific-Application-Id" maximum="1" />
+                    <avprule name="Auth-Session-State" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="User-Name" maximum="1" />
+                    <avprule name="ETSI-Logical-Access-Id" maximum="1" />
+                    <avprule name="ETSI-Physical-Access-Id" maximum="1" />
+                    <avprule name="ETSI-Access-Network-Type" maximum="1" />
+                    <avprule name="ETSI-Location-Information" maximum="1" />
+                    <avprule name="ETSI-Policy-Control-Contact-Point" maximum="1" />
+                    <avprule name="ETSI-Terminal-Type" maximum="1" />
+                    <avprule name="AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                </optional>
+            </answerrules>
+        </command>
+
+        <command name="ETSI-Subscribe-Notification" nickName="ETSI-SN" code="308" proxy-ok="TRUE" reference="e2: ES 283.035_3.1.1/7.1">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Vendor-Specific-Application-Id" maximum="1" />
+                    <avprule name="Auth-Session-State" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                    <avprule name="3GPP-Subs-Req-Type" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Destination-Host" maximum="1" />
+                    <avprule name="3GPP-Expiry-Time" maximum="1" />
+                    <avprule name="ETSI-Globally-Unique-Address" maximum="1" />
+                    <avprule name="User-Name" maximum="1" />
+                    <avprule name="3GPP-AF-Application-Identifier" maximum="1" />
+                    <avprule name="ETSI-Event-Type"/>
+                    <avprule name="AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Vendor-Specific-Application-Id" maximum="1" />
+                    <avprule name="Auth-Session-State" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="3GPP-Expiry-Time" maximum="1" />
+                    <avprule name="AVP" />
+                    <avprule name="Failed-AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                </optional>
+            </answerrules>
+        </command>
+
+        <command name="ETSI-Push-Notification" nickName="ETSI-PN" code="309" proxy-ok="TRUE" reference="e4: ES 283.034_1.2.0/7.1">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Vendor-Specific-Application-Id" maximum="1" />
+                    <avprule name="Auth-Session-State" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                    <avprule name="Destination-Host" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="ETSI-Event-Type"/>
+                    <avprule name="ETSI-Globally-Unique-Address" maximum="1" />
+                    <avprule name="User-Name" maximum="1" />
+                    <avprule name="ETSI-Location-Information" maximum="1" />
+                    <avprule name="ETSI-Policy-Control-Contact-Point" maximum="1" />
+                    <avprule name="ETSI-Terminal-Type" maximum="1" />
+                    <avprule name="ETSI-Logical-Access-Id" maximum="1" />
+                    <avprule name="ETSI-Physical-Access-Id" maximum="1" />
+                    <avprule name="ETSI-Access-Network-Type" maximum="1" />
+                    <avprule name="ETSI-Initial-Gate-Setting" maximum="1" />
+                    <avprule name="ETSI-QoS-Profile-Description" />
+                    <avprule name="ETSI-IP-Connectivity-Status" maximum="1" />
+                    <avprule name="AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Vendor-Specific-Application-Id" maximum="1" />
+                    <avprule name="Auth-Session-State" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="AVP" />
+                    <avprule name="Failed-AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                </optional>
+            </answerrules>
+        </command>
+    </application>
+
+
+    <!-- Diameter ETSI Gq' application -->
+   <application name="ETSI-Gq-prime" description="ETSI Gq' interface for BW reservation" type="Auth" vendor="3GPP">
+        <command name="Authentication-Authorization" nickName="AA" code="265" proxy-ok="TRUE" reference="TS 183.017_3.2.1/7.1.1">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Auth-Application-Id" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Destination-Host" maximum="1" />
+                    <avprule name="3GPP-Media-Component-Description" />
+                    <avprule name="3GPP-Flow-Grouping" />
+                    <avprule name="3GPP-AF-Application-Identifier" maximum="1" />
+                    <avprule name="3GPP-SIP-Forking-Indication" maximum="1" />
+                    <avprule name="3GPP-Specific-Action"/>
+                    <avprule name="User-Name"/>
+                    <avprule name="ETSI-Binding-Information" maximum="1" />
+                    <avprule name="ETSI-Latching-Indication" maximum="1" />
+                    <avprule name="ETSI-Reservation-Priority" maximum="1" />
+                    <avprule name="ETSI-Globally-Unique-Address" maximum="1" />
+                    <avprule name="ETSI-Service-Class" maximum="1" />
+                    <avprule name="Authorization-Lifetime" maximum="1" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                    <avprule name="ETSI-Overbooking-Indicator" maximum="1" />
+                    <avprule name="ETSI-Authorization-Package-Id" maximum="1" />
+                    <avprule name="AVP" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Auth-Application-Id" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="ETSI-Binding-Information" maximum="1" />
+                    <avprule name="ETSI-Reservation-Priority" maximum="1" />
+                    <avprule name="Error-Message" maximum="1" />
+                    <avprule name="Error-Reporting-Host" maximum="1" />
+                    <avprule name="Authorization-Lifetime" maximum="1" />
+                    <avprule name="Auth-Grace-Period" maximum="1" />
+                    <avprule name="Failed-AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="AVP" />
+                </optional>
+            </answerrules>
+        </command>
+
+        <command name="Re-Auth" nickName="RA" code="258" proxy-ok="TRUE" reference="TS 183.017_3.2.1/7.1.3">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Auth-Application-Id" maximum="1" />
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                    <avprule name="Destination-Host" maximum="1" />
+                    <avprule name="3GPP-Specific-Action" />
+                </required>
+                <optional>
+                    <avprule name="3GPP-Flow-Description" />
+                    <avprule name="ETSI-Globally-Unique-Address" maximum="1" />
+                    <avprule name="ETSI-Logical-Access-Id" maximum="1" />
+                    <avprule name="3GPP-Flows" />
+                    <avprule name="3GPP-Abort-Cause" maximum="1"/>
+                    <avprule name="Origin-State-Id" maximum="1" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                    <avprule name="AVP" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="3GPP-Media-Component-Description" />
+                    <avprule name="3GPP-Flow-Grouping" />
+                    <avprule name="Origin-State-Id" maximum="1" />
+                    <avprule name="Error-Message" maximum="1" />
+                    <avprule name="Error-Reporting-Host" maximum="1" />
+                    <avprule name="Failed-AVP" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="AVP" />
+                </optional>
+            </answerrules>
+        </command>
+
+        <command name="Session-Termination" nickName="ST" code="275" proxy-ok="TRUE" reference="TS 183.017_3.2.1/7.1.5">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                    <avprule name="Termination-Cause" maximum="1" />
+                    <avprule name="Auth-Application-Id" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Destination-Host" maximum="1" />
+                    <avprule name="Class" />
+                    <avprule name="Origin-State-Id" maximum="1" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                    <avprule name="AVP" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="Error-Message" maximum="1" />
+                    <avprule name="Error-Reporting-Host" maximum="1" />
+                    <avprule name="Failed-AVP" />
+                    <avprule name="Origin-State-Id" maximum="1" />
+                    <avprule name="Redirect-Host" />
+                    <avprule name="Redirect-Host-Usage" maximum="1" />
+                    <avprule name="Redirect-Max-Cache-Time" maximum="1" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="AVP" />
+                </optional>
+            </answerrules>
+        </command>
+
+        <command name="Abort-Session" nickName="AS" code="274" proxy-ok="TRUE" reference="TS 183.017_3.2.1/7.1.7">
+            <requestrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                    <avprule name="Destination-Realm" maximum="1" />
+                    <avprule name="Destination-Host" maximum="1" />
+                    <avprule name="Auth-Application-Id" maximum="1" />
+                    <avprule name="3GPP-Abort-Cause" />
+                </required>
+                <optional>
+                    <avprule name="Origin-State-Id" maximum="1" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="Route-Record" />
+                    <avprule name="AVP" />
+                </optional>
+            </requestrules>
+            <answerrules>
+                <fixed>
+                    <avprule name="Session-Id" maximum="1" />
+                </fixed>
+                <required>
+                    <avprule name="Origin-Host" maximum="1" />
+                    <avprule name="Origin-Realm" maximum="1" />
+                </required>
+                <optional>
+                    <avprule name="Result-Code" maximum="1" />
+                    <avprule name="Experimental-Result" maximum="1" />
+                    <avprule name="Origin-State-Id" maximum="1" />
+                    <avprule name="Error-Message" maximum="1" />
+                    <avprule name="Error-Reporting-Host" maximum="1" />
+                    <avprule name="Failed-AVP" />
+                    <avprule name="Redirect-Host" />
+                    <avprule name="Redirect-Host-Usage" maximum="1" />
+                    <avprule name="Redirect-Max-Cache-Time" maximum="1" />
+                    <avprule name="Proxy-Info" />
+                    <avprule name="AVP" />
+                </optional>
+            </answerrules>
+        </command>
+    </application>
+
+</dictionary>

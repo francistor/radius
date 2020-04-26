@@ -1,0 +1,29 @@
+none provisionType=none authLocal=none
+
+database provisionType=database authLocal=database writeSessionCDR=true
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+	>>
+
+databasenr provisionType=database authLocal=database writeSessionCDR=true sendReject=false
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+	>>
+
+file provisionType=file authLocal=none
+
+acs provisionType=database authLocal=none overrideService=acs
+  radiusAttrs=<<
+    Service-Type=Outbound-user
+  >>
+
+betatester provisionType=database authlocal=file
+  radiusAttrs=<<
+    Session-Timeout=1200
+  >>

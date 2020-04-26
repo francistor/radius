@@ -1,0 +1,1293 @@
+<?xml version="1.0" standalone="no"?>
+<!-- ? 2017 Nokia. All rights reserved. -->
+
+<!-- Note that this file will be overwritten during an upgrade. Make changes in custom.dict -->
+
+<!DOCTYPE dictionary SYSTEM "dictionary.dtd">
+
+<dictionary codec="#default" overwrite="false">
+
+<!-- Nokia AAA internal attributes -->
+
+    <avp name="Anonymous" code="0" type="Anonymous" mandatory="may"/>
+    <avp name="Check-Authenticators" type="feature"/>
+    <avp name="Check-Duplicates" type="boolean"/>
+    <avp name="Radius-Remove-Trailing-Nul" type="boolean"/>
+    <avp name="Radius-Append-Trailing-Nul" type="boolean"/>
+    <avp name="Radius-Recv-Error-Ratio" type="Float64"/>
+    <avp name="Radius-Send-Error-Ratio" type="Float64"/>
+    <avp name="Radius-Reject-Busy-Auth" type="boolean"/>
+    <avp name="Radius-Response-Cache" type="boolean"/>
+    <avp name="Diameter-Strict-Decode-Command-Format" type="strictness"/>
+    <avp name="Diameter-Strict-Encode-Command-Format" type="strictness"/>
+    <avp name="Diameter-Fallback-Encode-Mandatory-Bit" type="boolean"/>
+    <avp name="Diameter-Use-Session-Id-For-State" type="boolean"/>
+    <avp name="Cache-NAS-Routes" type="boolean"/>
+    <avp name="Auto-Remove-Check-Items" type="boolean"/>
+    <avp name="Radius-Response-Cache-Timeout" type="duration"/>
+    <avp name="Radius-Response-Cache-Polling-Interval" type="duration"/>
+    <avp name="Reveal_Hidden_Attributes" type="atomic-boolean"/>
+    <avp name="Scramble-Attributes" type="atomic-boolean"/>
+    <avp name="GC-Duration-Warn-Threshold" type="atomic-duration" />
+    <avp name="Lag-Warn-Threshold" type="atomic-duration" />
+    <avp name="Session_Time_From_Time_Of_Day" type="boolean"/>
+    <avp name="Auto_CheckPassword" type="boolean"/>
+    <avp name="Auto_CheckItem" type="boolean"/>
+    <avp name="Auto_CheckLeftovers" type="boolean"/>
+    <avp name="Auto_CheckMinSessionTimeout" type="boolean"/>
+    <avp name="Auto-WriteReportData" type="boolean"/>
+    <avp name="CreateTimestamp" type="unix-timestamp"/>
+    <avp name="Debug_Auth_Squelch_Xmit" type="boolean"/>
+    <avp name="Debug_Acct_Squelch_Xmit" type="boolean"/>
+    <avp name="Discard_On_Error" type="boolean"/>
+    <avp name="Strict_Encode_Attributes" type="boolean"/>
+    <avp name="Default_Challenge_Timeout" type="Duration"/>
+    <avp name="Default_Challenge_Timeout_Linger" type="Duration"/>
+    <avp name="Default_Continue_Timeout" type="Duration"/>
+    <avp name="Default_Continue_Timeout_Linger" type="Duration"/>
+    <avp name="Background_Timeout" type="Duration"/>
+    <avp name="Engine_Threads" type="Unsigned32"/>
+    <avp name="Engine_Method_Limit" type="Unsigned32"/>
+    <avp name="Engine_Queue_Limit" type="Unsigned32"/>
+    <avp name="Log_Auth_Accept_Enable" type="boolean"/>
+    <avp name="Log_Auth_Reject_Enable" type="boolean"/>
+    <avp name="Log_Auth_Challenge_Enable" type="boolean"/>
+    <avp name="Log_Auth_Discard_Enable" type="boolean"/>
+    <avp name="Log_Acct_Response_Enable" type="boolean"/>
+    <avp name="Log_Acct_Start_Enable" type="boolean"/>
+    <avp name="Log_Acct_Interim_Enable" type="boolean"/>
+    <avp name="Log_Acct_Stop_Enable" type="boolean"/>
+    <avp name="Log_Acct_Discard_Enable" type="boolean"/>
+    <avp name="Log_Truncate" type="boolean"/>
+    <avp name="Log_By_Item" type="boolean"/>
+    <avp name="History-Size" type="binary-size"/>
+    <avp name="Method-On-Success" type="String">
+       <alias name="Method-Next"/>
+    </avp>
+    <avp name="Method-On-Failure" type="String">
+       <alias name="Method-On-Fail"/>
+    </avp>
+    <avp name="Wire-Decode-Map" type="Mapper"/>
+    <avp name="Client-Dictionary" type="normal"/>
+    <avp name="Client-Secret" type="OctetString" log="hide"/>
+    <avp name="Client-Timeout" type="Duration"/>
+    <avp name="Client-Auth-Timeout" type="Duration"/>
+    <avp name="Client-Acct-Timeout" type="Duration"/>
+    <avp name="Receipt-Time" type="Millis-Timestamp"/>
+    <avp name="Method-Timeout" type="Duration"/>
+    <avp name="Minimum_Session_Timeout" type="Duration"/>
+    <avp name="Stateful-Accept" type="boolean"/>
+    <avp name="Record-Number" type="Unsigned32"/>
+    <avp name="AuthEapLeap-Peer-Challenge" type="Hex-OctetString"/>
+    <avp name="AuthEapLeap-Peer-Response" type="Hex-OctetString"/>
+    <avp name="AuthEapLeap-MPPE-Hash" type="Hex-OctetString"/>
+    <avp name="Nas_Port_Normalization" type="Enumerated">
+        <enum name="off"/>
+        <enum name="auto"/>
+        <enum name="taos_2_4_6_4"/>
+        <enum name="taos_2_4_5_5"/>
+        <enum name="taos_0_6_5_5"/>
+        <enum name="taos_1_2_2"/>
+        <enum name="taos_1_2_3_3"/>
+    </avp>
+
+    <avp name="Auth-Type" type="Enumerated">
+        <enum name="Local"/>
+        <enum name="Local-Plain">
+            <alias name="Plain"/>
+        </enum>
+        <enum name="Local-AES"/>
+        <enum name="Local-MD4">
+            <alias name="MD4"/>
+        </enum>
+        <enum name="Local-MD5">
+            <alias name="MD5"/>
+        </enum>
+        <enum name="Local-SMD5">
+            <alias name="SMD5"/>
+        </enum>
+        <enum name="Local-SHA">
+            <alias name="SHA"/>
+        </enum>
+        <enum name="Local-SSHA">
+            <alias name="SSHA"/>
+        </enum>
+        <enum name="Local-SHA256">
+            <alias name="SHA256"/>
+        </enum>
+        <enum name="Local-SSHA256">
+            <alias name="SSHA256"/>
+        </enum>
+        <enum name="Local-SHA384">
+            <alias name="SHA384"/>
+        </enum>
+        <enum name="Local-SSHA384">
+            <alias name="SSHA384"/>
+        </enum>
+        <enum name="Local-SHA512">
+            <alias name="SHA512"/>
+        </enum>
+        <enum name="Local-SSHA512">
+            <alias name="SSHA512"/>
+        </enum>
+
+        <enum name="Crypt">
+            <alias name="Local-Crypt"/>
+        </enum>
+        <enum name="Crypt-DES"/>
+        <enum name="Crypt-MD5"/>
+        <enum name="Crypt-SHA"/>
+        <enum name="Crypt-SHA256"/>
+        <enum name="Crypt-SHA512"/>
+        <enum name="Crypt-Blowfish"/>
+
+        <enum name="VON"/>
+        <enum name="Assert">
+            <alias name="None"/>
+        </enum>
+        <enum name="Reject"/>
+
+        <enum name="Defender"/>
+        <enum name="SafeWord"/>
+        <enum name="System"/>
+        <enum name="Nt"/>
+        <enum name="Ace">
+            <alias name="Securid"/>
+        </enum>
+
+        <enum name="EAP-DS2460"/>
+
+        <enum name="EAP-LEAP"/>
+        <enum name="EAP-LEAP-Plain"/>
+        <enum name="EAP-LEAP-MD4"/>
+        <enum name="EAP-LEAP-NT"/>
+
+        <enum name="EAP-MSCHAPV2"/>
+        <enum name="EAP-MSCHAPV2-Plain"/>
+        <enum name="EAP-MSCHAPV2-MD4"/>
+        <enum name="EAP-MSCHAPV2-NT"/>
+
+        <enum name="EAP-MD5"/>
+
+        <enum name="EAP-PSK"/>
+
+        <enum name="EAP-PWD"/>
+
+        <enum name="EAP-TLS"/>
+        <enum name="EAP-TTLS"/>
+        <enum name="EAP-PEAP"/>
+        <enum name="EAP-GTC"/>
+        <enum name="EAP-SIM"/>
+        <enum name="EAP-AKA"/>
+        <enum name="EAP-AKA'"/>
+
+        <enum name="LDAP"/>
+        <enum name="Passwd"/>
+        <enum name="UNIX"/>
+        <enum name="ActiveDirectory">
+            <alias name="Ad"/>
+        </enum>
+        <enum name="EAP-FAST"/>
+        <enum name="EAP-POTP"/>
+
+        <enum name="Femto-Authorize-Only"/>
+    </avp>
+    <avp name="FAST-Type" type="Enumerated">
+        <enum name="EAP-MSCHAPV2"/>
+        <enum name="EAP-GTC"/>
+        <enum name="EAP-TLS"/>
+    </avp>
+
+    <avp name="PEAP-Type" type="Enumerated">
+        <enum name="EAP-MSCHAPV2"/>
+        <enum name="EAP-MD5"/>
+        <enum name="EAP-TLS"/>
+        <enum name="EAP-GTC"/>
+        <enum name="EAP-SIM"/>
+        <enum name="EAP-AKA"/>
+        <enum name="EAP-AKA'"/>
+    </avp>
+
+    <avp name="GTC-Type" type="Enumerated">
+        <enum name="Local"/>
+        <enum name="Local-Plain">
+            <alias name="Plain"/>
+        </enum>
+        <enum name="Local-MD4">
+            <alias name="MD4"/>
+        </enum>
+        <enum name="Local-MD5">
+            <alias name="MD5"/>
+        </enum>
+        <enum name="Local-SMD5">
+            <alias name="SMD5"/>
+        </enum>
+        <enum name="Local-SHA">
+            <alias name="SHA"/>
+        </enum>
+        <enum name="Local-SSHA">
+            <alias name="SSHA"/>
+        </enum>
+
+        <enum name="Crypt">
+            <alias name="Local-Crypt"/>
+        </enum>
+        <enum name="Crypt-DES"/>
+        <enum name="Crypt-MD5"/>
+        <enum name="Crypt-SHA"/>
+
+        <enum name="Assert">
+            <alias name="None"/>
+        </enum>
+        <enum name="Reject"/>
+
+        <enum name="Defender"/>
+        <enum name="SafeWord"/>
+        <enum name="System"/>
+        <enum name="Nt"/>
+        <enum name="Ace">
+            <alias name="Securid"/>
+        </enum>
+
+        <enum name="LDAP"/>
+        <enum name="Passwd"/>
+        <enum name="UNIX"/>
+        <enum name="ActiveDirectory">
+            <alias name="Ad"/>
+        </enum>
+    </avp>
+
+    <avp name="TTLS-Type" type="Enumerated">
+        <enum name="Local"/>
+        <enum name="Local-Plain">
+            <alias name="Plain"/>
+        </enum>
+        <enum name="Local-MD4">
+            <alias name="MD4"/>
+        </enum>
+        <enum name="Local-MD5">
+            <alias name="MD5"/>
+        </enum>
+        <enum name="Local-SMD5">
+            <alias name="SMD5"/>
+        </enum>
+        <enum name="Local-SHA">
+            <alias name="SHA"/>
+        </enum>
+        <enum name="Local-SSHA">
+            <alias name="SSHA"/>
+        </enum>
+
+        <enum name="Crypt">
+            <alias name="Local-Crypt"/>
+        </enum>
+        <enum name="Crypt-DES"/>
+        <enum name="Crypt-MD5"/>
+        <enum name="Crypt-SHA"/>
+
+        <enum name="Assert">
+            <alias name="None"/>
+        </enum>
+        <enum name="Reject"/>
+
+        <enum name="Defender"/>
+        <enum name="SafeWord"/>
+        <enum name="System"/>
+        <enum name="Nt"/>
+        <enum name="Ace">
+            <alias name="Securid"/>
+        </enum>
+
+        <enum name="EAP-MSCHAPV2"/>
+        <enum name="EAP-MD5"/>
+        <enum name="EAP-TLS"/>
+        <enum name="EAP-GTC"/>
+        <enum name="EAP-SIM"/>
+        <enum name="EAP-AKA"/>
+        <enum name="EAP-AKA'"/>
+
+        <enum name="LDAP"/>
+        <enum name="Passwd"/>
+        <enum name="UNIX"/>
+        <enum name="ActiveDirectory">
+            <alias name="Ad"/>
+        </enum>
+    </avp>
+
+    <avp name="EAP-AKA-Client-Error-Code" type="Enumerated">
+        <enum name="unable to process packet" code="0"/>
+    </avp>
+
+    <avp name="EAP-SIM-Client-Error-Code" type="Enumerated">
+        <enum name="unable to process packet" code="0"/>
+        <enum name="unsupported version" code="1"/>
+        <enum name="insufficient number of challenges" code="2"/>
+        <enum name="RANDs are not fresh" code="3"/>
+    </avp>
+
+    <avp name="Eap-Type-Name" type="Long-Enumeration">
+        <enum name="None" code="0"/>
+        <enum name="Identity" code="1"/>
+        <enum name="Notification" code="2"/>
+        <enum name="Nak" code="3"/>
+        <enum name="MD5" code="4"/>
+        <enum name="OTP" code="5"/>
+        <enum name="GTC" code="6"/>
+        <enum name="TLS" code="13"/>
+        <enum name="LEAP" code="17"/>
+        <enum name="SIM" code="18"/>
+        <enum name="TTLS" code="21"/>
+        <enum name="AKA" code="23"/>
+        <enum name="PEAP" code="25"/>
+        <enum name="MSCHAPV2" code="26"/>
+        <enum name="POTP" code="32"/>
+        <enum name="TLV" code="33"/>
+        <enum name="FAST" code="43"/>
+        <enum name="PSK" code="47"/>
+        <enum name="AKA'" code="50"/>
+        <enum name="PWD" code="52"/>
+        <enum name="Expanded" code="254"/>
+        <enum name="Experimental" code="255"/>
+        <enum name="DS2460" high-code="831" code="1"/>
+        <enum name="WFA-TLS" high-code="40808" code="13"/>
+    </avp>
+
+    <avp name="EAP-Code-Name" type="byte-enumeration">
+        <enum name="Request" code="1"/>
+        <enum name="Response" code="2"/>
+        <enum name="Success" code="3"/>
+        <enum name="Failure" code="4"/>
+    </avp>
+
+    <avp name="EAP-Vendor-Id" type="vendor-enumeration"/>
+
+    <avp name="Last-Disposition" type="integer-enumeration">
+        <enum name="SUCCESS" code="0"/>
+        <enum name="FAILURE" code="1"/>
+        <enum name="ERROR" code="2"/>
+        <enum name="ACCEPT" code="3"/>
+        <enum name="REJECT" code="4"/>
+        <enum name="DISCARD" code="5"/>
+        <enum name="SUSPEND" code="6"/>
+        <enum name="JUMP" code="7"/>
+        <enum name="CHALLENGE" code="8"/>
+        <enum name="CONTINUE" code="9"/>
+    </avp>
+
+<!-- Certificate fields -->
+
+    <avp name="keyUsage" type="short-bit-set">
+        <avp name="digitalSignature" code="0" type="boolean"/>
+        <avp name="nonRepudiation" code="1" type="boolean"/>
+        <avp name="keyEncipherment" code="2" type="boolean"/>
+        <avp name="dataEncipherment" code="3" type="boolean"/>
+        <avp name="keyAgreement" code="4" type="boolean"/>
+        <avp name="keyCertSign" code="5" type="boolean"/>
+        <avp name="cRLSign" code="6" type="boolean"/>
+        <avp name="encipherOnly" code="7" type="boolean"/>
+        <avp name="decipherOnly" code="8" type="boolean"/>
+    </avp>
+
+    <avp name="extendedKeyUsage" type="Normal"/>
+    <avp name="extendedKeyUsageMap" type="Enumerated">
+        <enum name="serverAuth">
+            <alias name="1.3.6.1.5.5.7.3.1"/>
+        </enum>
+        <enum name="clientAuth">
+            <alias name="1.3.6.1.5.5.7.3.2"/>
+        </enum>
+        <enum name="codeSigning">
+            <alias name="1.3.6.1.5.5.7.3.3"/>
+        </enum>
+        <enum name="emailProtection">
+            <alias name="1.3.6.1.5.5.7.3.4"/>
+        </enum>
+        <enum name="ipsecEndSystem">
+            <alias name="1.3.6.1.5.5.7.3.5"/>
+        </enum>
+        <enum name="ipsecTunnel">
+            <alias name="1.3.6.1.5.5.7.3.6"/>
+        </enum>
+        <enum name="ipsecUser">
+            <alias name="1.3.6.1.5.5.7.3.7"/>
+        </enum>
+        <enum name="timeStamping">
+            <alias name="1.3.6.1.5.5.7.3.8"/>
+        </enum>
+        <enum name="ocspSigning">
+            <alias name="1.3.6.1.5.5.7.3.9"/>
+        </enum>
+        <enum name="HS2.0Auth">
+            <alias name="1.3.6.1.4.1.40808.1.1.2"/>
+        </enum>
+    </avp>
+
+    <avp name="Revocation-Reason" type="Enumerated">
+        <alias name="crlReason"/>
+        <enum name="unspecified" code="0"/>
+        <enum name="keyCompromise" code="1"/>
+        <enum name="cACompromise" code="2"/>
+        <enum name="affiliationChanged" code="3"/>
+        <enum name="superseded" code="4"/>
+        <enum name="cessationOfOperation" code="5"/>
+        <enum name="certificateHold" code="6"/>
+        <enum name="unused7" code="7"/>
+        <enum name="removeFromCRL" code="8"/>
+        <enum name="privilegeWithdrawn" code="9"/>
+        <enum name="aACompromise" code="10"/>
+    </avp>
+
+    <avp name="Prefix" type="string"/>
+    <avp name="Activation" type="date"/>
+    <avp name="Expiration" type="date"/>
+    <avp name="Last-Change" type="unix-timestamp"/>
+    <avp name="Packet-Type" type="byte-enumeration">
+        <enum name="Access-Request" code="1"/>
+        <enum name="Access-Accept" code="2"/>
+        <enum name="Access-Reject" code="3"/>
+        <enum name="Accounting-Request" code="4"/>
+        <enum name="Accounting-Response" code="5"/>
+        <enum name="Accounting-Status" code="6"/>
+        <enum name="Password-Request" code="7"/>
+        <enum name="Password-Accept" code="8"/>
+        <enum name="Password-Reject" code="9"/>
+        <enum name="Accounting-Message" code="10"/>
+        <enum name="Access-Challenge" code="11"/>
+        <enum name="Status-Server" code="12"/>
+        <enum name="Status-Client" code="13"/>
+        <enum name="TAOS-Next-Passcode" code="29"/>
+        <enum name="TAOS-New-Pin" code="30"/>
+        <enum name="TAOS-Terminate-Session" code="31"/>
+        <enum name="TAOS-Password-Expired" code="32"/>
+        <enum name="TAOS-Event-Log" code="33"/>
+        <enum name="TAOS-Event-RESPONSE" code="34"/>
+        <enum name="Disconnect-Request" code="40">
+            <alias name="TAOS-Disconnect-Request"/>
+        </enum>
+        <enum name="Disconnect-ACK" code="41">
+            <alias name="TAOS-Disconnect-Accept"/>
+        </enum>
+        <enum name="Disconnect-NAK" code="42">
+            <alias name="TAOS-Disconnect-Reject"/>
+        </enum>
+        <enum name="CoA-Request" code="43">
+            <alias name="TAOS-Change-Filters-Request"/>
+        </enum>
+        <enum name="CoA-ACK" code="44">
+            <alias name="TAOS-Change-Filters-Accept"/>
+        </enum>
+        <enum name="CoA-NAK" code="45">
+            <alias name="TAOS-Change-Filters-Reject"/>
+        </enum>
+        <enum name="TAOS-Radipa-Allocate" code="50"/>
+        <enum name="TAOS-Radipa-Release" code="51"/>
+        <enum name="TAOS-Special-String" code="60"/>
+        <enum name="AAA-State-Request" code="129">
+            <alias name="NR-State-Request"/>
+            <alias name="VA-State-Request"/>
+        </enum>
+        <enum name="AAA-State-Accept" code="130">
+            <alias name="NR-State-Accept"/>
+            <alias name="VA-State-Accept"/>
+        </enum>
+        <enum name="AAA-State-Reject" code="131">
+            <alias name="NR-State-Reject"/>
+            <alias name="VA-State-Reject"/>
+        </enum>
+        <enum name="AAA-State-Error" code="132"/>
+    </avp>
+    <avp name="Request-Packet-Type" type="byte-enumeration">
+        <enum name="Access-Request" code="1"/>
+        <enum name="Accounting-Request" code="4"/>
+        <enum name="Status-Server" code="12"/>
+        <enum name="TAOS-Event-Log" code="33"/>
+        <enum name="Disconnect-Request" code="40">
+            <alias name="TAOS-Disconnect-Request"/>
+        </enum>
+        <enum name="CoA-Request" code="43">
+            <alias name="TAOS-Change-Filters-Request"/>
+        </enum>
+        <enum name="AAA-State-Request" code="129">
+            <alias name="NR-State-Request"/>
+            <alias name="VA-State-Request"/>
+        </enum>
+    </avp>
+    <avp name="Response-Packet-Type" type="byte-enumeration">
+        <enum name="Access-Accept" code="2"/>
+        <enum name="Access-Reject" code="3"/>
+        <enum name="Accounting-Response" code="5"/>
+        <enum name="Password-Accept" code="8"/>
+        <enum name="Password-Reject" code="9"/>
+        <enum name="TAOS-Event-RESPONSE" code="34"/>
+        <enum name="Disconnect-ACK" code="41">
+            <alias name="TAOS-Disconnect-Accept"/>
+        </enum>
+        <enum name="Disconnect-NAK" code="42">
+            <alias name="TAOS-Disconnect-Reject"/>
+        </enum>
+        <enum name="CoA-ACK" code="44">
+            <alias name="TAOS-Change-Filters-Accept"/>
+        </enum>
+        <enum name="CoA-NAK" code="45">
+            <alias name="TAOS-Change-Filters-Reject"/>
+        </enum>
+        <enum name="AAA-State-Accept" code="130">
+            <alias name="NR-State-Accept"/>
+            <alias name="VA-State-Accept"/>
+        </enum>
+        <enum name="AAA-State-Reject" code="131">
+            <alias name="NR-State-Reject"/>
+            <alias name="VA-State-Reject"/>
+        </enum>
+        <enum name="AAA-State-Error" code="132"/>
+    </avp>
+    <avp name="Packet-Identifier" type="Unsigned32"/>
+    <avp name="Packet-Length" type="Unsigned32"/>
+    <avp name="Packet-Authenticator" type="Hex-OctetString"/>
+    <avp name="Suffix" type="string"/>
+    <avp name="Default-Authstring" type="string"/>
+    <avp name="Session-Template" type="string"/>
+    <avp name="GSM-Triplet" type="GSM-Triplet"/>
+    <avp name="AKA-Quintet" type="AKA-Quintet"/>
+    <avp name="StateServer_AcctStartTimeout" type="Duration"/>
+    <avp name="StateServer_SessionTimeout" type="Duration"/>
+    <avp name="StateServer_InactiveTimeout" type="Duration"/>
+    <avp name="Create-Time" type="timestamp"/>
+    <avp name="Access-Time" type="timestamp"/>
+    <avp name="Entry-Timeout" type="Integer32"/>
+<!--<avp name="Idle-Timeout" type="Integer32"/> -->
+    <avp name="Windows-Dialin" type="boolean"/>
+    <avp name="Reply-Template" type="string"/>
+    <avp name="Time-Of-Day" type="string"/>
+    <avp name="Connection-Limit" type="Integer32"/>
+    <avp name="Realm-Limit" type="Integer32"/>
+    <avp name="DNIS-Limit" type="Integer32"/>
+    <avp name="SnmpV3-Auth-Secret" type="Hex-OctetString" log="scramble"/>
+    <avp name="SnmpV3-Priv-Secret" type="Hex-OctetString" log="scramble"/>
+    <avp name="SNMPv1_Access_Enabled" type="boolean"/>
+    <avp name="SNMPv2c_Access_Enabled" type="boolean"/>
+    <avp name="SNMPv3_Access_Enabled" type="boolean"/>
+    <avp name="Base-User-Name" type="string" log="scramble"/>
+    <avp name="User-Realm" type="string" log="scramble"/>
+    <avp name="Source-Address" type="ip-address" log="scramble"/>
+    <avp name="Client-Name" type="string" log="scramble"/>
+    <avp name="Client-Class" type="string"/>
+    <avp name="State-Context" type="value"/>
+    <avp name="Client-TLS-Alert-Description" type="byte-enumeration">
+        <enum name="Close-Notify" code="0"/>
+        <enum name="Unexpected-Message" code="10"/>
+        <enum name="Bad-Record-MAC" code="20"/>
+        <enum name="Decryption-Failed" code="21"/>
+        <enum name="Record-Overflow" code="22"/>
+        <enum name="Decompression-Failure" code="30"/>
+        <enum name="Handshake-Failure" code="40"/>
+        <enum name="No-Certificate" code="41"/>
+        <enum name="Bad-Certificate" code="42"/>
+        <enum name="Unsupported-Certificate" code="43"/>
+        <enum name="Certificate-Revoked" code="44"/>
+        <enum name="Certificate-Expired" code="45"/>
+        <enum name="Certificate-Unknown" code="46"/>
+        <enum name="Illegal-Parameter" code="47"/>
+        <enum name="Unknown-CA" code="48"/>
+        <enum name="Access-Denied" code="49"/>
+        <enum name="Decode-Error" code="50"/>
+        <enum name="Decrypt-Error" code="51"/>
+        <enum name="Export-Restriction" code="60"/>
+        <enum name="Protocol-Version" code="70"/>
+        <enum name="Insufficient-Security" code="71"/>
+        <enum name="Internal-Error" code="80"/>
+        <enum name="User-Canceled" code="90"/>
+        <enum name="No-Renegotiation" code="100"/>
+    </avp>
+    <avp name="Server-TLS-Alert-Description" type="byte-enumeration">
+        <enum name="Close-Notify" code="0"/>
+        <enum name="Unexpected-Message" code="10"/>
+        <enum name="Bad-Record-MAC" code="20"/>
+        <enum name="Decryption-Failed" code="21"/>
+        <enum name="Record-Overflow" code="22"/>
+        <enum name="Decompression-Failure" code="30"/>
+        <enum name="Handshake-Failure" code="40"/>
+        <enum name="No-Certificate" code="41"/>
+        <enum name="Bad-Certificate" code="42"/>
+        <enum name="Unsupported-Certificate" code="43"/>
+        <enum name="Certificate-Revoked" code="44"/>
+        <enum name="Certificate-Expired" code="45"/>
+        <enum name="Certificate-Unknown" code="46"/>
+        <enum name="Illegal-Parameter" code="47"/>
+        <enum name="Unknown-CA" code="48"/>
+        <enum name="Access-Denied" code="49"/>
+        <enum name="Decode-Error" code="50"/>
+        <enum name="Decrypt-Error" code="51"/>
+        <enum name="Export-Restriction" code="60"/>
+        <enum name="Protocol-Version" code="70"/>
+        <enum name="Insufficient-Security" code="71"/>
+        <enum name="Internal-Error" code="80"/>
+        <enum name="User-Canceled" code="90"/>
+        <enum name="No-Renegotiation" code="100"/>
+    </avp>
+    <avp name="TLS-Session-Id" internal="true" type="Hex-OctetString"/>
+    <avp name="TLS-Master-Secret" internal="true" type="Salted-Hexed-Opaque" log="hide"/>
+    <avp name="TLS-Cipher-Suite" internal="true" type="Integer32"/>
+    <avp name="TLS-Max-Record-Size" internal="true" type="Integer32"/>
+    <avp name="TLS-Truncated-MAC" internal="true" type="Boolean"/>
+    <avp name="Reauth-Master-Key" internal="true" type="Salted-Hexed-Opaque" log="hide"/>
+    <avp name="Private-Key-Password" internal="true" type="String" log="hide"/>
+
+    <avp name="Application" internal="true" type="Normal" reference="base/3"/>
+    <avp name="Command" internal="true" type="Normal" reference="base/3"/>
+    <avp name="Request" internal="true" type="Boolean" reference="base/3">
+        <alias name="R-Bit"/>
+    </avp>
+    <avp name="Proxiable" internal="true" type="Boolean" reference="base/3">
+        <alias name="P-Bit"/>
+    </avp>
+    <avp name="Retransmission" internal="true" type="Boolean" reference="base/3">
+        <alias name="T-Bit"/>
+    </avp>
+    <avp name="Error" internal="true" type="Boolean" reference="base/3">
+        <alias name="E-Bit"/>
+    </avp>
+    <avp name="HopByHopId" internal="true" type="Unsigned32"/>
+    <avp name="EndToEndId" internal="true" type="Unsigned32"/>
+
+<!-- Nokia AAA/USS2 internal attributes -->
+
+    <avp name="META-RadiusState" internal="true" type="RadiusState"/>
+    <avp name="META-Key" internal="true" type="String" log="scramble"/>
+    <avp name="META-NasKey" internal="true" type="String" log="scramble"/>
+    <avp name="META-EventTime" internal="true" type="Millis-Timestamp"/>
+    <avp name="META-ReceiptTime" internal="true" type="Millis-Timestamp"/>
+    <avp name="META-SessionId" internal="true" type="String"/>
+    <avp name="META-RadiusHistory" internal="true" type="RadiusHistoryEntry">
+        <alias name="META-History"/>
+    </avp>
+
+    <avp name="META-GeneralState" internal="true" type="GeneralState"/>
+    <avp name="META-CreateTime" internal="true" type="Millis-Timestamp"/>
+    <avp name="META-AccessTime" internal="true" type="Millis-Timestamp"/>
+    <avp name="META-ModifyTime" internal="true" type="Millis-Timestamp"/>
+    <avp name="META-CreateTimeout" internal="true" type="Duration"/>
+    <avp name="META-AccessTimeout" internal="true" type="Duration"/>
+    <avp name="META-ModifyTimeout" internal="true" type="Duration"/>
+    <avp name="META-InactiveTimeout" internal="true" type="Duration"/>
+    <avp name="META-AcceptedTimeout" internal="true" type="Duration"/>
+    <avp name="META-ActiveTimeout" internal="true" type="Duration"/>
+
+    <avp name="META-DiameterState" internal="true" type="DiameterState"/>
+    <avp name="META-Nas" type="String"/>
+    <avp name="META-OriginStateId" type="unsigned32"/>
+    <avp name="META-Final" type="boolean"/>
+    <avp name="META-DiameterHistory" internal="true" type="DiameterHistoryEntry"/>
+
+    <avp name="META-Ipam" type="CDMA-Group">
+        <avp name="prefix" type="IP-Prefix"/>
+        <avp name="address" type="IP-Address" log="scramble"/>
+        <avp name="node" type="String"/>
+        <avp name="zone" type="String"/>
+        <avp name="broker" type="String"/>
+        <avp name="pool" type="String"/>
+        <avp name="selector" type="String"/>
+        <avp name="lease" type="Duration"/>
+        <avp name="option" type="String"/>
+        <avp name="forced" type="Unsigned32"/>
+    </avp>
+    <avp name="META-Count" type="CDMA-Group">
+        <avp name="node" type="String"/>
+        <avp name="counters" type="String"/>
+    </avp>
+
+    <!-- LDAP work flow -->
+
+    <avp name="LDAP-Protocol-Op" type="Enumerated">
+        <enum name="Bind-Request" code="0"/>
+        <enum name="Bind-Response" code="1"/>
+        <enum name="Unbind-Request" code="2"/>
+        <enum name="Search-Request" code="3"/>
+        <enum name="Search-Result-Entry" code="4"/>
+        <enum name="Search-Result-Done" code="5"/>
+        <enum name="Modify-Request" code="6"/>
+        <enum name="Modify-Response" code="7"/>
+        <enum name="Add-Request" code="8"/>
+        <enum name="Add-Response" code="9"/>
+        <enum name="Delete-Request" code="10"/>
+        <enum name="Delete-Response" code="11"/>
+        <enum name="Modify-DN-Request" code="12"/>
+        <enum name="Modify-DN-Response" code="13"/>
+        <enum name="Compare-Request" code="14"/>
+        <enum name="Compare-Response" code="15"/>
+        <enum name="Abandon-Request" code="16"/>
+        <enum name="Search-Result-Ref" code="19"/>
+        <enum name="Extended-Request" code="23"/>
+        <enum name="Extended-Response" code="24"/>
+        <enum name="Intermediate-Response" code="25"/>
+    </avp>
+
+    <avp name="LDAP-Protocol-Request" type="Enumerated">
+        <enum name="Bind-Request" code="0"/>
+        <enum name="Unbind-Request" code="2"/>
+        <enum name="Search-Request" code="3"/>
+        <enum name="Modify-Request" code="6"/>
+        <enum name="Add-Request" code="8"/>
+        <enum name="Delete-Request" code="10"/>
+        <enum name="Modify-DN-Request" code="12"/>
+        <enum name="Compare-Request" code="14"/>
+        <enum name="Abandon-Request" code="16"/>
+        <enum name="Extended-Request" code="23"/>
+    </avp>
+
+    <avp name="LDAP-Protocol-Response" type="Enumerated">
+        <enum name="Bind-Response" code="1"/>
+        <enum name="Search-Result-Entry" code="4"/>
+        <enum name="Search-Result-Done" code="5"/>
+        <enum name="Modify-Response" code="7"/>
+        <enum name="Add-Response" code="9"/>
+        <enum name="Delete-Response" code="11"/>
+        <enum name="Modify-DN-Response" code="13"/>
+        <enum name="Compare-Response" code="15"/>
+        <enum name="Search-Result-Ref" code="19"/>
+        <enum name="Extended-Response" code="24"/>
+        <enum name="Intermediate-Response" code="25"/>
+    </avp>
+
+    <avp name="LDAP-Bind-Auth" type="Enumerated">
+        <enum name="simple" code="0"/>
+        <enum name="sasl" code="3"/>
+    </avp>
+
+    <avp name="LDAP-Search-Scope" type="Enumerated">
+        <enum name="Scope-Base" code="0"/>
+        <enum name="Scope-One" code="1"/>
+        <enum name="Scope-Sub" code="2"/>
+    </avp>
+
+    <avp name="LDAP-Search-Deref-Aliases" type="Enumerated">
+        <enum name="Never" code="0"/>
+        <enum name="In-Searching" code="1"/>
+        <enum name="Finding-Base-Obj" code="2"/>
+        <enum name="Always" code="3"/>
+    </avp>
+
+    <avp name="LDAP-Modify-Operation" type="Enumerated">
+        <enum name="add" code="0"/>
+        <enum name="delete" code="1"/>
+        <enum name="replace" code="2"/>
+        <enum name="increment" code="3"/> 
+    </avp>
+
+    <avp name="LDAP-Result-Code" type="Enumerated">
+        <enum name="success" code="0"/>
+        <enum name="operationsError" code="1"/>
+        <enum name="protocolError" code="2"/>
+        <enum name="timeLimitExceeded" code="3"/>
+        <enum name="sizeLimitExceeded" code="4"/>
+        <enum name="compareFalse" code="5"/>
+        <enum name="compareTrue" code="6"/>
+        <enum name="authMethodNotSupported" code="7"/>
+        <enum name="strongerAuthRequired" code="8"/>
+        <enum name="referral" code="10"/>
+        <enum name="adminLimitExceeded" code="11"/>
+        <enum name="unavailableCriticalExtension" code="12"/>
+        <enum name="confidentialityRequired" code="13"/>
+        <enum name="saslBindInProgress" code="14"/>
+        <enum name="noSuchAttribute" code="16"/>
+        <enum name="undefinedAttributeType" code="17"/>
+        <enum name="inappropriateMatching" code="18"/>
+        <enum name="constraintViolation" code="19"/>
+        <enum name="attributeOrValueExists" code="20"/>
+        <enum name="invalidAttributeSyntax" code="21"/>
+        <enum name="noSuchObject" code="32"/>
+        <enum name="aliasProblem" code="33"/>
+        <enum name="invalidDNSyntax" code="34"/>
+        <enum name="aliasDereferencingProblem" code="36"/>
+        <enum name="inappropriateAuthentication" code="48"/>
+        <enum name="invalidCredentials" code="49"/>
+        <enum name="insufficientAccessRights" code="50"/>
+        <enum name="busy" code="51"/>
+        <enum name="unavailable" code="52"/>
+        <enum name="unwillingToPerform" code="53"/>
+        <enum name="loopDetect" code="54"/>
+        <enum name="namingViolation" code="64"/>
+        <enum name="objectClassViolation" code="65"/>
+        <enum name="notAllowedOnNonLeaf" code="66"/>
+        <enum name="notAllowedOnRDN" code="67"/>
+        <enum name="entryAlreadyExists" code="68"/>
+        <enum name="objectClassModsProhibited" code="69"/>
+        <enum name="affectsMultipleDSAs" code="71"/>
+        <enum name="other" code="80"/>
+    </avp>
+
+    <!-- TacacsPlus pseudo AVPs -->
+
+    <avp name="TACACSPLUS-Major-Version" type ="byte" internal="true"/>
+    <avp name="TACACSPLUS-Minor-Version" type ="byte" internal="true"/>
+    <avp name="TACACSPLUS-Type" type="byte-enumeration">
+        <enum name="AUTHEN" code="1"/>
+        <enum name="AUTHOR" code="2"/>
+        <enum name="ACCT" code="3"/>
+    </avp>
+    <avp name="TACACSPLUS-Sequence-Num" type ="byte" internal="true"/>
+    <avp name="TACACSPLUS-Flags" type="byte-Enumeration" internal="true">
+        <enum name="NONE" code="0x00"/>
+        <enum name="UNENCRYPTED" code="0x01"/>
+        <enum name="SINGLE-CONNECT" code="0x04"/>
+        <enum name="UNENCRYPTED|SINGLE-CONNECT" code="0x05"/>
+    </avp>
+    <avp name="TACACSPLUS-Session-Id" type="unsigned32" internal="true"/>
+
+    <avp name="TACACSPLUS-Authen-Flags" type="byte-enumeration" internal="true">
+        <enum name="NONE" code="0x00"/>
+        <enum name="NO-ECHO" code="0x01"/>
+    </avp>
+    <avp name="TACACSPLUS-Continue-Flags" type="byte-enumeration" internal="true">
+        <enum name="NONE" code="0"/>
+        <enum name="ABORT" code="1"/>
+    </avp>
+    <avp name="TACACSPLUS-Authen-Status" type="byte-Enumeration" internal="true">
+        <enum name="PASS" code="0x01"/>
+        <enum name="FAIL" code="0x02"/>
+        <enum name="GETDATA" code="0x03"/>
+        <enum name="GETUSER" code="0x04"/>
+        <enum name="GETPASS" code="0x05"/>
+        <enum name="RESTART" code="0x06"/>
+        <enum name="ERROR" code="0x07"/>
+        <enum name="FOLLOW" code="0x21"/>
+    </avp>
+
+    <avp name="TACACSPLUS-Author-Status" type="byte-Enumeration" internal="true">
+        <enum name="PASS-ADD" code="0x01"/>
+        <enum name="PASS-REPL" code="0x02"/>
+        <enum name="FAIL" code="0x10"/>
+        <enum name="ERROR" code="0x11"/>
+        <enum name="FOLLOW" code="0x21"/>
+    </avp>
+
+    <avp name="TACACSPLUS-Acct-Flags" type="byte-enumeration" internal="true">
+        <enum name="MORE" code="0x01"/>
+        <enum name="START" code="0x02"/>
+        <enum name="STOP" code="0x04"/>
+        <enum name="WATCHDOG" code="0x08"/>
+    </avp>
+    <avp name="TACACSPLUS-Acct-Status" type="byte-Enumeration" internal="true">
+        <enum name="SUCCESS" code="0x01"/>
+        <enum name="ERROR" code="0x02"/>
+        <enum name="FOLLOW" code="0x21"/>
+    </avp>
+
+    <avp name="TACACSPLUS-Action" type="byte-enumeration" internal="true">
+        <enum name="LOGIN" code="1"/>
+        <enum name="CHPASS" code="2"/>
+        <enum name="SENDAUTH" code="4"/>
+    </avp>
+    <avp name="TACACSPLUS-Priv-Level" type="byte-enumeration" internal="true">
+        <enum name="MIN" code="0"/>
+        <enum name="USER" code="1"/>
+        <enum name="ROOT" code="15">
+            <alias name="MAX"/>
+        </enum>
+    </avp>
+    <avp name="TACACSPLUS-Authen-Type" type="byte-enumeration" internal="true">
+        <enum name="ASCII" code="1"/>
+        <enum name="PAP" code="2"/>
+        <enum name="CHAP" code="3"/>
+        <enum name="ARAP" code="4"/>
+        <enum name="MSCHAP" code="5"/>
+    </avp>
+    <avp name="TACACSPLUS-Service" type="byte-enumeration" internal="true">
+        <enum name="NONE" code="0"/>
+        <enum name="LOGIN" code="1"/>
+        <enum name="ENABLE" code="2"/>
+        <enum name="PPP" code="3"/>
+        <enum name="ARAP" code="4"/>
+        <enum name="PT" code="5"/>
+        <enum name="RCMD" code="6"/>
+        <enum name="X25" code="7"/>
+        <enum name="NASI" code="8"/>
+        <enum name="FWPROXY" code="9"/>
+    </avp>
+    <avp name="TACACSPLUS-Authen-Method" type="byte-enumeration" internal="true">
+        <enum name="NOT-SET" code="0"/>
+        <enum name="NONE" code="1"/>
+        <enum name="KRB5" code="2"/>
+        <enum name="LINE" code="3"/>
+        <enum name="ENABLE" code="4"/>
+        <enum name="LOCAL" code="5"/>
+        <enum name="TACACSPLUS" code="6"/>
+        <enum name="GUEST" code="8"/>
+        <enum name="RADIUS" code="16"/>
+        <enum name="KRB4" code="17"/>
+        <enum name="RCMD" code="32"/>
+    </avp>
+
+    <avp name="TACACSPLUS-Remote-Addr" type="OctetString" internal="true" log="scramble"/>
+    <avp name="TACACSPLUS-Port" type="OctetString" internal="true"/>
+
+    <avp name="TACACSPLUS-User-Message" type="OctetString" log="hide" internal="true"/>
+    <avp name="TACACSPLUS-Server-Message" type="OctetString" log="hide" internal="true"/>
+    <avp name="TACACSPLUS-Data" type="OctetString" log="hide" internal="true"/>
+    <avp name="TACACSPLUS-AVPair" type="tacacsplus-avpair" internal="true"/>
+
+    <avp name="Failover-Error-Count" type="Atomic-Integer"/>
+    <avp name="Failover-Error-Time" type="Atomic-Timestamp"/>
+
+    <avp name="Diameter-Boot-Mode" type="Enumerated" internal="true">
+        <enum name="None" code="0"/>
+        <enum name="Less" code="1"/>
+        <enum name="Other" code="2"/>
+    </avp>
+
+    <!-- Nokia AAA/EAP-AKA protocol attributes -->
+
+    <avp name="AT_IPMS_IND" type="Enumerated" internal="true">
+        <enum name="DSMIPv6 only" code="1"/>
+        <enum name="NBM only" code="2"/>
+        <enum name="MIPv4 only" code="3"/>
+        <enum name="DSMIPv6 and NBM both supported" code="4"/>
+        <enum name="MIPv4 and NBM both supported" code="5"/>
+        <enum name="DSMIPv6 and NBM Supported; DSMIPv6 preferred" code="6"/>
+        <enum name="DSMIPv6 and NBM Supported; NBM preferred" code="7"/>
+        <enum name="MIPv4 and NBM supported; MIPv4 preferred" code="8"/>
+        <enum name="MIPv4 and NBM supported; NBM preferred" code="9"/>
+        <enum name="MIPv4 and DSMIPv6 supported; MIPv4 preferred" code="10"/>
+        <enum name="MIPv4 and DSMIPv6 supported; DSMIPv6 preferred" code="11"/>
+        <enum name="MIPv4, DSMIPv6 and NBM supported; MIPv4 preferred" code="12"/>
+        <enum name="MIPv4, DSMIPv6 and NBM supported; DSMIPv6 preferred" code="13"/>
+        <enum name="MIPv4, DSMIPv6 and NBM supported; NBM preferred" code="14"/>
+    </avp>
+
+    <avp name="AT_IPMS_RES" type="Enumerated" internal="true">
+        <enum name="DSMIPv6" code="1"/>
+        <enum name="NBM" code="2"/>
+        <enum name="MIPv4" code="3"/>
+    </avp>
+
+    <avp name="AT_TRUST_IND" type="Enumerated" internal="true">
+        <enum name="Trusted" code="1"/>
+        <enum name="Untrusted" code="2"/>
+    </avp>
+
+    <avp name="AT_FULL_NAME_FOR_NETWORK" type="Hex-OctetString" internal="true"/>
+
+    <avp name="AT_SHORT_NAME_FOR_NETWORK" type="Hex-OctetString" internal="true"/>
+
+    <avp name="AT_RQSI_IND" type="Enumerated" internal="true">
+        <enum name="Reflective QoS function is supported" code="1"/>
+        <enum name="Reflective QoS function is not supported" code="2"/>
+    </avp>
+
+    <avp name="AT_RQSI_RES" type="Enumerated" internal="true">
+        <enum name="Enable reflective QoS function" code="1"/>
+        <enum name="Disable reflective QoS function" code="2"/>
+    </avp>
+
+    <avp name="AT_TWAN_CONN_MODE" type="TWAN-Conn-Mode-Message" internal="true">
+        <avp name="MESSAGE_TYPE" type="Byte-Enumeration" internal="true">
+            <enum name="CONNECTION_CAPABILITY" code="1"/>
+            <enum name="SCM_REQUEST" code="2"/>
+            <enum name="SCM_RESPONSE" code="3"/>
+            <enum name="MCM_REQUEST" code="4"/>
+            <enum name="MCM_RESPONSE" code="5"/>
+        </avp>
+
+        <avp name="CONNECTIVITY_TYPE" code="0" type="Byte-Enumeration">
+            <enum name="PDN-Connection" code="1"/>
+            <enum name="NSWO" code="2"/>
+        </avp>
+
+        <avp name="ATTACHMENT_TYPE" code="1" type="Byte-Enumeration">
+            <enum name="Initial" code="1"/>
+            <enum name="Handover" code="2"/>
+        </avp>
+
+        <avp name="APN" code="2" type="String"/>
+
+        <avp name="PDN_TYPE" code="3" type="Byte-Enumeration">
+            <enum name="IPv4" code="1"/>
+            <enum name="IPv6" code="2"/>
+            <enum name="IPv4v6" code="3"/>
+        </avp>
+
+        <avp name="AUTHORIZATIONS" code="4" type="Byte-Bit-Set">
+            <avp name="NSWOA" code="0" type="Boolean"/>
+        </avp>
+
+        <avp name="CONNECTION_MODE_CAPABILITY" code="5" type="Byte-Bit-Set">
+            <avp name="SCMI" code="0" type="Boolean"/>
+            <avp name="MCMI" code="1" type="Boolean"/>
+            <avp name="TSMCI" code="2" type="Boolean"/>
+        </avp>
+
+        <!-- New type??? -->
+        <avp name="PROTOCOL_CONFIGURATION_OPTIONS" code="6" type="Hex-OctetString"/>
+
+        <avp name="CAUSE" code="7" type="Byte-Enumeration" internal="true">
+            <enum name="Operator determined barring" code="8"/>
+            <enum name="Insufficient resources" code="26"/>
+            <enum name="Unknown APN" code="27"/>
+            <enum name="Unknown PDN type" code="28"/>
+            <enum name="Request rejected by PDN GW" code="30"/>
+            <enum name="Request rejected, unspecified" code="31"/>
+            <enum name="Service option not supported" code="32"/>
+            <enum name="Requested service option not subscribed" code="33"/>
+            <enum name="Service option temporarily out of order" code="34"/>
+            <enum name="Network failure" code="38"/>
+            <enum name="PDN type IPv4 only allowed" code="50"/>
+            <enum name="PDN type IPv6 only allowed" code="51"/>
+            <enum name="Protocol error, unspecified" code="111"/>
+        </avp>
+
+        <avp name="IPV4_ADDRESS" code="8" type="IPv4-Address" log="scramble"/>
+
+        <avp name="IPV6_INTERFACE_IDENTIFIER" code="9" type="IPv6-Address"/>
+
+        <!-- New type??? -->
+        <avp name="TWAG_CP_ADDRESS" code="10" type="Hex-OctetString" log="scramble"/>
+
+        <avp name="TWAG_UP_MAC_ADDRESS" code="11" type="Hex-OctetString" log="scramble"/>
+
+        <avp name="SUPPORTED_WLCP_TRANSPORTS" code="12" type="Byte-Bit-Set">
+            <avp name="WLCPoUDPoIPv4" code="0" type="Boolean"/>
+            <avp name="WLCPoUDPoIPv6" code="1" type="Boolean"/>
+        </avp>
+
+        <!-- New type??? -->
+        <avp name="Tw1" code="13" type="Hex-OctetString"/>
+    </avp>
+
+    <avp name="Temp-Group" type="Grouped" internal="true">
+        <group>
+            <optional>
+                <avprule name="AVP"/>
+            </optional>
+        </group>
+    </avp>
+
+    <!-- Femto internal dictionary -->
+    <avp name="FAP-Factory-Serial-Number" type="string"/>
+
+    <!-- IANA/ITU Alarm enumerations -->
+
+    <avp name="ITU-Perceived-Severity" internal="true" type="enumerated">
+        <enum name="Cleared" code="1"/>
+        <enum name="Indeterminate" code="2"/>
+        <enum name="Critical" code="3"/>
+        <enum name="Major" code="4"/>
+        <enum name="Minor" code="5"/>
+        <enum name="Warning" code="6"/>
+    </avp>
+
+    <avp name="ITU-Trend-Indication" internal="true" type="enumerated">
+        <enum name="More-Severe" code="1"/>
+        <enum name="No-Change" code="2"/>
+        <enum name="Less-Severe" code="3"/>
+    </avp>
+
+    <avp name="IANA-ITU-Event-Type" internal="true" type="enumerated">
+        <enum name="Other" code="1"/>
+        <enum name="Communications-Alarm" code="2"/>
+        <enum name="Quality-of-Service" code="3"/>
+        <enum name="Processing-Error-Alarm" code="4"/>
+        <enum name="Equipment-Alarm" code="5"/>
+        <enum name="Environmental-Alarm" code="6"/>
+        <enum name="Integrity-Violation" code="7"/>
+        <enum name="Operational-Violation" code="8"/>
+        <enum name="Physical-Violation" code="9"/>
+        <enum name="Security-Service-or-Mechanism-Violation" code="10"/>
+        <enum name="Time-Domain-Violation" code="11"/>
+    </avp>
+
+    <avp name="IANA-ITU-Probable-Cause" internal="true" type="enumerated">
+        <enum name="Alarm-Indication-Signal" code="1"/>
+        <enum name="Call-Setup-Failure" code="2"/>
+        <enum name="Degraded-Signal" code="3"/>
+        <enum name="FarEnd-Receiver-Failure" code="4"/>
+        <enum name="Framing-Error" code="5"/>
+        <enum name="Loss-Of-Frame" code="6"/>
+        <enum name="Loss-Of-Pointer" code="7"/>
+        <enum name="Loss-Of-Signal" code="8"/>
+        <enum name="Payload-Type-Mismatch" code="9"/>
+        <enum name="Transmission-Error" code="10"/>
+        <enum name="Remote-Alarm-Interface" code="11"/>
+        <enum name="Excessive-BER" code="12"/>
+        <enum name="Path-Trace-Mismatch" code="13"/>
+        <enum name="Unavailable" code="14"/>
+        <enum name="Signal-Label-Mismatch" code="15"/>
+        <enum name="Loss-of-Multi-Frame" code="16"/>
+        <enum name="Receive-Failure" code="17"/>
+        <enum name="Transmit-Failure" code="18"/>
+        <enum name="Modulation-Failure" code="19"/>
+        <enum name="Demodulation-Failure" code="20"/>
+        <enum name="Broadcast-Channel-Failure" code="21"/>
+        <enum name="Connection-Establishment-Error" code="22"/>
+        <enum name="Invalid-Message-Received" code="23"/>
+        <enum name="Local-Node-Transmission-Error" code="24"/>
+        <enum name="Remote-Node-Transmission-Error" code="25"/>
+        <enum name="Routing-Failure" code="26"/>
+        <enum name="Backplane-Failure" code="51"/>
+        <enum name="DataSet-Problem" code="52"/>
+        <enum name="Equipment-Identifier-Duplication" code="53"/>
+        <enum name="External-IF-Device-Problem" code="54"/>
+        <enum name="LineCard-Problem" code="55"/>
+        <enum name="Multiplexer-Problem" code="56"/>
+        <enum name="NE-Identifier-Duplication" code="57"/>
+        <enum name="Power-Problem" code="58"/>
+        <enum name="Processor-Problem" code="59"/>
+        <enum name="Protection-Path-Failure" code="60"/>
+        <enum name="Receiver-Failure" code="61"/>
+        <enum name="Replaceable-Unit-Missing" code="62"/>
+        <enum name="Replaceable-Unit-Type-Mismatch" code="63"/>
+        <enum name="Synchronization-Source-Mismatch" code="64"/>
+        <enum name="Terminal-Problem" code="65"/>
+        <enum name="Timing-Problem" code="66"/>
+        <enum name="Transmitter-Failure" code="67"/>
+        <enum name="Trunk-Card-Problem" code="68"/>
+        <enum name="Replaceable-Unit-Problem" code="69"/>
+        <enum name="RealTime-Clock-Failure" code="70"/>
+        <enum name="Antenna-Failure" code="71"/>
+        <enum name="Battery-Charging-Failure" code="72"/>
+        <enum name="Disk-Failure" code="73"/>
+        <enum name="Frequency-Hopping-Failure" code="74"/>
+        <enum name="IO-Device-Error" code="75"/>
+        <enum name="Loss-of-Synchronisation" code="76"/>
+        <enum name="Loss-of-Redundancy" code="77"/>
+        <enum name="Power-Supply-Failure" code="78"/>
+        <enum name="Signal-Quality-Evaluation-Failure" code="79"/>
+        <enum name="Transceiver-Failure" code="80"/>
+        <enum name="Protection-Mechanism-Failure" code="81"/>
+        <enum name="Protecting-Resource-Failure" code="82"/>
+        <enum name="Air-Compressor-Failure" code="101"/>
+        <enum name="Air-Conditioning-Failure" code="102"/>
+        <enum name="Air-Dryer-Failure" code="103"/>
+        <enum name="Battery-Discharging" code="104"/>
+        <enum name="Battery-Failure" code="105"/>
+        <enum name="Commercial-Power-Failure" code="106"/>
+        <enum name="Cooling-Fan-Failure" code="107"/>
+        <enum name="Engine-Failure" code="108"/>
+        <enum name="Fire-Detector-Failure" code="109"/>
+        <enum name="Fuse-Failure" code="110"/>
+        <enum name="Generator-Failure" code="111"/>
+        <enum name="Low-Battery-Threshold" code="112"/>
+        <enum name="Pump-Failure" code="113"/>
+        <enum name="Rectifier-Failure" code="114"/>
+        <enum name="Rectifier-High-Voltage" code="115"/>
+        <enum name="Rectifier-Low-Voltage" code="116"/>
+        <enum name="Ventilation-System-Failure" code="117"/>
+        <enum name="Enclosure-Door-Open" code="118"/>
+        <enum name="Explosive-Gas" code="119"/>
+        <enum name="Fire" code="120"/>
+        <enum name="Flood" code="121"/>
+        <enum name="High-Humidity" code="122"/>
+        <enum name="High-Temperature" code="123"/>
+        <enum name="High-Wind" code="124"/>
+        <enum name="Ice-BuildUp" code="125"/>
+        <enum name="Intrusion-Detection" code="126"/>
+        <enum name="Low-Fuel" code="127"/>
+        <enum name="Low-Humidity" code="128"/>
+        <enum name="Low-Cable-Pressure" code="129"/>
+        <enum name="Low-Temperature" code="130"/>
+        <enum name="Low-Water" code="131"/>
+        <enum name="Smoke" code="132"/>
+        <enum name="Toxic-Gas" code="133"/>
+        <enum name="Cooling-System-Failure" code="134"/>
+        <enum name="External-Equipment-Failure" code="135"/>
+        <enum name="External-Point-Failure" code="136"/>
+        <enum name="Storage-Capacity-Problem" code="151"/>
+        <enum name="Memory-Mismatch" code="152"/>
+        <enum name="Corrupt-Data" code="153"/>
+        <enum name="Out-of-CPU-Cycles" code="154"/>
+        <enum name="SFWR-Environment-Problem" code="155"/>
+        <enum name="SFWR-Download-Failure" code="156"/>
+        <enum name="Loss-of-RealTimel" code="157"/>
+        <enum name="Application-Subsystem-Failure" code="158"/>
+        <enum name="Configuration-or-Customisation-Error" code="159"/>
+        <enum name="Database-Inconsistency" code="160"/>
+        <enum name="File-Error" code="161"/>
+        <enum name="Out-of-Memory" code="162"/>
+        <enum name="Software-Error" code="163"/>
+        <enum name="Timeout-Expired" code="164"/>
+        <enum name="Underlying-Resource-Unavailable" code="165"/>
+        <enum name="Version-Mismatch" code="166"/>
+        <enum name="Bandwidth-Reduced" code="201"/>
+        <enum name="Congestion" code="202"/>
+        <enum name="Excessive-Error-Rate" code="203"/>
+        <enum name="Excessive-Response-Time" code="204"/>
+        <enum name="Excessive-Retransmission-Rate" code="205"/>
+        <enum name="Reduced-Logging-Capability" code="206"/>
+        <enum name="System-Resources-Overload" code="207"/>
+        <enum name="Adapter-Error" code="500"/>
+        <enum name="Application-Subsystem-Failure-X733" code="501"/>
+        <enum name="Bandwidth-Reduced-X733" code="502"/>
+        <enum name="Call-Establishment-Error" code="503"/>
+        <enum name="Communications-Protocol-Error" code="504"/>
+        <enum name="Communications-Subsystem-Failure" code="505"/>
+        <enum name="Configuration-or-Customization-Error" code="506"/>
+        <enum name="Congestion-X733" code="507"/>
+        <enum name="Corrupt-Data-X733" code="508"/>
+        <enum name="CPU-Cycles-Limit-Exceeded" code="509"/>
+        <enum name="DataSet-or-Modem-Error" code="510"/>
+        <enum name="Degraded-Signal-X733" code="511"/>
+        <enum name="DTE-DCE-Interface-Error" code="512"/>
+        <enum name="Enclosure-Door-Open-X733" code="513"/>
+        <enum name="Equipment-Malfunction" code="514"/>
+        <enum name="Excessive-Vibration" code="515"/>
+        <enum name="File-Error-X733" code="516"/>
+        <enum name="Fire-Detected" code="517"/>
+        <enum name="Framing-Error-X733" code="518"/>
+        <enum name="Heating-Vent-Cooling-System-Problem" code="519"/>
+        <enum name="Humidity-Unacceptable" code="520"/>
+        <enum name="Input-Output-Device-Error" code="521"/>
+        <enum name="Input-Device-Error" code="522"/>
+        <enum name="LAN-Error" code="523"/>
+        <enum name="Leak-Detected" code="524"/>
+        <enum name="Local-Node-Transmission-Error-X733" code="525"/>
+        <enum name="Loss-of-Frame-X733" code="526"/>
+        <enum name="Loss-of-Signal-X733" code="527"/>
+        <enum name="Material-Supply-Exhausted" code="528"/>
+        <enum name="Multiplexer-Problem-X733" code="529"/>
+        <enum name="Out-of-Memory-X733" code="530"/>
+        <enum name="Output-Device-Error" code="531"/>
+        <enum name="Performance-Degraded" code="532"/>
+        <enum name="Power-Problems" code="533"/>
+        <enum name="Pressure-Unacceptable" code="534"/>
+        <enum name="Processor-Problems" code="535"/>
+        <enum name="Pump-Failure-X733" code="536"/>
+        <enum name="Queue-Size-Exceeded" code="537"/>
+        <enum name="Receive-Failure-X733" code="538"/>
+        <enum name="Receiver-Failure-X733" code="539"/>
+        <enum name="Remote-Node-Transmission-Error-X733" code="540"/>
+        <enum name="Resource-at-or-Nearing-Capacity" code="541"/>
+        <enum name="Response-Time-Excessive" code="542"/>
+        <enum name="Retransmission-Rate-Excessive" code="543"/>
+        <enum name="Software-Error-X733" code="544"/>
+        <enum name="Software-Program-Abnormally-Terminated" code="545"/>
+        <enum name="Software-Program-Error" code="546"/>
+        <enum name="Storage-Capacity-Problem-X733" code="547"/>
+        <enum name="Temperature-Unacceptable" code="548"/>
+        <enum name="Threshold-Crossed" code="549"/>
+        <enum name="Timing-Problem-X733" code="550"/>
+        <enum name="Toxic-Leak-Detected" code="551"/>
+        <enum name="Transmit-Failure-X733" code="552"/>
+        <enum name="Transmitter-Failure-X733" code="553"/>
+        <enum name="Underlying-Resource-Unavailable-X733" code="554"/>
+        <enum name="Version-Mismatch-X733" code="555"/>
+        <enum name="Authentication-Failure" code="600"/>
+        <enum name="Breach-of-Confidentiality" code="601"/>
+        <enum name="Cable-Tamper" code="602"/>
+        <enum name="Delayed-Information" code="603"/>
+        <enum name="Denial-of-Service" code="604"/>
+        <enum name="Duplicate-Information" code="605"/>
+        <enum name="Information-Missing" code="606"/>
+        <enum name="Information-Modification-Detected" code="607"/>
+        <enum name="Information-out-of-Sequence" code="608"/>
+        <enum name="Key-Expired" code="609"/>
+        <enum name="NonRepudiation-Failure" code="610"/>
+        <enum name="Out-of-Hours-Activity" code="611"/>
+        <enum name="Out-of-Service" code="612"/>
+        <enum name="Procedural-Error" code="613"/>
+        <enum name="Unauthorized-Access-Attempt" code="614"/>
+        <enum name="Unexpected-Information" code="615"/>
+        <enum name="Other" code="1024"/>
+    </avp>
+    <avp name="HSS-Info" type="Here"/>
+    <avp name="Destination-Address" type="ip-address" log="scramble"/>
+    <avp name="Client-Host" type="ip-address" log="scramble"/>
+</dictionary>

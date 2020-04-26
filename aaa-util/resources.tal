@@ -1,0 +1,228 @@
+# signature = Yjo5Ud58DYziArOCKyuiJ15BuPLjEcq0QPegMIQV6Y4TCfecDAHXmomkP/lvNd+qeiX5cwvefLDymth1kCUMdxX9wMcvfySYKwSNd+bzY1ZWDKDcs4aG7tAoZhCKNF4WiLLI2wWnXqPYzETyFvPrn98URZ5LPzTBs/PO2wWL+mQ= * 18.5.0.1
+#
+# This file is cryptographically  signed with the  above signature.
+# Depending on the type of license you have, you may or  may not be
+# allowed to make changes to the file.  Please notice  that if your
+# license does  not permit modifications,  any changes  made to the
+# content of the file will cause the server to reject it.
+#.
+/* *******************************************
+
+File: resources.tal
+
+Provides some utilities associated to the files in the resource directories:
+- user-defined modifier to simplify GeoIP lookup
+- automatic update of the resource files, that can be included in method_dispatch.xml
+
+Is also used by the resources.ast SMT panel.
+
+********************************************* */
+
+//#############################################
+// getCountryByIp() function
+// Returns the 2-letter ISO Country Code associated to an IP address (either IPv4 or IPv6)
+// If the country is unknown, it will return null
+// If the format of the IP address is not valid, it will return error
+// It maintains PolicyFlowCounters, to be able to have statistics on the amount of IP's that couldn't be resolved
+//
+function getCountryByIP(ip-address)
+    $user.function.ip-address := $param.ip-address;
+
+    if $user.function.ip-address == null then
+        incrementPolicyFlowCounter("resources-GeoIP-QueryErrors"); // For stats
+        return null; // return null, if the input parameter is null
+    endif
+
+    // Check if the incoming ip-address is of IPv4Address type
+    if isIPv4Address($user.function.ip-address) then
+        // IPv4 address
+        invoke ReadDelimitedText with
+            Text        => "@resource/ipv4_info.csv",
+            Map         => "${user.function.ISO-Country} := ${2};",
+            CSVMode     => false,
+            DelimitChar => ",",
+            SelectMode  => CIDR,
+            SearchKey   => $user.function.ip-address,
+            Pack        => true // Packing entries decreases performance slightly, but reduces memory footprint and GC pauses
+        on success 
+            incrementPolicyFlowCounter("resources-GeoIPv4-QuerySuccesses"); // For stats
+        on failure
+            incrementPolicyFlowCounter("resources-GeoIPv4-QueryFailures"); // For stats
+            return null; // IPv4 not included in file
+        on error
+            incrementPolicyFlowCounter("resources-GeoIPv4-QueryErrors"); // For stats
+            return error;
+        endinvoke
+    elsif isIPv6Address($user.function.ip-address) then
+        // IPv6 Address
+        invoke ReadDelimitedText with
+            Text        => "@resource/ipv6_info.csv",
+            Map         => "${user.function.ISO-Country} := ${2};",
+            CSVMode     => false,
+            DelimitChar => ",",
+            SelectMode  => CIDR,
+            SearchKey   => ${user.function.ip-address} ,
+            Pack        => true // Packing entries decreases performance slightly, but reduces memory footprint and GC pauses
+        on success 
+            incrementPolicyFlowCounter("resources-GeoIPv6-QuerySuccesses"); // For stats
+        on failure
+            incrementPolicyFlowCounter("resources-GeoIPv6-QueryFailures"); // For stats
+            return null; // IPv6 not included in file
+        on error
+            incrementPolicyFlowCounter("resources-GeoIPv6-QueryErrors"); // For stats
+            return error;
+        endinvoke
+    else
+        // Neither IPv4 not IPv6 address
+        incrementPolicyFlowCounter("resources-GeoIP-QueryErrors"); // For stats
+        delete $user.function;
+        return error : $param.ip-address & " is neither IPv4 nor IPv6 address.";
+    endif
+    // Return country, deleting internal variables
+    $temp.ISO-Country := $user.function.ISO-Country;
+    delete $user.function;
+    return $temp.ISO-Country;
+endfunction
+
+
+//============================
+// To be able to test the defined function
+// Can also be invoked from a SMT callMethodPanel
+// INPUT variables: 
+//    $request.IP-Address
+// OUTPUT variable:
+//    $reply.ISO-Country
+//
+testGetCountryByIp:
+$reply.ISO-Country := getCountryByIP($request.IP-Address);
+return success;
+
+//-------------------------
+// Do performance testing on the GeoIP lookup
+// > call method resources:testPerformGetCountryByIp IP-Address=a.b.c.d[,I=10000]
+//
+testPerformGetCountryByIp:
+$temp.I := $request.I | 100000 ;
+while $temp.I > 0 loop
+    $temp.Visited-Country := getCountryByIP($request.IP-Address);
+    $temp.I := $temp.I - 1 ;
+endloop
+
+$reply.Time := ($request.I|100000) & " GeoIP lookups of the same IP (" & $request.IP-Address & ") returning '" &
+    $temp.Visited-Country & "' in " & millisBeforeNow($packet.Receipt-Time) & " ms.";
+return success;
+
+
+//
+// END of getCountryByIP
+//##################################
+
+
+
+//##################################
+// Entry point for the SMT panel, to know the MacVendor associated to an Ethernet MAC address
+// It uses the built-in getMacVendor() modifier
+//
+testGetMacVendor:
+$reply.Mac-Vendor := getMacVendor($request.Mac-Address);
+return success;
+
+//
+// END of testGetMacVendor
+//##################################
+
+
+
+//##################################
+// Update Resource File(s)
+// Intended to be called from the CLI or SMT callMethodPanel with:
+// > call method resources:updateResourceFile [Files=xxx.csv[+yyyy.csv[+zzzz.csv]]]][,ProxyAddress=a.b.c.d:pppp][,HostList-To-Replicate=slaves]
+// Example for GeoIP update, every week in the night from Tue to Wed (MaxMind updates its GeoIP DB every Tuesday)
+//     <cron minute="0" hour="0" day-week="3" request="Files=ipv4_info.csv+ipv6_info.csv" label="resources:updateResourceFile" /> 
+//
+updateResourceFile:
+
+$user.Valid-File-List := { "country_info.csv", "ipv4_info.csv", "ipv6_info.csv", "mcc_mnc.csv", "oui_vendor.csv" };
+
+// Processes file variable, that can contain 1 or more files (separated by +)
+if (toLower($request.Files) | "all") == "all" then
+    $user.Files-To-Download := $user.Valid-File-List;
+else
+    foreach $temp.File in ( $request.Files -> toList("+") ) loop
+        if $user.Valid-File-List contains $temp.File then
+            $user.Files-To-Download += $temp.File;
+        else 
+            $reply.Reply-Message += "Ignoring " & $temp.File & " reource file, as it is not in the list of downloadable files: " & $user.Valid-File-List ;
+            log last($reply.Reply-Message), flush => true;
+        endif
+    endloop
+endif
+
+// Some variables definition needed for the reload of the file(s)
+block
+    $temp.Operating-System := executeCommand("java properties os.name");
+    $user.Subdirectories-Separator := $temp.Operating-System matches #/windows.+/i ? "\\" : "/" ;
+on error | failure
+    // Consider UNIX separator, in case of error
+    $user.Subdirectories-Separator ?= "/" ;
+    break ;
+endblock
+
+// Loops for every file needed to download and reload
+foreach $user.This-File in $user.Files-To-Download loop
+    // Downloads this file
+    $user.Download-Start-Time := $system.Timestamp;
+    invoke Java with
+        PlugletClass => "com.lucent.aaa.ResourceFileTool",
+        RequestMap => """
+            ${file}         := ${user.This-File};
+            ${proxyAddress} := ${request.proxyAddress};
+        """
+    on success
+        $reply.Reply-Message += "Successfully downloaded 'resource/" & $user.This-File & "' file in " 
+            & (millisBeforeNow($user.Download-Start-Time) / 1000) & " seconds";
+        log last($reply.Reply-Message), flush => true;
+    on error | failure
+        $reply.Reply-Message += "Error when downloading 'resource/" & $user.This-File & "' file after " 
+            & (millisBeforeNow($user.Download-Start-Time) / 1000) & " seconds (" & $packet.Last-Disposition-Message & ")";
+        log last($reply.Reply-Message), flush => true;
+        continue; // Try with next file, if any
+    endinvoke
+
+    // Tries to reload file
+    block
+        executeCommand("file reload resource" & $user.Subdirectories-Separator & $user.This-File );
+    on success
+        $reply.Reply-Message += "Successfully reloaded 'resource/" & $user.This-File & "' file.";
+        log last($reply.Reply-Message), flush => true;
+    on error | failure
+        // Could be that the file is not used in the PF, and has never been read
+        $reply.Reply-Message += "Not possible to reload 'resource/" & $user.This-File & "' file (" 
+            & ($packet.Last-Disposition-Message -> toList(LS) -> last() ) & ")";
+        log last($reply.Reply-Message), flush => true;
+        break; // Go on with the PF
+    endblock
+endloop // $user.This-FileRin $user.Files-To-Download
+
+
+// If indicated so, replicate the files to the Remote Config Slave servers
+if trimNull($request.HostList-To-Replicate) != null then
+    block
+        executeCommand( "remote config reload " & $request.HostList-To-Replicate );
+    on success
+        $reply.Reply-Message += "Successfully notified '" & $request.HostList-To-Replicate & "' hostList to replicate the modified files.";
+        log last($reply.Reply-Message), flush => true;
+    on error
+        $reply.Reply-Message += "Not possible to notify '" & $request.HostList-To-Replicate & "' hostList to replicate the modified files (" 
+            & $packet.Last-Disposition-Message & ")";
+        log last($reply.Reply-Message), flush => true;
+    endblock
+endif
+
+// Only when invoked from an SMT callMethodPanel, or from the CLI
+$reply.Reply-Message += "To refresh the resource files in the SMT panel, click on 'Rollback All' button.";
+
+return success;
+//
+// END of updateResourceFile
+//##################################

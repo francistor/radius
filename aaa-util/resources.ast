@@ -1,0 +1,199 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE assistantPanel SYSTEM "assistant.dtd">
+
+<assistantPanel title="PF Resources">
+  <description>
+    These files provide resources when writing PolicyFlows so that extra information can be derived from incoming AVPs. \n
+    The content of these files have been downloaded from public Internet, and are provided "as is" with no guarantee of accuracy. Additionally, there is no commitment that in future AAA releases, the format and content of these
+    files can be preserved, as the actual source in a free Internet source. \n
+    In some cases, the format has been adapted, so that performance can be improved for ReadDelimitedText plugin (in PREFIX, KEY or CIDR modes). \n
+    The update of these files can be done with the ResourceFileTool (aaa-rft) which can be invoked via O.S. shell or via the Java plugin.
+  </description>
+
+  <tabber>
+    <!-- __________________________________________________________ -->
+    <!-- ___________  oui_vendor.csv                         ______ -->
+    <!-- __________________________________________________________ -->
+    <tab name="OUI Vendors">
+      <tabularListPanel file="resource/oui_vendor.csv" delimiter="," keyColumn="1" csvMode="true">
+        <description>
+          Relationship between an Ethernet MAC address 3-byte prefix (also known as OUI (Organizational Unique Identifier)) and the Vendor that has been assigned this OUI by IEEE. \n
+          The 'getMacVendor()' modifier uses this file. \n
+          This file is generated from data provided at: http://standards-oui.ieee.org/oui/oui.csv
+        </description>
+
+        <table>
+          <column name="OUI" label="OUI" index="0" display="true"/>
+          <column name="Vendor" label="Vendor" index="1" display="true"/>
+        </table>
+
+        <properties>
+          <String name="OUI" label="OUI" description="Organization Unique Identifier" required="true" />
+          <String name="Vendor" label="Vendor" description="Vendor that has been assigned this OUI" required="true" />
+        </properties>
+
+        <dialog title="OUI to Vendor relationship" description="OUI to Vendor relationship" properties="OUI, Vendor" />
+      </tabularListPanel>
+    </tab>
+
+    <!-- __________________________________________________________ -->
+    <!-- ___________  mcc_mnc.csv                            ______ -->
+    <!-- __________________________________________________________ -->
+    <tab name="MCC-MNC Info">
+      <tabularListPanel file="resource/mcc_mnc.csv" delimiter="," keyColumn="1" csvMode="true">
+        <description>
+          Information associated to Mobile Service Providers identified by its concatenated MCC-MNC\n
+          This file is generated from data provided at: http://mcc-mnc.com
+        </description>
+
+        <table>
+          <column name="MCC-MNC" index="0" display="true"/>
+          <column name="ISO-Country-Code" index="1" display="true"/>
+          <column name="Country-Name" index="2" display="true"/>
+          <column name="E164-Country-Prefix" index="3" display="true"/>
+          <column name="Network-Name" index="4" display="true"/>
+        </table>
+
+        <properties>
+          <UnsignedInteger name="MCC-MNC" label="MCC+MNC" minValue="10000" maxValue="999999" required="true" description="5 or 6 digit to indicate the Mobile Country Code (first 3 digits) and the Mobile Network Code (last 2 or 3 digits)" />
+          <String name="ISO-Country-Code" label="ISO Country-Code" minLength="2" maxLength="2" required="true" description="ISO (International Standards Organization) Alpha-2 Country Code, as listed in: http://www.nationsonline.org/oneworld/country_code_list.htm" />
+          <String name="Country-Name" label="Country Name" required="true" description="Country name in English" />
+          <UnsignedInteger name="E164-Country-Prefix" label="E.164 Country Prefix" minValue="0" maxValue="99999" required="true" description="E.164 telephone prefix for MSISDN's in that country &amp; network" />
+          <String name="Network-Name" label="Network Name" required="true" description="Name of the Network Service Provider" />
+        </properties>
+
+        <dialog title="MCC+MNC information" description="Data associated to an MCC+MNC" properties="MCC-MNC, ISO-Country-Code, Country-Name, E164-Country-Prefix, Network-Name"/>
+
+      </tabularListPanel>
+    </tab>
+
+    <!-- __________________________________________________________ -->
+    <!-- ___________  country_info.csv                       ______ -->
+    <!-- __________________________________________________________ -->
+    <tab name="Country Info">
+      <tabularListPanel file="resource/country_info.csv" delimiter="," keyColumn="1" csvMode="true">
+        <description>
+          Information associated to countries, classified by Alpha-2 ISO Country code. \n
+          This file is generated from data provided at: http://mcc-mnc.com
+        </description>
+
+        <table>
+          <column name="ISO-Country-Code" index="0" display="true"/>
+          <column name="Country-Name" index="1" display="true"/>
+          <column name="E164-Country-Prefix" index="2" display="true"/>
+          <column name="MCCs" index="3" display="true"/>
+        </table>
+
+        <properties>
+          <String name="ISO-Country-Code" label="ISO Country-Code" minLength="2" maxLength="2" required="true" description="ISO (International Standards Organization) Alpha-2 Country Code, as listed in: http://www.nationsonline.org/oneworld/country_code_list.htm" />
+          <String name="Country-Name" label="Country Name" required="true" description="Country name in English" />
+          <UnsignedInteger name="E164-Country-Prefix" label="E.164 Country Prefix" minValue="0" maxValue="99999" required="true" description="E.164 telephone prefix for MSISDN's in this country" />
+          <String name="MCCs" label="MCC(s)" required="true" description="E.214 country prefix, that identifies the Mobile Networks in that country. Note that some countries have several MCCs assigned, which as listed here separated by '&amp;' character." />
+        </properties>
+
+
+        <dialog title="Country Information" description="Data associated to a country." properties="ISO-Country-Code, Country-Name, E164-Country-Prefix, MCCs"/>
+
+      </tabularListPanel>
+    </tab>
+
+    <!-- __________________________________________________________ -->
+    <!-- ___________  GeoIP info                             ______ -->
+    <!-- __________________________________________________________ -->
+    <tab name="GeoIPv4">
+      <tabularListPanel file="resource/ipv4_info.csv" delimiter="," keyColumn="1" csvMode="true">
+        <description>
+          Country assigned to an IPv4 CIDR address block. \n
+          Can be used for GeoLocalization based on the IP address of a user device.\n
+          Notice that the size of this file can be quite large, due to large amount of assigned IPv4 CIDR blocks by IANA, and in turn by RIPE, ARIN, etc. \n
+          The 'resources:getCountryByIP()' user-defined modifier uses this file. \n
+          These files are generated from data provided at: http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+        </description>
+
+        <table>
+          <column name="CIDR-Block" index="0" display="true"/>
+          <column name="ISO-Country" index="1" display="true"/>
+          <column name="ISO-Country-by-AS" index="2" display="true"/>
+        </table>
+
+        <properties>
+          <String name="CIDR-Block" label="CIDR Block" required="true" description="Block of IPs in CIDR format" />
+          <String name="ISO-Country" label="ISO Country" required="true" description="2-letter ISO Country Code where the IPs of this block have been seen in Internet" />
+          <String name="ISO-Country-by-AS" label="ISO Country by AS" required="true" description="2-letter ISO Country Code associated to registered Autonomous System (AS)" />
+        </properties>
+
+        <dialog title="IP Block to Country" description="IP Block to Country relationship" properties="CIDR-Block, ISO-Country, ISO-Country-by-AS" />
+
+      </tabularListPanel>
+    </tab>
+
+    <tab name="GeoIPv6">
+      <tabularListPanel file="resource/ipv6_info.csv" delimiter="," keyColumn="1" csvMode="true">
+        <description>
+          Country assigned to an IPv6 CIDR address block. \n
+          Can be used for GeoLocalization based on the IP address of a user device.\n
+          Notice that the size of this file can be quite large, due to large amount of assigned IPv4 CIDR blocks by IANA, and in turn by RIPE, ARIN, etc. \n
+          The 'resources:getCountryByIP()' user-defined modifier uses this file. \n
+          These files are generated from data provided at: http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
+        </description>
+
+        <table>
+          <column name="CIDR-Block" index="0" display="true"/>
+          <column name="ISO-Country" index="1" display="true"/>
+          <column name="ISO-Country-by-AS" index="2" display="true"/>
+        </table>
+
+        <properties>
+          <String name="CIDR-Block" label="CIDR Block" required="true" description="Block of IPs in CIDR format" />
+          <String name="ISO-Country" label="ISO Country" required="true" description="2-letter ISO Country Code where the IPs of this block have been seen in Internet" />
+          <String name="ISO-Country-by-AS" label="ISO Country by AS" required="true" description="2-letter ISO Country Code associated to registered Autonomous System (AS)" />
+        </properties>
+
+
+        <dialog title="IP Block to Country" description="IP Block to Country relationship" properties="CIDR-Block, ISO-Country, ISO-Country-by-AS" />
+
+      </tabularListPanel>
+
+    </tab>
+
+    <!-- __________________________________________________________ -->
+    <!-- ___________  Actions                                ______ -->
+    <!-- __________________________________________________________ -->
+    <tab name="ACTIONS">
+
+      <callMethodPanel title="getCountryByIP" label="getCountryByIP" method="resources:testGetCountryByIp" reply="ISO-Country" displayMode="dialog" addBorder="true" >
+        <description>Provides the ISO-Country associated to an IP address (either IPv4 or IPv6)</description>
+        <properties>
+          <InetAddress name="IP-Address" required="true" />
+        </properties>
+      </callMethodPanel>
+
+
+      <callMethodPanel title="getMacVendor" label="getMacVendor" method="resources:testGetMacVendor" reply="Mac-Vendor" displayMode="dialog" addBorder="true">
+        <description>Provides the Manufacturer of a device based on its Ethernet MAC address</description>
+        <properties>
+          <String name="Mac-Address" required="true" />
+        </properties>
+      </callMethodPanel>
+
+
+      <callMethodPanel title="Download Files" label="Download Now" method="resources:updateResourceFile" reply="Reply-Message" displayMode="dialog" addBorder="true">
+        <description>Downloads and reloads one or more resource files.
+          Optionally, also notifies a hostList of ConfigSlaves that use the Unified Configuration feature.
+        </description>
+
+        <properties>
+          <Enumerations name="Files" label="File(s)" delimiter="+" numRows="3" minSelected="1" description="File(s) to download and refresh" required="true" values="ipv4_info.csv, ipv6_info.csv, country_info.csv, mcc_mnc.csv, oui_vendor.csv" />
+          <SocketAddress name="proxyAddress" label="HTTP Proxy-Address" description="IP address and TCP port of the HTTP proxy-address to use, if the AAA server doesn't have direct connection to Internet" />
+          <String name="HostList-To-Replicate" label="HostList to Replicate" description="Host-List name defined in 'remote_config.xml' file, with Configuration slaves where to replicate the specified configuration files" />
+        </properties>
+      </callMethodPanel>
+
+    </tab>
+
+  </tabber>
+
+  <buttons reloadButton="false" policyFlowInstallButton="false"/>
+</assistantPanel>
+
+

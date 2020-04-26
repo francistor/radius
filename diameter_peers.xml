@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "stanza_file.dtd">
+<table>
+    <entry name="testhost">
+        <property name="Origin-Host" value="localhost" />
+        <property name="Origin-Realm" value="localrealm" />
+        <property name="Diameter-Transport" value="Tcp" />
+        <property name="ServerAddress" value="0" />
+        <property name="AdminState" value="Auto" />
+    </entry>
+</table>

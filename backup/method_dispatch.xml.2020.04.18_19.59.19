@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "method_dispatch.dtd">
+<table>
+    <radius appl="auth" cmd="Access-Request" label="aaa:failRadius" />
+    <radius appl="acct" cmd="Accounting-Request" label="aaa:failRadius" />
+    <radius appl="auth" cmd="Status-Server" label="aaa:statusServer" />
+    <radius appl="acct" cmd="Status-Server" label="aaa:statusServer" />
+    <radius appl="dynauth" cmd="Status-Server" label="aaa:statusServer" />
+    <radius appl="dynauth" cmd="Disconnect-Request" label="aaa:failRadius" />
+    <radius appl="dynauth" cmd="CoA-Request" label="aaa:failRadius" />
+    <radius appl="auth" cmd="AAA-State-Request" label="aaa:failRadius" />
+    <radius appl="acct" cmd="AAA-State-Request" label="aaa:failRadius" />
+    <diameter appl="NASREQ" cmd="AA" label="aaa:failDiameter" />
+    <diameter appl="NASREQ" cmd="RA" label="aaa:failDiameter" />
+    <diameter appl="Base" cmd="RA" label="aaa:failDiameter" />
+    <diameter appl="NASREQ" cmd="ST" label="aaa:failDiameter" />
+    <diameter appl="Base" cmd="ST" label="aaa:failDiameter" />
+    <diameter appl="NASREQ" cmd="AC" label="aaa:failDiameter" />
+    <diameter appl="Accounting" cmd="AC" label="aaa:failDiameter" />
+</table>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "user_file.dtd">
+<table>
+    <user name="root" note="Root user - Has file access outside the run directory">
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="command" pattern="*" level="on" />
+        <access-rule type="role" pattern="*" level="on" />
+        <access-rule type="file" pattern="/*" level="update" />
+    </user>
+
+    <user name="ldap" note="User to provide access to the USS LDAP interface">
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="role" pattern="ldap search *" level="on" />
+    </user>
+
+    <user name="aaastate" note="User for HA-USS replication. The password must be plain text">
+        <check name="Internal-User" value="true" />
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="role" pattern="ipam *" level="on" />
+        <access-rule type="role" pattern="state *" level="on" />
+    </user>
+
+    <user name="aaadb" note="Derby internal user">
+        <check name="Internal-User" value="true" />
+        <check name="User-Password" value="{AES}rBOW3nC6lAqDOiNtwXf/jktf/9vpZo4LfGYh9t7LGLs+PTFgqUFb3WRWrii+sI0L" />
+        <access-rule type="command" pattern="file reload *" level="on" />
+        <access-rule type="role" pattern="derby *" level="on" />
+    </user>
+
+    <user name="aaadbr" note="Derby replication user">
+        <check name="Internal-User" value="true" />
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="file" pattern="derby/*" level="update" />
+        <access-rule type="role" pattern="derby *" level="on" />
+        <access-rule type="role" pattern="derbyrepl *" level="on" />
+    </user>
+
+    <user name="provis_ws" note="User for SOAP User Provisioning Web Service. The password must be plain text">
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="role" pattern="soap ProvisioningService" level="on" />
+    </user>
+
+    <user name="workflow_ws" note="User for SOAP Work Flow Web Service. The password must be plain text">
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="role" pattern="soap WorkFlowService" level="on" />
+    </user>
+
+    <user name="remote_config" note="Sample user valid to be used with the 'Remote Config' feature. The password must be plain text.">
+        <check name="Internal-User" value="true" />
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="file" pattern="*" level="read" />
+        <access-rule type="command" pattern="remote config reload *" level="on" />
+        <access-rule type="client" pattern="rmi@*" level="on" />
+        <access-rule type="client" pattern="rmi/tls@*" level="on" />
+    </user>
+
+    <user name="readonly" note="This example user is only allowed read access. Security file access is disabled.">
+        <check name="Auth-Type" value="Reject" />
+        <access-rule type="role" pattern="application stats" level="on" />
+        <access-rule type="role" pattern="logtail *" level="on" />
+        <access-rule type="role" pattern="policy stats" level="on" />
+        <access-rule type="role" pattern="state stats" level="on" />
+        <access-rule type="role" pattern="ipam stats" level="on" />
+        <access-rule type="file" pattern="security_properties.xml" level="none" />
+        <access-rule type="file" pattern="security_users.xml" level="none" />
+        <access-rule type="file" pattern="*" level="read" />
+        <access-rule type="command" pattern="alert list *" level="on" />
+        <access-rule type="command" pattern="broker *" level="on" />
+        <access-rule type="command" pattern="cache count *" level="on" />
+        <access-rule type="command" pattern="cache list *" level="on" />
+        <access-rule type="command" pattern="cache dump *" level="on" />
+        <access-rule type="command" pattern="check *" level="on" />
+        <access-rule type="command" pattern="client classes" level="on" />
+        <access-rule type="command" pattern="clients" level="on" />
+        <access-rule type="command" pattern="config broker dump" level="on" />
+        <access-rule type="command" pattern="config broker get *" level="on" />
+        <access-rule type="command" pattern="config broker list" level="on" />
+        <access-rule type="command" pattern="config broker *" level="off" />
+        <access-rule type="command" pattern="config pool get *" level="on" />
+        <access-rule type="command" pattern="config pool *" level="off" />
+        <access-rule type="command" pattern="config poolsel get *" level="on" />
+        <access-rule type="command" pattern="config poolsel dump" level="on" />
+        <access-rule type="command" pattern="config poolsel list" level="on" />
+        <access-rule type="command" pattern="config poolsel *" level="off" />
+        <access-rule type="command" pattern="config *" level="on" />
+        <access-rule type="command" pattern="derby list" level="on" />
+        <access-rule type="command" pattern="diag atfile dump" level="on" />
+        <access-rule type="command" pattern="diag cert expire *" level="on" />
+        <access-rule type="command" pattern="diag engine *" level="on" />
+        <access-rule type="command" pattern="diag field *" level="on" />
+        <access-rule type="command" pattern="diag fuse *" level="on" />
+        <access-rule type="command" pattern="diag gc warn" level="on" />
+        <access-rule type="command" pattern="diag method *" level="on" />
+        <access-rule type="command" pattern="diag normal *" level="on" />
+        <access-rule type="command" pattern="diag osi list *" level="on" />
+        <access-rule type="command" pattern="diag queue list *" level="on" />
+        <access-rule type="command" pattern="diag sctp *" level="on" />
+        <access-rule type="command" pattern="diag slot dump*" level="on" />
+        <access-rule type="command" pattern="diag squelch list" level="on" />
+        <access-rule type="command" pattern="diag stripe *" level="on" />
+        <access-rule type="command" pattern="diag tcp *" level="on" />
+        <access-rule type="command" pattern="diag tcpconn list *" level="on" />
+        <access-rule type="command" pattern="diag tls session manager" level="on" />
+        <access-rule type="command" pattern="diag watch *" level="on" />
+        <access-rule type="command" pattern="diameter peer dump*" level="on" />
+        <access-rule type="command" pattern="diameter peer list*" level="on" />
+        <access-rule type="command" pattern="diameter route list" level="on" />
+        <access-rule type="command" pattern="eap aka cache count*" level="on" />
+        <access-rule type="command" pattern="eap aka cache list*" level="on" />
+        <access-rule type="command" pattern="eap sim cache count*" level="on" />
+        <access-rule type="command" pattern="eap sim cache list*" level="on" />
+        <access-rule type="command" pattern="file list" level="on" />
+        <access-rule type="command" pattern="file open" level="on" />
+        <access-rule type="command" pattern="file reload" level="on" />
+        <access-rule type="command" pattern="file view *" level="on" />
+        <access-rule type="command" pattern="help *" level="on" />
+        <access-rule type="command" pattern="history" level="on" />
+        <access-rule type="command" pattern="ipam *" level="on" />
+        <access-rule type="command" pattern="java diag option get *" level="on" />
+        <access-rule type="command" pattern="java diag option list" level="on" />
+        <access-rule type="command" pattern="java gc stats" level="on" />
+        <access-rule type="command" pattern="java memory" level="on" />
+        <access-rule type="command" pattern="java properties" level="on" />
+        <access-rule type="command" pattern="java thread cpu" level="on" />
+        <access-rule type="command" pattern="java thread dump" level="on" />
+        <access-rule type="command" pattern="java thread locks" level="on" />
+        <access-rule type="command" pattern="java thread stats" level="on" />
+        <access-rule type="command" pattern="java threads" level="on" />
+        <access-rule type="command" pattern="java version" level="on" />
+        <access-rule type="command" pattern="ldap stats" level="on" />
+        <access-rule type="command" pattern="logrule areas" level="on" />
+        <access-rule type="command" pattern="logrule list" level="on" />
+        <access-rule type="command" pattern="logtail *" level="on" />
+        <access-rule type="command" pattern="quit" level="on" />
+        <access-rule type="command" pattern="radius clients" level="on" />
+        <access-rule type="command" pattern="remote config audit *" level="on" />
+        <access-rule type="command" pattern="remote config list" level="on" />
+        <access-rule type="command" pattern="server info" level="on" />
+        <access-rule type="command" pattern="server license" level="on" />
+        <access-rule type="command" pattern="server property list" level="on" />
+        <access-rule type="command" pattern="server sessions" level="on" />
+        <access-rule type="command" pattern="server status" level="on" />
+        <access-rule type="command" pattern="server uptime" level="on" />
+        <access-rule type="command" pattern="server version" level="on" />
+        <access-rule type="command" pattern="server wait" level="on" />
+        <access-rule type="command" pattern="session codes *" level="on" />
+        <access-rule type="command" pattern="session echo *" level="on" />
+        <access-rule type="command" pattern="session info" level="on" />
+        <access-rule type="command" pattern="stat" level="on" />
+        <access-rule type="command" pattern="stat *" level="on" />
+        <access-rule type="command" pattern="stats -reset" level="off" />
+        <access-rule type="command" pattern="stats reset" level="off" />
+        <access-rule type="command" pattern="stats *" level="on" />
+        <access-rule type="command" pattern="system exec *" level="off" />
+        <access-rule type="command" pattern="system *" level="on" />
+        <access-rule type="command" pattern="tacacsplus clients" level="on" />
+        <access-rule type="command" pattern="tal program dump" level="on" />
+        <access-rule type="command" pattern="tal watch list" level="on" />
+        <access-rule type="command" pattern="uss count *" level="on" />
+        <access-rule type="command" pattern="uss entry *" level="on" />
+        <access-rule type="command" pattern="uss fastlist *" level="on" />
+        <access-rule type="command" pattern="uss index list" level="on" />
+        <access-rule type="command" pattern="uss keys *" level="on" />
+        <access-rule type="command" pattern="uss list *" level="on" />
+        <access-rule type="command" pattern="uss repl secstate" level="on" />
+        <access-rule type="command" pattern="uss stats describe" level="on" />
+        <access-rule type="command" pattern="uss stats list" level="on" />
+        <access-rule type="command" pattern="uss subkeys *" level="on" />
+        <access-rule type="command" pattern="uss2 attdef show" level="on" />
+        <access-rule type="command" pattern="uss2 block size *" level="on" />
+        <access-rule type="command" pattern="uss2 boot info *" level="on" />
+        <access-rule type="command" pattern="uss2 delete info *" level="on" />
+        <access-rule type="command" pattern="uss2 entry dump *" level="on" />
+        <access-rule type="command" pattern="uss2 entry list *" level="on" />
+        <access-rule type="command" pattern="uss2 model *" level="on" />
+        <access-rule type="command" pattern="uss2 node list *" level="on" />
+        <access-rule type="command" pattern="uss2 node stats *" level="on" />
+        <access-rule type="command" pattern="uss2 normal dump *" level="on" />
+        <access-rule type="command" pattern="uss2 persistence info *" level="on" />
+        <access-rule type="command" pattern="uss2 repl *" level="on" />
+        <access-rule type="command" pattern="uss2 resource *" level="on" />
+        <access-rule type="command" pattern="uss2 timer *" level="on" />
+        <access-rule type="command" pattern="*" level="off" />
+    </user>
+
+    <user name="aaacontrol" note="This user gets used by the aaa script to perform status and shutdown functions">
+        <check name="User-Password" value="{AES}un6UI86B8xmWXN/zuLYWbYr75byKNth4IUa1nyQkskfLIt26M0wSizr+/5olmh1z" />
+        <check name="Internal-User" value="true" />
+        <access-rule type="command" pattern="server status" level="on" />
+        <access-rule type="command" pattern="server shutdown" level="on" />
+        <access-rule type="command" pattern="server wait" level="on" />
+        <access-rule type="command" pattern="aaa start *" level="on" />
+        <access-rule type="command" pattern="aaa stop *" level="on" />
+        <access-rule type="command" pattern="file reload security_users.xml" level="on" />
+        <access-rule type="file" pattern="server_properties.xml" level="read" />
+        <access-rule type="file" pattern="log_channels.xml" level="read" />
+        <access-rule type="file" pattern="diameter_peer.xml" level="read" />
+        <access-rule type="file" pattern="uss2*" level="read" />
+        <access-rule type="file" pattern="license.txt" level="read" />
+        <access-rule type="role" pattern="application stats" level="on" />
+        <access-rule type="client" pattern="command@127.0.0.1" level="on" />
+    </user>
+
+    <user name="admin">
+        <check name="User-Password" value="$5$8AugLlSH$DSGZbDVzM.sgdsyi6fxbJIdur28XHheeyrV4ebSG2R0" />
+        <access-rule type="file" pattern="*" level="update" />
+        <access-rule type="command" pattern="*" level="on" />
+        <access-rule type="role" pattern="*" level="on" />
+    </user>
+</table>

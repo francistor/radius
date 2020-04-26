@@ -1,0 +1,28 @@
+//------------------------------------------------------------------------------
+// This file specifies the processing steps (methods) to take for
+// each AAA request.  The initial method is selected
+// by rules in the method_dispatch file.
+//------------------------------------------------------------------------------
+
+//--------------------------------------------------
+// Fail all Radius Requests (except Status-Server)
+//--------------------------------------------------
+failRadius:
+
+$reply.Reply-Message := "Server not configured to process RADIUS Packet of type: " & $packet.Packet-Type & " from " & $packet.Source-Address & ":" & $packet.Source-Port;
+return failure : $reply.Reply-Message;
+
+// Note that if the method dispatch doesn't have a entry for a given Status-Server request,
+// the Radius stack automatically responds with a success answer.
+statusServer:
+$reply.Reply-Message := "Server not configured to process RADIUS Packet of type: " & $packet.Packet-Type & " from " & $packet.Source-Address & ":" & $packet.Source-Port;
+return accept : $reply.Reply-Message;
+
+//--------------------------------------------------
+// Fail all Diameter Requests
+//--------------------------------------------------
+failDiameter:
+
+$reply.Error-Message := "Server not configured to process Diamater Request of Application: " & $packet.Application & ", Command: " & $packet.Command & " from " & $packet.Source-Address & ":" & $packet.Source-Port;
+return failure : $reply.error-message;
+

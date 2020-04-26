@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "stanza_file.dtd">
+<table>
+    <entry name="Provision-Users">
+        <property name="DbTableTitle" value="Provision-Users" />
+        <property name="DbTableName" value="AAADB.USERS" />
+        <property name="DbSchemaName" value="provision" />
+        <property name="DbQueryOnInit" value="TRUE" />
+        <property name="DbTableFields" value="USER_NAME,USER_REALM,PASSWORD,AUTH_TYPE,CHECK_GROUP,CHECK_AVPS,REPLY_GROUP,REPLY_AVPS,GENERIC1,GENERIC2,GENERIC3" />
+        <property name="DbOrderByFields" value="USER_NAME,USER_REALM" />
+        <property name="DbAttributesFields" value="CHECK_AVPS,REPLY_AVPS" />
+    </entry>
+
+    <entry name="Provision-Blocked">
+        <property name="DbTableTitle" value="Provision-Blocked" />
+        <property name="DbTableName" value="AAADB.BLOCKED_AVPS" />
+        <property name="DbSchemaName" value="provision" />
+        <property name="DbQueryOnInit" value="TRUE" />
+        <property name="DbTableFields" value="NAME,VALUE" />
+        <property name="DbOrderByFields" value="NAME,VALUE" />
+    </entry>
+
+    <entry name="Provision-GroupAvps">
+        <property name="DbTableTitle" value="Provision-GroupAvps" />
+        <property name="DbTableName" value="AAADB.GROUP_AVPS" />
+        <property name="DbSchemaName" value="provision" />
+        <property name="DbQueryOnInit" value="TRUE" />
+        <property name="DbTableFields" value="NAME,AVPS,TYPE" />
+        <property name="DbOrderByFields" value="NAME,TYPE" />
+        <property name="DbAttributesFields" value="AVPS" />
+    </entry>
+
+    <entry name="Authentication">
+        <property name="DbTableTitle" value="Authentication" />
+        <property name="DbTableName" value="AAADB.AUTHENTICATION" />
+        <property name="DbSchemaName" value="aaa" />
+        <property name="DbQueryOnInit" value="FALSE" />
+        <property name="DbTableFields" value="USER_NAME,USER_REALM,PASSWORD,CHECK_TEMPLATE,REPLY_TEMPLATE,GENERIC1,GENERIC2,GENERIC3,GENERIC4,GENERIC5" />
+        <property name="DbOrderByFields" value="USER_NAME,USER_REALM" />
+        <property name="DbAttributesFields" value="CHECK_TEMPLATE,REPLY_TEMPLATE" />
+    </entry>
+
+    <entry name="Accounting">
+        <property name="DbTableTitle" value="Accounting" />
+        <property name="DbTableName" value="AAADB.ACCOUNTING" />
+        <property name="DbQueryOnInit" value="FALSE" />
+        <property name="DbSchemaName" value="aaa" />
+        <property name="DbTableFields" value="NAS_IP_ADDRESS,NAS_PORT,ACCT_SESSION_ID,USER_NAME,USER_REALM,SERVICE_TYPE,FRAMED_PROTOCOL,FRAMED_IP_ADDRESS,LOGIN_IP_HOST,LOGIN_SERVICE,LOGIN_TCP_PORT,FRAMED_IPX_NETWORK,CLASS,VENDOR_SPECIFIC,CALLED_STATION_ID,CALLING_STATION_ID,ACCT_STATUS_TYPE,ACCT_DELAY_TIME,ACCT_INPUT_OCTETS,ACCT_INPUT_PACKETS,ACCT_OUTPUT_OCTETS,ACCT_OUTPUT_PACKETS" />
+        <property name="DbOrderByFields" value="ACCT_SESSION_ID,NAS_IP_ADDRESS,NAS_PORT" />
+    </entry>
+
+    <entry name="Active-Accounting">
+        <property name="DbTableTitle" value="Active-Accounting" />
+        <property name="DbTableName" value="AAADB.ACTIVE" />
+        <property name="DbQueryOnInit" value="FALSE" />
+        <property name="DbSchemaName" value="aaa" />
+        <property name="DbTableFields" value="NAS_IP_ADDRESS,NAS_PORT,ACCT_SESSION_ID,USER_NAME,USER_REALM,SERVICE_TYPE,FRAMED_PROTOCOL,FRAMED_IP_ADDRESS,LOGIN_IP_HOST,LOGIN_SERVICE,LOGIN_TCP_PORT,FRAMED_IPX_NETWORK,CLASS,VENDOR_SPECIFIC,CALLED_STATION_ID,CALLING_STATION_ID,ACCT_STATUS_TYPE,ACCT_DELAY_TIME,ACCT_INPUT_OCTETS,ACCT_INPUT_PACKETS,ACCT_OUTPUT_OCTETS,ACCT_OUTPUT_PACKETS" />
+        <property name="DbOrderByFields" value="ACCT_SESSION_ID,NAS_IP_ADDRESS,NAS_PORT" />
+    </entry>
+
+    <entry name="Boot-Records">
+        <property name="DbTableTitle" value="Boot-Records" />
+        <property name="DbTableName" value="AAADB.BOOT" />
+        <property name="DbQueryOnInit" value="FALSE" />
+        <property name="DbSchemaName" value="aaa" />
+        <property name="DbTableFields" value="EVENT_TIME,NAS_IP_ADDRESS,ACCT_STATUS_TYPE,ACCT_DELAY_TIME,ACCT_SESSION_ID,ACCT_TERMINATE_CAUSE" />
+        <property name="DbOrderByFields" value="EVENT_TIME,NAS_IP_ADDRESS" />
+    </entry>
+
+    <entry name="Log">
+        <property name="DbTableTitle" value="Log" />
+        <property name="DbTableName" value="AAADB.LOG" />
+        <property name="DbSchemaName" value="log" />
+        <property name="DbQueryOnInit" value="FALSE" />
+        <property name="DbTableFields" value="SEQUENCE,TIMESTAMP,AREA,LEVEL,MESSAGE" />
+        <property name="DbOrderByFields" value="SEQUENCE,TIMESTAMP" />
+    </entry>
+</table>

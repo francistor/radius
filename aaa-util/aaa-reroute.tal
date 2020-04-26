@@ -1,0 +1,36 @@
+# signature = gcPQ8Fq7GFZleQNwtQqO+cEec+npWMEGwifr1vFHWCCDfS5F6T+1+bR/x6mFRfsWcNWCYohEfd+wAfPLZoVzw6NUg0B2lgl7oMnqasAMmfovUSPYD92cXvfIfmvl2hxElhWk6AaCgGOJ2VbyIiFfuFHQP49+QofvM1ACfdWBCXA= * 18.5.0.1
+#
+# This file is cryptographically  signed with the  above signature.
+# Depending on the type of license you have, you may or  may not be
+# allowed to make changes to the file.  Please notice  that if your
+# license does  not permit modifications,  any changes  made to the
+# content of the file will cause the server to reject it.
+#.
+//
+// This file, if unmodified, represents the logic the server performs using the '#auto' policyflow file.
+// If different behavior is desired, this file can be copied into the run directory while retaining its name,
+// and any changes may be made there.
+//
+
+reroute-radius:
+
+invoke RadiusTransport with
+    Server => $request.state -> dleft( ";" ),
+    Stateless => true
+on success
+    return accept : $packet.last-disposition-message;
+on error
+    return failure : "Unable to forward challenge response: " & $packet.last-disposition-message;
+endinvoke
+
+reroute-diameter:
+
+invoke Diameter with
+    RemotePeer => $request.state -> dleft( ";" ),
+    Stateless => true
+on success
+    return accept : $packet.last-disposition-message;
+on error
+    $reply.result-code := DIAMETER_UNABLE_TO_DELIVER;
+    $reply.error-message :=  "Unable to forward challenge response: " & $packet.last-disposition-message;
+endinvoke

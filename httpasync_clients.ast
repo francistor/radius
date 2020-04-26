@@ -1,0 +1,85 @@
+<?xml version="1.0" standalone="no"?>
+
+<!DOCTYPE assistantPanel SYSTEM "assistant.dtd">
+
+<assistantPanel title="HttpAsync Clients">
+
+    <description>
+        This panel configures sets of properties for HttpAsync and OcspAsync plugins
+    </description>
+
+    <stanzaListPanel file="httpasync_clients.xml">
+        <table key="Client-Name">
+            <column name="Client-Name" label="Client-Name"/>
+        </table>
+        <properties>
+            <String name="Client-Name" label="Name of the Client">
+                <flag name="Required"/>
+            </String>
+            <String name="Trusted-Certs-File" label="Trusted Certs File" group="TLS-Options">
+                <description>
+                    This property specifies a file of trusted certificates to verify the server certificates sent by cluster nodes.  This property enables TLS for communication protocol.
+                </description>
+            </String>
+            <BinarySize name="Socket-Receive-Buffer-Size" label="Socket Receive Buffer Size" default="8k" group="Socket-Options" minValue="0" maxValue="2147483647">
+                <description>
+                    This property sets the size of the receive buffer for each connection.
+                </description>
+            </BinarySize>
+            <BinarySize name="Socket-Send-Buffer-Size" label="Socket Send Buffer Size" default="8k" group="Socket-Options" minValue="0" maxValue="2147483647">
+                <description>
+                    This property sets the size of the send buffer for each connection.
+                </description>
+            </BinarySize>
+            <Duration name="Socket-Linger" label="Socket Linger" default="-1s" group="Socket-Options" units="s" minValue="-9223372036854775808ms" maxValue="9223372036854775807ms">
+                <description>
+                    This property set the linger time for connection after calling close.
+                </description>
+            </Duration>
+            <Boolean name="Socket-TCP-No-Delay" label="Socket TCP No Delay" default="true" group="Socket-Options">
+                <description>
+                    This property enables the TCP No Delay option for connections.
+                </description>
+            </Boolean>
+            <Boolean name="Socket-Reuse-Address" label="Socket Reuse Address" default="true" group="Socket-Options">
+                <description>
+                    This property enable the reuse address option for connections.
+                </description>
+            </Boolean>
+            <Boolean name="Socket-Keep-Alive" label="Socket Keep Alive" default="true" group="Socket-Options">
+                <description>
+                    This property enable the TCP keep alive option for connections.
+                </description>
+            </Boolean>
+            <SignedInteger name="Maximum-Connections-Per-Route" label="Maximum Connections Per Route" default="10" group="Pooling-Options" minValue="1" maxValue="2147483647">
+                <description>
+                    This property sets how many connections are allow per route for the client.
+                </description>
+            </SignedInteger>
+            <SignedInteger name="Maximum-Total-Connections" label="Maximum Total Connections" default="100" group="Pooling-Options" minValue="1" maxValue="2147483647">
+                <description>
+                    This property sets total number of connections allowed to be created for the client.
+                </description>
+            </SignedInteger>
+        </properties>
+        <wizard title="Client Properties">
+        <wizardPage name="TLS-Options" title="TLS Options">
+            <property name = "Client-Name"/>
+            <property name = "Trusted-Certs-File"/>
+        </wizardPage>
+        <wizardPage name="Socket-Options" title="Socket Options">
+            <property name = "Socket-Receive-Buffer-Size"/>
+            <property name = "Socket-Send-Buffer-Size"/>
+            <property name = "Socket-Linger"/>
+            <property name = "Socket-TCP-No-Delay"/>
+            <property name = "Socket-Reuse-Address"/>
+            <property name = "Socket-Keep-Alive"/>
+        </wizardPage>
+        <wizardPage name="Pooling-Options" title="Pooling Options">
+            <property name = "Maximum-Connections-Per-Route"/>
+            <property name = "Maximum-Total-Connections"/>
+        </wizardPage>
+        </wizard>
+    </stanzaListPanel>
+    <buttons policyFlowInstallButton="false" reloadButton="true"/>
+</assistantPanel>

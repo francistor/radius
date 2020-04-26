@@ -1,0 +1,109 @@
+/**
+    user.<variable> = cooked attribute
+    user.tmp.<variable> = for short term processing
+    user.provClient = read from file or database
+**/
+
+authStart:
+
+    /* Get and normalize request data */
+
+    // All client types
+    $user.userName := $request.User-Name->trim()->toLower();
+    $user.acctSessionId := $request.Acct-Session-Id->trim();
+    $user.realm := $packet.User-Realm->toLower();
+    $user.mac-address := $request.HW-User-MAC | $request.Unisphere-PPPoE-Description->substring(6) | $request.Alc-Client-Hardware-Addr;
+    $user.nasPort := $request.NAS-Port;
+    $user.nasIPAddress := $request.NAS-IP-Address;
+
+    /* Detect client type */
+    if $request.Unisphere-DHCP-MAC-Address->exists() | $request.Unisphere-PPPoE-Description->exists() then
+        $user.radiusClientType := "MX";
+    elsif $request.Alc-Client-Hardware-Addr->exists() then
+        $user.radiusClientType := "ALU";
+    elsif $request.HW-User-MAC->exists() then
+        $user.radiusClientType := "HUAWEI";
+    else 
+        $user.radiusClientType := "DEFAULT";
+    endif;
+
+    // Huawei
+   if $user.radiusClientType == "HUAWEI" | $user.radiusClientType == "MX" then
+        // NAS-Port-Id <dslam-ip>:<svlan>-<cvlan>
+        // Used in Chile. NAS-Port is calculated using the vlan values and NAS-IP-Address is that ot the DSLAm as reported in NAS-Port-Id
+	    if $request.NAS-Port-Id matches #/^([0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+):(([0-9]+)-)?([0-9]+)$/ then
+            $user.tmp.pseudo-nas-ip := $match.1;
+            $user.tmp.svlan := $match.3;
+            $user.tmp.cvlan := $match.4;
+            $user.nasPort := $user.tmp.cvlan|0 + ($user.tmp.svlan|0)*4096;
+            $user.nasIPAddress := $user.tmp.pseudo-nas-ip;
+        endif;
+    endif;
+
+
+    // Smart-Edge not implemented
+    // Alu does not need any cooking
+
+    /* Branch special request types */
+
+    // Service Definition
+    if $request.Service-Type == "Outbound-User" then 
+        goto serviceRequest; 
+    // Prepaid request
+    elsif $request.HW-Service-Info matches #/N([-_0-9a-zA-Z]+)/ then
+        $user.serviceName := $match.1;
+        log "Prepaid request" & $user.serviceName, level => warning;
+        goto prepaidRequest;
+    endif;
+
+
+    // Get the client data
+
+    invoke Jdbc with
+        Driver => "org.postgresql.Driver",
+        Url => "jdbc:postgresql://localhost:5432/radius",
+        User => "psa",
+        Password =>"psa",
+        Statement => "select UserName, Password, SERVICE_NAME as ServiceName, OPC_CL_INFO_03 as AddonServiceName, LEGACY_CLIENT_ID as LegacyClientId, BLOCKING_STATE as Status from ServicePlan SP, Client CLI, UserLine UL where CLI.CLIENT_ID=UL.CLIENT_ID AND UL.NASIP_ADDRESS=? and UL.NASPORT=? AND CLI.PLAN_NAME=SP.PLAN_NAME",
+        BindMap => """
+            ${1}=${user.nasIPAddress};
+            ${2[INTEGER]}=${user.nasPort};
+        """,
+        ResultMap => """
+            $user.provClient.userName := $1;
+            $user.provClient.password := $2;
+            $user.provClient.serviceName := $3;
+            $user.provClient.addonServiceName := $4;
+            $user.provClient.legacyClientId := $5;
+            $user.provClient.status := $6;
+        """
+    endinvoke
+
+    /* Compose Response */
+    $reply.Session-Timeout = 3600;
+    $reply.Framed-Protocol = "PPP";
+    $reply.Class += "C=legacy_1";
+    $reply.Class += "S=service_1";
+    $reply.Unisphere-Service-Bundle := "A";
+
+    return success;
+    
+
+prepaidRequest:
+
+    /* Get the client credit */
+    $reply.HW-Remanent-Volume = 1000;
+
+    return success;
+
+serviceRequest:
+
+    invoke ReadUserFile with
+        Text => "@conf/ServiceRemoteDefinition.txt",
+        SearchKey => $request.User-Name,
+        Map => """
+            $reply.* := $reply.*;
+        """
+    endinvoke
+
+    return success;

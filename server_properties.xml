@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "property_file.dtd">
+<table>
+    <property name="AAA-Version" value="18.5.0.1" />
+    <property name="Server-Identity" value="pb3" />
+    <property name="Server-Address" value="192.168.122.1" />
+    <property name="Radius-Httpd-Address" value="*:0" />
+    <property name="Radius-Httpsd-Address" value="*:0" />
+    <property name="Radius-Httpd-RootDir" value="../html/" />
+    <property name="Perf-UniqueId" value="pb3" />
+    <property name="Policy-Set-Installed" value="expert" />
+    <property name="provisioningInstalled" value="FALSE" />
+</table>

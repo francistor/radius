@@ -1,0 +1,26 @@
+authStart:
+
+    if $request.Service-Type == "Outbound" then 
+        goto serviceRemoteDefinition; 
+    endif;
+
+    $reply.Session-Timeout = 3600;
+    $reply.Framed-Protocol = "PPP";
+    $reply.Class += "C=legacy_1";
+    $reply.Class += "S=service_1";
+
+    return success;
+
+
+serviceRemoteDefinition:
+
+    invoke ReadUserFile with
+        Text => "@conf/ServiceRemoteDefinition.txt",
+        SearchKey => $request.User-name,
+        CacheMap => """
+            $reply.* := $reply.*;
+
+        """
+    endinvoke
+
+    return success;

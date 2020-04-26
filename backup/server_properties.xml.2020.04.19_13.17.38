@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "property_file.dtd">
+<table>
+    <property name="Policy-Set-Installed" value="expert" />
+    <property name="provisioningInstalled" value="FALSE" />
+    <property name="Auto-CheckItem" value="FALSE" />
+    <property name="Auto-CheckPassword" value="FALSE" />
+    <property name="Radius-Httpd-RootDir" value="../html/" />
+    <property name="Server-Certificate-File" value="server.pem" />
+    <property name="Trusted-Certificates-File" value="trusted.pem" />
+    <property name="Server-Identity" value="pb3" />
+    <property name="Perf-UniqueId" value="pb3" />
+    <property name="Server-Address" value="192.168.122.1" />
+    <property name="AAA-Version" value="18.5.0.1" />
+    <property name="File-Encoding" value="UTF-8" />
+</table>

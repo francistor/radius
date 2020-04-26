@@ -1,0 +1,190 @@
+# signature = YuIKMr4e1grGXapKq96Z7rw52mxp/tz+IK8P+j8mbHsoLOKdQ8eIkF3WOSFbqYmUHq5aFagdDHJsW1YBigplxPs1VPjUme0mpryDeSbJ07LExViWgKw1A6xDn8hcqcj9UEZ4sXG/N1/xBinHS6ppIcjNUx1uMab29xwTBbC+URw= * 18.5.0.1
+#
+# This file is cryptographically  signed with the  above signature.
+# Depending on the type of license you have, you may or  may not be
+# allowed to make changes to the file.  Please notice  that if your
+# license does  not permit modifications,  any changes  made to the
+# content of the file will cause the server to reject it.
+#.
+// Method Dispatch Entry point for Status-Server requests
+status:
+    return accept;
+
+// SMT Entry point for Diameter Disconnect-Request service
+sendDiameterDisconnectRequest:
+invoke Diameter with
+    Application => $request.auth-application-id | base,
+    Command => Abort-Session,
+    RequestMap => """
+        $Origin-Host     := $system.Origin-Host;
+        $Origin-Realm    := $system.Origin-Realm;
+        $Origin-State-Id := $system.Origin-State-Id;
+        $*               := $request.*;
+    """
+endinvoke
+
+return success ;
+
+// SMT Entry point for Radius Disconnect-Request service
+sendRadiusDisconnectRequest:
+
+$user.Convert-Error-To-Failure := false;
+$user.Request-Map := $server.Disconnect-Request-Map;
+goto doRadiusDynAuthRequest;
+
+// Method Dispatch Entry point for dynamic auth requests
+proxyRadiusDynamicAuthRequest:
+
+$user.Convert-Error-To-Failure := true;
+$user.Request-Map := "$* := $request.*;";
+
+// Common code for radius dynAuth forwarding
+doRadiusDynAuthRequest:
+
+$user.NAS-Keys := $request.NAS-Identifier;
+$user.NAS-Keys += $request.NAS-IP-Address;
+$user.NAS-Keys += $request.NAS-IPv6-Address;
+
+// Ensure we have at least one NAS key
+if $user.NAS-Keys == null then
+    $reply.Reply-Message := "Missing NAS information in request";
+    $reply.Error-Cause := 502;
+    return $user.Convert-Error-To-Failure ? failure : error;
+endif
+
+// Iterate over NAS keys and try to send the DynAuth request
+foreach $user.NAS-Key in $user.NAS-Keys loop
+    invoke Call with
+        Method     => sendDynAuth,
+        WriteMap   => "$user.Server-Address := $user.NAS-Key;",
+        SuccessMap => "$outer.reply.* := $inner.reply.*;",
+        FailureMap => "$outer.reply.* := $inner.reply.*;",
+        ErrorMap   => "$outer.reply.* := $inner.reply.*;"
+    on success
+        return success;
+    on failure
+        return failure;
+    on error
+        if $packet.Last-Disposition-Message matches #/.*timeout.*/i then
+            return $user.Convert-Error-To-Failure ? failure : error; // don't bother with indirect routing if direct fails
+        else
+            break;
+        endif
+    endinvoke
+
+    // See if we know about the NAS in the cache
+    invoke ReadCache with
+        SearchKey => $user.NAS-Key,
+        CacheName => $server.NAS-Routes-Cache-Name,
+        Map       => """
+                delete $reply.Reply-Message;
+                delete $reply.Error-Cause;
+                $user.Client-Addresses := $Client-Address;
+        """
+    on failure
+        $reply.Reply-Message += "No route found for " & $user.NAS-Key & "\r\n";
+        $reply.Error-Cause := 502;
+        continue;
+    on error
+        $reply.Reply-Message += "No route found for " & $user.NAS-Key & "\r\n";
+        $reply.Error-Cause := 502;
+        continue;
+    endinvoke
+
+    foreach $user.Client-Address in $user.Client-Addresses loop
+        invoke Call with
+            Method     => sendDynAuth,
+            WriteMap   => "$user.Server-Address := $user.Client-Address;",
+            SuccessMap => "$outer.reply.* := $inner.reply.*;",
+            FailureMap => "$outer.reply.* := $inner.reply.*;",
+            ErrorMap   => "$outer.reply.* := $inner.reply.*;"
+        on success
+            return success;
+        on failure
+            return failure;
+        on error
+            continue;
+        endinvoke
+    endloop
+endloop
+
+return $user.Convert-Error-To-Failure ? failure : error;
+
+// try a specific radius client
+//
+// Upon entry, $user.server-address contains the server to talk to
+//
+// Upon return, $user.timeout = true, if a request timeout occurred
+
+sendDynAuth:
+delete $user.timeout;
+
+block
+    $user.Server-Name := getRadiusServerName( $user.Server-Address, "*", "DYNAUTH" );
+on error
+    break;
+endblock
+
+if ( $user.Server-Name != null ) then
+    invoke RadiusTransport with
+        Server        => $user.Server-Name,
+        PacketType    => $packet.Packet-Type | Disconnect-Request,
+        RequestMap    => "exec $user.Request-Map;"
+    on error
+        $reply.Reply-Message += "No response from " & $user.Server-Name & " for " & $user.NAS-Key & "\r\n";
+        $reply.Error-Cause := 502;
+    //    return error : $packet.Last-Disposition-Message;
+    endinvoke
+else
+    invoke ReadClient with
+        SearchKey => $user.Server-Address,
+        Map => """
+            $user.Server-Address    := $aaa.user.Server-Address & ":" & $Dynamic-Auth-Port | 3799;
+            $user.Server-Secret     := $Client-Secret;
+            $user.Server-Dictionary := $Client-Dictionary | "#default";
+            $user.Server-CharSet    := $Radius_CharSet | $aaa.server.Radius-CharSet;
+            $user.Server-Timeout    := $Client_Timeout | $aaa.server.Client-Timeout;
+            $user.Server-Retries    := $Dynamic-Auth-Retries | 0;
+        """
+    on failure
+        $reply.Reply-Message += "No entry found for " & $user.Server-Address & "\r\n";
+        $reply.Error-Cause := 502;
+        return error;
+    on error
+        $reply.Reply-Message += "No entry found for " & $user.Server-Address & "\r\n";
+        $reply.Error-Cause := 502;
+        return error;
+    endinvoke
+
+    // avoid recursive local delivery
+    invoke CheckLocalRadius with
+        Address => $user.Server-Address
+    on success
+        $reply.Reply-Message += "Local proxy loop detected against " & $user.Server-Address & "\r\n";
+        $reply.Error-Cause := 502;
+        return error;
+    on failure
+        break;
+    on error
+        break;
+    endinvoke
+
+    // actually send the request
+    invoke Radius with
+       ServerAddress => $user.Server-Address,
+       Secret        => $user.Server-Secret,
+       Dictionary    => $user.Server-Dictionary,
+       Timeout       => $user.Server-Timeout,
+       Retries       => $user.Server-Retries,
+       PacketType    => $packet.Packet-Type | Disconnect-Request,
+       CharSet       => $user.Server-CharSet,
+       RequestMap    => "exec $user.Request-Map;"
+    on error
+        $reply.Reply-Message += "No response from " & $user.Server-Address & " for " & $user.NAS-Key & "\r\n";
+        $reply.Error-Cause := 502;
+//      return error : $packet.Last-Disposition-Message;
+    endinvoke
+endif
+
+return success;
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "stanza_file.dtd">
+<table>
+    <entry name="127.0.0.1">
+        <property name="Client-Secret" value="secret" />
+    </entry>
+
+    <entry name="127.0.0.1">
+        <property name="Client-Secret" value="secret" />
+        <property name="Radius-Transport" value="TCP" />
+    </entry>
+
+    <entry name="127.0.0.1">
+        <property name="Radius-Transport" value="TLS" />
+    </entry>
+</table>

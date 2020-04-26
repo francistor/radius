@@ -1,0 +1,39 @@
+service_0
+	HW-AVPair = "service:accounting-scheme:telefonica"
+	HW-AVPair = "service:radius-server-group:psa"
+	HW-Input-Committed-Information-Rate = 3000000
+	HW-Output-Committed-Information-Rate = 1000000
+
+service_1
+	HW-AVPair = "service:accounting-scheme:telefonica"
+	HW-AVPair = "service:radius-server-group:psa"
+	HW-Input-Committed-Information-Rate = 4000000
+	HW-Output-Committed-Information-Rate = 2000000
+
+
+service_2
+	HW-AVPair = "service:accounting-scheme:telefonica"
+	HW-AVPair = "service:radius-server-group:psa"
+	HW-Input-Committed-Information-Rate = 5000000
+	HW-Output-Committed-Information-Rate = 3000000
+
+service_3
+	HW-AVPair = "service:accounting-scheme:telefonica"
+	HW-AVPair = "service:radius-server-group:psa"
+	HW-Input-Committed-Information-Rate = 8000000
+	HW-Output-Committed-Information-Rate = 9000000
+
+permService
+  Unishpere-Service-Bundle=ApermService
+
+rejectService
+	Unishpere-Service-Bundle=ArejectService
+
+pcautiv
+	Unisphere-Service-Bundle=Apcautiv
+
+acs
+	Unisphere-Service-Bundle=Aacs
+
+betatester
+  Unisphere-Service-Bundle=Abetatester

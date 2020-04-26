@@ -1,0 +1,590 @@
+<?xml version="1.0" standalone="no"?>
+<!-- ? 2017 Nokia. All rights reserved. -->
+
+<!-- Note that this file will be overwritten during an upgrade. Make changes in custom.dict -->
+
+<!DOCTYPE dictionary SYSTEM "dictionary.dtd">
+
+<dictionary codec="#default" overwrite="false">
+
+    <!-- 3GPP2 VSAs -->
+
+    <avp name="3GPP2-Pre-Shared-Secret-Request" vendor="3GPP2" code="1" type="Enumerated">
+        <alias name="3GPP2-PS-Secret-Request"/>
+        <enum name="TRUE" code="1"/>
+        <enum name="FALSE" code="2"/>
+    </avp>
+    <avp name="3GPP2_IMSI" vendor="3GPP2" code="1" type="string" codec="mobile-iwf" log="scramble"/>
+    <avp name="3GPP2_Security-Status" vendor="3GPP2" code="1" type="Unsigned32" codec="mobile-pdsn"/>
+    <avp name="3GPP2-Security-Level" vendor="3GPP2" code="2" type="Enumerated">
+        <enum name="IPSEC_FOR_REG" code="1"/>
+        <enum name="IPSEC_FOR_TUNNELS" code="2"/>
+        <enum name="IPSEC_FOR_BOTH" code="3"/>
+        <enum name="NO_IP_SECURITY" code="4"/>
+    </avp>
+    <avp name="3GPP2-Pre-Shared-Secret" vendor="3GPP2" code="3" type="salted-hexed-opaque" log="scramble">
+        <alias name="3GPP2-PS-Secret"/>
+    </avp>
+    <avp name="3GPP2-Reverse-Tunnel-Spec" vendor="3GPP2" code="4" type="Enumerated">
+        <alias name="3GPP2-Rev-Tunnel-Spec"/>
+        <enum name="Not-Required" code="0"/>
+        <enum name="Required" code="1"/>
+    </avp>
+    <avp name="3GPP2-Diff-Service-Class" vendor="3GPP2" code="5" type="Enumerated">
+        <enum name="BEST_EFFORT" code="0">
+            <alias name="EST_EFFORT"/>
+        </enum>
+        <enum name="AF11" code="10"/>
+        <enum name="AF12" code="12"/>
+        <enum name="AF13" code="14"/>
+        <enum name="AF21" code="18"/>
+        <enum name="AF22" code="20"/>
+        <enum name="AF23" code="22"/>
+        <enum name="AF31" code="26"/>
+        <enum name="AF32" code="28"/>
+        <enum name="AF33" code="30"/>
+        <enum name="AF41" code="34"/>
+        <enum name="AF42" code="36"/>
+        <enum name="AF43" code="38"/>
+        <enum name="EF" code="46"/>
+    </avp>
+    <avp name="3GPP2-Accounting-Container" vendor="3GPP2" code="6" type="cdma-accounting-container">
+        <avp name="Container-Reason" type="short-enumeration">
+            <enum name="Tariff-Boundary" code="1"/>
+            <enum name="Parameter-Change" code="2"/>
+            <enum name="Handoff" code="3"/>
+        </avp>
+        <avp name="Event-Timestamp" code="55" type="Unix-Timestamp"/>
+    </avp>
+    <avp name="3GPP2-Home-Agent-IP-Address" vendor="3GPP2" code="7" type="ipv4-address" log="scramble">
+        <alias name="3GPP2-HA-IP-Addr"/>
+        <alias name="3GPP2-Home-Agent-Address"/>
+    </avp>
+    <avp name="3GPP2-Key-Id" vendor="3GPP2" code="8" type="OctetString"/>
+    <avp name="3GPP2-PCF-IP-Address" vendor="3GPP2" code="9" type="ipv4-address" log="scramble">
+        <alias name="3GPP2-PCF-IP-Addr"/>
+    </avp>
+    <avp name="3GPP2-BSID" vendor="3GPP2" code="10" type="string" log="scramble">
+        <alias name="3GPP2_BS_MSC_Addr"/>
+    </avp>
+    <avp name="3GPP2-User-Id" vendor="3GPP2" code="11" type="Unsigned32" log="scramble">
+        <alias name="3GPP2-User-Zone-ID"/>
+    </avp>
+    <avp name="3GPP2-Forward-MUX" vendor="3GPP2" code="12" type="Unsigned32">
+        <alias name="3GPP2-Forward-Mux-Option"/>
+        <alias name="3GPP2_FMUX"/>
+    </avp>
+    <avp name="3GPP2-Reverse-MUX" vendor="3GPP2" code="13" type="Unsigned32">
+        <alias name="3GPP2-Reverse-Mux-Option"/>
+        <alias name="3GPP2_RMUX"/>
+    </avp>
+    <avp name="3GPP2-Forward-Rate" vendor="3GPP2" code="14" type="Unsigned32">
+        <alias name="3GPP2_FRATE"/>
+    </avp>
+    <avp name="3GPP2-Reverse-Rate" vendor="3GPP2" code="15" type="Unsigned32">
+        <alias name="3GPP2_RRATE"/>
+    </avp>
+    <avp name="3GPP2-Service-Option" vendor="3GPP2" code="16" type="Unsigned32">
+        <alias name="3GPP2_SO"/>
+    </avp>
+    <avp name="3GPP2-Forward-Traffic-Type" vendor="3GPP2" code="17" type="Enumerated">
+        <alias name="3GPP2_FTYPE"/>
+        <enum name="Primary" code="0"/>
+        <enum name="Secondary" code="1"/>
+    </avp>
+    <avp name="3GPP2-Reverse-Traffic-Type" vendor="3GPP2" code="18" type="Enumerated">
+        <alias name="3GPP2_RTYPE"/>
+        <enum name="Primary" code="0"/>
+        <enum name="Secondary" code="1"/>
+    </avp>
+    <avp name="3GPP2-Fundamental-Frame-Size" vendor="3GPP2" code="19" type="Enumerated">
+        <alias name="3GPP2_FSIZE"/>
+        <enum name="None" code="0"/>
+        <enum name="5ms" code="1"/>
+        <enum name="20ms" code="2"/>
+    </avp>
+    <avp name="3GPP2-Forward-Fundamental-RC" vendor="3GPP2" code="20" type="Unsigned32">
+        <alias name="3GPP2_FRC"/>
+    </avp>
+    <avp name="3GPP2-Reverse-Fundamental-RC" vendor="3GPP2" code="21" type="Unsigned32">
+        <alias name="3GPP2_RRC"/>
+    </avp>
+    <avp name="3GPP2-IP-Technology" vendor="3GPP2" code="22" type="Enumerated">
+        <alias name="3GPP2_IP_Tech"/>
+        <enum name="Simple" code="1"/>
+        <enum name="Mobile" code="2"/>
+    </avp>
+    <avp name="3GPP2-Comp-Tunnel-Ind" vendor="3GPP2" code="23" type="Enumerated">
+        <alias name="3GPP2-Comp-Tunnel-Flag"/>
+        <alias name="3GPP2_Comp_Flag"/>
+        <enum name="No-Tunnel" code="0"/>
+        <enum name="Non-Secure" code="1"/>
+        <enum name="Secure" code="2"/>
+    </avp>
+    <avp name="3GPP2-Release-Reason" vendor="3GPP2" code="24" type="Enumerated">
+        <alias name="3GPP2-Release-Indicator"/>
+        <alias name="3GPP2_Reason_Ind"/>
+        <enum name="Unknown" code="0"/>
+        <enum name="Service-Timeout" code="1"/>
+        <enum name="Handoff" code="2"/>
+        <enum name="PPP-Termination" code="3"/>
+        <enum name="MIP-Reg-Failure" code="4"/>
+    </avp>
+    <avp name="3GPP2-Bad-PPP-Frame-Count" vendor="3GPP2" code="25" type="Unsigned32">
+        <alias name="3GPP2_Bad_PPP_Frame"/>
+    </avp>
+    <avp name="3GPP2-Connection-Start-Date" vendor="3GPP2" code="26" type="Unsigned32"/>
+    <avp name="3GPP2-Connection-Start-Time" vendor="3GPP2" code="27" type="Unsigned32"/>
+    <avp name="3GPP2-Connection-Stop-Date" vendor="3GPP2" code="28" type="Unsigned32"/>
+    <avp name="3GPP2-Connection-Stop-Time" vendor="3GPP2" code="29" type="Unsigned32"/>
+    <avp name="3GPP2-Num-Active" vendor="3GPP2" code="30" type="Unsigned32">
+        <alias name="3GPP2-Num-Active-Transistions"/>
+    </avp>
+    <avp name="3GPP2-SDB-Input-Octets" vendor="3GPP2" code="31" type="Unsigned32">
+        <alias name="3GPP2-SDB-Octect-Count-Terminating"/>
+    </avp>
+    <avp name="3GPP2-SDB-Output-Octets" vendor="3GPP2" code="32" type="Unsigned32">
+        <alias name="3GPP2-SDB-Octect-Count-Originating"/>
+    </avp>
+    <avp name="3GPP2-SDB-Input-Transactions" vendor="3GPP2" code="33" type="Unsigned32">
+        <alias name="3GPP2-Num-SDB-Terminating"/>
+    </avp>
+    <avp name="3GPP2-SDB-Output-Transactions" vendor="3GPP2" code="34" type="Unsigned32">
+        <alias name="3GPP2-Num-SDB-Originating"/>
+    </avp>
+    <avp name="3GPP2-Alternate-Billing-Id" vendor="3GPP2" code="35" type="Unsigned32">
+        <alias name="3GPP2_Alternate-Billing-Identifier"/>
+    </avp>
+    <avp name="3GPP2-IP-QoS" vendor="3GPP2" code="36" type="Enumerated">
+        <enum name="BEST_EFFORT" code="0"/>
+        <enum name="AF11" code="10"/>
+        <enum name="AF12" code="12"/>
+        <enum name="AF13" code="14"/>
+        <enum name="AF21" code="18"/>
+        <enum name="AF22" code="20"/>
+        <enum name="AF23" code="22"/>
+        <enum name="AF31" code="26"/>
+        <enum name="AF32" code="28"/>
+        <enum name="AF33" code="30"/>
+        <enum name="AF41" code="34"/>
+        <enum name="AF42" code="36"/>
+        <enum name="AF43" code="38"/>
+        <enum name="EF" code="46"/>
+    </avp>
+    <avp name="3GPP2-Interconnect-IP" vendor="3GPP2" code="37" type="ipv4-address" log="scramble"/>
+    <avp name="3GPP2-Inter-IP-Network-Service-QoS" vendor="3GPP2" code="38" type="Unsigned32"/>
+    <avp name="3GPP2-Airlink-QOS" vendor="3GPP2" code="39" type="Unsigned32">
+        <alias name="3GPP2_Air_QOS"/>
+    </avp>
+    <avp name="3GPP2-Airlink-Record-Type" vendor="3GPP2" code="40" type="Enumerated">
+        <enum name="Conn-Setup" code="1"/>
+        <enum name="Active-Start" code="2"/>
+        <enum name="Active-Stop" code="3"/>
+        <enum name="SBD-Record" code="4"/>
+    </avp>
+    <avp name="3GPP2-R-P-Session-Id" vendor="3GPP2" code="41" type="Unsigned32">
+        <alias name="3GPP2-RP-Session-ID"/>
+    </avp>
+    <avp name="3GPP2-Airlink-Sequence-Number" vendor="3GPP2" code="42" type="Unsigned32"/>
+    <avp name="3GPP2-HDLC-Received-Octets" vendor="3GPP2" code="43" type="Unsigned32">
+        <alias name="3GPP2_Num_PPP_Received_Total"/>
+    </avp>
+    <avp name="3GPP2-Correlation-Id" vendor="3GPP2" code="44" type="string">
+        <codec name="mobile-iwf" code="40"/>
+    </avp>
+    <avp name="3GPP2-Mobile-Term-Orig-Ind" vendor="3GPP2" code="45" type="Enumerated">
+        <enum name="Originated" code="0"/>
+        <enum name="Terminated" code="1"/>
+    </avp>
+    <avp name="3GPP2-MIP-Signal-Input-Octets" vendor="3GPP2" code="46" type="Unsigned32">
+        <alias name="3GPP2-MobileIP-InBound-Signaling-Count"/>
+        <alias name="3GPP2_In_Bound_MIP_Signaling_Octet_Count"/>
+    </avp>
+    <avp name="3GPP2-MIP-Signal-Output-Octets" vendor="3GPP2" code="47" type="Unsigned32">
+        <alias name="3GPP2-MobileIP-OutBound-Signaling-Count"/>
+        <alias name="3GPP2_Outbound_MIP_Signaling_Octet_Count"/>
+    </avp>
+    <avp name="3GPP2-Session-Continue" vendor="3GPP2" code="48" type="boolean"/>
+    <avp name="3GPP2-Active-Time" vendor="3GPP2" code="49" type="Unsigned32"/>
+    <avp name="3GPP2-DCCH-Frame-Size" vendor="3GPP2" code="50" type="Enumerated">
+        <alias name="3GPP2-DCCH-Frame-Format"/>
+        <enum name="None" code="0"/>
+        <enum name="5ms" code="1"/>
+        <enum name="20ms" code="2"/>
+    </avp>
+    <avp name="3GPP2-Begin-Session" vendor="3GPP2" code="51" type="boolean"/>
+    <avp name="3GPP2-ESN" vendor="3GPP2" code="52" type="string" log="scramble"/>
+    <avp name="3GPP2-NAS-IPv6-Address" vendor="3GPP2" code="53" type="ipv6-address" log="scramble"/>
+    <avp name="3GPP2-S-Secret" vendor="3GPP2" code="54" type="salted-hexed-opaque" log="scramble"/>
+    <avp name="3GPP2-S-Secret-Request" vendor="3GPP2" code="55" type="boolean"/>
+    <avp name="3GPP2-S-Secret-Lifetime" vendor="3GPP2" code="56" type="salted-timestamp"/>
+    <avp name="3GPP2-MN-HA-SPI" vendor="3GPP2" code="57" type="Unsigned32"/>
+    <avp name="3GPP2-MN-HA-Key" vendor="3GPP2" code="58" type="salted-opaque" log="scramble"/>
+    <avp name="3GPP2-Remote-IPv4-Address" vendor="3GPP2" code="59" type="cdma-group">
+        <avp name="Address" code="1" type="ipv4-address" log="scramble"/>
+        <avp name="Netmask" code="2" type="ipv4-address"/>
+        <avp name="PrePaid-Status" code="3" type="short-enumeration">
+            <enum name="Exempt" code="1"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-HRPD-Access-Authentication" vendor="3GPP2" code="60" type="boolean"/>
+    <avp name="3GPP2-HRPD-AT-Hardware-Identifier" vendor="3GPP2" code="61" type="cdma-group">
+        <avp name="Type" code="1" type="Enumerated">
+            <enum name="MEID" code="1"/>
+            <enum name="ESN" code="5"/>
+        </avp>
+        <avp name="Value" code="2" type="Hex-OctetString"/>
+    </avp>
+    <avp name="3GPP2-Remote-IPv6-Address" vendor="3GPP2" code="70" type="cdma-group">
+        <avp name="Address" code="1" type="ipv6-address" log="scramble"/>
+        <avp name="Prefix-Length" code="2" type="Unsigned32"/>
+        <avp name="PrePaid-Status" code="3" type="short-enumeration">
+            <enum name="Exempt" code="1"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-Remote-Addr-Table-Index" vendor="3GPP2" code="71" type="cdma-group">
+        <avp name="Index" code="2" type="short"/>
+        <avp name="PrePaid-Status" code="2" type="short-enumeration">
+            <enum name="Exempt" code="1"/>
+            <enum name="Summarize-Remote-Octets" code="2"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-Remote-IPv4-Addr-Octets" vendor="3GPP2" code="72" type="cdma-group">
+        <alias name="3GPP2-Remote-Addr-Octets"/>
+        <avp name="Address" code="1" type="ipv4-address"/>
+        <avp name="Netmask" code="2" type="ipv4-address"/>
+        <avp name="Forward-Octets" code="3" type="Unsigned32">
+                <alias name="Octets-In"/>
+        </avp>
+        <avp name="Reverse-Octets" code="4" type="Unsigned32">
+                <alias name="Octets-Out"/>
+        </avp>
+        <avp name="Table-Index" code="5" type="short"/>
+        <avp name="Forward-Octets-Overflow" code="6" type="short"/>
+        <avp name="Reverse-Octets-Overflow" code="7" type="short"/>
+    </avp>
+    <avp name="3GPP2-Allowed-Diff-Service" vendor="3GPP2" code="73" type="cdma-group">
+        <avp name="Flags" code="1" type="short-enumeration">
+            <enum name="O" code="0x2000"/>
+            <enum name="E|O" code="0x4000"/>
+            <enum name="E" code="0x6000"/>
+            <enum name="A" code="0x8000"/>
+            <enum name="A|O" code="0xA000"/>
+            <enum name="A|E" code="0xC000"/>
+            <enum name="A|E|O" code="0xE000"/>
+        </avp>
+        <avp name="Maximum-Marking" code="2" type="short-enumeration">
+            <enum name="BEST_EFFORT" code="0x0000">
+                <alias name="CLASS_0"/>
+                <alias name="DEFAULT"/>
+            </enum>
+            <enum name="AF11" code="0x2800"/>
+            <enum name="AF12" code="0x3000"/>
+            <enum name="AF13" code="0x3800"/>
+            <enum name="AF21" code="0x4800"/>
+            <enum name="AF22" code="0x5000"/>
+            <enum name="AF23" code="0x5800"/>
+            <enum name="AF31" code="0x6800"/>
+            <enum name="AF32" code="0x7000"/>
+            <enum name="AF33" code="0x7800"/>
+            <enum name="AF41" code="0x8800"/>
+            <enum name="AF42" code="0x9000"/>
+            <enum name="AF43" code="0x9800"/>
+            <enum name="EF"   code="0xB800"/>
+            <enum name="CLASS_1" code="0x2000"/>
+            <enum name="CLASS_2" code="0x4000"/>
+            <enum name="CLASS_3" code="0x6000"/>
+            <enum name="CLASS_4" code="0x8000"/>
+            <enum name="CLASS_5" code="0xA000"/>
+            <enum name="CLASS_6" code="0xC000"/>
+            <enum name="CLASS_7" code="0xE000"/>
+        </avp>
+        <avp name="RT-Marking" code="3" type="short-enumeration">
+            <enum name="BEST_EFFORT" code="0x0000">
+                <alias name="CLASS_0"/>
+                <alias name="DEFAULT"/>
+            </enum>
+            <enum name="AF11" code="0x2800"/>
+            <enum name="AF12" code="0x3000"/>
+            <enum name="AF13" code="0x3800"/>
+            <enum name="AF21" code="0x4800"/>
+            <enum name="AF22" code="0x5000"/>
+            <enum name="AF23" code="0x5800"/>
+            <enum name="AF31" code="0x6800"/>
+            <enum name="AF32" code="0x7000"/>
+            <enum name="AF33" code="0x7800"/>
+            <enum name="AF41" code="0x8800"/>
+            <enum name="AF42" code="0x9000"/>
+            <enum name="AF43" code="0x9800"/>
+            <enum name="EF"   code="0xB800"/>
+            <enum name="CLASS_1" code="0x2000"/>
+            <enum name="CLASS_2" code="0x4000"/>
+            <enum name="CLASS_3" code="0x6000"/>
+            <enum name="CLASS_4" code="0x8000"/>
+            <enum name="CLASS_5" code="0xA000"/>
+            <enum name="CLASS_6" code="0xC000"/>
+            <enum name="CLASS_7" code="0xE000"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-Service-Option-Profile" vendor="3GPP2" code="74" type="cdma-service-profile">
+        <avp name="Maximum-Instances" type="Unsigned32"/>
+        <avp name="Service-Option" code="1" type="structured">
+            <avp name="Option-Number" type="byte"/>
+            <avp name="Maximum-Instances" type="byte"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-DNS-Update-Required" vendor="3GPP2" code="75" type="Enumerated">
+        <enum name="HA-Update" code="1"/>
+    </avp>
+    <avp name="3GPP2-Always-On" vendor="3GPP2" code="78" type="Enumerated">
+        <enum name="Inactive" code="0"/>
+        <enum name="Active" code="1"/>
+    </avp>
+    <avp name="3GPP2-FA-Address" vendor="3GPP2" code="79" type="ipv4-address" log="scramble"/>
+    <avp name="3GPP2-Last-User-Activity-Time" vendor="3GPP2" code="80" type="unix-timestamp"/>
+    <avp name="3GPP2-MN-AAA-Removal" vendor="3GPP2" code="81" type="boolean"/>
+    <avp name="3GPP2-RN-Inactivity-Timer" vendor="3GPP2" code="82" type="Unsigned32"/>
+    <avp name="3GPP2-Forward-PDCH-RC" vendor="3GPP2" code="83" type="Unsigned32"/>
+    <avp name="3GPP2-Forward-DCCH-Mux-Option" vendor="3GPP2" code="84" type="Unsigned32"/>
+    <avp name="3GPP2-Reverse-DCCH-Mux-Option" vendor="3GPP2" code="85" type="Unsigned32"/>
+    <avp name="3GPP2-Forward-DCCH-RC" vendor="3GPP2" code="86" type="Unsigned32"/>
+    <avp name="3GPP2-Reverse-DCCH-RC" vendor="3GPP2" code="87" type="Unsigned32"/>
+    <avp name="3GPP2-Session-Term-Capability" vendor="3GPP2" code="88" type="Enumerated">
+        <enum name="Dynamic-Auth" code="1"/>
+        <enum name="Reg-Revoke" code="2"/>
+        <enum name="Dynamic-Auth|Reg-Revoke" code="3"/>
+    </avp>
+    <avp name="3GPP2-Allowed-Persistent-TFTs" vendor="3GPP2" code="89" type="Unsigned32"/>
+    <avp name="3GPP2-PrePaid-Acct-Quota" vendor="3GPP2" code="90" type="cdma-group">
+        <avp name="Quota-ID" code="1" type="Unsigned32"/>
+        <avp name="Volume-Quota" code="2" type="Unsigned32"/>
+        <avp name="Volume-Quota-Overflow" code="3" type="short"/>
+        <avp name="Volume-Threshold" code="4" type="Unsigned32"/>
+        <avp name="Volume-Threshold-Overflow" code="5" type="short"/>
+        <avp name="Duration-Quota" code="6" type="Unsigned32"/>
+        <avp name="Duration-Quota-Overflow" code="7" type="Unsigned32"/>
+        <avp name="Update-Reason" code="8" type="short-enumeration">
+            <enum name="Pre-initialization" code="1"/>
+            <enum name="Initial-Request" code="2"/>
+            <enum name="Threshold-Reached" code="3"/>
+            <enum name="Quota-Reached" code="4"/>
+            <enum name="Remote-Forced-Disconnect" code="5"/>
+            <enum name="Client-Service-Termination" code="6"/>
+            <enum name="Main-Service-Connection-Released" code="7"/>
+            <enum name="Service-Connection-Not-Established" code="8"/>
+            <enum name="Tariff-Switch-Update" code="9"/>
+            <enum name="Incorrect-Quota-Type-Received" code="10"/>
+            <enum name="Poorly-Formed-Quta-Attribute" code="11"/>
+        </avp>
+        <avp name="PrePaid-Server-Address" code="9" type="ip-address" log="scramble"/>
+    </avp>
+    <avp name="3GPP2-PrePaid-Acct-Capability" vendor="3GPP2" code="91" type="cdma-group">
+        <avp name="Available-In-Client" code="1" type="Enumerated">
+            <enum name="Volume" code="1"/>
+            <enum name="Duration" code="2"/>
+            <enum name="Volume|Duration" code="3"/>
+        </avp>
+        <avp name="Selected-For-Session" code="2" type="Enumerated">
+            <enum name="Not-Used" code="0"/>
+            <enum name="Volume" code="1"/>
+            <enum name="Duration" code="2"/>
+            <enum name="Volume|Duration" code="3"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-MIP-RRQ-Lifetime" vendor="3GPP2" code="92" type="cdma-group">
+        <avp name="RRQ-Lifetime" code="1" type="Unsigned32"/>
+        <avp name="Used-Lifetime" code="2" type="Unsigned32"/>
+    </avp>
+    <avp name="3GPP2-Trigger-Acct-Dormant-Active" vendor="3GPP2" code="93" type="boolean"/>
+    <avp name="3GPP2-Service-Reference-ID" vendor="3GPP2" code="94" type="cdma-group">
+        <avp name="Service-ID" code="1" type="short"/>
+        <avp name="Main-Service-Connection-Ind" code="2" type="short-enumeration">
+            <enum name="false" code="0"/>
+            <enum name="true" code="1"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-DNS-Update-Capability" vendor="3GPP2" code="95" type="Enumerated">
+        <enum name="HA" code="1"/>
+    </avp>
+    <avp name="3GPP2-Disconnect-Reason" vendor="3GPP2" code="96" type="Enumerated">
+        <enum name="MS-Mobility-Detection" code="1"/>
+    </avp>
+    <avp name="3GPP2-Remote-IPv6-Addr-Octets" vendor="3GPP2" code="97" type="cdma-group">
+        <avp name="Address" code="1" type="ipv6-address"/>
+        <avp name="Prefix-Length" code="2" type="Unsigned32"/>
+        <avp name="Forward-Octets" code="3" type="Unsigned32">
+                <alias name="Octets-In"/>
+        </avp>
+        <avp name="Reverse-Octets" code="4" type="Unsigned32">
+                <alias name="Octets-Out"/>
+        </avp>
+        <avp name="Table-Index" code="5" type="short"/>
+        <avp name="Forward-Octets-Overflow" code="6" type="short"/>
+        <avp name="Reverse-Octets-Overflow" code="7" type="short"/>
+    </avp>
+    <avp name="3GPP2-PrePaid-Tariff-Switch" vendor="3GPP2" code="98" type="cdma-group">
+        <avp name="Quota-ID" code="1" type="Unsigned32"/>
+        <avp name="Volume-Used-After-Tariff-Switch" code="2" type="Unsigned32"/>
+        <avp name="Volume-Used-ATS-Overflow" code="3" type="short"/>
+        <avp name="Tariff-Switch-Interval" code="4" type="Unsigned32"/>
+        <avp name="Time-Interval-After-Tariff-Switch-Update" code="5" type="Unsigned32"/>
+    </avp>
+    <avp name="3GPP2-Subnet" vendor="3GPP2" code="108" type="cdma-group">
+        <avp name="Subnet" code="1" type="structured">
+            <avp name="Length" type="byte"/>
+            <avp name="Data" type="Hex-OctetString"/>
+        </avp>
+        <avp name="Sector-ID" code="2" type="Hex-OctetString"/>
+    </avp>
+    <avp name="3GPP2-Reverse-PDCH-RC" vendor="3GPP2" code="114" type="Unsigned32"/>
+    <avp name="3GPP2-MEID" vendor="3GPP2" code="116" type="string"/>
+    <avp name="3GPP2-DNS-Server-Address" vendor="3GPP2" code="117" type="cdma-group">
+        <avp name="Primary-Address" code="1" type="ipv4-address"/>
+        <avp name="Secondary-Address" code="2" type="ipv4-address"/>
+        <avp name="Flag" code="3" type="byte-enumeration">
+            <enum name="Do-not-override" code="0"/>
+            <enum name="Override" code="128"/>
+        </avp>
+        <avp name="Entity-Type" code="4" type="byte-enumeration">
+            <enum name="HAAA" code="1"/>
+            <enum name="VAAA" code="2"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-MIP6-Home-Agent-BU" vendor="3GPP2" code="118" type="ipv6-address" log="scramble"/>
+    <avp name="3GPP2-MIP6-CoA" vendor="3GPP2" code="119" type="ipv6-address" log="scramble"/>
+    <avp name="3GPP2-MIP6-HoA-Not-Authorized" vendor="3GPP2" code="120" type="Enumerated">
+        <enum name="true" code="1"/>
+    </avp>
+    <avp name="3GPP2-MIP6-Session-Key" vendor="3GPP2" code="121" type="salted-hexed-opaque"/>
+    <avp name="3GPP2-Hot-Line-Accounting-Ind" vendor="3GPP2" code="122" type="Hex-OctetString"/>
+    <avp name="3GPP2-MIP6-Mesg-ID" vendor="3GPP2" code="123" type="Hex-OctetString"/>
+    <avp name="3GPP2-Filter-Rule" vendor="3GPP2" code="124" type="IP-Filter-Rule"/>
+    <avp name="3GPP2-HTTP-Redirection-Rule" vendor="3GPP2" code="125" type="string"/>
+    <avp name="3GPP2-IP-Redirection-Rule" vendor="3GPP2" code="126" type="string"/>
+    <avp name="3GPP2-Hot-Line-Capability" vendor="3GPP2" code="127" type="Enumerated">
+        <enum name="Filter-Id" code="1"/>
+        <enum name="Filter-Rule" code="2"/>
+        <enum name="Filter-Rule|Filter-Id" code="3"/>
+        <enum name="HTTP-Redirection-Rule" code="4"/>
+        <enum name="HTTP-Redirection-Rule|Filter-Id" code="5"/>
+        <enum name="HTTP-Redirection-Rule|Filter-Rule" code="6"/>
+        <enum name="HTTP-Redirection-Rule|Filter-Rule|Filter-Id" code="7"/>
+        <enum name="IP-Redirection-Rule" code="8"/>
+        <enum name="IP-Redirection-Rule|Filter-Id" code="9"/>
+        <enum name="IP-Redirection-Rule|Filter-Rule" code="10"/>
+        <enum name="IP-Redirection-Rule|Filter-Rule|Filter-Id" code="11"/>
+        <enum name="IP-Redirection-Rule|HTTP-Redirection-Rule" code="12"/>
+        <enum name="IP-Redirection-Rule|HTTP-Redirection-Rule|Filter-Id" code="13"/>
+        <enum name="IP-Redirection-Rule|HTTP-Redirection-Rule|Filter-Rule" code="14"/>
+        <enum name="IP-Redirection-Rule|HTTP-Redirection-Rule|Filter-Rule|Filter-Id" code="15"/>
+    </avp>
+    <avp name="3GPP2-MIP6-Home-Link-Prefix-A" vendor="3GPP2" code="128" type="ipv6-prefix"/>
+    <avp name="3GPP2-MIP6-Home-Address-C" vendor="3GPP2" code="129" type="structured">
+        <avp name="Prefix-Length" type="short"/>
+        <avp name="Address" type="ipv6-address" log="scramble"/>
+    </avp>
+    <avp name="3GPP2-Max-Bandwidth-For-Best-Effort-Traffic" vendor="3GPP2" code="130" type="Unsigned32"/>
+    <avp name="3GPP2-Authorized-QoS-Profile-IDs" vendor="3GPP2" code="131" type="cdma-group">
+        <avp name="Forward-ID" code="1" type="short"/>
+        <avp name="Reverse-ID" code="2" type="short"/>
+        <avp name="Bi-Directional-ID" code="3" type="short"/>
+    </avp>
+    <avp name="3GPP2-Granted-QoS-Parameters" vendor="3GPP2" code="132" type="cdma-group">
+        <avp name="Direction" code="1" type="short-enumeration">
+            <enum name="Forward" code="0"/>
+            <enum name="Reverse" code="1"/>
+            <enum name="Both" code="2"/>
+        </avp>
+        <avp name="Flow-ID" code="2" type="short"/>
+        <avp name="QoS-Attribute-Set-ID" code="3" type="short"/>
+        <avp name="Flow-Profile-ID" code="4" type="short"/>
+        <avp name="Traffic-Class" code="5" type="short-enumeration">
+           <enum name="Unknown" code="0"/>
+           <enum name="Conversational" code="1"/>
+           <enum name="Streaming" code="2"/>
+           <enum name="Interactive" code="3"/>
+           <enum name="Background" code="4"/>
+        </avp>
+        <avp name="Peak-Rate" code="6" type="short"/>
+        <avp name="Bucket-Size" code="7" type="short"/>
+        <avp name="Token-Rate" code="8" type="short"/>
+        <avp name="Max-Latency" code="9" type="short"/>
+        <avp name="Max-IP-Packet-Loss-Rate" code="10" type="short"/>
+        <avp name="Packet-Size" code="11" type="short"/>
+        <avp name="Delay-Var-Sensitivity" code="12" type="short-enumeration">
+            <enum name="false" code="0"/>
+            <enum name="true" code="1"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-Max-Per-Flow-Priority" vendor="3GPP2" code="133" type="Unsigned32"/>
+    <avp name="3GPP2-MIP6-Authenticator" vendor="3GPP2" code="134" type="Hex-OctetString"/>
+    <avp name="3GPP2-MIP6-MAC-Mobility-Data" vendor="3GPP2" code="138" type="Hex-OctetString"/>
+    <avp name="3GPP2-Inter-User-Priority" vendor="3GPP2" code="139" type="Unsigned32"/>
+    <avp name="3GPP2-MIP6-Home-Agent-B" vendor="3GPP2" code="140" type="structured">
+        <avp name="Reserved" type="short"/>
+        <avp name="Address" type="ipv6-address" log="scramble"/>
+    </avp>
+    <avp name="3GPP2-MIP6-HoA-BU" vendor="3GPP2" code="141" type="ipv6-address" log="scramble"/>
+    <avp name="3GPP2-Carrier-ID" vendor="3GPP2" code="142" type="string">
+        <alias name="3GPP2-Serving-Carrier-Id" />
+        <alias name="Serving-Carrier-Id" />
+    </avp>
+    <avp name="3GPP2-GMT-Time-Zone-Offset" vendor="3GPP2" code="143" type="Signed32"/>
+    <avp name="3GPP2-Flow-ID-Parameter" vendor="3GPP2" code="144" type="cdma-group">
+        <avp name="Direction" code="1" type="short-enumeration">
+            <enum name="Forward" code="0"/>
+            <enum name="Reverse" code="1"/>
+            <enum name="Both" code="2"/>
+        </avp>
+        <avp name="Flow-ID" code="2" type="short"/>
+    </avp>
+    <avp name="3GPP2-Flow-Status" vendor="3GPP2" code="145" type="Enumerated">
+        <enum name="Active" code="0"/>
+        <enum name="Inactive" code="1"/>
+    </avp>
+    <avp name="3GPP2-Filtered-Octet-Count-Terminating" vendor="3GPP2" code="146" type="Unsigned32"/>
+    <avp name="3GPP2-Filtered-Octet-Count-Originating" vendor="3GPP2" code="147" type="Unsigned32"/>
+    <avp name="3GPP2-RSVP-Inbound-Octet-Count" vendor="3GPP2" code="162" type="Unsigned32"/>
+    <avp name="3GPP2-RSVP-Outbound-Octet-Count" vendor="3GPP2" code="163" type="Unsigned32"/>
+    <avp name="3GPP2-RSVP-Inbound-Packet-Count" vendor="3GPP2" code="164" type="Unsigned32"/>
+    <avp name="3GPP2-RSVP-Outbound-Packet-Count" vendor="3GPP2" code="165" type="Unsigned32"/>
+    <avp name="3GPP2-IN-Information" vendor="3GPP2" code="177" type="cdma-group">
+        <avp name="IR1" code="254" type="byte-enumeration">
+            <enum name="Prepaid" code="1"/>
+            <enum name="All-Trigger" code="2"/>
+            <enum name="Home-Zone" code="3"/>
+            <enum name="GSM-Global-Roaming" code="4"/>
+            <enum name="CDMA-Global-Roaming" code="5"/>
+            <enum name="UMTS-CDMA-dual-mode" code="6"/>
+        </avp>
+    </avp>
+    <avp name="3GPP2-MIP6-HA-Local-Assignment-Capability" vendor="3GPP2" code="179" type="Enumerated">
+        <enum name="PDSN-Can-Assign" code="1"/>
+    </avp>
+    <!-- <avp name="3GPP2-IP-Services-Authorized" vendor="3GPP2" code="185" ??? def missing from X.S0011-005-E -->
+    <avp name="3GPP2-Accounting-Mode" vendor="3GPP2" code="198" type="Enumerated">
+        <enum name="Per-Flow-ID" code="1"/>
+        <enum name="Per-IP-Session" code="2"/>
+    </avp>
+    <avp name="3GPP2-MIP6-HA-Protocol-Capability-Indication" vendor="3GPP2" code="203" type="Enumerated">
+        <enum name="RFC-4285" code="1"/>
+    </avp>
+    <avp name="3GPP2-VAAA-Assigned-MIP6-HA" vendor="3GPP2" code="205" type="ipv6-address" log="scramble"/>
+    <avp name="3GPP2-VAAA-Assigned-MIP6-HL" vendor="3GPP2" code="206" type="ipv6-prefix"/>
+    <avp name="3GPP2-VAAA-MIP6-HA-Protocol-Capability-Indication" vendor="3GPP2" code="207" type="Enumerated">
+        <enum name="RFC-4285" code="1"/>
+    </avp>
+    <avp name="3GPP2-DNS-Server-IPv6-Address" vendor="3GPP2" code="214" type="cdma-group">
+        <avp name="Primary-Address" code="1" type="ipv6-address" log="scramble"/>
+        <avp name="Secondary-Address" code="2" type="ipv6-address" log="scramble"/>
+        <avp name="Flag" code="3" type="byte-enumeration">
+            <enum name="Do-not-override" code="0"/>
+            <enum name="Override" code="128"/>
+        </avp>
+        <avp name="Entity-Type" code="4" type="byte-enumeration">
+            <enum name="HAAA" code="1"/>
+            <enum name="VAAA" code="2"/>
+        </avp>
+    </avp>
+
+</dictionary>

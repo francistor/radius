@@ -1,0 +1,52 @@
+authStart:
+
+    /* Get and normalize request data */
+
+    // All client types
+    $userName := $request.User-Name->trim()->toLower();
+    $acctSessionId := $request.Acct-Session-Id->trim();
+    $realm := $packet.User-Realm->toLower();
+    $mac-address := $request.HW-User-MAC | $request.Unishpere-PPPoE-Description->substring(6) | $request.Alc-Client-Hardware-Addr;
+    
+
+    /* Branch special request types */
+
+    // Service Definition
+    if $request.Service-Type == "Outbound-User" then 
+        goto serviceRequest; 
+    // Prepaid request
+    elsif $request.HW-Service-Info matches #/N([-_0-9a-zA-Z]+)/ then
+        $user.serviceName := $match.1;
+        log "Prepaid request" & $user.serviceName, level => warning;
+        goto prepaidRequest;
+    endif;
+
+
+    /* Compose Response */
+    $reply.Session-Timeout = 3600;
+    $reply.Framed-Protocol = "PPP";
+    $reply.Class += "C=legacy_1";
+    $reply.Class += "S=service_1";
+    $reply.Unisphere-Service-Bundle := "Abab01";
+
+    return success;
+    
+
+prepaidRequest:
+
+    /* Get the client credit */
+    $reply.HW-Remanent-Volume = 1000;
+
+    return success;
+
+serviceRequest:
+
+    invoke ReadUserFile with
+        Text => "@conf/ServiceRemoteDefinition.txt",
+        SearchKey => $request.User-Name,
+        Map => """
+            $reply.* := $reply.*;
+        """
+    endinvoke
+
+    return success;

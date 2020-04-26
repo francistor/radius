@@ -1,0 +1,2909 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "3gpp_pm.dtd">
+<table>
+
+    <item name="RadiusUdpAuthServer" enabled="false" group="RadiusUdpAuthServer" instances="(.+)" instanceDn="group=radiusUdpAuthServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpAcctServer" enabled="false" group="RadiusUdpAcctServer" instances="(.+)" instanceDn="group=radiusUdpAcctServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpDiscServer" enabled="false" group="RadiusUdpDiscServer" instances="(.+)" instanceDn="group=radiusUdpDiscServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpCoAServer" enabled="false" group="RadiusUdpCoAServer" instances="(.+)" instanceDn="group=radiusUdpCoAServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpStateServer" enabled="false" group="RadiusUdpStateServer" instances="(.+)" instanceDn="group=radiusUdpStateServer,clientAddress=$1">
+        <variable name="InvalidClients" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="Others" />
+        <variable name="DuplicateRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusUdpOtherServer" enabled="false" group="RadiusUdpOtherServer" instances="(.+)" instanceDn="group=radiusUdpOtherServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="DuplicateRequests" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusUdpAuthClient" enabled="false" group="RadiusUdpAuthClient" instances="(.+)" instanceDn="group=radiusUdpAuthClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Retransmissions" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpAcctClient" enabled="false" group="RadiusUdpAcctClient" instances="(.+)" instanceDn="group=radiusUdpAcctClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Retransmissions" />
+        <variable name="Responses" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpDiscClient" enabled="false" group="RadiusUdpDiscClient" instances="(.+)" instanceDn="group=radiusUdpDiscClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Retransmissions" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpCoAClient" enabled="false" group="RadiusUdpCoAClient" instances="(.+)" instanceDn="group=radiusUdpCoAClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Retransmissions" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusUdpStateClient" enabled="false" group="RadiusUdpStateClient" instances="(.+)" instanceDn="group=radiusUdpStateClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Retransmissions" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusUdpOtherClient" enabled="false" group="RadiusUdpOtherClient" instances="(.+)" instanceDn="group=radiusUdpOtherClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Retransmissions" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="DiameterServer" enabled="false" group="DiameterServer" instances="*" instanceDn="group=diameterServer">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByPeer" enabled="false" group="DiameterServerByPeer" instances="(.+)" instanceDn="group=diameterServerByPeer,peer=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByHost" enabled="false" group="DiameterServerByHost" instances="(.+)" instanceDn="group=diameterServerByHost,host=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByRealm" enabled="false" group="DiameterServerByRealm" instances="(.+)" instanceDn="group=diameterServerByRealm,realm=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByCommand" enabled="false" group="DiameterServerByCommand" instances="(.+)#(.+)" instanceDn="group=diameterServerByCommand,application=$1,command=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByCommandPeer" enabled="false" group="DiameterServerByCommandPeer" instances="(.+)#(.+)#(.+)" instanceDn="group=diameterServerByCommandPeer,application=$1,command=$2,peer=$3">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByCommandHost" enabled="false" group="DiameterServerByCommandHost" instances="(.+)#(.+)#(.+)" instanceDn="group=diameterServerByCommandHost,application=$1,command=$2,host=$3">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByCommandRealm" enabled="false" group="DiameterServerByCommandRealm" instances="(.+)#(.+)#(.+)" instanceDn="group=diameterServerByCommandRealm,application=$1,command=$2,realm=$3">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClient" enabled="false" group="DiameterClient" instances="*" instanceDn="group=diameterClient">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByPeer" enabled="false" group="DiameterClientByPeer" instances="(.+)" instanceDn="group=diameterClientByPeer,peer=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByHost" enabled="false" group="DiameterClientByHost" instances="(.+)" instanceDn="group=diameterClientByHost,host=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByRealm" enabled="false" group="DiameterClientByRealm" instances="(.+)" instanceDn="group=diameterClientByRealm,realm=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByCommand" enabled="false" group="DiameterClientByCommand" instances="(.+)#(.+)" instanceDn="group=diameterClientByCommand,application=$1,command=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByCommandPeer" enabled="false" group="DiameterClientByCommandPeer" instances="(.+)#(.+)#(.+)" instanceDn="group=diameterClientByCommandPeer,application=$1,command=$2,peer=$3">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByCommandHost" enabled="false" group="DiameterClientByCommandHost" instances="(.+)#(.+)#(.+)" instanceDn="group=diameterClientByCommandHost,application=$1,command=$2,host=$3">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByCommandRealm" enabled="false" group="DiameterClientByCommandRealm" instances="(.+)#(.+)#(.+)" instanceDn="group=diameterClientByCommandRealm,application=$1,command=$2,realm=$3">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="TacacsPlusAuthenServer" enabled="false" group="TacacsPlusAuthenServer" instances="(.+)" instanceDn="group=tacacsPlusAuthenServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Pass" />
+        <variable name="Fail" />
+        <variable name="GetData" />
+        <variable name="GetUser" />
+        <variable name="GetPass" />
+        <variable name="Restart" />
+        <variable name="Error" />
+        <variable name="Follow" />
+        <variable name="Other" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+    </item>
+
+    <item name="TacacsPlusAuthorServer" enabled="false" group="TacacsPlusAuthorServer" instances="(.+)" instanceDn="group=tacacsPlusAuthorServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="PassAdd" />
+        <variable name="PassRepl" />
+        <variable name="Fail" />
+        <variable name="Error" />
+        <variable name="Follow" />
+        <variable name="Other" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+    </item>
+
+    <item name="TacacsPlusAcctServer" enabled="false" group="TacacsPlusAcctServer" instances="(.+)" instanceDn="group=tacacsPlusAcctServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Success" />
+        <variable name="Error" />
+        <variable name="Follow" />
+        <variable name="Other" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+    </item>
+
+    <item name="TacacsPlusAuthenClient" enabled="false" group="TacacsPlusAuthenClient" instances="(.+)" instanceDn="group=tacacsPlusAuthenClient,serverAddressPort=$1">
+        <variable name="Requests" />
+        <variable name="Pass" />
+        <variable name="Fail" />
+        <variable name="GetData" />
+        <variable name="GetUser" />
+        <variable name="GetPass" />
+        <variable name="Restart" />
+        <variable name="Error" />
+        <variable name="Follow" />
+        <variable name="Other" />
+        <variable name="Timeouts" />
+        <variable name="MalformedRequests" />
+        <variable name="PacketsDropped" />
+    </item>
+
+    <item name="TacacsPlusAuthorClient" enabled="false" group="TacacsPlusAuthorClient" instances="(.+)" instanceDn="group=tacacsPlusAuthorClient,serverAddressPort=$1">
+        <variable name="Requests" />
+        <variable name="PassAdd" />
+        <variable name="PassRepl" />
+        <variable name="Fail" />
+        <variable name="Error" />
+        <variable name="Follow" />
+        <variable name="Other" />
+        <variable name="Timeouts" />
+        <variable name="PacketsDropped" />
+        <variable name="MalformedRequests" />
+    </item>
+
+    <item name="TacacsPlusAcctClient" enabled="false" group="TacacsPlusAcctClient" instances="(.+)" instanceDn="group=tacacsPlusAcctClient,serverAddressPort=$1">
+        <variable name="Requests" />
+        <variable name="Success" />
+        <variable name="Error" />
+        <variable name="Follow" />
+        <variable name="Other" />
+        <variable name="PacketsDropped" />
+        <variable name="MalformedRequests" />
+    </item>
+
+    <item name="LdapDataServer" enabled="false" group="LdapDataServer" instances="(.+)" instanceDn="group=ldapDataServer,clientAddress=$1">
+        <variable name="PlainConnections" />
+        <variable name="SecureConnections" />
+        <variable name="StartTlsConnections" />
+        <variable name="UnknownClients" />
+        <variable name="Operations" />
+        <variable name="ChannelSuspends" />
+        <variable name="ChannelResumes" />
+        <variable name="TcpErrors" />
+        <variable name="TlsErrors" />
+        <variable name="Asn1Errors" />
+        <variable name="BindRequests" />
+        <variable name="BindSuccesses" />
+        <variable name="BindFailures" />
+        <variable name="BindErrors" />
+        <variable name="SearchRequests" />
+        <variable name="SearchSuccesses" />
+        <variable name="SearchFailures" />
+        <variable name="SearchErrors" />
+        <variable name="ModifyRequests" />
+        <variable name="ModifySuccesses" />
+        <variable name="ModifyFailures" />
+        <variable name="ModifyErrors" />
+        <variable name="AddRequests" />
+        <variable name="AddSuccesses" />
+        <variable name="AddFailures" />
+        <variable name="AddErrors" />
+        <variable name="DeleteRequests" />
+        <variable name="DeleteSuccesses" />
+        <variable name="DeleteFailures" />
+        <variable name="DeleteErrors" />
+        <variable name="ModifyDnRequests" />
+        <variable name="ModifyDnSuccesses" />
+        <variable name="ModifyDnFailures" />
+        <variable name="ModifyDnErrors" />
+        <variable name="CompareRequests" />
+        <variable name="CompareSuccesses" />
+        <variable name="CompareFailures" />
+        <variable name="CompareErrors" />
+        <variable name="ExtendedRequests" />
+        <variable name="ExtendedSuccesses" />
+        <variable name="ExtendedFailures" />
+        <variable name="ExtendedErrors" />
+        <variable name="UnbindRequests" />
+        <variable name="AbandonRequests" />
+    </item>
+
+    <item name="LdapWorkServer" enabled="false" group="LdapWorkServer" instances="(.+)" instanceDn="group=ldapWorkServer,clientAddress=$1">
+        <variable name="PlainConnections" />
+        <variable name="SecureConnections" />
+        <variable name="StartTlsConnections" />
+        <variable name="UnknownClients" />
+        <variable name="Operations" />
+        <variable name="ChannelSuspends" />
+        <variable name="ChannelResumes" />
+        <variable name="TcpErrors" />
+        <variable name="TlsErrors" />
+        <variable name="Asn1Errors" />
+        <variable name="BindRequests" />
+        <variable name="BindSuccesses" />
+        <variable name="BindFailures" />
+        <variable name="BindErrors" />
+        <variable name="SearchRequests" />
+        <variable name="SearchSuccesses" />
+        <variable name="SearchFailures" />
+        <variable name="SearchErrors" />
+        <variable name="ModifyRequests" />
+        <variable name="ModifySuccesses" />
+        <variable name="ModifyFailures" />
+        <variable name="ModifyErrors" />
+        <variable name="AddRequests" />
+        <variable name="AddSuccesses" />
+        <variable name="AddFailures" />
+        <variable name="AddErrors" />
+        <variable name="DeleteRequests" />
+        <variable name="DeleteSuccesses" />
+        <variable name="DeleteFailures" />
+        <variable name="DeleteErrors" />
+        <variable name="ModifyDnRequests" />
+        <variable name="ModifyDnSuccesses" />
+        <variable name="ModifyDnFailures" />
+        <variable name="ModifyDnErrors" />
+        <variable name="CompareRequests" />
+        <variable name="CompareSuccesses" />
+        <variable name="CompareFailures" />
+        <variable name="CompareErrors" />
+        <variable name="ExtendedRequests" />
+        <variable name="ExtendedSuccesses" />
+        <variable name="ExtendedFailures" />
+        <variable name="ExtendedErrors" />
+        <variable name="UnbindRequests" />
+        <variable name="AbandonRequests" />
+    </item>
+
+    <item name="LdapClient" enabled="false" group="LdapClient" instances="(.+)" instanceDn="group=ldapClient,serverAddressPort=$1">
+        <variable name="BindRequests" />
+        <variable name="BindSuccesses" />
+        <variable name="BindFailures" />
+        <variable name="BindErrors" />
+        <variable name="BindAnswerCount" />
+        <variable name="BindAnswerTime" />
+        <variable name="SearchRequests" />
+        <variable name="SearchSuccesses" />
+        <variable name="SearchFailures" />
+        <variable name="SearchErrors" />
+        <variable name="SearchAnswerCount" />
+        <variable name="SearchAnswerTime" />
+        <variable name="AddRequests" />
+        <variable name="AddSuccesses" />
+        <variable name="AddFailures" />
+        <variable name="AddErrors" />
+        <variable name="AddAnswerCount" />
+        <variable name="AddAnswerTime" />
+        <variable name="ModifyRequests" />
+        <variable name="ModifySuccesses" />
+        <variable name="ModifyFailures" />
+        <variable name="ModifyErrors" />
+        <variable name="ModifyAnswerCount" />
+        <variable name="ModifyAnswerTime" />
+        <variable name="DeleteRequests" />
+        <variable name="DeleteSuccesses" />
+        <variable name="DeleteFailures" />
+        <variable name="DeleteErrors" />
+        <variable name="DeleteAnswerCount" />
+        <variable name="DeleteAnswerTime" />
+        <variable name="CompareRequests" />
+        <variable name="CompareSuccesses" />
+        <variable name="CompareFailures" />
+        <variable name="CompareErrors" />
+        <variable name="CompareAnswerCount" />
+        <variable name="CompareAnswerTime" />
+    </item>
+
+    <item name="USS" enabled="false" group="USS" instances="*" instanceDn="group=uSS">
+        <variable name="State-Active" />
+        <variable name="State-Inactive" />
+        <variable name="State-Waiting-For-Start" />
+        <variable name="Inactive-Auth" />
+        <variable name="Inactive-Auth-Same" />
+        <variable name="Inactive-Auth-Diff" />
+        <variable name="Inactive-Auth-Unknown" />
+        <variable name="Inactive-Start" />
+        <variable name="Inactive-Start-Same" />
+        <variable name="Inactive-Start-Diff" />
+        <variable name="Inactive-Start-Unknown" />
+        <variable name="Inactive-Update" />
+        <variable name="Inactive-Update-Same" />
+        <variable name="Inactive-Update-Diff" />
+        <variable name="Inactive-Update-Unknown" />
+        <variable name="Inactive-Stop" />
+        <variable name="Inactive-Stop-Same" />
+        <variable name="Inactive-Stop-Diff" />
+        <variable name="Inactive-Stop-Unknown" />
+        <variable name="Inactive-Off" />
+        <variable name="Inactive-On" />
+        <variable name="Inactive-Timeout" />
+        <variable name="Inactive-Reset" />
+        <variable name="WaitingStart-Auth" />
+        <variable name="WaitingStart-Auth-Same" />
+        <variable name="WaitingStart-Auth-Diff" />
+        <variable name="WaitingStart-Auth-Unknown" />
+        <variable name="WaitingStart-Start" />
+        <variable name="WaitingStart-Start-Same" />
+        <variable name="WaitingStart-Start-Diff" />
+        <variable name="WaitingStart-Start-Unknown" />
+        <variable name="WaitingStart-Update" />
+        <variable name="WaitingStart-Update-Same" />
+        <variable name="WaitingStart-Update-Diff" />
+        <variable name="WaitingStart-Update-Unknown" />
+        <variable name="WaitingStart-Stop" />
+        <variable name="WaitingStart-Stop-Same" />
+        <variable name="WaitingStart-Stop-Diff" />
+        <variable name="WaitingStart-Stop-Unknown" />
+        <variable name="WaitingStart-Off" />
+        <variable name="WaitingStart-On" />
+        <variable name="WaitingStart-Timeout" />
+        <variable name="WaitingStart-Reset" />
+        <variable name="Active-Auth" />
+        <variable name="Active-Auth-Same" />
+        <variable name="Active-Auth-Diff" />
+        <variable name="Active-Auth-Unknown" />
+        <variable name="Active-Start" />
+        <variable name="Active-Start-Same" />
+        <variable name="Active-Start-Diff" />
+        <variable name="Active-Start-Unknown" />
+        <variable name="Active-Update" />
+        <variable name="Active-Update-Same" />
+        <variable name="Active-Update-Diff" />
+        <variable name="Active-Update-Unknown" />
+        <variable name="Active-Stop" />
+        <variable name="Active-Stop-Same" />
+        <variable name="Active-Stop-Diff" />
+        <variable name="Active-Stop-Unknown" />
+        <variable name="Active-Off" />
+        <variable name="Active-On" />
+        <variable name="Active-Timeout" />
+        <variable name="Active-Reset" />
+        <variable name="Active-Inactive" />
+        <variable name="Active-WaitingStart" />
+        <variable name="Active-Active" />
+        <variable name="WaitingStart-Inactive" />
+        <variable name="WaitingStart-WaitingStart" />
+        <variable name="WaitingStart-Active" />
+        <variable name="Inactive-Inactive" />
+        <variable name="Inactive-WaitingStart" />
+        <variable name="Inactive-Active" />
+        <variable name="Total-Requests" />
+        <variable name="Invalid-Requests" />
+        <variable name="Limit-Rejects" />
+        <variable name="Limit-Errors" />
+        <variable name="Not-Handled" />
+        <variable name="Exceptions" />
+        <variable name="Map-Evaluation-Errors" />
+        <variable name="Replication-Entries-Updated" />
+        <variable name="Replication-Entries-Merged" />
+        <variable name="Replication-Discovery-Failures" />
+        <variable name="Replication-Reconciliations" />
+        <variable name="Replication-Role" />
+        <variable name="Replication-Status" />
+        <variable name="Replication-Queue-Size" />
+        <variable name="Replication-State-Okay" />
+    </item>
+
+    <item name="USS-Counters" enabled="false" group="USS-Counters" instances="ATTRIBUTE#VALUE" instanceDn="group=uSS-Counters,attribute=$1,value=$2">
+        <variable name="Number" />
+    </item>
+
+    <item name="USSv2-Nodes" enabled="false" group="USSv2-Nodes" instances="(.+)" instanceDn="group=uSSv2-Nodes,nodeName=$1">
+        <variable name="Flap-Count" />
+        <variable name="Time-Skew" />
+        <variable name="Outbound-Queue-Length" />
+        <variable name="Sent-Entries-Total" />
+        <variable name="Received-Entries-Total" />
+        <variable name="Sent-Entries-Since-Connect" />
+        <variable name="Received-Entries-Since-Connect" />
+        <variable name="Unacked-Replication-Entries" />
+        <variable name="Average-Ack-Lag" />
+        <variable name="Oldest-Outstanding-Ack" />
+        <variable name="Oldest-Bucket" />
+        <variable name="Pending-Acks" />
+        <variable name="Total-Reconciliations" />
+        <variable name="Connection-State-Number" />
+        <variable name="Bucket-Count" />
+        <variable name="Soft-Reconcile-Attempts" />
+        <variable name="Hard-Reconcile-Attempts" />
+        <variable name="Reconciled-Entries" />
+        <variable name="Reconciled-Nas-Events" />
+        <variable name="Unknown-Model-Entries" />
+    </item>
+
+    <item name="USSv2-Persistence" enabled="false" group="USSv2-Persistence" instances="(.+)" instanceDn="group=uSSv2-Persistence,modelName=$1">
+        <variable name="GetCount" />
+        <variable name="PutCount" />
+        <variable name="SeekCount" />
+        <variable name="WriteCount" />
+        <variable name="GetTime" />
+        <variable name="PutTime" />
+        <variable name="SeekTime" />
+        <variable name="WriteTime" />
+        <variable name="LostPersists" />
+        <variable name="DuplicatePersists" />
+    </item>
+
+    <item name="USSv2-RadiusStateModel" enabled="false" group="USSv2-RadiusStateModel" instances="(.+)" instanceDn="group=uSSv2-RadiusStateModel,modelName=$1">
+        <variable name="Inactive-Auth-Different" />
+        <variable name="Inactive-Auth-Unknown" />
+        <variable name="Inactive-Auth-Same" />
+        <variable name="Inactive-Auth" />
+        <variable name="Accepted-Auth-Different" />
+        <variable name="Accepted-Auth-Unknown" />
+        <variable name="Accepted-Auth-Same" />
+        <variable name="Accepted-Auth" />
+        <variable name="Active-Auth-Different" />
+        <variable name="Active-Auth-Unknown" />
+        <variable name="Active-Auth-Same" />
+        <variable name="Active-Auth" />
+        <variable name="Inactive-AcctStart-Different" />
+        <variable name="Inactive-AcctStart-Unknown" />
+        <variable name="Inactive-AcctStart-Same" />
+        <variable name="Inactive-AcctStart" />
+        <variable name="Accepted-AcctStart-Different" />
+        <variable name="Accepted-AcctStart-Unknown" />
+        <variable name="Accepted-AcctStart-Same" />
+        <variable name="Accepted-AcctStart" />
+        <variable name="Active-AcctStart-Different" />
+        <variable name="Active-AcctStart-Unknown" />
+        <variable name="Active-AcctStart-Same" />
+        <variable name="Active-AcctStart" />
+        <variable name="Inactive-AcctUpdate-Different" />
+        <variable name="Inactive-AcctUpdate-Unknown" />
+        <variable name="Inactive-AcctUpdate-Same" />
+        <variable name="Inactive-AcctUpdate" />
+        <variable name="Accepted-AcctUpdate-Different" />
+        <variable name="Accepted-AcctUpdate-Unknown" />
+        <variable name="Accepted-AcctUpdate-Same" />
+        <variable name="Accepted-AcctUpdate" />
+        <variable name="Active-AcctUpdate-Different" />
+        <variable name="Active-AcctUpdate-Unknown" />
+        <variable name="Active-AcctUpdate-Same" />
+        <variable name="Active-AcctUpdate" />
+        <variable name="Inactive-AcctStop-Different" />
+        <variable name="Inactive-AcctStop-Unknown" />
+        <variable name="Inactive-AcctStop-Same" />
+        <variable name="Inactive-AcctStop" />
+        <variable name="Accepted-AcctStop-Different" />
+        <variable name="Accepted-AcctStop-Unknown" />
+        <variable name="Accepted-AcctStop-Same" />
+        <variable name="Accepted-AcctStop" />
+        <variable name="Active-AcctStop-Different" />
+        <variable name="Active-AcctStop-Unknown" />
+        <variable name="Active-AcctStop-Same" />
+        <variable name="Active-AcctStop" />
+        <variable name="Inactive-Timeout" />
+        <variable name="Accepted-Timeout" />
+        <variable name="Active-Timeout" />
+        <variable name="Inactive-Shutdown" />
+        <variable name="Accepted-Shutdown" />
+        <variable name="Active-Shutdown" />
+        <variable name="Inactive-Boot" />
+        <variable name="Accepted-Boot" />
+        <variable name="Active-Boot" />
+        <variable name="Inactive-Reset" />
+        <variable name="Accepted-Reset" />
+        <variable name="Active-Reset" />
+        <variable name="Inactive-Reauth-Different" />
+        <variable name="Inactive-Reauth-Unknown" />
+        <variable name="Inactive-Reauth-Same" />
+        <variable name="Inactive-Reauth" />
+        <variable name="Accepted-Reauth-Different" />
+        <variable name="Accepted-Reauth-Unknown" />
+        <variable name="Accepted-Reauth-Same" />
+        <variable name="Accepted-Reauth" />
+        <variable name="Active-Reauth-Different" />
+        <variable name="Active-Reauth-Unknown" />
+        <variable name="Active-Reauth-Same" />
+        <variable name="Active-Reauth" />
+        <variable name="Inactive-Inactive" />
+        <variable name="Inactive-Accepted" />
+        <variable name="Inactive-Active" />
+        <variable name="Inactive-PendDeletion" />
+        <variable name="Inactive-None" />
+        <variable name="Accepted-Inactive" />
+        <variable name="Accepted-Accepted" />
+        <variable name="Accepted-Active" />
+        <variable name="Accepted-PendDeletion" />
+        <variable name="Accepted-None" />
+        <variable name="Active-Inactive" />
+        <variable name="Active-Accepted" />
+        <variable name="Active-Active" />
+        <variable name="Active-PendDeletion" />
+        <variable name="Active-None" />
+        <variable name="PendDeletion-Inactive" />
+        <variable name="PendDeletion-Accepted" />
+        <variable name="PendDeletion-Active" />
+        <variable name="PendDeletion-PendDeletion" />
+        <variable name="PendDeletion-None" />
+        <variable name="None-Inactive" />
+        <variable name="None-Accepted" />
+        <variable name="None-Active" />
+        <variable name="None-PendDeletion" />
+        <variable name="None-None" />
+        <variable name="Total-Requests" />
+        <variable name="Invalid-Requests" />
+        <variable name="Limit-Rejects" />
+        <variable name="Limit-Errors" />
+        <variable name="Not-Handled" />
+        <variable name="Unknown-Events" />
+        <variable name="Exceptions" />
+        <variable name="Map-Evaluation-Errors" />
+        <variable name="Replication-Entries-Updated" />
+        <variable name="Replication-Entries-Merged" />
+        <variable name="State-Inactive" />
+        <variable name="State-Accepted" />
+        <variable name="State-Active" />
+        <variable name="Total-Entries" />
+        <variable name="Pending-Deletion" />
+        <variable name="Replication-Entries-Ignored" />
+        <variable name="Session-Count" />
+        <variable name="Session-Time" />        
+        <variable name="Session-Average-Time" />
+        <variable name="Session-Limit" />        
+    </item>
+
+    <item name="USSv2-GeneralStateModel" enabled="false" group="USSv2-GeneralStateModel" instances="(.+)" instanceDn="group=uSSv2-GeneralStateModel,modelName=$1">
+        <variable name="Initial-Initial" />
+        <variable name="Initial-Active" />
+        <variable name="Initial-Terminal" />
+        <variable name="Active-Initial" />
+        <variable name="Active-Active" />
+        <variable name="Active-Terminal" />
+        <variable name="Terminal-Initial" />
+        <variable name="Terminal-Active" />
+        <variable name="Terminal-Terminal" />
+        <variable name="Initial-Read" />
+        <variable name="Initial-Write" />
+        <variable name="Initial-Delete" />
+        <variable name="Initial-Timeout" />
+        <variable name="Initial-WeakWrite" />
+        <variable name="Initial" />
+        <variable name="Active-Read" />
+        <variable name="Active-Write" />
+        <variable name="Active-Delete" />
+        <variable name="Active-Timeout" />
+        <variable name="Active-WeakWrite" />
+        <variable name="Active" />
+        <variable name="Terminal-Read" />
+        <variable name="Terminal-Write" />
+        <variable name="Terminal-Delete" />
+        <variable name="Terminal-Timeout" />
+        <variable name="Terminal-WeakWrite" />
+        <variable name="Terminal" />
+        <variable name="Replication-Update" />
+        <variable name="Replication-Merge" />
+        <variable name="Replication-Discard" />
+        <variable name="Total-Operation" />
+        <variable name="Session-Limit" />		
+    </item>
+
+    <item name="USSv2-DiameterStateModel" enabled="false" group="USSv2-DiameterStateModel" instances="(.+)" instanceDn="group=uSSv2-DiameterStateModel,modelName=$1">
+        <variable name="Total-Requests" />
+        <variable name="Invalid-Requests" />
+        <variable name="Limit-Rejects" />
+        <variable name="Limit-Errors" />
+        <variable name="Not-Handled" />
+        <variable name="Unknown-Events" />
+        <variable name="Exceptions" />
+        <variable name="Map-Evaluation-Errors" />
+        <variable name="Address-Allocation-Errors" />
+        <variable name="Replication-Entries-Merged" />
+        <variable name="Replication-Entries-Updated" />
+        <variable name="Event-Auth" />
+        <variable name="Event-SessionTermination" />
+        <variable name="Event-Reset" />
+        <variable name="Event-Reboot" />
+        <variable name="Event-Timeout" />
+        <variable name="Event-Initial-Auth" />
+        <variable name="Event-Initial-SessionTermination" />
+        <variable name="Event-Initial-Reset" />
+        <variable name="Event-Initial-Reboot" />
+        <variable name="Event-Initial-Timeout" />
+        <variable name="Event-Active-Auth" />
+        <variable name="Event-Active-SessionTermination" />
+        <variable name="Event-Active-Reset" />
+        <variable name="Event-Active-Reboot" />
+        <variable name="Event-Active-Timeout" />
+        <variable name="Event-Inactive-Auth" />
+        <variable name="Event-Inactive-SessionTermination" />
+        <variable name="Event-Inactive-Reset" />
+        <variable name="Event-Inactive-Reboot" />
+        <variable name="Event-Inactive-Timeout" />
+        <variable name="Event-Terminal-Auth" />
+        <variable name="Event-Terminal-SessionTermination" />
+        <variable name="Event-Terminal-Reset" />
+        <variable name="Event-Terminal-Reboot" />
+        <variable name="Event-Terminal-Timeout" />
+        <variable name="State-Initial-Initial" />
+        <variable name="State-Initial-Active" />
+        <variable name="State-Initial-Inactive" />
+        <variable name="State-Initial-Terminal" />
+        <variable name="State-Active-Initial" />
+        <variable name="State-Active-Active" />
+        <variable name="State-Active-Inactive" />
+        <variable name="State-Active-Terminal" />
+        <variable name="State-Inactive-Initial" />
+        <variable name="State-Inactive-Active" />
+        <variable name="State-Inactive-Inactive" />
+        <variable name="State-Inactive-Terminal" />
+        <variable name="State-Terminal-Initial" />
+        <variable name="State-Terminal-Active" />
+        <variable name="State-Terminal-Inactive" />
+        <variable name="State-Terminal-Terminal" />
+        <variable name="State-Initial" />
+        <variable name="State-Active" />
+        <variable name="State-Inactive" />
+        <variable name="State-Terminal" />
+        <variable name="Total-Entries" />
+        <variable name="Pending-Deletion" />
+        <variable name="Average-Session-Time" />
+        <variable name="Session-Count" />
+        <variable name="Session-Time" />        
+        <variable name="Replication-Entries-Ignored" />
+        <variable name="Event-None" />
+        <variable name="Event-Initial-None" />
+        <variable name="Event-Active-None" />
+        <variable name="Event-Inactive-None" />
+        <variable name="Event-Terminal-None" />
+        <variable name="Session-Average-Time" />
+        <variable name="Session-Limit" />        
+    </item>
+
+    <item name="USSv2-Counters" enabled="false" group="USSv2-Counters" instances="MODEL#ATTRIBUTE#VALUE" instanceDn="group=uSSv2-Counters,model=$1,attribute=$2,value=$3">
+        <variable name="Number" />
+    </item>
+
+    <item name="BrokerServer" enabled="false" group="BrokerServer" instances="(.+)#(.+)" instanceDn="group=brokerServer,brokerName=$1,nodeName=$2">
+        <variable name="Client-Reports" />
+        <variable name="Resource-Requests" />
+        <variable name="Resource-Relinquishes" />
+        <variable name="Client-Usage-Updates" />
+        <variable name="Broker-Configs" />
+        <variable name="Broker-Usage-Updates" />
+        <variable name="Updates" />
+        <variable name="Offers" />
+        <variable name="Relinquish-Requests" />
+        <variable name="Adjustments" />
+    </item>
+
+    <item name="BrokerServerClient" enabled="false" group="BrokerServerClient" instances="(.+)#(.+)#(.+)#(.+)" instanceDn="group=brokerServerClient,brokerName=$1,resourceType=$2,resourceName=$3,nodeName=$4">
+        <variable name="Client-Total" />
+        <variable name="Client-Used" />
+        <variable name="Client-Used-To-Client-Total" />
+        <variable name="Client-Used-To-Broker-Total" />
+        <variable name="Client-Total-To-Broker-Total" />
+        <variable name="Items-Requested" />
+        <variable name="Items-Allotted" />
+        <variable name="Items-Relinquished" />
+        <variable name="Items-Matched" />
+        <variable name="Items-Used" />
+        <variable name="Items-Unused" />
+        <variable name="Items-Polluted" />
+    </item>
+
+    <item name="BrokerServerResource" enabled="false" group="BrokerServerResource" instances="(.+)#(.+)#(.+)" instanceDn="group=brokerServerResource,brokerName=$1,resourceType=$2,resourceName=$3">
+        <variable name="Broker-Total" />
+        <variable name="Broker-Used" />
+        <variable name="Broker-Used-To-Broker-Total" />
+        <variable name="Clients-Used-To-Broker-Total" />
+        <variable name="Items-Requested" />
+        <variable name="Items-Allotted" />
+        <variable name="Items-Relinquished" />
+        <variable name="Items-Matched" />
+        <variable name="Items-Used" />
+        <variable name="Items-Unused" />
+        <variable name="Items-Polluted" />
+    </item>
+
+    <item name="BrokerClient" enabled="false" group="BrokerClient" instances="(.+)" instanceDn="group=brokerClient,brokerName=$1">
+        <variable name="Client-Reports" />
+        <variable name="Resource-Requests" />
+        <variable name="Resource-Relinquishes" />
+        <variable name="Client-Usage-Updates" />
+        <variable name="Allotment-Lag" />
+        <variable name="Broker-Configs" />
+        <variable name="Broker-Usage-Updates" />
+        <variable name="Updates" />
+        <variable name="Offers" />
+        <variable name="Relinquish-Requests" />
+        <variable name="Adjustments" />
+    </item>
+
+    <item name="BrokerClientResource" enabled="false" group="BrokerClientResource" instances="(.+)#(.+)#(.+)" instanceDn="group=brokerClientResource,brokerName=$1,resourceType=$2,resourceName=$3">
+        <variable name="Broker-Total" />
+        <variable name="Broker-Used" />
+        <variable name="Client-Total" />
+        <variable name="Client-Used" />
+        <variable name="Client-Used-To-Broker-Total" />
+        <variable name="Client-Used-To-Client-Total" />
+        <variable name="Items-Requested" />
+        <variable name="Items-Allotted" />
+        <variable name="Items-Relinquished" />
+        <variable name="Resource-Shortages" />
+    </item>
+
+    <item name="Plugin" enabled="false" group="Plugin" instances="(.+)" instanceDn="group=plugin,pluginName=$1">
+        <variable name="SuccessCount" />
+        <variable name="FailureCount" />
+        <variable name="ErrorCount" />
+        <variable name="AcceptCount" />
+        <variable name="RejectCount" />
+        <variable name="DiscardCount" />
+        <variable name="SuspendCount" />
+        <variable name="JumpCount" />
+        <variable name="ChallengeCount" />
+        <variable name="ContinueCount" />
+        <variable name="MethodTimeoutCount" />
+        <variable name="StateTimeoutCount" />
+        <variable name="TotalCount" />
+        <variable name="SuccessTime" />
+        <variable name="FailureTime" />
+        <variable name="ErrorTime" />
+        <variable name="AcceptTime" />
+        <variable name="RejectTime" />
+        <variable name="DiscardTime" />
+        <variable name="SuspendTime" />
+        <variable name="JumpTime" />
+        <variable name="ChallengeTime" />
+        <variable name="ContinueTime" />
+        <variable name="MethodTimeoutTime" />
+        <variable name="StateTimeoutTime" />
+        <variable name="TotalTime" />
+        <variable name="ResumeCount" />
+        <variable name="ResumeTime" />
+        <variable name="StateCount" />
+        <variable name="StateTime" />
+        <variable name="SuccessLatency" />
+        <variable name="FailureLatency" />
+        <variable name="ErrorLatency" />
+        <variable name="AcceptLatency" />
+        <variable name="RejectLatency" />
+        <variable name="DiscardLatency" />
+        <variable name="SuspendLatency" />
+        <variable name="JumpLatency" />
+        <variable name="ChallengeLatency" />
+        <variable name="ContinueLatency" />
+        <variable name="MethodTimeoutLatency" />
+        <variable name="StateTimeoutLatency" />
+        <variable name="ResumeLatency" />
+        <variable name="StateLatency" />
+        <variable name="TotalLatency" />
+    </item>
+
+    <item name="Engine" enabled="false" group="Engine" instances="*" instanceDn="group=engine">
+        <variable name="ThreadsActive" />
+        <variable name="ThreadsHighwater" />
+        <variable name="ThreadsMaximum" />
+        <variable name="ThreadsZombie" />
+        <variable name="ItemMinTime" />
+        <variable name="ItemMaxTime" />
+        <variable name="ItemTotalCount" />
+        <variable name="ItemTotalTime" />
+        <variable name="ActiveCount" />
+        <variable name="MethodCount" />
+        <variable name="InnerCount" />
+        <variable name="QueueCount" />
+        <variable name="StateCount" />
+        <variable name="BusyCount" />
+        <variable name="OuterCount" />
+        <variable name="SessionCount" />
+        <variable name="QueuePermit" />
+        <variable name="UpTime" />
+        <variable name="BootTime" />
+        <variable name="IpamFree" />
+        <variable name="IpamTotal" />
+        <variable name="ItemLatency" />
+    </item>
+
+    <item name="JavaMemory" enabled="false" group="JavaMemory" instances="*" instanceDn="group=javaMemory">
+        <variable name="HeapMemoryInit" />
+        <variable name="HeapMemoryUsed" />
+        <variable name="HeapMemoryCommitted" />
+        <variable name="HeapMemoryMax" />
+        <variable name="NonHeapMemoryInit" />
+        <variable name="NonHeapMemoryUsed" />
+        <variable name="NonHeapMemoryCommitted" />
+        <variable name="NonHeapMemoryMax" />
+    </item>
+
+    <item name="GarbageCollector" enabled="false" group="GarbageCollector" instances="(.+)" instanceDn="group=garbageCollector,collector=$1">
+        <variable name="CollectionCount" />
+        <variable name="CollectionTime" />
+        <variable name="CollectionLatency" />
+    </item>
+
+    <item name="OperatingSystem" enabled="false" group="OperatingSystem" instances="*" instanceDn="group=operatingSystem">
+        <variable name="AvailableProcessors" />
+        <variable name="SystemLoadAverage" />
+        <variable name="FreePhysicalMemorySize" />
+        <variable name="TotalPhysicalMemorySize" />
+        <variable name="FreeSwapSpaceSize" />
+        <variable name="TotalSwapSpaceSize" />
+        <variable name="CommittedVirtualMemorySize" />
+        <variable name="ProcessCpuTime" />
+        <variable name="OpenFileDescriptorCount" />
+        <variable name="MaxFileDescriptorCount" />
+        <variable name="ProcessCpuLoad" />
+        <variable name="SystemCpuLoad" />
+        <variable name="CpuUsage" />
+    </item>
+
+    <item name="DiskSpace" enabled="false" group="DiskSpace" instances="(.+)" instanceDn="group=diskSpace,path=$1">
+        <variable name="TotalSpace" />
+        <variable name="FreeSpace" />
+        <variable name="UsableSpace" />
+    </item>
+
+    <item name="Threads" enabled="false" group="Threads" instances="NAME" instanceDn="group=threads,name=$1">
+        <variable name="CpuTime" />
+        <variable name="UserTime" />
+        <variable name="BlockedCount" />
+        <variable name="BlockedTime" />
+        <variable name="WaitedCount" />
+        <variable name="WaitedTime" />
+        <variable name="BlockedLatency" />
+        <variable name="WaitedLatency" />
+    </item>
+
+    <item name="NormalCache" enabled="false" group="NormalCache" instances="*" instanceDn="group=normalCache">
+        <variable name="NormalHits" />
+        <variable name="NormalAliases" />
+        <variable name="NormalMisses" />
+    </item>
+
+    <item name="Queue" enabled="false" group="Queue" instances="(.+)" instanceDn="group=queue,name=$1">
+        <variable name="QueueSize" />
+        <variable name="QueueHighWater" />
+        <variable name="QueueWriteCount" />
+        <variable name="QueueDepthCount" />
+        <variable name="QueueAverageDepth" />
+    </item>
+
+    <item name="TCP" enabled="false" group="TCP" instances="(.+)" instanceDn="group=tCP,key=$1">
+        <variable name="SelectEvents" />
+        <variable name="KeyEvents" />
+        <variable name="AcceptEvents" />
+        <variable name="ConnectEvents" />
+        <variable name="ReadMessages" />
+        <variable name="ReadEvents" />
+        <variable name="ReadCalls" />
+        <variable name="ReadOctets" />
+        <variable name="WriteMessages" />
+        <variable name="WriteEvents" />
+        <variable name="WriteCalls" />
+        <variable name="WriteOctets" />
+        <variable name="QueueMessages" />
+        <variable name="QueueOctets" />
+    </item>
+
+    <item name="WorkProxy" enabled="false" group="WorkProxy" instances="(.+)" instanceDn="group=workProxy,name=$1">
+        <variable name="Requests" />
+        <variable name="Successes" />
+        <variable name="Failures" />
+        <variable name="Errors" />
+        <variable name="Challenges" />
+    </item>
+
+    <item name="PolicyFlow" enabled="false" group="PolicyFlow" instances="(.+)" instanceDn="group=policyFlow,name=$1">
+        <variable name="Counter" />
+        <variable name="Gauge" />
+    </item>
+
+    <item name="TlsSessionManager" enabled="false" group="TlsSessionManager" instances="(.+)" instanceDn="group=tlsSessionManager,name=$1">
+        <variable name="Creates" />
+        <variable name="Hits" />
+        <variable name="Misses" />
+        <variable name="Active" />
+    </item>
+
+    <item name="RadiusUdpStatusClient" enabled="false" group="RadiusUdpStatusClient" instances="(.+)" instanceDn="group=radiusUdpStatusClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Retransmissions" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusUdpStatusServer" enabled="false" group="RadiusUdpStatusServer" instances="(.+)" instanceDn="group=radiusUdpStatusServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="SCTP" enabled="false" group="SCTP" instances="(.+)" instanceDn="group=sCTP,key=$1">
+        <variable name="SelectEvents" />
+        <variable name="KeyEvents" />
+        <variable name="AcceptEvents" />
+        <variable name="ConnectEvents" />
+        <variable name="ReadMessages" />
+        <variable name="ReadEvents" />
+        <variable name="ReadCalls" />
+        <variable name="ReadOctets" />
+        <variable name="WriteMessages" />
+        <variable name="WriteEvents" />
+        <variable name="WriteCalls" />
+        <variable name="WriteOctets" />
+        <variable name="QueueMessages" />
+        <variable name="QueueOctets" />
+    </item>
+
+    <item name="DiameterServerByApplication" enabled="false" group="DiameterServerByApplication" instances="(.+)" instanceDn="group=diameterServerByApplication,application=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByApplicationPeer" enabled="false" group="DiameterServerByApplicationPeer" instances="(.+)#(.+)" instanceDn="group=diameterServerByApplicationPeer,application=$1,peer=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByApplicationHost" enabled="false" group="DiameterServerByApplicationHost" instances="(.+)#(.+)" instanceDn="group=diameterServerByApplicationHost,application=$1,host=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterServerByApplicationRealm" enabled="false" group="DiameterServerByApplicationRealm" instances="(.+)#(.+)" instanceDn="group=diameterServerByApplicationRealm,application=$1,realm=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByApplication" enabled="false" group="DiameterClientByApplication" instances="(.+)" instanceDn="group=diameterClientByApplication,application=$1">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByApplicationPeer" enabled="false" group="DiameterClientByApplicationPeer" instances="(.+)#(.+)" instanceDn="group=diameterClientByApplicationPeer,application=$1,peer=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByApplicationHost" enabled="false" group="DiameterClientByApplicationHost" instances="(.+)#(.+)" instanceDn="group=diameterClientByApplicationHost,application=$1,host=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="DiameterClientByApplicationRealm" enabled="false" group="DiameterClientByApplicationRealm" instances="(.+)#(.+)" instanceDn="group=diameterClientByApplicationRealm,application=$1,realm=$2">
+        <variable name="Requests" />
+        <variable name="InfoClassAnswers" />
+        <variable name="SuccessClassAnswers" />
+        <variable name="ProtocolClassAnswers" />
+        <variable name="TransientClassAnswers" />
+        <variable name="PermanentClassAnswers" />
+        <variable name="OtherClassAnswers" />
+        <variable name="ChallengeAnswers" />
+        <variable name="SuccessAnswers" />
+        <variable name="FailureAnswers" />
+        <variable name="ErrorAnswers" />
+        <variable name="Timeouts" />
+        <variable name="AnswerCount" />
+        <variable name="AnswerTime" />
+        <variable name="User1Answers" />
+        <variable name="User2Answers" />
+        <variable name="User3Answers" />
+        <variable name="User4Answers" />
+        <variable name="User5Answers" />
+        <variable name="User6Answers" />
+        <variable name="User7Answers" />
+        <variable name="User8Answers" />
+        <variable name="User9Answers" />
+        <variable name="User10Answers" />
+        <variable name="User11Answers" />
+        <variable name="User12Answers" />
+        <variable name="User13Answers" />
+        <variable name="User14Answers" />
+        <variable name="User15Answers" />
+        <variable name="User16Answers" />
+        <variable name="UserOtherAnswers" />
+        <variable name="AnswerLatency" />
+    </item>
+
+    <item name="Cache" enabled="false" group="Cache" instances="CACHENAME#ENTRYKEY#ATTRIBUTE" instanceDn="group=cache,cacheName=$1,entryKey=$2,attribute=$3">
+        <variable name="Value" />
+    </item>
+
+    <item name="LogChannel" enabled="false" group="LogChannel" instances="(.+)" instanceDn="group=logChannel,channelName=$1">
+        <variable name="CallLatency" />
+        <variable name="Status" />
+        <variable name="CallTime" />
+        <variable name="CallCount" />
+        <variable name="Entries" />
+        <variable name="Failures" />
+        <variable name="Successes" />
+    </item>
+
+    <item name="DiameterLink" enabled="false" group="DiameterLink" instances="(.+)" instanceDn="group=diameterLink,peer=$1">
+        <variable name="AdminState" />
+        <variable name="PeerState" />
+        <variable name="TransportState" />
+        <variable name="DWR-Pending" />
+        <variable name="DWA-Reopen" />
+        <variable name="RequestsPending" />
+        <variable name="IdleQueueSize" />
+        <variable name="TransportStateOkay" />
+        <variable name="PeerStateOpen" />
+    </item>
+
+    <item name="Alert" enabled="false" group="Alert" instances="(.+)" instanceDn="group=alert,alertName=$1">
+        <variable name="Value" />
+        <variable name="State" />
+    </item>
+
+    <item name="Lag" enabled="false" group="Lag" instances="(.+)" instanceDn="group=lag,lagInstance=$1">
+        <variable name="Specific" />
+        <variable name="Aggregate" />
+        <variable name="GcSpecific" />
+        <variable name="OtherSpecific" />
+        <variable name="BizzaroSpecific" />
+        <variable name="SkewSpecific" />
+    </item>
+
+    <item name="Throttle" enabled="false" group="Throttle" instances="(.+)" instanceDn="group=throttle,key=$1">
+        <variable name="ActiveCount" />
+        <variable name="BacklogCount" />
+        <variable name="AcceptCount" />
+        <variable name="RefuseCount" />
+        <variable name="DeferCount" />
+        <variable name="DeferTime" />
+        <variable name="TimeoutCount" />
+        <variable name="TimeoutTime" />
+        <variable name="DeferLatency" />
+        <variable name="TimeoutLatency" />
+    </item>
+
+    <item name="Lock" enabled="false" group="Lock" instances="(.+)" instanceDn="group=lock,scope=$1">
+        <variable name="ActiveLockCount" />
+        <variable name="AcceptCount" />
+        <variable name="RecurseCount" />
+        <variable name="RefuseCount" />
+        <variable name="DeferCount" />
+        <variable name="DeferTime" />
+        <variable name="TimeoutCount" />
+        <variable name="TimeoutTime" />
+        <variable name="RemoveRaceCount" />
+        <variable name="DeferLatency" />
+        <variable name="TimeoutLatency" />
+    </item>
+
+    <item name="USSv2-Indexes" enabled="false" group="USSv2-Indexes" instances="MODEL#ATTRIBUTE#VALUE" instanceDn="group=uSSv2-Indexes,model=$1,attribute=$2,value=$3">
+        <variable name="Number" />
+    </item>
+
+    <item name="DiameterBoot" enabled="false" group="DiameterBoot" instances="(.+)" instanceDn="group=diameterBoot,originHost=$1">
+        <variable name="OriginStateId" />
+        <variable name="CurrentOSI" />
+        <variable name="PreviousOSI" />
+        <variable name="DeltaOSI" />
+        <variable name="DeltaTimestamp" />
+    </item>
+
+    <item name="IpamPool" enabled="false" group="IpamPool" instances="(.+)" instanceDn="group=ipamPool,poolName=$1">
+        <variable name="Active" />
+        <variable name="Used" />
+        <variable name="Free" />
+        <variable name="Total" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="IpamSelector" enabled="false" group="IpamSelector" instances="(.+)" instanceDn="group=ipamSelector,selectorName=$1">
+        <variable name="Used" />
+        <variable name="Free" />
+        <variable name="Total" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="TcpConnectionPool" enabled="false" group="TcpConnectionPool" instances="(.+)#(.+)" instanceDn="group=tcpConnectionPool,type=$1,poolName=$2">
+        <variable name="Active" />
+        <variable name="Pending" />
+        <variable name="Available" />
+        <variable name="Waiters" />
+        <variable name="Get" />
+        <variable name="Got" />
+        <variable name="Return" />
+        <variable name="Drop" />
+        <variable name="Remove" />
+        <variable name="Suspend" />
+        <variable name="ResumeConnection" />
+        <variable name="ResumeError" />
+        <variable name="ResumeTimeout" />
+        <variable name="SuspendTime" />
+    </item>
+
+    <item name="License" enabled="false" group="License" instances="*" instanceDn="group=license">
+        <variable name="Users" />
+        <variable name="Sessions" />
+        <variable name="Addresses" />
+        <variable name="EntryFactor" />
+    </item>
+
+    <item name="BufferPool" enabled="false" group="BufferPool" instances="(.+)" instanceDn="group=bufferPool,name=$1">
+        <variable name="Count" />
+        <variable name="MemoryUsed" />
+        <variable name="TotalCapacity" />
+    </item>
+
+    <item name="RadiusTcpAuthServer" enabled="false" group="RadiusTcpAuthServer" instances="(.+)" instanceDn="group=radiusTcpAuthServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpAcctServer" enabled="false" group="RadiusTcpAcctServer" instances="(.+)" instanceDn="group=radiusTcpAcctServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpStatusServer" enabled="false" group="RadiusTcpStatusServer" instances="(.+)" instanceDn="group=radiusTcpStatusServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTcpDiscServer" enabled="false" group="RadiusTcpDiscServer" instances="(.+)" instanceDn="group=radiusTcpDiscServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpCoAServer" enabled="false" group="RadiusTcpCoAServer" instances="(.+)" instanceDn="group=radiusTcpCoAServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpStateServer" enabled="false" group="RadiusTcpStateServer" instances="(.+)" instanceDn="group=radiusTcpStateServer,clientAddress=$1">
+        <variable name="InvalidClients" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="Others" />
+        <variable name="DuplicateRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTcpOtherServer" enabled="false" group="RadiusTcpOtherServer" instances="(.+)" instanceDn="group=radiusTcpOtherServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="DuplicateRequests" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTcpAuthClient" enabled="false" group="RadiusTcpAuthClient" instances="(.+)" instanceDn="group=radiusTcpAuthClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpAcctClient" enabled="false" group="RadiusTcpAcctClient" instances="(.+)" instanceDn="group=radiusTcpAcctClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpStatusClient" enabled="false" group="RadiusTcpStatusClient" instances="(.+)" instanceDn="group=radiusTcpStatusClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTcpDiscClient" enabled="false" group="RadiusTcpDiscClient" instances="(.+)" instanceDn="group=radiusTcpDiscClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpCoAClient" enabled="false" group="RadiusTcpCoAClient" instances="(.+)" instanceDn="group=radiusTcpCoAClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTcpStateClient" enabled="false" group="RadiusTcpStateClient" instances="(.+)" instanceDn="group=radiusTcpStateClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTcpOtherClient" enabled="false" group="RadiusTcpOtherClient" instances="(.+)" instanceDn="group=radiusTcpOtherClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTlsAuthServer" enabled="false" group="RadiusTlsAuthServer" instances="(.+)" instanceDn="group=radiusTlsAuthServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsAcctServer" enabled="false" group="RadiusTlsAcctServer" instances="(.+)" instanceDn="group=radiusTlsAcctServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsStatusServer" enabled="false" group="RadiusTlsStatusServer" instances="(.+)" instanceDn="group=radiusTlsStatusServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTlsDiscServer" enabled="false" group="RadiusTlsDiscServer" instances="(.+)" instanceDn="group=radiusTlsDiscServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsCoAServer" enabled="false" group="RadiusTlsCoAServer" instances="(.+)" instanceDn="group=radiusTlsCoAServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsStateServer" enabled="false" group="RadiusTlsStateServer" instances="(.+)" instanceDn="group=radiusTlsStateServer,clientAddress=$1">
+        <variable name="InvalidClients" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="Others" />
+        <variable name="DuplicateRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTlsOtherServer" enabled="false" group="RadiusTlsOtherServer" instances="(.+)" instanceDn="group=radiusTlsOtherServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="DuplicateRequests" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTlsAuthClient" enabled="false" group="RadiusTlsAuthClient" instances="(.+)" instanceDn="group=radiusTlsAuthClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsAcctClient" enabled="false" group="RadiusTlsAcctClient" instances="(.+)" instanceDn="group=radiusTlsAcctClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsStatusClient" enabled="false" group="RadiusTlsStatusClient" instances="(.+)" instanceDn="group=radiusTlsStatusClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTlsDiscClient" enabled="false" group="RadiusTlsDiscClient" instances="(.+)" instanceDn="group=radiusTlsDiscClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsCoAClient" enabled="false" group="RadiusTlsCoAClient" instances="(.+)" instanceDn="group=radiusTlsCoAClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusTlsStateClient" enabled="false" group="RadiusTlsStateClient" instances="(.+)" instanceDn="group=radiusTlsStateClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusTlsOtherClient" enabled="false" group="RadiusTlsOtherClient" instances="(.+)" instanceDn="group=radiusTlsOtherClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="TcpLimit" enabled="false" group="TcpLimit" instances="(.+)" instanceDn="group=tcpLimit,name=$1">
+        <variable name="Count" />
+        <variable name="Limit" />
+        <variable name="Accepts" />
+        <variable name="Refuses" />
+    </item>
+
+    <item name="OneNdsTrigger" enabled="false" group="OneNdsTrigger" instances="(.+)" instanceDn="group=oneNdsTrigger,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Adds" />
+        <variable name="Modifies" />
+        <variable name="Deletes" />
+        <variable name="SuccessResponses" />
+        <variable name="ErrorResponses" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="CertificateFile" enabled="false" group="CertificateFile" instances="(.+)" instanceDn="group=certificateFile,fileName=$1">
+        <variable name="Expires" />
+    </item>
+
+    <item name="Failover" enabled="false" group="Failover" instances="(.+)#(.+)" instanceDn="group=failover,cacheName=$1,entryKey=$2">
+        <variable name="ErrorCount" />
+        <variable name="ErrorTime" />
+    </item>
+
+    <item name="ImsiPrivacy" enabled="false" group="ImsiPrivacy" instances="*" instanceDn="group=imsiPrivacy">
+        <variable name="DecryptionSuccesses" />
+        <variable name="DecryptionFailures" />
+    </item>
+
+    <item name="RateLimit" enabled="false" group="RateLimit" instances="(.+)" instanceDn="group=rateLimit,key=$1">
+        <variable name="NoWaitCount" />
+        <variable name="DelayCount" />
+        <variable name="FailureCount" />
+        <variable name="DelayTime" />
+        <variable name="SuccessCount" />
+        <variable name="SuccessLatency" />
+    </item>
+
+    <item name="Watch" enabled="false" group="Watch" instances="(.+)" instanceDn="group=watch,handler=$1">
+        <variable name="Created" />
+        <variable name="Fired" />
+        <variable name="Cancelled" />
+        <variable name="RunCount" />
+        <variable name="RunTime" />
+        <variable name="RunLatency" />
+    </item>
+
+    <item name="RadiusDtlsAuthServer" enabled="false" group="RadiusDtlsAuthServer" instances="(.+)" instanceDn="group=radiusDtlsAuthServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsAcctServer" enabled="false" group="RadiusDtlsAcctServer" instances="(.+)" instanceDn="group=radiusDtlsAcctServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsStatusServer" enabled="false" group="RadiusDtlsStatusServer" instances="(.+)" instanceDn="group=radiusDtlsStatusServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="DuplicateRequests" />
+        <variable name="InvalidClients" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusDtlsDiscServer" enabled="false" group="RadiusDtlsDiscServer" instances="(.+)" instanceDn="group=radiusDtlsDiscServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="UnknownTypes" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsCoAServer" enabled="false" group="RadiusDtlsCoAServer" instances="(.+)" instanceDn="group=radiusDtlsCoAServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="DuplicateRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsStateServer" enabled="false" group="RadiusDtlsStateServer" instances="(.+)" instanceDn="group=radiusDtlsStateServer,clientAddress=$1">
+        <variable name="InvalidClients" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="Others" />
+        <variable name="DuplicateRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="MalformedRequests" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusDtlsOtherServer" enabled="false" group="RadiusDtlsOtherServer" instances="(.+)" instanceDn="group=radiusDtlsOtherServer,clientAddress=$1">
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="Others" />
+        <variable name="PacketsDropped" />
+        <variable name="InvalidClients" />
+        <variable name="DuplicateRequests" />
+        <variable name="MalformedRequests" />
+        <variable name="BadAuthenticators" />
+        <variable name="CachedResponses" />
+        <variable name="AbortedRequests" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusDtlsAuthClient" enabled="false" group="RadiusDtlsAuthClient" instances="(.+)" instanceDn="group=radiusDtlsAuthClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Challenges" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsAcctClient" enabled="false" group="RadiusDtlsAcctClient" instances="(.+)" instanceDn="group=radiusDtlsAcctClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Responses" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsStatusClient" enabled="false" group="RadiusDtlsStatusClient" instances="(.+)" instanceDn="group=radiusDtlsStatusClient,serverAddressPort=$1">
+        <variable name="InvalidServerAddress" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusDtlsDiscClient" enabled="false" group="RadiusDtlsDiscClient" instances="(.+)" instanceDn="group=radiusDtlsDiscClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsCoAClient" enabled="false" group="RadiusDtlsCoAClient" instances="(.+)" instanceDn="group=radiusDtlsCoAClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="AuthOnlyRequests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="AuthOnlyNaks" />
+        <variable name="NoSessionContextNaks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+        <variable name="Errors" />
+    </item>
+
+    <item name="RadiusDtlsStateClient" enabled="false" group="RadiusDtlsStateClient" instances="(.+)" instanceDn="group=radiusDtlsStateClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Accepts" />
+        <variable name="Rejects" />
+        <variable name="Errors" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+    <item name="RadiusDtlsOtherClient" enabled="false" group="RadiusDtlsOtherClient" instances="(.+)" instanceDn="group=radiusDtlsOtherClient,serverAddressPort=$1">
+        <variable name="InvalidServers" />
+        <variable name="RoundTripTime" />
+        <variable name="Requests" />
+        <variable name="Acks" />
+        <variable name="Naks" />
+        <variable name="MalformedResponses" />
+        <variable name="BadAuthenticators" />
+        <variable name="PendingRequests" />
+        <variable name="Timeouts" />
+        <variable name="UnknownTypes" />
+        <variable name="PacketsDropped" />
+        <variable name="ResponseCount" />
+        <variable name="ResponseTime" />
+        <variable name="ResponseLatency" />
+    </item>
+
+</table>

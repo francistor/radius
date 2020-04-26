@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "stanza_file.dtd">
+<table>
+    <entry name="LogToFile">
+        <property name="Type" value="RotateFile" />
+        <property name="Default-Channel" value="true" />
+        <property name="Alert-Channel" value="true" />
+        <property name="FileName" value="policy.log" />
+        <property name="BackupCount" value="3" />
+        <property name="Size" value="1g" />
+    </entry>
+
+    <entry name="LogToDebug">
+        <property name="Type" value="RotateFile" />
+        <property name="FileName" value="debug.log" />
+        <property name="BackupCount" value="3" />
+        <property name="Size" value="1g" />
+    </entry>
+
+    <entry name="Alert">
+        <property name="Type" value="RotateFile" />
+        <property name="Alert-Channel" value="true" />
+        <property name="FileName" value="alert.log" />
+        <property name="BackupCount" value="3" />
+        <property name="Size" value="1g" />
+    </entry>
+
+    <entry name="Audit">
+        <property name="Type" value="RotateFile" />
+        <property name="FileName" value="audit.log" />
+        <property name="BackupCount" value="3" />
+        <property name="Size" value="1g" />
+    </entry>
+
+    <entry name="Trash">
+        <property name="Type" value="Trash" />
+    </entry>
+
+    <entry name="ConfigServer">
+        <property name="Type" value="RotateFile" />
+        <property name="FileName" value="config.log" />
+        <property name="BackupCount" value="3" />
+        <property name="Size" value="1g" />
+    </entry>
+</table>

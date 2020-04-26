@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<table>
+    <set name="SMT">
+        <property name="confirmServerShutdown" value="false" />
+        <property name="WindowInfo" value="max" />
+        <property name="ConfigServerList" value="localhost," />
+        <property name="SmtTailVisible" value="true" />
+        <property name="SelectedDisplayPanel" value="LoadMonitoringPanel" />
+        <property name="SelectedConfigurationPanel" value="Policy Server Multiple Configuration" />
+        <property name="SelectedMonitoringPanel" value="Reloadable" />
+        <property name="ExpandedNodes" value="Policy Server" />
+    </set>
+    <set name="DictionaryPanel">
+        <property name="SelectedFile" value="custom.dict" />
+    </set>
+    <set name="MethodDispatchPanel">
+        <property name="DialogInfo" value="495,416,650,450" />
+    </set>
+    <set name="RadiusClientsPanel">
+        <property name="DialogInfo" value="787,121,700,700" />
+    </set>
+    <set name="TalPanel">
+        <property name="SelectedFile" value="auth.tal" />
+    </set>
+    <set name="UserFilePanel">
+        <property name="SelectedFile" value="ServiceRemoteDefinition.user" />
+        <property name="DialogInfo" value="660,290,600,500" />
+    </set>
+</table>

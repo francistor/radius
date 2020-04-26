@@ -1,0 +1,254 @@
+# signature = Yy5dbzxehRwtmrj99qOfyBo3ZoHOe/kpEFuw6DhgM/9jqIsck+uC9VNL5r0gwI6UmwGHaEQ3RUoR+m6O/1BbcsfU95tiRuB/jbUA66oV5q/X37pnzGt0ihcB9a5Y1i5a01K6kKyHG8V8bQFYIvpJYPdZN4VGFlk6eSGUqZ4kYS0= * 18.5.0.1
+#
+# This file is cryptographically  signed with the  above signature.
+# Depending on the type of license you have, you may or  may not be
+# allowed to make changes to the file.  Please notice  that if your
+# license does  not permit modifications,  any changes  made to the
+# content of the file will cause the server to reject it.
+#.
+#------------------------------------------------------------------------------
+#
+# Nokia Utilities for PolicyFlow
+#
+#------------------------------------------------------------------------------
+#
+# Here is where the SMT or other application might call to disconnect a session
+#
+sendRadiusDisconnectRequest
+	Method-Type = ReadWrite
+	Method-On-Success = iterateOverNasKeys
+	ReadWrite-Map = <<
+		${packet.Packet-Type} := "Disconnect-Request";
+		${user.Return-Disposition} := "ERROR";
+		${user.Request-Map} := ${server.Disconnect-Request-Map};
+		${user.NAS-Key} := ${request.NAS-Identifier};
+		${user.NAS-Key} += ${request.NAS-IP-Address};
+		${user.NAS-Key} += ${request.NAS-IPv6-Address};
+		if ${user.NAS-Key} == null then
+			goto missingNasKeyError;
+		endif
+	>>
+
+#------------------------------------------------------------------------------
+#
+# Here is where method_dispatch should send a dynamic auth request
+#
+proxyRadiusDynamicAuthRequest
+	Method-Type = ReadWrite
+	Method-On-Success = iterateOverNasKeys
+	ReadWrite-Map = <<
+		${user.Return-Disposition} := "FAILURE";
+		${user.Request-Map} := "${*} := ${request.*};";
+		${user.NAS-Key} := ${request.NAS-Identifier};
+		${user.NAS-Key} += ${request.NAS-IP-Address};
+		${user.NAS-Key} += ${request.NAS-IPv6-Address};
+		if ${user.NAS-Key} == null then
+			goto missingNasKeyError;
+		endif
+	>>
+
+#------------------------------------------------------------------------------
+#
+# Iterate over NAS keys and try to send the disconnect request.
+#
+iterateOverNasKeys
+	Method-Type = Iterate
+	Method-On-Error = returnDisposition
+	Iterate-Variable = user.NAS-Key
+	Iterate-Method = checkRadiusTransportDirect
+	Iterate-BreakOnSuccess = TRUE
+	Iterate-BreakOnFailure = TRUE
+	Iterate-SuccessMap = <<
+		DELETE ${reply.Reply-Message};
+		DELETE ${reply.Error-Cause};
+		${reply.*} := ${reply.*};
+	>>
+	Iterate-FailureMap = "${reply.*} := ${reply.*};"
+	Iterate-ErrorMap = "${reply.*} := ${reply.*};"
+
+#------------------------------------------------------------------------------
+#
+# Determine if we can send with RadiusTransportPlugin
+#
+checkRadiusTransportDirect
+	Method-Type = ReadWrite
+	ReadWrite-Map = <<
+		${user.Server-Name} := getRadiusServerName( ${user.NAS-Key}, "*", "DYNAUTH" );
+		if ${user.Server-Name} == null then
+			goto sendDynamicAuthRequestTransport;
+		endif
+		goto tryLegacyRadiusDirect;
+	>>
+
+#------------------------------------------------------------------------------
+#
+# If we know NAS, read the NAS information from the clients file
+#
+tryLegacyRadiusDirect
+	Method-Type = ReadClient
+	Method-On-Success = checkLocalServer
+	Method-On-Failure = readNasRouteCache
+	ReadClient-SearchKey = ${user.NAS-Key}
+	ReadClient-Map = <<
+		${user.Server-Address}    := "${aaa.user.NAS-Key}:${Dynamic-Auth-Port:"3799"}";
+		${user.Server-Secret}     := ${Client-Secret};
+		${user.Server-Dictionary} := ${Client-Dictionary:"#default"};
+		${user.Server-CharSet}    := ${Radius_CharSet:aaa.server.Radius_CharSet};
+		${user.Server-Timeout}    := ${Client_Timeout:aaa.server.Client_Timeout};
+		${user.Server-Retries}    := ${Dynamic-Auth-Retries:"0"};
+	>>
+
+#------------------------------------------------------------------------------
+#
+# See if we have learned about NAS from a proxy server
+#
+readNasRouteCache
+	Method-Type = ReadCache
+	Method-On-Success = iterateOverRouteAddresses
+	Method-On-Failure = noRouteError
+	Method-On-Error = noRouteError
+	ReadCache-CacheName = ${server.NAS_Routes_Cache_Name}
+	ReadCache-SearchKey = ${user.NAS-Key}
+	ReadCache-Map = "${user.Client-Address} = ${Client-Address};"
+
+#------------------------------------------------------------------------------
+#
+# Try each proxy server to see if they can process request
+#
+iterateOverRouteAddresses
+	Method-Type = Iterate
+	Iterate-Variable = user.Client-Address
+	Iterate-Method = readServerData
+	Iterate-BreakOnSuccess = TRUE
+	Iterate-BreakOnFailure = TRUE
+	Iterate-SuccessMap = "${reply.*} := ${reply.*};"
+	Iterate-FailureMap = "${reply.*} := ${reply.*};"
+	Iterate-ErrorMap = "${reply.*} := ${reply.*};"
+
+#------------------------------------------------------------------------------
+#
+# Determine if we can send with RadiusTransportPlugin
+#
+checkRadiusTransportCache
+	Method-Type = ReadWrite
+	ReadWrite-Map = <<
+		${user.Server-Name} := getRadiusServerName( ${user.Client-Address}, "*", "DYNAUTH" );
+		if ${user.Server-Name} == null then
+			goto sendDynamicAuthRequestTransport;
+		endif
+		goto readServerData;
+	>>
+
+#------------------------------------------------------------------------------
+#
+# Read the proxy information from the clients file
+#
+readServerData
+	Method-Type = ReadClient
+	Method-On-Success = checkLocalServer
+	ReadClient-SearchKey = ${user.Client-Address}
+	ReadClient-Map = <<
+		${user.Server-Address}    := "${aaa.user.Client-Address}:${Dynamic-Auth-Port:"3799"}";
+		${user.Server-Secret}     := ${Client-Secret};
+		${user.Server-Dictionary} := ${Client-Dictionary:"#default"};
+		${user.Server-CharSet}    := ${Radius_CharSet:aaa.server.Radius_CharSet};
+		${user.Server-Timeout}    := ${Client_Timeout:aaa.server.Client_Timeout};
+		${user.Server-Retries}    := ${Dynamic-Auth-Retries:"0"};
+	>>
+
+#------------------------------------------------------------------------------
+#
+# Check if server is local
+#
+checkLocalServer
+	Method-Type = CheckLocalRadius
+	Method-On-Success = loopError
+	Method-On-Failure = sendDynamicAuthRequest
+	CheckLocalRadius-Address = ${user.Server-Address}
+
+#------------------------------------------------------------------------------
+#
+# Send dynamic authorization request to remote server using RadiusTransport plug-in
+#
+sendDynamicAuthRequestTransport
+	Method-Type = RadiusTransport
+	Method-On-Error = noResponseError
+	RadiusTransport-Server = ${user.Server-Name}
+	RadiusTransport-PacketType = "${packet.Packet-Type:\"Disconnect-Request\"}"
+	RadiusTransport-RequestMap = "exec ${user.Request-Map};"
+
+#------------------------------------------------------------------------------
+#
+# Send dynamic authorization request to remote server
+#
+sendDynamicAuthRequest
+	Method-Type = Radius
+	Method-On-Error = noResponseError
+	Radius-ServerAddress = ${user.Server-Address}
+	Radius-Secret = ${user.Server-Secret}
+	Radius-Dictionary = ${user.Server-Dictionary}
+	Radius-Timeout = ${user.Server-Timeout}
+	Radius-Retries = ${user.Server-Retries}
+	Radius-PacketType = "${packet.Packet-Type:\"Disconnect-Request\"}"
+	Radius-CharSet = ${user.Server-CharSet}
+	Radius-RequestMap = "exec ${user.Request-Map};"
+
+missingNasKeyError
+	Method-Type = ReadWrite
+	Method-On-Success = returnDisposition
+	ReadWrite-Map = "${reply.Reply-Message} := \"Missing NAS information in request\";"
+	ReadWrite-Map = "${reply.Error-Cause} := \"502\";"
+
+loopError
+	Method-Type = ReadWrite
+	Method-On-Success = returnError
+	ReadWrite-Map = "${reply.Reply-Message} ?= \"Local proxy loop detected\";"
+	ReadWrite-Map = "${reply.Error-Cause} ?= \"502\";"
+
+noRouteError
+	Method-Type = ReadWrite
+	Method-On-Success = returnError
+	ReadWrite-Map = "${reply.Reply-Message} ?= \"No route found for ${request.nas-identifier}/${request.nas-ip-address}/${request.nas-ipv6-address}\";"
+	ReadWrite-Map = "${reply.Error-Cause} ?= \"502\";"
+
+noResponseError
+	Method-Type = ReadWrite
+	Method-On-Success = returnError
+	ReadWrite-Map = "${reply.Reply-Message} := \"No response from ${user.NAS-Key}\";"
+	ReadWrite-Map = "${reply.Error-Cause} := \"505\";"
+
+returnError
+	Method-Type = Return
+	Return-Disposition = ERROR
+
+returnDisposition
+	Method-Type = Return
+	Return-Disposition = ${user.Return-Disposition}
+
+#------------------------------------------------------------------------------
+#
+#  Diameter style disconnect
+#
+sendDiameterDisconnectRequest
+	Method-Type = Diameter
+	Diameter-Application = ${request.auth-application-id:base}
+	Diameter-Command = Abort-Session
+ 	Diameter-RequestMap = <<
+		${Origin-Host}     := ${system.Origin-Host};
+		${Origin-Realm}    := ${system.Origin-Realm};
+		${Origin-State-Id} := ${system.Origin-State-Id};
+		${*}               := ${request.*};
+	>>
+
+#------------------------------------------------------------------------------
+#
+# Entry point for Status-Server requests
+#
+status
+	Method-Type = Return
+	Return-Disposition = ACCEPT
+
+#------------------------------------------------------------------------------
+#
+# The End
+#

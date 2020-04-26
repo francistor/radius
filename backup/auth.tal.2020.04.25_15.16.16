@@ -1,0 +1,36 @@
+authStart:
+
+    // Branch special request types
+    if $request.Service-Type == "Outbound-User" then 
+        goto serviceRequest; 
+    elsif $request.HW-Service-Info matches #/N([-_0-9a-zA-Z]+)/ then
+        $user.serviceName := $match.1;
+        log "Prepaid request" & $user.serviceName, level => warning;
+        goto prepaidRequest;
+    endif;
+
+    $reply.Session-Timeout = 3600;
+    $reply.Framed-Protocol = "PPP";
+    $reply.Class += "C=legacy_1";
+    $reply.Class += "S=service_1";
+    $reply.Unisphere-Service-Bundle := "Abab01";
+
+    return success;
+    
+
+prepaidRequest:
+
+    $reply.HW-Remanent-Volume = 1000;
+    return success;
+
+serviceRequest:
+
+    invoke ReadUserFile with
+        Text => "@conf/ServiceRemoteDefinition.txt",
+        SearchKey => $request.User-Name,
+        Map => """
+            $reply.* := $reply.*;
+        """
+    endinvoke
+
+    return success;

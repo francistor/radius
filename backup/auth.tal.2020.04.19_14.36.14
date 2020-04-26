@@ -1,0 +1,28 @@
+authStart:
+
+    log "Received packet " & $request.*, level => warning;
+
+    if $request.Service-Type == "Outbound-User" then 
+        goto serviceRemoteDefinition; 
+    endif;
+
+    $reply.Session-Timeout = 3600;
+    $reply.Framed-Protocol = "PPP";
+    $reply.Class += "C=legacy_1";
+    $reply.Class += "S=service_1";
+    $reply.Unisphere-Service-Bundle := "Abab01";
+
+    return success;
+
+
+serviceRemoteDefinition:
+
+    invoke ReadUserFile with
+        Text => "@ServiceRemoteDefinition.user",
+        SearchKey => service_1,
+        CacheMap => """
+            $reply.* := $reply.*;
+        """
+    endinvoke
+
+    return success;

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "stanza_file.dtd">
+<table>
+    <entry name="default">
+        <property name="Trusted-Certs-File" value="trusted.pem" />
+        <property name="Socket-Receive-Buffer-Size" value="8k" />
+        <property name="Socket-Send-Buffer-Size" value="8k" />
+        <property name="Socket-Linger" value="-1s" />
+        <property name="Socket-TCP-No-Delay" value="true" />
+        <property name="Socket-Keep-Alive" value="true" />
+        <property name="Maximum-Connections-Per-Route" value="10" />
+        <property name="Maximum-Total-Connections" value="100" />
+    </entry>
+</table>

@@ -1,0 +1,1091 @@
+<?xml version="1.0" standalone="no"?>
+<!-- ? 2017 Nokia. All rights reserved. -->
+
+<!-- Note that this file will be overwritten during an upgrade. Make changes in custom.dict -->
+
+<!DOCTYPE dictionary SYSTEM "dictionary.dtd">
+
+<dictionary codec="#default" overwrite="false">
+
+<!-- Cisco VSAs -->
+
+    <avp name="Cisco-AVPair" vendor="Cisco" code="1" type="cisco-avpair"/>
+    <avp name="cisco-vsa-port-string" vendor="Cisco" code="2" type="string"/>
+    <avp name="cisco-h323-remote-address" vendor="Cisco" code="23" type="string" log="scramble"/>
+    <avp name="cisco-h323-conf-id" vendor="Cisco" code="24" type="string"/>
+    <avp name="cisco-h323-setup-time" vendor="Cisco" code="25" type="string"/>
+    <avp name="cisco-h323-call-origin" vendor="Cisco" code="26" type="string"/>
+    <avp name="cisco-h323-call-type" vendor="Cisco" code="27" type="string"/>
+    <avp name="cisco-h323-connect-time" vendor="Cisco" code="28" type="string"/>
+    <avp name="cisco-h323-disconnect-time" vendor="Cisco" code="29" type="string"/>
+    <avp name="cisco-h323-disconnect-cause" vendor="Cisco" code="30" type="string"/>
+    <avp name="cisco-h323-voice-quality" vendor="Cisco" code="31" type="string"/>
+    <avp name="cisco-h323-gw-id" vendor="Cisco" code="33" type="string"/>
+    <avp name="cisco-h323-incoming-conn-id" vendor="Cisco" code="35" type="string"/>
+    <avp name="Cisco-Policy-Up" vendor="Cisco" code="37" type="string"/>
+    <avp name="Cisco-Policy-Down" vendor="Cisco" code="38" type="string"/>
+    <avp name="cisco-h323-credit-amount" vendor="Cisco" code="101" type="string"/>
+    <avp name="cisco-h323-credit-time" vendor="Cisco" code="102" type="string"/>
+    <avp name="cisco-h323-return-code" vendor="Cisco" code="103" type="string"/>
+    <avp name="cisco-h323-prompt-id" vendor="Cisco" code="104" type="string"/>
+    <avp name="cisco-h323-day-and-time" vendor="Cisco" code="105" type="string"/>
+    <avp name="cisco-h323-redirect-number" vendor="Cisco" code="106" type="string"/>
+    <avp name="cisco-h323-preferred-lang" vendor="Cisco" code="107" type="string"/>
+    <avp name="cisco-h323-redirect-ip-addr" vendor="Cisco" code="108" type="string" log="scramble"/>
+    <avp name="cisco-h323-billing-model" vendor="Cisco" code="109" type="string"/>
+    <avp name="cisco-h323-currency" vendor="Cisco" code="110" type="string"/>
+    <avp name="Cisco-Disconnect-Cause" vendor="Cisco" code="195" type="Enumerated">
+        <enum name="Unknown" code="2"/>
+        <enum name="CLID-Authentication-Failure" code="4"/>
+        <enum name="No-Carrier" code="10"/>
+        <enum name="Lost-Carrier" code="11"/>
+        <enum name="No-Detected-Result-Codes" code="12"/>
+        <enum name="User-Ends-Session" code="20"/>
+        <enum name="Idle-Timeout" code="21"/>
+        <enum name="Exit-Telnet-Session" code="22"/>
+        <enum name="No-Remote-IP-Addr" code="23"/>
+        <enum name="Exit-Raw-TCP" code="24"/>
+        <enum name="Password-Fail" code="25"/>
+        <enum name="Raw-TCP-Disabled" code="26"/>
+        <enum name="Control-C-Detected" code="27"/>
+        <enum name="EXEC-Program-Destroyed" code="28"/>
+        <enum name="Timeout-PPP-LCP" code="40"/>
+        <enum name="Failed-PPP-LCP-Negotiation" code="41"/>
+        <enum name="Failed-PPP-PAP-Auth-Fail" code="42"/>
+        <enum name="Failed-PPP-CHAP-Auth" code="43"/>
+        <enum name="Failed-PPP-Remote-Auth" code="44"/>
+        <enum name="PPP-Remote-Terminate" code="45"/>
+        <enum name="PPP-Closed-Event" code="46"/>
+        <enum name="Session-Timeout" code="100"/>
+        <enum name="Session-Failed-Security" code="101"/>
+        <enum name="Session-End-Callback" code="102"/>
+        <enum name="Invalid-Protocol" code="120"/>
+    </avp>
+    <avp name="Cisco-IP-Pool-Definition" vendor="Cisco" code="217" type="string"/>
+    <avp name="Cisco-Assign-IP-Pool" vendor="Cisco" code="218" type="Unsigned32"/>
+    <avp name="Cisco-Link-Compression" vendor="Cisco" code="233" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Stac" code="1"/>
+        <enum name="Stac-LZS" code="2"/>
+        <enum name="MS-Stac" code="3"/>
+    </avp>
+    <avp name="Cisco-SSG-Subscriber-Password" vendor="Cisco" code="249" type="cisco-password" log="scramble"/>
+    <avp name="Cisco-SSG-Account-Info" vendor="Cisco" code="250" type="string" log="scramble"/>
+    <avp name="Cisco-SSG-Service-Info" vendor="Cisco" code="251" type="string"/>
+    <avp name="Cisco-SSG-Command-Code" vendor="Cisco" code="252" type="string"/>
+    <avp name="Cisco-SSG-Control-Info" vendor="Cisco" code="253" type="string"/>
+
+<!-- Cisco BBSM VSAs -->
+
+    <avp name="CBBSM-Bandwidth" vendor="Cisco-BBSM" code="1" type="Unsigned32"/>
+
+<!-- Cisco VPN3000 -->
+
+    <avp name="CVPN3000-Access-Hours" vendor="Cisco-VPN3000" code="1" type="string"/>
+    <avp name="CVPN3000-Simultaneous-Logins" vendor="Cisco-VPN3000" code="2" type="Unsigned32"/>
+    <avp name="CVPN3000-Primary-DNS" vendor="Cisco-VPN3000" code="5" type="ipv4-address" log="scramble"/>
+    <avp name="CVPN3000-Secondary-DNS" vendor="Cisco-VPN3000" code="6" type="ipv4-address" log="scramble"/>
+    <avp name="CVPN3000-Primary-WINS" vendor="Cisco-VPN3000" code="7" type="ipv4-address" log="scramble"/>
+    <avp name="CVPN3000-Secondary-WINS" vendor="Cisco-VPN3000" code="8" type="ipv4-address" log="scramble"/>
+    <avp name="CVPN3000-SEP-Card-Assignment" vendor="Cisco-VPN3000" code="9" type="Unsigned32"/>
+    <avp name="CVPN3000-Tunneling-Protocols" vendor="Cisco-VPN3000" code="11" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Sec-Association" vendor="Cisco-VPN3000" code="12" type="string"/>
+    <avp name="CVPN3000-IPSec-Authentication" vendor="Cisco-VPN3000" code="13" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Banner1" vendor="Cisco-VPN3000" code="15" type="string"/>
+    <avp name="CVPN3000-IPSec-Allow-Passwd-Store" vendor="Cisco-VPN3000" code="16" type="Unsigned32"/>
+    <avp name="CVPN3000-Use-Client-Address" vendor="Cisco-VPN3000" code="17" type="Unsigned32"/>
+    <avp name="CVPN3000-PPTP-Encryption" vendor="Cisco-VPN3000" code="20" type="Unsigned32"/>
+    <avp name="CVPN3000-L2TP-Encryption" vendor="Cisco-VPN3000" code="21" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Split-Tunnel-List" vendor="Cisco-VPN3000" code="27" type="string"/>
+    <avp name="CVPN3000-IPSec-Default-Domain" vendor="Cisco-VPN3000" code="28" type="string"/>
+    <avp name="CVPN3000-IPSec-Tunnel-Type" vendor="Cisco-VPN3000" code="30" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Mode-Config" vendor="Cisco-VPN3000" code="31" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-User-Group-Lock" vendor="Cisco-VPN3000" code="33" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Over-UDP" vendor="Cisco-VPN3000" code="34" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Over-UDP-Port" vendor="Cisco-VPN3000" code="35" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Banner2" vendor="Cisco-VPN3000" code="36" type="string"/>
+    <avp name="CVPN3000-PPTP-MPPC-Compression" vendor="Cisco-VPN3000" code="37" type="Unsigned32"/>
+    <avp name="CVPN3000-L2TP-MPPC-Compression" vendor="Cisco-VPN3000" code="38" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-IP-Compression" vendor="Cisco-VPN3000" code="39" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-IKE-Peer-ID-Check" vendor="Cisco-VPN3000" code="40" type="Unsigned32"/>
+    <avp name="CVPN3000-IKE-Keep-Alives" vendor="Cisco-VPN3000" code="41" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Auth-On-Rekey" vendor="Cisco-VPN3000" code="42" type="Unsigned32"/>
+    <avp name="CVPN3000-Required-Client-Firewall-Vendor-Code" vendor="Cisco-VPN3000" code="45" type="Unsigned32"/>
+    <avp name="CVPN3000-Required-Client-Firewall-Product-Code" vendor="Cisco-VPN3000" code="46" type="Unsigned32"/>
+    <avp name="CVPN3000-Required-Client-Firewall-Description" vendor="Cisco-VPN3000" code="47" type="string"/>
+    <avp name="CVPN3000-Require-HW-Client-Auth" vendor="Cisco-VPN3000" code="48" type="Unsigned32"/>
+    <avp name="CVPN3000-Require-Individual-User-Auth" vendor="Cisco-VPN3000" code="49" type="Unsigned32"/>
+    <avp name="CVPN3000-Authenticated-User-Idle-Timeout" vendor="Cisco-VPN3000" code="50" type="Unsigned32"/>
+    <avp name="CVPN3000-Cisco-IP-Phone-Bypass" vendor="Cisco-VPN3000" code="51" type="Unsigned32"/>
+    <avp name="CVPN3000-User-Auth-Server-Name" vendor="Cisco-VPN3000" code="52" type="string" log="scramble"/>
+    <avp name="CVPN3000-User-Auth-Server-Port" vendor="Cisco-VPN3000" code="53" type="Unsigned32"/>
+    <avp name="CVPN3000-User-Auth-Server-Secret" vendor="Cisco-VPN3000" code="54" type="string" log="scramble"/>
+    <avp name="CVPN3000-IPSec-Split-Tunneling-Policy" vendor="Cisco-VPN3000" code="55" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Required-Client-Firewall-Capability" vendor="Cisco-VPN3000" code="56" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Client-Firewall-Filter-Name" vendor="Cisco-VPN3000" code="57" type="string"/>
+    <avp name="CVPN3000-IPSec-Client-Firewall-Filter-Optional" vendor="Cisco-VPN3000" code="58" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Backup-Servers" vendor="Cisco-VPN3000" code="59" type="Unsigned32"/>
+    <avp name="CVPN3000-IPSec-Backup-Server-List" vendor="Cisco-VPN3000" code="60" type="string"/>
+    <avp name="CVPN3000-Strip-Realm" vendor="Cisco-VPN3000" code="135" type="Unsigned32"/>
+
+<!-- Cisco VPN5000 VSAs -->
+
+    <avp name="CVPN5000-Tunnel-Throughput" vendor="Cisco-VPN5000" code="1" type="Unsigned32"/>
+    <avp name="CVPN5000-Client-Assigned-IP" vendor="Cisco-VPN5000" code="2" type="string" log="scramble"/>
+    <avp name="CVPN5000-Client-Real-IP" vendor="Cisco-VPN5000" code="3" type="string" log="scramble"/>
+    <avp name="CVPN5000-VPN-GroupInfo" vendor="Cisco-VPN5000" code="4" type="string"/>
+    <avp name="CVPN5000-VPN-Password" vendor="Cisco-VPN5000" code="5" type="string" log="scramble"/>
+    <avp name="CVPN5000-Echo" vendor="Cisco-VPN5000" code="6" type="Unsigned32"/>
+    <avp name="CVPN5000-Client-Assigned-IPX" vendor="Cisco-VPN5000" code="7" type="Unsigned32"/>
+
+<!-- Cisco Airespace VSA -->
+
+    <avp name="Cisco-Airespace-WLAN-Id" vendor="Cisco-Airespace" code="1" type="Unsigned32"/>
+    <avp name="Cisco-Airespace-QoS-Level" vendor="Cisco-Airespace" code="2" type="Enumerated">
+        <enum name="Bronze" code="0"/>
+        <enum name="Silver" code="1"/>
+        <enum name="Gold" code="2"/>
+        <enum name="Platinum" code="3"/>
+        <enum name="Uranium" code="4"/>
+    </avp>
+    <avp name="Cisco-Airespace-DSCP" vendor="Cisco-Airespace" code="3" type="Unsigned32"/>
+    <avp name="Cisco-Airespace-802-1P-Tag" vendor="Cisco-Airespace" code="4" type="Unsigned32"/>
+    <avp name="Cisco-Airespace-Interface-Name" vendor="Cisco-Airespace" code="5" type="string"/>
+    <avp name="Cisco-Airespace-ACL-Name" vendor="Cisco-Airespace" code="6" type="string"/>
+
+<!-- Starent Networks (SN1) VSAs -->
+
+    <avp name="SN1-VSA-Format" type="Enumerated">
+        <enum name="SN1-RFC"/>
+        <enum name="SN1-NEW"/>
+    </avp>
+
+    <avp name="SN1-VPN-ID" vendor="SN1" code="1" type="Unsigned32" log="scramble"/>
+    <avp name="SN1-VPN-Name" vendor="SN1" code="2" type="string" log="scramble"/>
+    <avp name="SN1-Disconnect-Reason" vendor="SN1" code="3" type="Enumerated">
+        <enum name="Not-Defined" code="0"/>
+        <enum name="Admin-Disconnect" code="1"/>
+        <enum name="Remote-Disconnect" code="2"/>
+        <enum name="Local-Disconnect" code="3"/>
+        <enum name="Disc-No-Resource" code="4"/>
+        <enum name="Disc-Excd-Service-Limit" code="5"/>
+        <enum name="PPP-LCP-Neg-Failed" code="6"/>
+        <enum name="PPP-LCP-No-Response" code="7"/>
+        <enum name="PPP-LCP-Loopback" code="8"/>
+        <enum name="PPP-LCP-Max-Retry" code="9"/>
+        <enum name="PPP-Echo-Failed" code="10"/>
+        <enum name="PPP-Auth-Failed" code="11"/>
+        <enum name="PPP-Auth-Failed-No-AAA-Resp" code="12"/>
+        <enum name="PPP-Auth-No-Response" code="13"/>
+        <enum name="PPP-Auth-Max-Retry" code="14"/>
+        <enum name="Invalid-AAA-Attr" code="15"/>
+        <enum name="Failed-User-Filter" code="16"/>
+        <enum name="Failed-Provide-Service" code="17"/>
+        <enum name="Invalid-IP-Address-AAA" code="18"/>
+        <enum name="Invalid-IP-Pool-AAA" code="19"/>
+        <enum name="PPP-IPCP-Neg-Failed" code="20"/>
+        <enum name="PPP-IPCP-No-Response" code="21"/>
+        <enum name="PPP-IPCP-Max-Retry" code="22"/>
+        <enum name="PPP-No-Rem-IP-Address" code="23"/>
+        <enum name="Inactivity-Timeout" code="24"/>
+        <enum name="Session-Timeout" code="25"/>
+        <enum name="Max-Data-Excd" code="26"/>
+        <enum name="Invalid-IP-Source-Address" code="27"/>
+        <enum name="MSID-Auth-Failed" code="28"/>
+        <enum name="MSID-Auth-Failed-No-AAA-Resp" code="29"/>
+        <enum name="A11-Max-Retry" code="30"/>
+        <enum name="A11-Lifetime-Expired" code="31"/>
+        <enum name="A11-Message-Integrity-Failure" code="32"/>
+        <enum name="PPP-lcp-remote-disc" code="33"/>
+        <enum name="Session-setup-timeout" code="34"/>
+        <enum name="PPP-keepalive-failure" code="35"/>
+        <enum name="Flow-add-failed" code="36"/>
+        <enum name="Call-type-detection-failed" code="37"/>
+        <enum name="Wrong-ipcp-params" code="38"/>
+        <enum name="MIP-remote-dereg" code="39"/>
+        <enum name="MIP-lifetime-expiry" code="40"/>
+        <enum name="MIP-proto-error" code="41"/>
+        <enum name="MIP-auth-failure" code="42"/>
+        <enum name="MIP-reg-timeout" code="43"/>
+        <enum name="Invalid-dest-context" code="44"/>
+        <enum name="Source-context-removed" code="45"/>
+        <enum name="Destination-context-removed" code="46"/>
+        <enum name="Req-service-addr-unavailable" code="47"/>
+        <enum name="Demux-mgr-failed" code="48"/>
+        <enum name="Internal-error" code="49"/>
+        <enum name="AAA-context-removed" code="50"/>
+        <enum name="invalid-service-type" code="51"/>
+        <enum name="mip-relay-req-failed" code="52"/>
+        <enum name="mip-rcvd-relay-failure" code="53"/>
+        <enum name="ppp-restart-inter-pdsn-handoff" code="54"/>
+        <enum name="gre-key-mismatch" code="55"/>
+        <enum name="invalid_tunnel_context" code="56"/>
+        <enum name="no_peer_lns_address" code="57"/>
+        <enum name="failed_tunnel_connect" code="58"/>
+        <enum name="l2tp-tunnel-disconnect-remote" code="59"/>
+        <enum name="l2tp-tunnel-timeout" code="60"/>
+        <enum name="l2tp-protocol-error-remote" code="61"/>
+        <enum name="l2tp-protocol-error-local" code="62"/>
+        <enum name="l2tp-auth-failed-remote" code="63"/>
+        <enum name="l2tp-auth-failed-local" code="64"/>
+        <enum name="l2tp-try-another-lns-from-remote" code="65"/>
+        <enum name="l2tp-no-resource-local" code="66"/>
+        <enum name="l2tp-no-resource-remote" code="67"/>
+        <enum name="l2tp-tunnel-disconnect-local" code="68"/>
+        <enum name="l2tp-admin-disconnect_remote" code="69"/>
+        <enum name="l2tpmgr-reached-max-capacity" code="70"/>
+        <enum name="MIP-reg-revocation" code="71"/>
+        <enum name="path-failure" code="72"/>
+        <enum name="dhcp-relay-ip-validation-failed" code="73"/>
+        <enum name="gtp-unknown-pdp-addr-or-pdp-type" code="74"/>
+        <enum name="gtp-all-dynamic-pdp-addr-occupied" code="75"/>
+        <enum name="gtp-no-memory-is-available" code="76"/>
+        <enum name="dhcp-relay-static-ip-addr-not-allowed" code="77"/>
+        <enum name="dhcp-no-ip-addr-allocated" code="78"/>
+        <enum name="dhcp-ip-addr-allocation-tmr-exp" code="79"/>
+        <enum name="dhcp-ip-validation-failed" code="80"/>
+        <enum name="dhcp-static-addr-not-allowed" code="81"/>
+        <enum name="dhcp-ip-addr-not-available-at-present" code="82"/>
+        <enum name="dhcp-lease-expired" code="83"/>
+        <enum name="lpool-ip-validation-failed" code="84"/>
+        <enum name="lpool-static-ip-addr-not-allowed" code="85"/>
+        <enum name="static-ip-validation-failed" code="86"/>
+        <enum name="static-ip-addr-not-present" code="87"/>
+        <enum name="static-ip-addr-not-allowed" code="88"/>
+        <enum name="radius-ip-validation-failed" code="89"/>
+        <enum name="radius-ip-addr-not-provided" code="90"/>
+        <enum name="invalid-ip-addr-from-sgsn" code="91"/>
+        <enum name="no-more-sessions-in-aaa" code="92"/>
+        <enum name="ggsn-aaa-auth-req-failed" code="93"/>
+        <enum name="conflict-in-ip-addr-assignment" code="94"/>
+        <enum name="apn-removed" code="95"/>
+        <enum name="credits-used-bytes-in" code="96"/>
+        <enum name="credits-used-bytes-out" code="97"/>
+        <enum name="credits-used-bytes-total" code="98"/>
+        <enum name="prepaid-failed" code="99"/>
+        <enum name="l2tp-ipsec-tunnel-failure" code="100"/>
+        <enum name="l2tp-ipsec-tunnel-disconnected" code="101"/>
+        <enum name="mip-ipsec-sa-inactive" code="102"/>
+        <enum name="Long-Duration-Timeout" code="103"/>
+        <enum name="proxy-mip-registration-failure" code="104"/>
+        <enum name="proxy-mip-binding-update" code="105"/>
+        <enum name="proxy-mip-inter-pdsn-handoff-require-ip-address" code="106"/>
+        <enum name="proxy-mip-inter-pdsn-handoff-mismatched-address" code="107"/>
+        <enum name="Local-purge" code="108"/>
+        <enum name="failed-update-handoff" code="109"/>
+        <enum name="closed_rp-handoff-complete" code="110"/>
+        <enum name="closed_rp-duplicate-session" code="111"/>
+        <enum name="closed_rp-handoff-session-not-found" code="112"/>
+        <enum name="closed_rp-handoff-failed" code="113"/>
+        <enum name="pcf-monitor-keep-alive-failed" code="114"/>
+        <enum name="call-internal-reject" code="115"/>
+        <enum name="call-restarted" code="116"/>
+        <enum name="a11-mn-ha-auth-failure" code="117"/>
+        <enum name="a11-badly-formed" code="118"/>
+        <enum name="a11-t-bit-not-set" code="119"/>
+        <enum name="a11-unsupported-vendor-id" code="120"/>
+        <enum name="a11-mismatched-id" code="121"/>
+        <enum name="mipha-dup-home-addr-req" code="122"/>
+        <enum name="mipha-dup-imsi-session" code="123"/>
+        <enum name="ha-unreachable" code="124"/>
+        <enum name="IPSP-addr-in-use" code="125"/>
+        <enum name="mipfa-dup-home-addr-req" code="126"/>
+        <enum name="mipha-ip-pool-busyout" code="127"/>
+        <enum name="inter-pdsn-handoff" code="128"/>
+        <enum name="active-to-dormant" code="129"/>
+        <enum name="ppp-renegotiation" code="130"/>
+        <enum name="active-start-param-change" code="131"/>
+        <enum name="tarrif-boundary" code="132"/>
+        <enum name="a11-disconnect-no-active-stop" code="133"/>
+        <enum name="nw-reachability-failed-reject" code="134"/>
+        <enum name="nw-reachability-failed-redirect" code="135"/>
+        <enum name="container-max-exceeded" code="136"/>
+        <enum name="static-addr-not-allowed-in-apn" code="137"/>
+        <enum name="static-addr-required-by-radius" code="138"/>
+        <enum name="static-addr-not-allowed-by-radius" code="139"/>
+        <enum name="mip-registration-dropped" code="140"/>
+        <enum name="counter-rollover" code="141"/>
+        <enum name="constructed-nai-auth-fail" code="142"/>
+        <enum name="inter-pdsn-service-optim-ha-dis" code="143"/>
+        <enum name="gre-key-collision" code="144"/>
+        <enum name="inter-pdsn-service-optim-ha-triggered" code="145"/>
+        <enum name="intra-pdsn-handoff-triggered" code="146"/>
+        <enum name="delayed-abort-timer-expired" code="147"/>
+        <enum name="Admin-AAA-disconnect" code="148"/>
+        <enum name="Admin-AAA-disconnect-handoff" code="149"/>
+        <enum name="PPP-IPV6CP-Neg-Failed" code="150"/>
+        <enum name="PPP-IPV6CP-No-Response" code="151"/>
+        <enum name="PPP-IPV6CP-Max-Retry" code="152"/>
+        <enum name="PPP-Restart-Invalid-source-IPV4" code="153"/>
+        <enum name="a11-disconnect-handof-no-a-stop" code="154"/>
+        <enum name="call-restarted-inter-pdsn-handoff" code="155"/>
+        <enum name="call-restarted-ppp-termination" code="156"/>
+        <enum name="mipfa-resource-conflict" code="157"/>
+        <enum name="failed-auth-with-charging-svc" code="158"/>
+        <enum name="mipha-dup-imsi-session-purge" code="159"/>
+        <enum name="mipha-rev-pending-newcall" code="160"/>
+        <enum name="volume-quota-reached" code="161"/>
+        <enum name="duration-quota-reached" code="162"/>
+        <enum name="gtp-user-authentication-failed" code="163"/>
+        <enum name="MIP-reg-revocation-no-lcp-term" code="164"/>
+        <enum name="MIP-private-ip-no-rev-tunnel" code="165"/>
+        <enum name="Invalid-Prepaid-attr-auth-rsp" code="166"/>
+        <enum name="mipha-prepaid-reset-dyn-newcall" code="167"/>
+        <enum name="gre-flow-control-timeout" code="168"/>
+        <enum name="mip-paaa-bc-query-not-found" code="169"/>
+        <enum name="mipha-dyn-ip-addr-not-available" code="170"/>
+        <enum name="a11-mismatched-id-on-handoff" code="171"/>
+        <enum name="a11-badly-formed-on-handoff" code="172"/>
+        <enum name="a11-unsupp-vendor-id-on-handoff" code="173"/>
+        <enum name="a11-t-bit-not-set-on-handoff" code="174"/>
+        <enum name="MIP-reg-revocation-i-bit-on" code="175"/>
+        <enum name="A11-RRQ-Deny-Max-Count" code="176"/>
+        <enum name="Dor-trans-during-ses-setup" code="177"/>
+        <enum name="PPP-Rem-Reneg-Disc-Always-Cfg" code="178"/>
+        <enum name="PPP-Rem-Reneg-Disc-NAI-MSID-Dif" code="179"/>
+        <enum name="mipha-sub-ipsec-tunnel-down" code="180"/>
+        <enum name="mipha-sub-ipsec-tunnel-failed" code="181"/>
+        <enum name="mipha-subscriber-ipsecmgr-death" code="182"/>
+        <enum name="flow-is-deactivated" code="183"/>
+        <enum name="ecsv2-license-exceeded" code="184"/>
+        <enum name="IPSG-Auth-Failed" code="185"/>
+        <enum name="driver-initiated" code="186"/>
+        <enum name="ims-authorization-failed" code="187"/>
+        <enum name="service-instance-released" code="188"/>
+        <enum name="flow-released" code="189"/>
+        <enum name="ppp-renego-no-ha-addr" code="190"/>
+        <enum name="intra-pdsn-handoff" code="191"/>
+        <enum name="overload-disconnect" code="192"/>
+        <enum name="css-service-not-found" code="193"/>
+        <enum name="Auth-Failed" code="194"/>
+        <enum name="dhcp-client-sent-release" code="195"/>
+        <enum name="dhcp-client-sent-nak" code="196"/>
+        <enum name="msid-dhcp-chaddr-mismatch" code="197"/>
+        <enum name="link-broken" code="198"/>
+        <enum name="prog-end-timeout" code="199"/>
+        <enum name="qos-update-wait-timeout" code="200"/>
+        <enum name="css-synch-cause" code="201"/>
+        <enum name="Gtp-context-replacement" code="202"/>
+        <enum name="PDIF-Auth-failed" code="203"/>
+        <enum name="l2tp-unknown-apn" code="204"/>
+        <enum name="ms-unexpected-network-reentry" code="205"/>
+        <enum name="r6-invalid-nai" code="206"/>
+        <enum name="eap-max-retry-reached" code="207"/>
+        <enum name="vbm-hoa-session-disconnected" code="208"/>
+        <enum name="vbm-voa-session-disconnected" code="209"/>
+        <enum name="in-acl-disconnect-on-violation" code="210"/>
+        <enum name="eap-msk-lifetime-expiry" code="211"/>
+        <enum name="eap-msk-lifetime-too-low" code="212"/>
+        <enum name="mipfa-inter-tech-handoff" code="213"/>
+        <enum name="r6-max-retry-reached" code="214"/>
+        <enum name="r6-nwexit-recd" code="215"/>
+        <enum name="r6-dereg-req-recd" code="216"/>
+        <enum name="r6-remote-failure" code="217"/>
+        <enum name="r6r4-protocol-errors" code="218"/>
+        <enum name="wimax-qos-invalid-aaa-attr" code="219"/>
+        <enum name="npu-gre-flows-not-available" code="220"/>
+        <enum name="r4-max-retry-reached" code="221"/>
+        <enum name="r4-nwexit-recd" code="222"/>
+        <enum name="r4-dereg-req-recd" code="223"/>
+        <enum name="r4-remote-failure" code="224"/>
+        <enum name="ims-authorization-revoked" code="225"/>
+        <enum name="ims-authorization-released" code="226"/>
+        <enum name="ims-auth-decision-invalid" code="227"/>
+        <enum name="mac-addr-validation-failed" code="228"/>
+        <enum name="excessive-wimax-pd-flows-cfgd" code="229"/>
+        <enum name="sgsn-canc-loc-sub" code="230"/>
+        <enum name="sgsn-canc-loc-upd" code="231"/>
+        <enum name="sgsn-mnr-exp" code="232"/>
+        <enum name="sgsn-ident-fail" code="233"/>
+        <enum name="sgsn-sec-fail" code="234"/>
+        <enum name="sgsn-auth-fail" code="235"/>
+        <enum name="sgsn-glu-fail" code="236"/>
+        <enum name="sgsn-imp-det" code="237"/>
+        <enum name="sgsn-smgr-purge" code="238"/>
+        <enum name="sgsn-subs-handed-to-peer" code="239"/>
+        <enum name="sgsn-dns-fail-inter-rau" code="240"/>
+        <enum name="sgsn-cont-rsp-fail" code="241"/>
+        <enum name="sgsn-hlr-not-found-for-imsi" code="242"/>
+        <enum name="sgsn-ms-init-det" code="243"/>
+        <enum name="sgsn-opr-policy-fail" code="244"/>
+        <enum name="sgsn-duplicate-context" code="245"/>
+        <enum name="hss-profile-update-failed" code="246"/>
+    </avp>
+    <avp name="SN1-PPP-Progress-code" vendor="SN1" code="4" type="Enumerated">
+        <enum name="Not-Defined" code="0"/>
+        <enum name="Call-Lcp-Down" code="10"/>
+        <enum name="Call-Disconnecting" code="20"/>
+        <enum name="Call-Ppp-Renegotiating" code="30"/>
+        <enum name="Call-Arrived" code="40"/>
+        <enum name="Call-Lcp-Up" code="50"/>
+        <enum name="Call-Authenticating" code="60"/>
+        <enum name="Call-Bcmcs-Authenticating" code="70"/>
+        <enum name="Call-Authenticated" code="80"/>
+        <enum name="Call-Tunnel-Connecting" code="85"/>
+        <enum name="Call-Ipcp-Up" code="90"/>
+        <enum name="Call-Imsa-Authorizing" code="95"/>
+        <enum name="Call-Imsa-Authorized" code="97"/>
+        <enum name="Call-Simple-IP-Connected" code="100"/>
+        <enum name="Call-Mobile-IP-Connected" code="110"/>
+        <enum name="Call-Tunnel-Connected" code="115"/>
+        <enum name="Call-Pdp-Type-IP-Connected" code="120"/>
+        <enum name="Call-Pdp-Type-IPv6-Connected" code="125"/>
+        <enum name="Call-Pdp-Type-PPP-Connected" code="130"/>
+        <enum name="Call-Proxy-Mobile-IP-Connected" code="140"/>
+        <enum name="Call-Ipsg-Connected" code="145"/>
+        <enum name="Call-Bcmcs-Connected" code="150"/>
+        <enum name="Call-Pending-Addr-From-DHCP" code="160"/>
+        <enum name="Call-Got-Addr-From-DHCP" code="170"/>
+        <enum name="Call-HA-IPSEC-Tunnel-Connecting" code="180"/>
+        <enum name="Call-HA-IPSEC-Connected" code="190"/>
+        <enum name="Call-ASN-Non-Anchor-Connected" code="200"/>
+    </avp>
+    <avp name="SN1-Primary-DNS-Server" vendor="SN1" code="5" type="ipv4-address"/>
+    <avp name="SN1-Secondary-DNS-Server" vendor="SN1" code="6" type="ipv4-address"/>
+    <avp name="SN1-Re-CHAP-Interval" vendor="SN1" code="7" type="Unsigned32"/>
+    <avp name="SN1-IP-Pool-Name" vendor="SN1" code="8" type="string"/>
+    <avp name="SN1-PPP-Data-Compression" vendor="SN1" code="9" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Stac-LZS" code="1"/>
+        <enum name="MPPC" code="2"/>
+        <enum name="MPPC-Stac-LZS" code="3"/>
+        <enum name="Deflate" code="4"/>
+        <enum name="Deflate-Stac-LZS" code="5"/>
+        <enum name="Deflate-MPPC" code="6"/>
+        <enum name="Deflate-MPPC-Stac-LZS" code="7"/>
+    </avp>
+    <avp name="SN1-IP-Filter-In" vendor="SN1" code="10" type="string" />
+    <avp name="SN1-IP-Filter-Out" vendor="SN1" code="11" type="string" />
+    <avp name="SN1-Local-IP-Address" vendor="SN1" code="13" type="ipv4-address"/>
+    <avp name="SN1-IP-Source-Validation" vendor="SN1" code="14" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="SN1-PPP-Outbound-Password" vendor="SN1" code="15" type="string"/>
+    <avp name="SN1-PPP-Keepalive" vendor="SN1" code="16" type="Unsigned32"/>
+    <avp name="SN1-IP-In-ACL" vendor="SN1" code="17" type="string"/>
+    <avp name="SN1-IP-Out-ACL" vendor="SN1" code="18" type="string"/>
+    <avp name="SN1-PPP-Data-Compression-Mode" vendor="SN1" code="19" type="Enumerated">
+        <enum name="Normal" code="0"/>
+        <enum name="Stateless" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-Permission" vendor="SN1" code="20" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Simple-IP" code="1"/>
+        <enum name="Mobile-IP" code="2"/>
+        <enum name="Simple-IP-Mobile-IP" code="3"/>
+        <enum name="HA-Mobile-IP" code="4"/>
+        <enum name="Simple-IP-HA-Mobile-IP" code="5"/>
+        <enum name="Mobile-IP-HA-Mobile-IP" code="6"/>
+        <enum name="SIP-MIP-HA-MIP" code="7"/>
+		<enum name="GGSN-PDP-TYPE-IP" code="8"/>
+		<enum name="GGSN-PDP-TYPE-PPP" code="16"/>
+		<enum name="Network-Mobility" code="32"/>
+		<enum name="FA-HA-NEMO" code="38"/>
+        <enum name="PMIPv6" code="64"/>
+        <enum name="HA-PMIPv6" code="68"/>
+        <enum name="FA-HAPMIPv6" code="70"/>
+        <enum name="All" code="127"/>
+    </avp>
+    <avp name="SN1-Admin-Permission" vendor="SN1" code="21" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="CLI" code="1"/>
+        <enum name="FTP" code="2"/>
+        <enum name="CLI-FTP" code="3"/>
+        <enum name="Intercept" code="4"/>
+        <enum name="CLI-Intercept" code="5"/>
+        <enum name="CLI-Intercept-FTP" code="7"/>
+        <enum name="ECS" code="8"/>
+        <enum name="CLI-ECS" code="9"/>
+        <enum name="CLI-FTP-ECS" code="11"/>
+        <enum name="CLI-Intercept-ECS" code="13"/>
+        <enum name="CLI-Intercept-FTP-ECS" code="15"/>
+    </avp>
+    <avp name="SN1-Simultaneous-SIP-MIP" vendor="SN1" code="22" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Min-Compress-Size" vendor="SN1" code="23" type="Enumerated">
+        <enum name="Normal" code="0"/>
+        <enum name="Stateless" code="1"/>
+    </avp>
+    <avp name="SN1-Service-Type" vendor="SN1" code="24" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="PDSN" code="1"/>
+        <enum name="Management" code="2"/>
+        <enum name="HA" code="3"/>
+        <enum name="GGSN" code="4"/>
+        <enum name="LNS" code="5"/>
+        <enum name="IPSG" code="6"/>
+        <enum name="CSCF" code="7"/>
+        <enum name="ASNGW" code="8"/>
+        <enum name="PDIF" code="9"/>
+        <enum name="STANDALONE_FA" code="10"/>
+    </avp>
+    <avp name="SN1-Tunnel-Password" vendor="SN1" code="26" type="string"/>
+    <avp name="SN1-Tunnel-Load-Balancing" vendor="SN1" code="27" type="Enumerated">
+        <enum name="random" code="1"/>
+        <enum name="balanced" code="2"/>
+        <enum name="prioritized" code="3"/>
+    </avp>
+    <avp name="SN1-MN-HA-Timestamp-Tolerance" vendor="SN1" code="30" type="Unsigned32"/>
+    <avp name="SN1-Prepaid-Compressed-Count" vendor="SN1" code="31" type="Enumerated">
+        <enum name="Uncompressed" code="0"/>
+        <enum name="Compressed" code="1"/>
+    </avp>
+    <avp name="SN1-Prepaid-Inbound-Octets" vendor="SN1" code="32" type="Unsigned32"/>
+    <avp name="SN1-Prepaid-Outbound-Octets" vendor="SN1" code="33" type="Unsigned32"/>
+    <avp name="SN1-Prepaid-Total-Octets" vendor="SN1" code="34" type="Unsigned32"/>
+    <avp name="SN1-Prepaid-Timeout" vendor="SN1" code="35" type="Unsigned32"/>
+    <avp name="SN1-Prepaid-Watermark" vendor="SN1" code="36" type="Unsigned32"/>
+    <avp name="SN1-NAI-Construction-Domain" vendor="SN1" code="37" type="string"/>
+    <avp name="SN1-Tunnel-ISAKMP-Crypto-Map" vendor="SN1" code="38" type="string"/>
+    <avp name="SN1-Tunnel-ISAKMP-Secret" vendor="SN1" code="39" type="string"/>
+    <avp name="SN1-Ext-Inline-Srvr-Context" vendor="SN1" code="41" type="string"/>
+    <avp name="SN1-L3-to-L2-Tun-Addr-Policy" vendor="SN1" code="43" type="Enumerated">
+        <enum name="no-local-alloc-validate" code="0"/>
+        <enum name="local-alloc" code="1"/>
+        <enum name="local-alloc-validate" code="2"/>
+    </avp>
+    <avp name="SN1-Long-Duration-Timeout" vendor="SN1" code="44" type="Unsigned32"/>
+    <avp name="SN1-Long-Duration-Action" vendor="SN1" code="45" type="Enumerated">
+        <enum name="Detection" code="1"/>
+        <enum name="Disconnection" code="2"/>
+        <enum name="Dormant-Only-Disconnection" code="3"/>
+        <enum name="Dormant-Only-Detection" code="4"/>
+    </avp>
+    <avp name="SN1-PDSN-Handoff-Req-IP-Addr" vendor="SN1" code="46" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-HA-Send-DNS-Address" vendor="SN1" code="47" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-MIP-Send-Term-Verification" vendor="SN1" code="48" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Data-Tunnel-Ignore-DF-Bit" vendor="SN1" code="49" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-MIP-AAA-Assign-Addr" vendor="SN1" code="50" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-MIP-Match-AAA-Assign-Addr" vendor="SN1" code="51" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Proxy-MIP" vendor="SN1" code="52" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-IP-Alloc-Method" vendor="SN1" code="53" type="Enumerated">
+        <alias name="IP-Alloc-Method"/>
+        <enum name="Alloc_Local_Pool" code="0"/>
+        <enum name="Alloc_Dhcp_Client" code="1"/>
+        <enum name="Alloc_Radius" code="2"/>
+        <enum name="Alloc_No_Alloc" code="3"/>
+        <enum name="Alloc_Static_Alloc" code="4"/>
+        <enum name="Alloc_Dhcp_Relay" code="5"/>
+    </avp>
+    <avp name="SN1-Gratuitous-ARP-Aggressive" vendor="SN1" code="54" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Ext-Inline-Srvr-Up-Addr" vendor="SN1" code="55" type="ipv4-address" log="scramble"/>
+    <avp name="SN1-Ext-Inline-Srvr-Down-Addr" vendor="SN1" code="56" type="ipv4-address" log="scramble"/>
+    <avp name="SN1-Ext-Inline-Srvr-Preference" vendor="SN1" code="57" type="Unsigned32" log="scramble"/>
+    <avp name="SN1-Ext-Inline-Srvr-Up-VLAN" vendor="SN1" code="58" type="Unsigned32"/>
+    <avp name="SN1-Ext-Inline-Srvr-Down-VLAN" vendor="SN1" code="59" type="Unsigned32"/>
+    <avp name="SN1-IP-Hide-Service-Address" vendor="SN1" code="60" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="SN1-PPP-Outbound-Username" vendor="SN1" code="61" type="string" log="scramble"/>
+    <avp name="SN1-GTP-Version" vendor="SN1" code="62" type="Enumerated">
+        <enum name="GTP_VERSION_0" code="0"/>
+        <enum name="GTP_VERSION_1" code="1"/>
+    </avp>
+    <avp name="SN1-Access-link-IP-Frag" vendor="SN1" code="63" type="Enumerated">
+        <enum name="Normal" code="0"/>
+        <enum name="DF-Ignore" code="1"/>
+        <enum name="DF-Fragment-ICMP-Notify" code="2"/>
+    </avp>
+    <avp name="SN1-Subscriber-Accounting" vendor="SN1" code="64" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Radius" code="1"/>
+        <enum name="GTPP" code="2"/>
+    </avp>
+    <avp name="SN1-Nw-Reachability-Server-Name" vendor="SN1" code="65" type="string"/>
+    <avp name="SN1-Subscriber-Dormant-Activity" vendor="SN1" code="66" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-IP-Hdr-Neg-Mode" vendor="SN1" code="67" type="Enumerated">
+        <enum name="Force" code="0"/>
+        <enum name="Detect" code="1"/>
+    </avp>
+    <avp name="SN1-GGSN-MIP-Required" vendor="SN1" code="68" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-Acct-Start" vendor="SN1" code="69" type="Enumerated">
+        <enum name="Normal" code="0"/>
+        <enum name="Supress" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-Acct-Interim" vendor="SN1" code="70" type="Enumerated">
+        <enum name="Normal" code="0"/>
+        <enum name="Supress" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-Acct-Stop" vendor="SN1" code="71" type="Enumerated">
+        <enum name="Normal" code="0"/>
+        <enum name="Supress" code="1"/>
+    </avp>
+    <avp name="SN1-Admin-Expiry" vendor="SN1" code="72" type="Unsigned32"/>
+    <avp name="SN1-QoS-Tp-Dnlk" vendor="SN1" code="73" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Tp-Dnlk-Committed-Data-Rate" vendor="SN1" code="74" type="Unsigned32"/>
+    <avp name="SN1-Tp-Dnlk-Peak-Data-Rate" vendor="SN1" code="75" type="Unsigned32"/>
+    <avp name="SN1-Tp-Dnlk-Burst-Size" vendor="SN1" code="76" type="Unsigned32"/>
+    <avp name="SN1-Tp-Dnlk-Exceed-Action" vendor="SN1" code="77" type="Enumerated">
+        <enum name="Transmit" code="0"/>
+        <enum name="Drop" code="1"/>
+        <enum name="Lower-IP-Precedence" code="2"/>
+    </avp>
+    <avp name="SN1-Tp-Dnlk-Violate-Action" vendor="SN1" code="78" type="Enumerated">
+        <enum name="Transmit" code="0"/>
+        <enum name="Drop" code="1"/>
+        <enum name="Lower-IP-Precedence" code="2"/>
+    </avp>
+    <avp name="SN1-QoS-Tp-Uplk" vendor="SN1" code="79" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Tp-Uplk-Committed-Data-Rate" vendor="SN1" code="80" type="Unsigned32"/>
+    <avp name="SN1-Tp-Uplk-Peak-Data-Rate" vendor="SN1" code="81" type="Unsigned32"/>
+    <avp name="SN1-Tp-Uplk-Burst-Size" vendor="SN1" code="82" type="Unsigned32"/>
+    <avp name="SN1-Tp-Uplk-Exceed-Action" vendor="SN1" code="83" type="Enumerated">
+        <enum name="Transmit" code="0"/>
+        <enum name="Drop" code="1"/>
+        <enum name="Lower-IP-Precedence" code="2"/>
+    </avp>
+    <avp name="SN1-Tp-Uplk-Violate-Action" vendor="SN1" code="84" type="Enumerated">
+        <enum name="Transmit" code="0"/>
+        <enum name="Drop" code="1"/>
+        <enum name="Lower-IP-Precedence" code="2"/>
+    </avp>
+    <avp name="SN1-Subscriber-IP-TOS-Copy" vendor="SN1" code="85" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Access-Tunnel" code="1"/>
+        <enum name="Data-Tunnel" code="2"/>
+        <enum name="Both" code="3"/>
+    </avp>
+    <avp name="SN1-QoS-Conversation-Class" vendor="SN1" code="86" type="string"/>
+    <avp name="SN1-QoS-Streaming-Class" vendor="SN1" code="87" type="string"/>
+    <avp name="SN1-QoS-Interactive1-Class" vendor="SN1" code="88" type="string"/>
+    <avp name="SN1-QoS-Interactive2-Class" vendor="SN1" code="89" type="string"/>
+    <avp name="SN1-QoS-Interactive3-Class" vendor="SN1" code="90" type="string"/>
+    <avp name="SN1-QoS-Background-Class" vendor="SN1" code="91" type="string"/>
+    <avp name="SN1-PPP-NW-Layer-IPv4" vendor="SN1" code="92" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+        <enum name="Passive" code="2"/>
+    </avp>
+    <avp name="SN1-PPP-NW-Layer-IPv6" vendor="SN1" code="93" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+        <enum name="Passive" code="2"/>
+    </avp>
+    <avp name="SN1-Virtual-APN-Name" vendor="SN1" code="94" type="string"/>
+    <avp name="SN1-PPP-Accept-Peer-v6Ifid" vendor="SN1" code="95" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-IPv6-rtr-advt-interval" vendor="SN1" code="96" type="Unsigned32"/>
+    <avp name="SN1-IPv6-num-rtr-advt" vendor="SN1" code="97" type="Unsigned32"/>
+    <avp name="SN1-NPU-Qos-Priority" vendor="SN1" code="98" type="Enumerated">
+        <enum name="Best_Effort" code="0"/>
+        <enum name="Bronze" code="1"/>
+        <enum name="Silver" code="2"/>
+        <enum name="Gold" code="3"/>
+        <enum name="From_DSCP" code="4"/>
+    </avp>
+    <avp name="SN1-MN-HA-Hash-Algorithm" vendor="SN1" code="99" type="Enumerated">
+        <enum name="MD5" code="1"/>
+        <enum name="MD5-RFC2002" code="2"/>
+        <enum name="HMAC-MD5" code="3"/>
+    </avp>
+    <avp name="SN1-Subscriber-Acct-Rsp-Action" vendor="SN1" code="100" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="No_Early_PDUs" code="1"/>
+        <enum name="Delay_GTP_Response" code="2"/>
+    </avp>
+    <avp name="SN1-IPv6-Primary-DNS" vendor="SN1" code="101" type="string" log="scramble"/>
+    <avp name="SN1-IPv6-Secondary-DNS" vendor="SN1" code="102" type="string" log="scramble"/>
+    <avp name="SN1-IPv6-Egress-Filtering" vendor="SN1" code="103" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Mediation-VPN-Name" vendor="SN1" code="104" type="string"/>
+    <avp name="SN1-Mediation-Acct-Rsp-Action" vendor="SN1" code="105" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="No_Early_PDUs" code="1"/>
+        <enum name="Delay_GTP_Response" code="2"/>
+    </avp>
+    <avp name="SN1-Home-Sub-Use-GGSN" vendor="SN1" code="106" type="Enumerated">
+        <enum name="Deny" code="0"/>
+        <enum name="Accept" code="1"/>
+    </avp>
+    <avp name="SN1-Visiting-Sub-Use-GGSN" vendor="SN1" code="107" type="Enumerated">
+        <enum name="Deny" code="0"/>
+        <enum name="Accept" code="1"/>
+    </avp>
+    <avp name="SN1-Roaming-Sub-Use-GGSN" vendor="SN1" code="108" type="Enumerated">
+        <enum name="Deny" code="0"/>
+        <enum name="Accept" code="1"/>
+    </avp>
+    <avp name="SN1-Home-Profile" vendor="SN1" code="109" type="Unsigned32"/>
+    <avp name="SN1-IP-Src-Valid-Drop-Limit" vendor="SN1" code="110" type="Unsigned32"/>
+    <avp name="SN1-QoS-Class-Colloquial-PHB" vendor="SN1" code="111" type="Enumerated" >
+        <enum name="Best-Effort" code="0" />
+        <enum name="Pass-Through" code="1" />
+        <enum name="AF11" code="10" />
+        <enum name="AF12" code="12" />
+        <enum name="AF13" code="14" />
+        <enum name="AF21" code="18" />
+        <enum name="AF22" code="20" />
+        <enum name="AF23" code="22" />
+        <enum name="AF31" code="26" />
+        <enum name="AF32" code="28" />
+        <enum name="AF33" code="30" />
+        <enum name="AF41" code="34" />
+        <enum name="AF42" code="36" />
+        <enum name="AF43" code="38" />
+        <enum name="EF" code="46" />
+    </avp>
+    <avp name="SN1-QoS-Class-Streaming-PHB" vendor="SN1" code="112" type="Enumerated" >
+        <enum name="Best-Effort" code="0" />
+        <enum name="Pass-Through" code="1" />
+        <enum name="AF11" code="10" />
+        <enum name="AF12" code="12" />
+        <enum name="AF13" code="14" />
+        <enum name="AF21" code="18" />
+        <enum name="AF22" code="20" />
+        <enum name="AF23" code="22" />
+        <enum name="AF31" code="26" />
+        <enum name="AF32" code="28" />
+        <enum name="AF33" code="30" />
+        <enum name="AF41" code="34" />
+        <enum name="AF42" code="36" />
+        <enum name="AF43" code="38" />
+        <enum name="EF" code="46" />
+    </avp>
+    <avp name="SN1-QoS-Class-Background-PHB" vendor="SN1" code="113" type="Enumerated" >
+        <enum name="Best-Effort" code="0" />
+        <enum name="Pass-Through" code="1" />
+        <enum name="AF11" code="10" />
+        <enum name="AF12" code="12" />
+        <enum name="AF13" code="14" />
+        <enum name="AF21" code="18" />
+        <enum name="AF22" code="20" />
+        <enum name="AF23" code="22" />
+        <enum name="AF31" code="26" />
+        <enum name="AF32" code="28" />
+        <enum name="AF33" code="30" />
+        <enum name="AF41" code="34" />
+        <enum name="AF42" code="36" />
+        <enum name="AF43" code="38" />
+        <enum name="EF" code="46" />
+    </avp>
+    <avp name="SN1-QoS-Class-Interactive-1-PHB" vendor="SN1" code="114" type="Enumerated" >
+        <enum name="Best-Effort" code="0" />
+        <enum name="Pass-Through" code="1" />
+        <enum name="AF11" code="10" />
+        <enum name="AF12" code="12" />
+        <enum name="AF13" code="14" />
+        <enum name="AF21" code="18" />
+        <enum name="AF22" code="20" />
+        <enum name="AF23" code="22" />
+        <enum name="AF31" code="26" />
+        <enum name="AF32" code="28" />
+        <enum name="AF33" code="30" />
+        <enum name="AF41" code="34" />
+        <enum name="AF42" code="36" />
+        <enum name="AF43" code="38" />
+        <enum name="EF" code="46" />
+    </avp>
+    <avp name="SN1-QoS-Class-Interactive-2-PHB" vendor="SN1" code="115" type="Enumerated" >
+        <enum name="Best-Effort" code="0" />
+        <enum name="Pass-Through" code="1" />
+        <enum name="AF11" code="10" />
+        <enum name="AF12" code="12" />
+        <enum name="AF13" code="14" />
+        <enum name="AF21" code="18" />
+        <enum name="AF22" code="20" />
+        <enum name="AF23" code="22" />
+        <enum name="AF31" code="26" />
+        <enum name="AF32" code="28" />
+        <enum name="AF33" code="30" />
+        <enum name="AF41" code="34" />
+        <enum name="AF42" code="36" />
+        <enum name="AF43" code="38" />
+        <enum name="EF" code="46" />
+    </avp>
+    <avp name="SN1-QoS-Class-Interactive-3-PHB" vendor="SN1" code="116" type="Enumerated" >
+        <enum name="Best-Effort" code="0" />
+        <enum name="Pass-Through" code="1" />
+        <enum name="AF11" code="10" />
+        <enum name="AF12" code="12" />
+        <enum name="AF13" code="14" />
+        <enum name="AF21" code="18" />
+        <enum name="AF22" code="20" />
+        <enum name="AF23" code="22" />
+        <enum name="AF31" code="26" />
+        <enum name="AF32" code="28" />
+        <enum name="AF33" code="30" />
+        <enum name="AF41" code="34" />
+        <enum name="AF42" code="36" />
+        <enum name="AF43" code="38" />
+        <enum name="EF" code="46" />
+    </avp>
+    <avp name="SN1-Visiting-Profile" vendor="SN1" code="117" type="Unsigned32"/>
+    <avp name="SN1-Roaming-Profile" vendor="SN1" code="118" type="Unsigned32"/>
+    <avp name="SN1-Home-Behavior" vendor="SN1" code="119" type="Unsigned32"/>
+    <avp name="SN1-Visiting-Behavior" vendor="SN1" code="120" type="Unsigned32"/>
+    <avp name="SN1-Roaming-Behavior" vendor="SN1" code="121" type="Unsigned32"/>
+    <avp name="SN1-Internal-SM-Index" vendor="SN1" code="122" type="Unsigned32"/>
+    <avp name="SN1-Mediation-Enabled" vendor="SN1" code="123" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-IPv6-Sec-Pool" vendor="SN1" code="124" type="string"/>
+    <avp name="SN1-IPv6-Sec-Prefix" vendor="SN1" code="125" type="string"/>
+    <avp name="SN1-IPv6-DNS-Proxy" vendor="SN1" code="126" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-Nexthop-Address" vendor="SN1" code="127" type="ipv4-address"/>
+    <avp name="SN1-Prepaid" vendor="SN1" code="128" type="Enumerated">
+        <enum name="no_prepaid" code="0"/>
+        <enum name="custom_prepaid" code="1"/>
+        <enum name="standard_prepaid" code="2"/>
+    </avp>
+    <avp name="SN1-Prepaid-Preference" vendor="SN1" code="129" type="Enumerated">
+        <enum name="prepaid_duration" code="0"/>
+        <enum name="prepaid_volume" code="1"/>
+    </avp>
+    <avp name="SN1-PPP-Always-On-Vse" vendor="SN1" code="130" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Voice-Push-List-Name" vendor="SN1" code="131" type="string"/>
+    <avp name="SN1-Unclassify-List-Name" vendor="SN1" code="132" type="string"/>
+    <avp name="SN1-Subscriber-No-Interims" vendor="SN1" code="133" type="Enumerated">
+        <enum name="Enabled" code="0"/>
+        <enum name="Disabled" code="1"/>
+    </avp>
+    <avp name="SN1-Permit-User-Mcast-PDUs" vendor="SN1" code="134" type="Enumerated">
+        <enum name="disabled" code="0"/>
+        <enum name="enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Prepaid-Final-Duration-Alg" vendor="SN1" code="135" type="Enumerated">
+        <enum name="current_time" code="0"/>
+        <enum name="last-user-layer3-activity-time" code="1"/>
+        <enum name="last-airlink-activity-time" code="2"/>
+        <enum name="las-air-act-tim-la-rep" code="3"/>
+    </avp>
+    <avp name="SN1-IPv6-Min-Link-MTU" vendor="SN1" code="136" type="Unsigned32"/>
+    <avp name="SN1-Charging-VPN-Name" vendor="SN1" code="137" type="string" log="scramble"/>
+    <avp name="SN1-Chrg-Char-Selection-Mode" vendor="SN1" code="138" type="Unsigned32"/>
+    <avp name="SN1-Cause-For-Rec-Closing" vendor="SN1" code="139" type="Unsigned32"/>
+    <avp name="SN1-Change-Condition" vendor="SN1" code="140" type="Enumerated">
+        <enum name="QOSCHANGE" code="0"/>
+        <enum name="TARIFFTIMECHANGE" code="1"/>
+        <enum name="SGSNCHANGE" code="500"/>
+    </avp>
+    <avp name="SN1-Dynamic-Addr-Alloc-Ind-Flag" vendor="SN1" code="141" type="string"/>
+    <avp name="SN1-Ntk-Initiated-Ctx-Ind-Flag" vendor="SN1" code="142" type="string"/>
+    <avp name="SN1-Ntk-Session-Disconnect-Flag" vendor="SN1" code="143" type="Enumerated">
+        <enum name="Session-Disconnect" code="1"/>
+    </avp>
+    <avp name="SN1-Enable-QoS-Renegotiation" vendor="SN1" code="144" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="SN1-QoS-Renegotiation-Timeout" vendor="SN1" code="145" type="Unsigned32"/>
+    <avp name="SN1-Mediation-No-Interims" vendor="SN1" code="146" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-QoS-Negotiated" vendor="SN1" code="147" type="string"/>
+    <avp name="SN1-Primary-NBNS-Server" vendor="SN1" code="148" type="ipv4-address" log="scramble"/>
+    <avp name="SN1-Secondary-NBNS-Server" vendor="SN1" code="149" type="ipv4-address" log="scramble"/>
+    <avp name="SN1-IP-Header-Compression" vendor="SN1" code="150" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="VJ" code="1"/>
+        <enum name="ROHC" code="2"/>
+        <enum name="VJ_ROHC" code="3"/>
+    </avp>
+    <avp name="SN1-ROHC-Mode" vendor="SN1" code="151" type="Enumerated">
+        <enum name="Reliable" code="0"/>
+        <enum name="Optimistic" code="1"/>
+        <enum name="Unidirectional" code="2"/>
+    </avp>
+    <avp name="SN1-Assigned-VLAN-ID" vendor="SN1" code="152" type="Unsigned32" log="scramble"/>
+    <avp name="SN1-ROHC-Direction" vendor="SN1" code="153" type="Enumerated">
+        <enum name="Any" code="0"/>
+        <enum name="Uplink" code="1"/>
+        <enum name="Downlink" code="2"/>
+    </avp>
+    <avp name="SN1-MIP-HA-Assignment-Table" vendor="SN1" code="154" type="string" log="scramble"/>
+    <avp name="SN1-Prepaid-Profile" vendor="SN1" code="155" type="Enumerated">
+        <enum name="Use-Rulebase-Config" code="0"/>
+        <enum name="Prohibit" code="1"/>
+    </avp>
+    <avp name="SN1-Tun-Addr-Policy" vendor="SN1" code="156" type="Enumerated">
+        <enum name="no-local-alloc-validate" code="0"/>
+        <enum name="local-alloc" code="1"/>
+        <enum name="local-alloc-validate" code="2"/>
+    </avp>
+    <avp name="SN1-DHCP-Lease-Expiry-Policy" vendor="SN1" code="157" type="Enumerated">
+        <enum name="auto-renew" code="0"/>
+        <enum name="disconnect" code="1"/>
+    </avp>
+    <avp name="SN1-Subscriber-Template-Name" vendor="SN1" code="158" type="string" log="scramble"/>
+    <avp name="SN1-Subs-IMSA-Service-Name" vendor="SN1" code="159" type="string"/>
+    <avp name="SN1-Ignore-Unknown-HA-Addr-Err" vendor="SN1" code="160" type="Unsigned32"/>
+    <avp name="SN1-Traffic-Group" vendor="SN1" code="161" type="Unsigned32"/>
+    <avp name="SN1-Rad-APN-Name" vendor="SN1" code="162" type="string"/>
+    <avp name="SN1-MIP-Send-Ancid" vendor="SN1" code="163" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-MIP-Send-Imsi" vendor="SN1" code="164" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Starent_NVSE" code="1"/>
+        <enum name="Custom1_NVSE" code="2"/>
+    </avp>
+    <avp name="SN1-MIP-Dual-Anchor" vendor="SN1" code="165" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-MIP-ANCID" vendor="SN1" code="166" type="string"/>
+    <avp name="SN1-IMS-AM-Address" vendor="SN1" code="167" type="ipv4-address" log="scramble"/>
+    <avp name="SN1-IMS-AM-Domain-Name" vendor="SN1" code="168" type="string" log="scramble"/>
+    <avp name="SN1-Service-Address" vendor="SN1" code="169" type="string" log="scramble"/>
+    <avp name="SN1-PDIF-MIP-Required" vendor="SN1" code="170" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="SN1-FMC-Location" vendor="SN1" code="171" type="string"/>
+    <avp name="SN1-PDIF-MIP-Release-TIA" vendor="SN1" code="172" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="SN1-PDIF-MIP-Simple-IP-Fallback" vendor="SN1" code="173" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="SN1-QoS-Traffic-Policy" vendor="SN1" code="177" type="opaque" />
+    <avp name="SN1-PPP-Reneg-Disc" vendor="SN1" code="187" type="Enumerated">
+        <enum name="Never" code="0"/>
+        <enum name="Always" code="1"/>
+        <enum name="NAI_Prefix_MSID_Mismatch" code="2"/>
+    </avp>
+    <avp name="SN1-MIP-Send-Correlation-Info" vendor="SN1" code="188" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-PDSN-Correlation-Id" vendor="SN1" code="189" type="string"/>
+    <avp name="SN1-PDSN-NAS-Id" vendor="SN1" code="190" type="string"/>
+    <avp name="SN1-PDSN-NAS-IP-Address" vendor="SN1" code="191" type="ipv4-address" log="scramble"/>
+    <avp name="SN1-Subscriber-Acct-Mode" vendor="SN1" code="192" type="Enumerated">
+        <enum name="flow-based-auxilliary" code="0"/>
+        <enum name="flow-based-all" code="1"/>
+        <enum name="flow-based-none" code="2"/>
+        <enum name="session-based" code="3"/>
+        <enum name="main-a10-only" code="4"/>
+    </avp>
+    <avp name="SN1-IP-In-Plcy-Grp" vendor="SN1" code="193" type="string"/>
+    <avp name="SN1-IP-Out-Plcy-Grp" vendor="SN1" code="194" type="string"/>
+    <avp name="SN1-ROHC-Flow-Marking-Mode" vendor="SN1" code="195" type="Enumerated">
+        <enum name="False" code="0"/>
+        <enum name="True" code="1"/>
+    </avp>
+    <avp name="SN1-IP-Source-Violate-No-Acct" vendor="SN1" code="196" type="Enumerated">
+        <enum name="Disabled" code="0"/>
+        <enum name="Enabled" code="1"/>
+    </avp>
+    <avp name="SN1-Firewall-Enabled" vendor="SN1" code="198" type="Enumerated">
+        <enum name="False" code="0"/>
+        <enum name="True" code="1"/>
+    </avp>
+    <avp name="SNA1-PPP-Unfr-data-In-Oct" vendor="SN1" code="200" type="Unsigned32"/>
+    <avp name="SNA1-PPP-Unfr-data-Out-Oct" vendor="SN1" code="201" type="Unsigned32"/>
+    <avp name="SNA1-PPP-Unfr-data-In-Gig" vendor="SN1" code="202" type="Unsigned32"/>
+    <avp name="SNA1-PPP-Unfr-data-Out-Gig" vendor="SN1" code="203" type="Unsigned32"/>
+    <avp name="SN1-DNS-Proxy-Intercept-List" vendor="SN1" code="214" type="string"/>
+    <avp name="SN1-MSK-Lifetime" vendor="SN1" code="216" type="Unsigned32" />
+    <avp name="SN1-Subscriber-Class" vendor="SN1" code="219" type="Enumerated">
+        <enum name="Normal_Subscriber" code="0"/>
+        <enum name="Ting_100" code="1"/>
+        <enum name="Ting_500" code="2"/>
+        <enum name="Ting_Buddy" code="3"/>
+        <enum name="Ting_Star" code="4"/>
+        <enum name="Ting_Nolimit_SMS" code="5"/>
+        <enum name="Kids_Locator" code="6"/>
+        <enum name="Ting_2000" code="7"/>
+        <enum name="Handicapped_Welfare" code="8"/>
+        <enum name="Reserved" code="9"/>
+    </avp>
+    <avp name="SN1-CFPolicy-ID" vendor="SN1" code="220" type="Unsigned32"/>
+    <avp name="SN1-Subs-VJ-Slotid-Cmp-Neg-Mode" vendor="SN1" code="221" type="Enumerated">
+        <enum name="None" code="0"/>
+        <enum name="Receive" code="1"/>
+        <enum name="Transmit" code="2"/>
+        <enum name="Both" code="3"/>
+    </avp>
+    <avp name="SN1-Primary-DCCA-Peer" vendor="SN1" code="223" type="string" log="scramble"/>
+    <avp name="SN1-Secondary-DCCA-Peer" vendor="SN1" code="224" type="string" log="scramble"/>
+    <avp name="SN1-Subs-Acc-Flow-Traffic-Valid" vendor="SN1" code="225" type="Enumerated">
+        <enum name="Disable" code="0"/>
+        <enum name="Enable" code="1"/>
+    </avp>
+    <avp name="SN1-Acct-Input-Packets-Dropped" vendor="SN1" code="226" type="Unsigned32"/>
+    <avp name="SN1-Acct-Output-Packets-Dropped" vendor="SN1" code="227" type="Unsigned32"/>
+    <avp name="SN1-Acct-Input-Octets-Dropped" vendor="SN1" code="228" type="Unsigned32"/>
+    <avp name="SN1-Acct-Output-Octets-Dropped" vendor="SN1" code="229" type="Unsigned32"/>
+    <avp name="SN1-Acct-Input-Giga-Dropped" vendor="SN1" code="230" type="Unsigned32"/>
+    <avp name="SN1-Acct-Output-Giga-Dropped" vendor="SN1" code="231" type="Unsigned32"/>
+    <avp name="SN1-Inactivity-Time" vendor="SN1" code="232" type="Unsigned32"/>
+    <avp name="SN1-Overload-Disc-Connect-Time" vendor="SN1" code="233" type="Unsigned32"/>
+    <avp name="SN1-Overload-Disc-Inact-Time" vendor="SN1" code="234" type="Unsigned32"/>
+    <avp name="SN1-Overload-Disconnect" vendor="SN1" code="235" type="Unsigned32"/>
+    <avp name="SN1-Radius-Returned-Username" vendor="SN1" code="236" type="Enumerated">
+        <enum name="No" code="0"/>
+        <enum name="Yes" code="1"/>
+    </avp>
+    <avp name="Prohibit-Payload-Compression1" vendor="SN1" code="237" type="Enumerated">
+        <enum name="Allowed" code="0"/>
+        <enum name="Prohibited" code="1"/>
+    </avp>
+    <avp name="SN1-ROHC-Profile-Name" vendor="SN1" code="238" type="string"/>
+    <avp name="SN1-Firewall-Policy" vendor="SN1" code="239" type="string"/>
+    <avp name="SN1-MS-ISDN" vendor="SN1" code="248" type="string" log="scramble"/>
+    <avp name="SN1-Routing-Area-Id" vendor="SN1" code="249" type="string" log="scramble"/>
+    <avp name="SN1-Rulebase" vendor="SN1" code="250" type="string" />
+    <avp name="SN1-Call-Id" vendor="SN1" code="251" type="Unsigned32" />
+    <avp name="SN1-IMSI" vendor="SN1" code="252" type="string" log="scramble"/>
+    <avp name="SN1-Long-Duration-Notification" vendor="SN1" code="253" type="Enumerated">
+        <enum name="Suppress" code="0"/>
+        <enum name="Send" code="1"/>
+    </avp>
+
+
+
+</dictionary>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE table SYSTEM "property_file.dtd">
+<table>
+    <property name="admin-login" value="" />
+    <property name="admin-userfile" value="security_users.xml" />
+    <property name="admin-radius-address" value="127.0.0.1:1812" />
+    <property name="admin-radius-secret" value="" />
+    <property name="admin-radius-realm" value="" />
+    <property name="control-login" value="aaacontrol" />
+    <property name="database-login" value="aaadb" />
+    <property name="database-replication-login" value="aaadbr" />
+</table>
