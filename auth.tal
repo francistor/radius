@@ -2,6 +2,9 @@
     user.<variable> = cooked attribute
     user.tmp.<variable> = for short term processing
     user.provClient = read from file or database
+
+    If configured permissiveService, user is not rejected if not found
+    
 **/
 
 authStart:
@@ -38,8 +41,12 @@ authStart:
         """
     endinvoke
 
+    // Merge with client data
     $user.config.* := $client.*;
-    
+    // SendReject undefined of true should reject the request and rejectService not applied
+    if(! $user.config.sendReject->exists() || $user.config.SendReject) then 
+        delete $user.config.rejectService; 
+    endif;
 
     /* Detect client type */
     if $request.Unisphere-DHCP-MAC-Address->exists() | $request.Unisphere-PPPoE-Description->exists() then
@@ -90,14 +97,26 @@ authStart:
         ResultMap => """
             $user.provClient.userName := $1;
             $user.provClient.password := $2;
-            $user.provClient.serviceName := $3;
             $user.provClient.addonServiceName := $4;
             $user.provClient.legacyClientId := $5;
             $user.provClient.status := $6;
+
+            $user.basicServiceName := $3;
         """
+        on success
+            log level => debug, "User found. Id: " & $user.provClient.legacyClientId & "serviceName: " & $user.basicServiceName;
+        on failure
+            // Client not found
+            if($user.config.permissiveService -> exists()) then
+                $user.basicServiceName := $user.config.permissiveService;
+            else
+                $user.rejected := true;
+            endif;
+        on error
+            log level => error, "Client database access error";
+            return error;
     endinvoke
 
-    $user.basicServiceName := $user.provClient.ServiceName | $user.config.permissiveService;
 
     /* Read Service configuration */
     invoke ReadUserFile with
@@ -106,18 +125,17 @@ authStart:
         Map => """
             $user.config.* := $check.*;
             $user.reply.radiusAttrs.* := $reply.radiusAttrs.*;
-            $user.reply.nonOverridableAttrs.* := $reply.nonOverridableAttrs.*;
+            $user.reply.nonOverridableRadiusAttrs.* := $reply.nonOverridableRadiusAttrs.*;
         """
     endinvoke
 
-    $user.config.* := $client.*;
-
     /* Compose Response */
-    $reply.* := $user.config.radiusAttrs.*;           // Global attributes from global config
-    $reply.* := $user.reply.radiusAttrs.*;            // Overridable radius attributes
-    $reply.* += $user.reply.nonOverridableAttrs.*;    // Overridable radius attributes
+    $reply.* := $user.config.radiusAttrs.*;                   // Global attributes from global config
+    $reply.* := $user.reply.radiusAttrs.*;                    // Overridable radius attributes
+    $reply.* += $user.reply.nonOverridableRadiusAttrs.*;      // Overridable radius attributes
     $reply.Class += "C=" & $user.provClient.legacyClientId;
-    $reply.Class += "S=" & $user.provClient.basicServiceName;
+    $reply.Class += "S=" & $user.basicServiceName;
+    $reply.Framed-Protocol := "PPP";                          // Emulate this comes from the proxy server
 
     return success;
     

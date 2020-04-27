@@ -20,7 +20,7 @@ file provisionType=file authLocal=none
 
 acs provisionType=database authLocal=none overrideService=acs
   radiusAttrs=<<
-    Service-Type=Outbound-user
+    Session-Timeout=2400
   >>
 
 betatester provisionType=database authlocal=file

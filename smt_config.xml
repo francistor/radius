@@ -5,10 +5,10 @@
         <property name="WindowInfo" value="max" />
         <property name="ConfigServerList" value="localhost," />
         <property name="SmtTailVisible" value="true" />
-        <property name="SelectedDisplayPanel" value="LoadMonitoringPanel" />
-        <property name="SelectedConfigurationPanel" value="Policy Server Multiple Configuration" />
+        <property name="SelectedDisplayPanel" value="LoadConfigurationPanel" />
+        <property name="SelectedConfigurationPanel" value="Policy Server TAL Editor" />
         <property name="SelectedMonitoringPanel" value="Reloadable" />
-        <property name="ExpandedNodes" value="Policy Server" />
+        <property name="ExpandedNodes" value="Policy Server,Client/Peers,Policies" />
     </set>
     <set name="DictionaryPanel">
         <property name="SelectedFile" value="custom.dict" />
@@ -17,7 +17,7 @@
         <property name="DialogInfo" value="495,416,650,450" />
     </set>
     <set name="RadiusClientsPanel">
-        <property name="DialogInfo" value="787,121,700,700" />
+        <property name="DialogInfo" value="611,306,700,700" />
     </set>
     <set name="TalPanel">
         <property name="SelectedFile" value="auth.tal" />

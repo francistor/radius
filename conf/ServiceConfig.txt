@@ -1,48 +1,71 @@
 service_0 writeServiceCDR=true
+  radiusAttrs=<<
+    Unisphere-Service-Bundle=Aservice_0
+  >>
   nonOverridableRadiusAttrs=<<
-    Unishpere-Service-Bundle=Aservice_0,
     HW-Account-Info=Aservice_0
   >>
 
 service_1 writeServiceCDR=true
+  radiusAttrs=<<
+    Unisphere-Service-Bundle=Aservice_1
+  >>
   nonOverridableRadiusAttrs=<<
-    Unishpere-Service-Bundle=Aservice_1,
     HW-Account-Info=Aservice_1
   >>
 
 service_2 writeServiceCDR=true
+  radiusAttrs=<<
+    Unisphere-Service-Bundle=Aservice_2
+    >>
   nonOverridableRadiusAttrs=<<
-    Unishpere-Service-Bundle=Aservice_2,
     HW-Account-Info=Aservice_2
   >>
 
 service_3 writeServiceCDR=true
+  radiusAttrs=<<
+    Unisphere-Service-Bundle=Aservice_3
+  >>
   nonOverridableRadiusAttrs=<<
-    Unishpere-Service-Bundle=Aservice_3,
     HW-Account-Info=Aservice_3
   >>
 
 permService
+  radiusAttrs=<<
+    Unisphere-Service-Bundle=ApermService
+  >>
   nonOverridableRadiusAttrs=<<
-    Unishpere-Service-Bundle=ApermService
+    HW-Account-Info=ApermService
   >>
 
 rejectService
+  radiusAttrs=<<
+	 Unisphere-Service-Bundle=ArejectService
+  >>
   nonOverridableRadiusAttrs=<<
-	 Unishpere-Service-Bundle=ArejectService
+    HW-Account-Info=ArejectService
   >>
 
 pcautiv
-  nonOverridableRadiusAttrs=<<
+  radiusAttrs=<<
     Unisphere-Service-Bundle=Apcautiv
+  >>
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=pcautiv
   >>
 
 acs
   nonOverridableRadiusAttrs=<<
 	 Unisphere-Service-Bundle=Aacs
   >>
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=Aacs
+  >>
 
 betatester
   nonOverridableRadiusAttrs=<<
     Unisphere-Service-Bundle=Abetatester
+  >>
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=Abetatester
   >>

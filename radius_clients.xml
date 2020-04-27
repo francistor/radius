@@ -5,7 +5,6 @@
         <property name="Client-Secret" value="secret" />
         <property name="Client-Dictionary" value="All-dictionary" />
         <property name="Radius-Transport" value="UDP" />
-        <property name="SendReject" value="false" />
     </entry>
 
     <entry name="127.0.0.1">

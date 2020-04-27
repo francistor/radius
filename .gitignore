@@ -5,6 +5,7 @@ collector
 resource
 cache
 log
-_collector
-_derby
+backup
+gc.*
+*.pid
 *.log
