@@ -2,22 +2,19 @@
 <table>
     <set name="SMT">
         <property name="confirmServerShutdown" value="false" />
-        <property name="WindowInfo" value="max" />
+        <property name="WindowInfo" value="103,119,1710,880" />
         <property name="ConfigServerList" value="localhost," />
         <property name="SmtTailVisible" value="true" />
         <property name="SelectedDisplayPanel" value="LoadConfigurationPanel" />
         <property name="SelectedConfigurationPanel" value="Policy Server TAL Editor" />
         <property name="SelectedMonitoringPanel" value="Reloadable" />
-        <property name="ExpandedNodes" value="Policy Server,Client/Peers,Policies" />
+        <property name="ExpandedNodes" value="Policy Server,Policies" />
     </set>
     <set name="DictionaryPanel">
         <property name="SelectedFile" value="custom.dict" />
     </set>
     <set name="MethodDispatchPanel">
         <property name="DialogInfo" value="495,416,650,450" />
-    </set>
-    <set name="RadiusClientsPanel">
-        <property name="DialogInfo" value="611,306,700,700" />
     </set>
     <set name="TalPanel">
         <property name="SelectedFile" value="auth.tal" />

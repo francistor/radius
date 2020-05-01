@@ -1,19 +1,39 @@
+# Directory for CDR writing
 cdrDir=/var/tmp/aaa
 
+# Whether to write Session CDR
+writeSessionCDR=true
+
+# Where to look for the client
+# May be "database", "file" or "none"
 provisionType=database
 
-permissiveService=permService
+# Whether to verify the password
+# May be "provision", "file" or "none"
+authLocal=provision
 
+# Whether to send an Access-Reject or not
+# May be "yes", "no" or "filter"
+sendReject=yes
+
+# Name of the reject service. Applies only if sendReject is "yes" or "filter"
 rejectService=rejectService
 
-blockedService=pcautiv
+# Name of the permissive service to apply. May be set to "none". If not set,
+# the user is rejected if not found
+# permissiveServiceName=permService
 
-sendReject=true
+# Name of the service for blocked users
+blockingServiceName=pcautiv
 
-proxyTimeoutMillis=500
+# Default proxy-server-group
+proxyGroupName=yaas-superserver-group
 
-proxyRetries=1
-
+# TODO: implement this
 acceptOnProxyError=false
 
+# Radius Attributes for the reply
 radiusAttrs="Session-Timeout=3600"
+
+# Non overridable radius attributes for the reply
+#nonOverridableRadiusAttrs=

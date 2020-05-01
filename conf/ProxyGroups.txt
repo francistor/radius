@@ -1,0 +1,1 @@
+yaas-superserver-group IPAddress="1.1.1.1,127.0.0.1" AuthPort=11812 AcctPort=11813 Secret=secret Timeout=1000 Retries=1 MaxErrors=5 QuarantineTime=100m ClearOnNoChoice=true SortOrder=NATURAL

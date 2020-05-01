@@ -7,6 +7,7 @@
     <property name="Radius-Httpd-Address" value="*:0" />
     <property name="Radius-Httpsd-Address" value="*:0" />
     <property name="Radius-Httpd-RootDir" value="../html/" />
+    <property name="Derby-Address" value="*:0" />
     <property name="Perf-UniqueId" value="pb3" />
     <property name="Policy-Set-Installed" value="expert" />
     <property name="provisioningInstalled" value="FALSE" />

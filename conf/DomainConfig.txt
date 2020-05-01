@@ -1,6 +1,6 @@
 none provisionType=none authLocal=none
 
-database provisionType=database authLocal=database writeSessionCDR=true
+database blockingIsAddon=true blockingServiceName=pcautivOnline
   radiusAttrs=<<
     Service-Type=Framed
   >>
@@ -8,7 +8,7 @@ database provisionType=database authLocal=database writeSessionCDR=true
     Cisco-AVPair="Hello=world"
 	>>
 
-databasenr provisionType=database authLocal=database writeSessionCDR=true sendReject=false
+databasenr blockingIsAddon=true blockingServiceName=pcautivOnline sendReject=no
   radiusAttrs=<<
     Service-Type=Framed
   >>
@@ -18,12 +18,28 @@ databasenr provisionType=database authLocal=database writeSessionCDR=true sendRe
 
 file provisionType=file authLocal=none
 
-acs provisionType=database authLocal=none overrideService=acs
+acs authLocal=none overrideService=acs
   radiusAttrs=<<
     Session-Timeout=2400
   >>
 
-betatester provisionType=database authlocal=file
+betatester authlocal=file overrideServiceName=betatester
   radiusAttrs=<<
     Session-Timeout=1200
   >>
+
+database.provision.p0.r0.bb
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+  >>
+
+database.provision.p0.r0.bb blockingIsAddon=true blockingServiceName=pcautivOnline
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+	>>
