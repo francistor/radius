@@ -1,4 +1,28 @@
-service_0 writeServiceCDR=true
+addon_1
+  radiusAttrs=<<
+    Session-Timeout=300
+  >>
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=Aaddon_1
+  >>
+
+vala
+  radiusAttrs=<<
+    Unisphere-Service-Bundle=vala
+  >>
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=Avala
+  >>
+
+addon_vala
+  radiusAttrs=<<
+    Session-Timeout=900
+  >>
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=Aaddon_vala
+  >>
+
+service_0
   radiusAttrs=<<
     Unisphere-Service-Bundle=Aservice_0
   >>
@@ -6,7 +30,7 @@ service_0 writeServiceCDR=true
     HW-Account-Info=Aservice_0
   >>
 
-service_1 writeServiceCDR=true
+service_1
   radiusAttrs=<<
     Unisphere-Service-Bundle=Aservice_1
   >>
@@ -14,7 +38,7 @@ service_1 writeServiceCDR=true
     HW-Account-Info=Aservice_1
   >>
 
-service_2 writeServiceCDR=true
+service_2
   radiusAttrs=<<
     Unisphere-Service-Bundle=Aservice_2
     >>
@@ -22,7 +46,7 @@ service_2 writeServiceCDR=true
     HW-Account-Info=Aservice_2
   >>
 
-service_3 writeServiceCDR=true
+service_3
   radiusAttrs=<<
     Unisphere-Service-Bundle=Aservice_3
   >>
@@ -30,20 +54,26 @@ service_3 writeServiceCDR=true
     HW-Account-Info=Aservice_3
   >>
 
-permService
+permissive
   radiusAttrs=<<
-    Unisphere-Service-Bundle=ApermService
+    Unisphere-Service-Bundle=Apermissive
+    Session-Timeout=2400
   >>
   nonOverridableRadiusAttrs=<<
-    HW-Account-Info=ApermService
+    HW-Account-Info=Apermissive
   >>
 
-rejectService
+reject
   radiusAttrs=<<
-	 Unisphere-Service-Bundle=ArejectService
+	 Unisphere-Service-Bundle=Areject
   >>
   nonOverridableRadiusAttrs=<<
-    HW-Account-Info=ArejectService
+    HW-Account-Info=Areject
+  >>
+
+rejectOnline
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=ArejectOnline
   >>
 
 pcautiv
@@ -51,7 +81,12 @@ pcautiv
     Unisphere-Service-Bundle=Apcautiv
   >>
   nonOverridableRadiusAttrs=<<
-    HW-Account-Info=pcautiv
+    HW-Account-Info=Apcautiv
+  >>
+
+pcautivOnline blockingIsAddon=true
+  nonOverridableRadiusAttrs=<<
+    HW-Account-Info=ApcautivOnline
   >>
 
 acs

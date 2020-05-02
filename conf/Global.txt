@@ -4,6 +4,9 @@ cdrDir=/var/tmp/aaa
 # Whether to write Session CDR
 writeSessionCDR=true
 
+# Whether to write Service CDR
+writeServiceCDR=true
+
 # Where to look for the client
 # May be "database", "file" or "none"
 provisionType=database
@@ -17,11 +20,11 @@ authLocal=provision
 sendReject=yes
 
 # Name of the reject service. Applies only if sendReject is "yes" or "filter"
-rejectService=rejectService
+rejectServiceName=reject
 
 # Name of the permissive service to apply. May be set to "none". If not set,
 # the user is rejected if not found
-# permissiveServiceName=permService
+# permissiveServiceName=permissive
 
 # Name of the service for blocked users
 blockingServiceName=pcautiv

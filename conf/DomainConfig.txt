@@ -1,3 +1,5 @@
+# Basic Testing
+
 none provisionType=none authLocal=none
 
 database blockingIsAddon=true blockingServiceName=pcautivOnline
@@ -28,7 +30,7 @@ betatester authlocal=file overrideServiceName=betatester
     Session-Timeout=1200
   >>
 
-database.provision.p0.r0.bb
+DEFAULT
   radiusAttrs=<<
     Service-Type=Framed
   >>
@@ -36,10 +38,59 @@ database.provision.p0.r0.bb
     Cisco-AVPair="Hello=world"
   >>
 
-database.provision.p0.r0.bb blockingIsAddon=true blockingServiceName=pcautivOnline
+# Deep Testing
+database.provision.p0.r0.bb
   radiusAttrs=<<
     Service-Type=Framed
   >>
   nonOverridableRadiusAttrs=<<
     Cisco-AVPair="Hello=world"
 	>>
+
+file.provision.p0.r0.bb provisionType=file
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+	>>
+
+database.provision.p0.r0.ba blockingIsAddon=true blockingServiceName=pcautivOnline
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+  >>
+
+database.provision.p0.r1b.bb.reject sendReject=no
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+  >>
+
+database.provision.p0.r1a.bb.reject sendReject=no rejectIsAddon=true rejectServiceName=rejectOnline
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+  >>
+
+database.provision.p0.r1bfilter.bb.reject sendReject=filter rejectServicename=reject
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+  >>
+
+database.provision.p1.r0.bb permissiveServiceName=permissive
+  radiusAttrs=<<
+    Service-Type=Framed
+  >>
+  nonOverridableRadiusAttrs=<<
+    Cisco-AVPair="Hello=world"
+  >>

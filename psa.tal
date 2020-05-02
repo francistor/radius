@@ -7,7 +7,7 @@
     
 **/
 
-authStart:
+startAll:
 
     // Service Definition
     if $request.Service-Type == "Outbound-User" then 
@@ -42,7 +42,7 @@ authStart:
         Map => """
             $user.config.* := $check.*;
             $user.reply.realm.radiusAttrs.* := $reply.radiusAttrs.*;
-            $user.reply.realm.nonOverridableAttrs.* := $reply.nonOverridableAttrs.*;
+            $user.reply.realm.nonOverridableRadiusAttrs.* := $reply.nonOverridableRadiusAttrs.*;
         """
     endinvoke
 
@@ -84,7 +84,7 @@ authStart:
     endif;
 
     // SendReject undefined of true should reject the request and rejectService not applied
-    if(! $user.config.sendReject->exists() || $user.config.SendReject) then 
+    if(($user.config.sendReject->exists()) || $user.config.SendReject == true) then 
         delete $user.config.rejectService; 
     endif;
 
@@ -104,7 +104,7 @@ provisionDatabase:
         Url => "jdbc:postgresql://localhost:5432/radius",
         User => "psa",
         Password =>"psa",
-        Statement => "select UserName, Password, SERVICE_NAME as ServiceName, OPC_CL_INFO_09 as AddonServiceName, LEGACY_CLIENT_ID as LegacyClientId, BLOCKING_STATE as Status, OPC_CL_INFO_03 as overrideServiceName, OPC_CL_INFO_04 as overrideAddonServiceName  from ServicePlan SP, Client CLI, UserLine UL where CLI.CLIENT_ID=UL.CLIENT_ID AND UL.NASIP_ADDRESS=? and UL.NASPORT=? AND CLI.PLAN_NAME=SP.PLAN_NAME",
+        Statement => "select UserName, Password, SERVICE_NAME as ServiceName, OPC_CL_INFO_09 as AddonServiceName, LEGACY_CLIENT_ID as LegacyClientId, BLOCKING_STATE as Status, OPC_CL_INFO_03 as overrideServiceName, OPC_CL_INFO_04 as overrideAddonServiceName, ip_address, ipv6_delegated_prefix, usability  from ServicePlan SP, Client CLI, UserLine UL where CLI.CLIENT_ID=UL.CLIENT_ID AND UL.NASIP_ADDRESS=? and UL.NASPORT=? AND CLI.PLAN_NAME=SP.PLAN_NAME",
         BindMap => """
             ${1}=${user.nasIPAddress};
             ${2[INTEGER]}=${user.nasPort};
@@ -117,14 +117,22 @@ provisionDatabase:
             $user.provClient.legacyClientId := $5;
             $user.provClient.status := $6;
             $user.provClient.overrideBasicServiceName := $7;
-            $user.provClient.overrideAddonServiceName := $8;            
+            $user.provClient.overrideAddonServiceName := $8; 
+            $user.provClient.ipAddress := $9;  
+            $user.provClient.delegatedIPv6Prefix := $10;  
+            $user.provClient.usability := $11;             
         """
         on success
             log level => debug, "User found. Id: " & $user.provClient.legacyClientId & ", serviceName: " & $user.provClient.basicServiceName;
             goto provisionContinue;
         on failure
             // Client not found
-        log level => debug, "Client NOT found";
+            log level => debug, "Client NOT found";
+            if($user.config.permissiveServiceName->exists()) then
+                $user.provClient.basicServiceName := $user.config.permissiveService;
+            else
+                $user.rejectMessage := "Client not provisioned";
+            endif;
             goto provisionContinue;
         on error
             log level => error, "Client database access error";
@@ -134,7 +142,7 @@ provisionDatabase:
 provisionFile:
     invoke ReadUserFile with
         Text => "@conf/SpecialUsers.txt",
-        SearchKey => $user.realm,
+        SearchKey => $user.userName,
         Map => """
             $user.provClient.userName := $user.userName;
             $user.provClient.password := $check.password;
@@ -144,15 +152,18 @@ provisionFile:
             $user.provClient.status := $check.status | 0;
             $user.provClient.overrideBasicServiceName := $check.overrideBasicServiceName;
             $user.provClient.overrideAddonServiceName := $check.overrideAddonServiceName;  
+            $user.provClient.ipAddress := $check.ipAddress;  
+            $user.provClient.delegatedIPv6Prefix := $check.delegatedIPv6Prefix;  
+            $user.provClient.usability := $check.usability;  
         """
     endinvoke
 
 provisionContinue:
 
-    // TODO: Local Auth
-    if($user.config.localAuth == "provision") then
+    // Local Auth
+    if($user.config.authLocal == "provision") then
         $check.password := $user.provClient.password;
-    elsif($user.config.localAuth == "file") then
+    elsif($user.config.authLocal == "file") then
         invoke ReadUserFile with
             Text => "@conf/SpecialUsers.txt",
             SearchKey => $user.userName,
@@ -160,27 +171,32 @@ provisionContinue:
                 $check.password := $check.password; 
             """
             on failure
-                $user.rejectMessage := "Authlocal Reject. User not found";
-                delete $user.config.localAuth;
+                log level => warning, $user.userName & " not found in SpecialUsers.txt";
+                $user.rejectMessage := "Authorization rejected for " & $user.userName;
+                delete $user.config.authLocal;
         endinvoke
     endif;
 
-    if($user.config.localAuth == "provision" || $user.config.localAuth == "file") then
+    if($user.provClient.password->exists() && ($user.config.authLocal == "provision" || $user.config.authLocal == "file")) then
         invoke AuthLocal
             on failure
                 log level => warning, "AuthLocal Reject. Incorrect password";
-                $user.rejectMessage := "Incorrect password";
+                // Just set flag. Do not reject yet
+                $user.rejectMessage := "Authorization rejected for " & $user.userName;
+                goto composeServices;
         endinvoke
     endif;
+
+composeServices:
 
     // Set service names before possible reject
     if($user.config.overrideServiceName->exists()) then
         // realm overrideServiceName has highest priority and does not allow addon
         $user.serviceName := $user.config.overrideServiceName;
     elsif($user.provClient.status == 2) then
-        if($user.config.blockingIsAddon) then
+        if($user.config.blockingIsAddon | false) then
             // Blocking with addon
-            $user.serviceName := $user.config.overrideServiceName;
+            $user.serviceName := $user.provClient.basicServiceName;
             $user.addonServiceName := $user.config.blockingServiceName;
         else
             // Blocking as basic service
@@ -188,12 +204,12 @@ provisionContinue:
         endif;
     else
         // Regular service, could be overriden as found in client repository
-        $user.serviceName := $user.config.overrideServiceName | $user.provClient.basicServiceName;
-        $user.addonServiceName := $user.config.overrideAddonServiceName | $user.provClient.addonServiceName;
+        $user.serviceName := $user.provClient.overrideServiceName | $user.provClient.basicServiceName;
+        $user.addonServiceName := $user.provClient.overrideAddonServiceName | $user.provClient.addonServiceName;
     endif;
 
     // Do proxy
-    if($user.config.proxyGroupName->exists()) then
+    if(!($user.rejectMessage->exists()) && $user.config.proxyGroupName->exists()) then
         invoke ReadUserFile with
             Text => "@conf/ProxyGroups.txt",
             SearchKey => $user.config.ProxyGroupName,
@@ -214,7 +230,12 @@ provisionContinue:
             Retries => count( $user.proxyGroup.IPAddress ) - 1,
             SuccessMap => """
                 $user.reply.proxy := $inner.reply.*;
+                $user.rejectMessage := $inner.user.rejectMessage;
+                $user.proxyReplyMessage := $inner.user.proxyReplyMessage;
             """
+            on error
+                log level => warning, "No answer from " & $user.config.ProxyGroupName;
+                // TODO: check what to do here
         endinvoke
     endif;
 
@@ -222,12 +243,12 @@ provisionContinue:
     // Process reject
     if($user.rejectMessage->exists()) then
         $reply.Reply-Message := $user.rejectMessage;
-        if($user.config.rejectServiceName->exists() && ($user.config.sendReject == "no" || ($user.config.sendReject == "filter" && $user.proxyReply.Reply-Message->containsString($user.config.rejectFilter)))) then
+        if($user.config.rejectServiceName->exists() && ($user.config.sendReject == "no" || ($user.config.sendReject == "filter" && $user.proxyReplyMessage->containsString($user.config.rejectFilter)))) then
             $reply.Class += "R=1";
-            if($user.config.rejectIsAddon) then
+            if($user.config.rejectIsAddon | false) then
                 $user.addonServiceName := $user.config.rejectServiceName;
             else
-                $user.servicename := $user.config.rejectServiceName;
+                $user.serviceName := $user.config.rejectServiceName;
                 delete $user.addonServiceName;
             endif;
         else 
@@ -258,6 +279,7 @@ provisionContinue:
     endif;
 
     /* Compose Response */
+    $reply.Reply-Message := $user.rejectMessage;
     $reply.* += $user.reply.proxy;
     $reply.* += $user.reply.addon.nonOverridableRadiusAttrs.*;   
     $reply.* += $user.reply.basic.nonOverridableRadiusAttrs.*;       
@@ -268,12 +290,25 @@ provisionContinue:
     $reply.* ?= $user.reply.realm.radiusAttrs.*;  
     $reply.* ?= $user.reply.global.radiusAttrs.*;  
 
-    $reply.Class += "S=" & $user.serviceName;
-    $reply.Class += "C=" & $user.provClient.legacyClientId;
+    $reply.Class += "S:" & $user.serviceName;
+    $reply.Class += "C:" & $user.provClient.legacyClientId;
+
+    if($user.addonServiceName->exists()) then
+        $reply.Class += "A:" & $user.addonServiceName;
+    endif;
+
+    if($user.provClient.ipAddress->exists()) then
+        $reply.Framed-IP-Address := $user.provClient.ipAddress;
+    endif;
+
+    if($user.provClient.delegatedIpv6Prefix->exists()) then
+        $reply.Delegated-IPv6-Prefix := $user.provClient.delegatedIPv6Prefix;
+    endif;
 
     return success;
 
 rejectRequest:
+    $reply.Reply-Message := $user.rejectMessage;
     return reject;
 
 prepaidRequest:
@@ -317,7 +352,15 @@ proxy:
             $reply.Reply-Message := $Reply-Message;
             $reply.User-Password := $User-Password;
             $reply.Framed-Protocol := $Framed-Protocol;
+        """,
+        FailureMap => """
+            log level => warning, $user.userName & " Rejected by proxy server with " & $Reply-Message;
+            $user.rejectMessage := "Rejected by proxy: " & $Reply-Message;
+            $user.proxyReplyMessage := $Reply-Message;
         """
+        on failure
+            // Turn into success
+            return success;
     endinvoke
 
     return success;
