@@ -62,3 +62,7 @@ radiusAttrs="Session-Timeout=3600"
 
 # Non overridable radius attributes for the reply
 #nonOverridableRadiusAttrs=
+
+sessionServer=<<
+  IPAddress="127.0.0.1,1.1.1.1", Port=1813, Secret=secret, Timeout=1000, Retries=1, MaxErrors=5, QuarantineTime=5m, ClearOnNoChoice=true, SortOrder=NATURAL
+>>

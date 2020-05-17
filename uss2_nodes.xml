@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE table SYSTEM "stanza_file.dtd">
-<table />
+<table>
+    <entry name="pb3">
+        <property name="Uss2-Node-Address" value="127.0.0.1" />
+    </entry>
+</table>

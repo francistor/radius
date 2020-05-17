@@ -18,7 +18,7 @@ startAll:
     $user.userName := $request.User-Name->trim()->toLower();
     $user.acctSessionId := $request.Acct-Session-Id->trim();
     $user.realm := $packet.User-Realm->toLower();
-    $user.mac-address := $request.HW-User-MAC | $request.Unisphere-PPPoE-Description->substring(6) | $request.Alc-Client-Hardware-Addr;
+    $user.macAddress := $request.HW-User-MAC | $request.Unisphere-PPPoE-Description->substring(6) | $request.Alc-Client-Hardware-Addr;
     $user.nasPort := $request.NAS-Port;
     $user.nasIPAddress := $request.NAS-IP-Address;
 
@@ -63,6 +63,7 @@ startAll:
     // Get NAS-IP-Address and NAS-PORT
     $user.nasPort := $request.NAS-Port;
     $user.nasIPAddress := $request.NAS-IP-Address;
+    $request.PSA-BRAS-NAS-IP-Address := $request.NAS-IP-Address;
     // Override if necessary
     if $user.radiusClientType == "HUAWEI" | $user.radiusClientType == "MX" then
         // NAS-Port-Id <dslam-ip>:<svlan>-<cvlan>
@@ -90,6 +91,10 @@ startAll:
         endif;
     endif;
 
+//////////////////////////////////////////////////////////////////////////
+/// Access-Request
+//////////////////////////////////////////////////////////////////////////
+
 accessRequest:
 
     // SendReject undefined of true should reject the request and rejectService not applied
@@ -113,7 +118,7 @@ provisionDatabase:
         Url => "jdbc:postgresql://localhost:5432/radius",
         User => "psa",
         Password =>"psa",
-        Statement => "select UserName, Password, SERVICE_NAME as ServiceName, OPC_CL_INFO_09 as AddonServiceName, LEGACY_CLIENT_ID as LegacyClientId, BLOCKING_STATE as Status, OPC_CL_INFO_03 as overrideServiceName, OPC_CL_INFO_04 as overrideAddonServiceName, ip_address, ipv6_delegated_prefix, usability  from ServicePlan SP, Client CLI, UserLine UL where CLI.CLIENT_ID=UL.CLIENT_ID AND UL.NASIP_ADDRESS=? and UL.NASPORT=? AND CLI.PLAN_NAME=SP.PLAN_NAME",
+        Statement => "select UserName, Password, SERVICE_NAME as ServiceName, OPC_CL_INFO_09 as AddonServiceName, LEGACY_CLIENT_ID as LegacyClientId, Phone as Phone, BLOCKING_STATE as Status, OPC_CL_INFO_03 as overrideServiceName, OPC_CL_INFO_04 as overrideAddonServiceName, ip_address, ipv6_delegated_prefix, usability  from ServicePlan SP, Client CLI, UserLine UL where CLI.CLIENT_ID=UL.CLIENT_ID AND UL.NASIP_ADDRESS=? and UL.NASPORT=? AND CLI.PLAN_NAME=SP.PLAN_NAME",
         BindMap => """
             ${1}=${user.nasIPAddress};
             ${2[INTEGER]}=${user.nasPort};
@@ -124,12 +129,13 @@ provisionDatabase:
             $user.provClient.basicServiceName := $3;
             $user.provClient.addonServiceName := $4;
             $user.provClient.legacyClientId := $5;
-            $user.provClient.status := $6;
-            $user.provClient.overrideBasicServiceName := $7;
-            $user.provClient.overrideAddonServiceName := $8; 
-            $user.provClient.ipAddress := $9;  
-            $user.provClient.delegatedIPv6Prefix := $10;  
-            $user.provClient.usability := $11;             
+            $user.provClient.phone := $6;
+            $user.provClient.status := $7;
+            $user.provClient.overrideBasicServiceName := $8;
+            $user.provClient.overrideAddonServiceName := $9; 
+            $user.provClient.ipAddress := $10;  
+            $user.provClient.delegatedIPv6Prefix := $11;  
+            $user.provClient.usability := $12;             
         """
         on success
             log level => debug, "User found. Id: " & $user.provClient.legacyClientId & ", serviceName: " & $user.provClient.basicServiceName;
@@ -158,6 +164,7 @@ provisionFile:
             $user.provClient.basicServiceName := $check.basicServiceName;
             $user.provClient.addonServiceName := $check.addonServiceName;
             $user.provClient.legacyClientId := $check.legacyClientId;
+            $user.provClient.phone := $check.phone;
             $user.provClient.status := $check.status | 0;
             $user.provClient.overrideBasicServiceName := $check.overrideBasicServiceName;
             $user.provClient.overrideAddonServiceName := $check.overrideAddonServiceName;  
@@ -364,6 +371,10 @@ proxyAuth:
     return success;
 
 
+//////////////////////////////////////////////////////////////////////////
+/// Accounting-Request
+//////////////////////////////////////////////////////////////////////////
+
 accountingRequest:
 
     // Get Service-Name
@@ -391,6 +402,12 @@ accountingRequest:
         if $temp.ClassPair matches #/([A-Z]):([-_0-9a-zA-Z]+)/ then 
             if $match.1 == "C" then 
                 $request.PSA-LegacyClientId := $match.2;
+            elsif $match.1 == "P" then 
+                $request.PSA-Phone := $match.2;
+            elsif $match.1 == "M" then 
+                $request.PSA-MAC-Address := $match.2;
+            elsif $match.1 == "S" then 
+                $request.PSA-AutoactivatedBasicService := $match.2;
             endif;
         endif;
     endloop;
@@ -477,6 +494,30 @@ accountingRequest:
         log level => debug, "Not doing inline proxy";
     endif;
 
+    // Update USS
+    if $user.isSessionAccounting then
+        invoke Call with
+            Method => proxyUSS,
+            WriteMap => """
+                $inner.user.uss.Acct-Status-Type := $request.Acct-Status-Type;
+                $inner.user.uss.PSA-ServiceName := $request.PSA-ServiceName;
+                $inner.user.uss.PSA-AutoactivatedBasicService := $request.PSA-AutoactivatedBasicService;
+                $inner.user.uss.PSA-LegacyClientId := $request.PSA-LegacyClientId;
+                $inner.user.uss.PSA-Phone := $request.PSA-Phone;
+                $inner.user.uss.User-Name := $user.UserName;
+                $inner.user.uss.NAS-Port := $request.PSA-Extended-NAS-Port | $request.NAS-Port;
+                $inner.user.uss.NAS-IP-Address := $request.NAS-IP-Address;
+                $inner.user.uss.PSA-BRAS-NAS-IP-Address := $request.PSA-BRAS-NAS-IP-Address;
+                $inner.user.uss.PSA-MAC-Address := $user.macAdress;
+                $inner.user.uss.Framed-IP-Address := $request.Framed-IP-Address;
+                $inner.user.uss.Delegated-IPv6-Prefix := $request.Delegated-IPv6-Prefix;
+                $inner.user.uss.Framed-IPv6-Prefix := $request.Framed-IPv6-Prefix;
+                $inner.user.uss.User-IPv6-Prefix := $request.Delegated-IPv6-Prefix | $request.Framed-IPv6-Prefix;
+            """,
+            CopyMode => true
+        endinvoke
+    endif;
+
     return success;
 
 
@@ -507,7 +548,6 @@ proxyAcct:
     return success;
 
 singleProxyAcct:
-    log level => warning, "Acct proxy with RequestMap:" & ${user.config.acctProxyFilterOut};
     invoke Radius with
         ServerAddress => $user.proxyGroup.IPAddress & ":" & $user.proxyGroup.AcctPort,
         Secret => $user.proxyGroup.Secret,
@@ -516,5 +556,71 @@ singleProxyAcct:
         PacketType => $packet.Packet-Type,
         RequestMap => "@${user.config.acctProxyFilterOut}"
     endinvoke
+
+    return success;
+
+proxyUSS:
+    log level => warning, "USS Failover";
+    $user.config.sessionServer.IPAddress := $user.config.sessionServer.IPAddress->toList(",");
+    invoke Failover with
+        CacheName => "uss-status",
+        ListVariables => "user.config.sessionServer.IPAddress",
+        Method => singleProxyUSS,
+        SortOrder => $user.config.sessionServer.SortOrder | "NATURAL",
+        ClearOnNoChoice => $user.config.sessionServer.ClearOnNoChoice | true,
+        DisabledTimeout => $user.config.sessionServer.QuarantineTime | 3m,
+        ErrorThreshold => $user.config.sessionServer.MaxErrors | 5,
+        Retries => count( $user.config.sessionServer.IPAddress ) - 1,
+        on error
+            log level => warning, "No answer from " & $user.proxyGroup.IPAddress;
+        endinvoke
+
+    return success;
+
+singleProxyUSS:
+
+    invoke Radius with
+        ServerAddress => $user.config.sessionServer.IPAddress & ":" & $user.config.sessionServer.Port,
+        Secret => $user.config.sessionServer.Secret,
+        Timeout => $user.config.sessionServer.Timeout,
+        Retries => $user.config.sessionServer.Retries,
+        PacketType => 114,
+        RequestMap => """
+            $* := $user.uss.*;
+        """
+    endinvoke
+
+    return success;
+
+
+//////////////////////////////////////////////////////////////////////////
+/// Session-Storage
+//////////////////////////////////////////////////////////////////////////
+
+storeSession:
+
+    if (! $request.PSA-ServiceName->exists()) then
+        invoke RadiusStateUpdate with
+            Model => Sessions,
+            NasAttribute => $request.PSA-BRAS-NAS-IP-Address | $request.NAS-IP-Address,
+            SessionIdAttribute => $request.Acct-Session-Id,
+            KeyAttribute => ${request.NAS-IP-Address} & "+" & ($request.PSA-Extended-NAS-Port | $request.NAS-Port),
+            RadiusStateUpdate-EventTimeAttribute => $system.Timestamp,
+            RequestMap => """
+                $data.PSA-AutoactivatedBasicService := $request.PSA-AutoactivatedBasicService;
+                $data.PSA-LegacyClientId := $request.PSA-LegacyClientId;
+                $data.PSA-Phone := $request.PSA-Phone;
+                $data.User-Name := $request.User-Name ;
+                $data.NAS-Port := $request.PSA-Extended-NAS-Port | $request.NAS-Port;
+                $data.NAS-IP-Address := $request.NAS-IP-Address;
+                $data.PSA-BRAS-NAS-IP-Address := $request.PSA-BRAS-NAS-IP-Address;
+                $data.PSA-MAC-Address := $request.PSA-MAC-Address->toLower();
+                $data.Framed-IP-Address := $request.Framed-IP-Address;
+                $data.Delegated-IPv6-Prefix := $request.Delegated-IPv6-Prefix;
+                $data.Framed-IPv6-Prefix := $request.Framed-IPv6-Prefix;
+                $data.User-IPv6-Prefix := $request.Delegated-IPv6-Prefix | $request.Framed-IPv6-Prefix;
+            """
+        endinvoke
+    endif;
 
     return success;
