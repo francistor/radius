@@ -6,9 +6,9 @@
         <property name="ConfigServerList" value="localhost," />
         <property name="SmtTailVisible" value="true" />
         <property name="SelectedDisplayPanel" value="LoadConfigurationPanel" />
-        <property name="SelectedConfigurationPanel" value="Policy Server Multiple Configuration" />
+        <property name="SelectedConfigurationPanel" value="Policy Server TAL Editor" />
         <property name="SelectedMonitoringPanel" value="Reloadable" />
-        <property name="ExpandedNodes" value="Policy Server" />
+        <property name="ExpandedNodes" value="Policy Server,Policies,Tools" />
     </set>
     <set name="DictionaryPanel">
         <property name="SelectedFile" value="custom.dict" />
@@ -17,7 +17,7 @@
         <property name="DialogInfo" value="495,416,650,450" />
     </set>
     <set name="TalPanel">
-        <property name="SelectedFile" value="auth.tal" />
+        <property name="SelectedFile" value="psa.tal" />
     </set>
     <set name="UserFilePanel">
         <property name="SelectedFile" value="ServiceRemoteDefinition.user" />

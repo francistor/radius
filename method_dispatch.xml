@@ -2,7 +2,7 @@
 <!DOCTYPE table SYSTEM "method_dispatch.dtd">
 <table>
     <radius appl="Auth" cmd="Access-Request" label="psa:startAll" />
-    <radius appl="acct" cmd="Accounting-Request" label="psa:startAll" />
+    <radius appl="Acct" cmd="Accounting-Request" label="psa:startAll" />
     <radius appl="auth" cmd="Status-Server" label="aaa:statusServer" />
     <radius appl="acct" cmd="Status-Server" label="aaa:statusServer" />
     <radius appl="dynauth" cmd="Status-Server" label="aaa:statusServer" />

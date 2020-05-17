@@ -1,0 +1,6 @@
+// Filter some attributes and force Service-Type
+
+$* := $request.*;
+delete $NAS-port-Id;
+delete $NAS-Identifier;
+$Service-Type=Framed;

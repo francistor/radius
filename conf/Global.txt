@@ -1,5 +1,12 @@
-# Directory for CDR writing
-cdrDir=/var/tmp/aaa
+# Directories for CDR writing
+sessionCDRDirectories=<<
+  path=/var/yaas/cdr/session/cdr_, fileNamePattern=yyyyMMdd, extension=.txt
+  path=/var/yaas/cdr/session-hot/cdr_copied, extension=.txt, checkerName=copyCDRWriteCheck
+>>
+
+serviceCDRDirectories=<<
+  path=/var/yaas/cdr/service/cdr_, fileNamePattern=yyyyMMdd, extension=.txt
+>>
 
 # Whether to write Session CDR
 writeSessionCDR=true
@@ -15,12 +22,27 @@ provisionType=database
 # May be "provision", "file" or "none"
 authLocal=provision
 
+# Whether to do inline proxy of session accounting
+proxySessionAccounting=true
+
+# Whether to do inline proxy of service accounting
+proxyServiceAccounting=false
+
+# Default out filter for proxy
+authProxyFilterOut=conf/filters/standardProxyFilterOut.tal
+acctProxyFilterOut=conf/filters/standardProxyFilterOut.tal
+authProxyFilterIn=conf/filters/standardProxyFilterIn.tal
+
 # Whether to send an Access-Reject or not
 # May be "yes", "no" or "filter"
 sendReject=yes
 
 # Name of the reject service. Applies only if sendReject is "yes" or "filter"
 rejectServiceName=reject
+
+# If sendReject is "filter", reject service and not Access-Reject will be sent
+# if the Reply-Message from the proxy contains this
+rejectFilter=portal
 
 # Name of the permissive service to apply. May be set to "none". If not set,
 # the user is rejected if not found
@@ -30,7 +52,7 @@ rejectServiceName=reject
 blockingServiceName=pcautiv
 
 # Default proxy-server-group
-proxyGroupName=yaas-superserver-group
+inlineProxyGroupName=yaas-superserver-group
 
 # TODO: implement this
 acceptOnProxyError=false

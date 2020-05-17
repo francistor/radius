@@ -1,0 +1,7 @@
+// Allow only some Attributes
+
+$reply.Class=$Class;
+$reply.Framed-IP-Address=$Framed-IP-Address;
+$reply.Reply-Message=$Reply-Message;
+$reply.User-Password=$User-Password;
+$reply.Framed-Protocol=$Framed-Protocol;

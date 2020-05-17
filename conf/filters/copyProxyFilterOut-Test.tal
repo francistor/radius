@@ -1,0 +1,8 @@
+// Filter some attributes and force Service-Type to Call-Check
+
+$* := $request.*;
+delete $NAS-port-Id;
+delete $NAS-Identifier;
+$Service-Type="Call-Check";
+$Acct-Session-Id="acct-session-id-copied";
+$Framed-IP-Address="255.255.255.0";

@@ -8,7 +8,7 @@ addon_1
 
 vala
   radiusAttrs=<<
-    Unisphere-Service-Bundle=vala
+    Unisphere-Service-Bundle=Avala
   >>
   nonOverridableRadiusAttrs=<<
     HW-Account-Info=Avala

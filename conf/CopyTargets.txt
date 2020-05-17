@@ -1,0 +1,4 @@
+copyTargets=<<
+  targetName=target-1, radiusProxyGroupName=yaas-superserver-group, checkerName=copyCheck, filterName=conf/filters/copyProxyFilterOut.tal
+  targetName=target-2, radiusProxyGroupName=yaas-superserver-group, checkerName=copyCheck, filterName=conf/filters/copyProxyFilterOut-Test.tal
+>>

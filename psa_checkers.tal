@@ -1,0 +1,17 @@
+// For testing. Accounting packets copied are those that inclued "copy" in the User-Name
+function copyCDRWriteCheck()
+    if $request.User-Name -> containsString("copy") then
+        return true;
+    else
+        return false;
+    endif;
+endfunction
+
+// For testing. Accounting packets copied are those that inclued "copy" in the User-Name
+function copyCheck()
+    if $request.User-Name -> containsString("copy") && $user.isSessionAccounting then
+        return true;
+    else
+        return false;
+    endif;
+endfunction

@@ -60,8 +60,11 @@ startAll:
         $user.radiusClientType := "DEFAULT";
     endif;
 
-    // Huawei
-   if $user.radiusClientType == "HUAWEI" | $user.radiusClientType == "MX" then
+    // Get NAS-IP-Address and NAS-PORT
+    $user.nasPort := $request.NAS-Port;
+    $user.nasIPAddress := $request.NAS-IP-Address;
+    // Override if necessary
+    if $user.radiusClientType == "HUAWEI" | $user.radiusClientType == "MX" then
         // NAS-Port-Id <dslam-ip>:<svlan>-<cvlan>
         // Used in Chile. NAS-Port is calculated using the vlan values and NAS-IP-Address is that ot the DSLAm as reported in NAS-Port-Id
 	    if $request.NAS-Port-Id matches #/^([0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+):(([0-9]+)-)?([0-9]+)$/ then
@@ -73,15 +76,21 @@ startAll:
         endif;
     endif;
 
+
     // Smart-Edge not implemented
     // Alu does not need any cooking
 
-    // Prepaid request
-    if $request.HW-Service-Info matches #/N([-_0-9a-zA-Z]+)/ then
-        $user.serviceName := $match.1;
-        log "Prepaid request" & $user.serviceName, level => warning;
-        goto prepaidRequest;
+    if $packet.Packet-Type == "Accounting-Request" then goto accountingRequest;
+    elsif $packet.Packet-Type == "Access-Request" then
+        // Prepaid request
+        if $request.HW-Service-Info matches #/N([-_0-9a-zA-Z]+)/ then
+            $user.serviceName := $match.1;
+            log "Prepaid request" & $user.serviceName, level => warning;
+            goto prepaidRequest;
+        endif;
     endif;
+
+accessRequest:
 
     // SendReject undefined of true should reject the request and rejectService not applied
     if(($user.config.sendReject->exists()) || $user.config.SendReject == true) then 
@@ -129,7 +138,7 @@ provisionDatabase:
             // Client not found
             log level => debug, "Client NOT found";
             if($user.config.permissiveServiceName->exists()) then
-                $user.provClient.basicServiceName := $user.config.permissiveService;
+                $user.provClient.basicServiceName := $user.config.permissiveServiceName;
             else
                 $user.rejectMessage := "Client not provisioned";
             endif;
@@ -204,15 +213,15 @@ composeServices:
         endif;
     else
         // Regular service, could be overriden as found in client repository
-        $user.serviceName := $user.provClient.overrideServiceName | $user.provClient.basicServiceName;
+        $user.serviceName := $user.provClient.overrideBasicServiceName | $user.provClient.basicServiceName;
         $user.addonServiceName := $user.provClient.overrideAddonServiceName | $user.provClient.addonServiceName;
     endif;
 
-    // Do proxy
-    if(!($user.rejectMessage->exists()) && $user.config.proxyGroupName->exists()) then
+    // Do proxy if configured and no previous reject
+    if(!($user.rejectMessage->exists()) && ($user.config.inlineProxyGroupName->exists() && $user.config.inlineProxyGroupName != "none")) then
         invoke ReadUserFile with
             Text => "@conf/ProxyGroups.txt",
-            SearchKey => $user.config.ProxyGroupName,
+            SearchKey => $user.config.inlineProxyGroupName,
             Map => """
                 $user.proxyGroup.* := $check.*;
                 $user.proxyGroup.IPAddress := $check.IPAddress->toList(",");
@@ -222,7 +231,7 @@ composeServices:
         invoke Failover with
             CacheName => "proxy-status",
             ListVariables => "user.proxyGroup.IPAddress",
-            Method => proxy,
+            Method => proxyAuth,
             SortOrder => $user.proxyGroup.SortOrder | "NATURAL",
             ClearOnNoChoice => $user.proxyGroup.ClearOnNoChoice | true,
             DisabledTimeout => $user.proxyGroup.QuarantineTime | 3m,
@@ -279,8 +288,9 @@ composeServices:
     endif;
 
     /* Compose Response */
+    // TODO: Filter proxy response
     $reply.Reply-Message := $user.rejectMessage;
-    $reply.* += $user.reply.proxy;
+    $reply.* += $user.reply.proxy.*;
     $reply.* += $user.reply.addon.nonOverridableRadiusAttrs.*;   
     $reply.* += $user.reply.basic.nonOverridableRadiusAttrs.*;       
     $reply.* += $user.reply.realm.nonOverridableRadiusAttrs.*;  
@@ -291,7 +301,7 @@ composeServices:
     $reply.* ?= $user.reply.global.radiusAttrs.*;  
 
     $reply.Class += "S:" & $user.serviceName;
-    $reply.Class += "C:" & $user.provClient.legacyClientId;
+    $reply.Class += "C:" & ($user.provClient.legacyClientId | "not-found");
 
     if($user.addonServiceName->exists()) then
         $reply.Class += "A:" & $user.addonServiceName;
@@ -331,8 +341,7 @@ serviceRequest:
     return success;
 
 
-proxy:
-    log level => warning, "PROXY -> " & $user.proxyGroup.IPAddress;
+proxyAuth:
 
     invoke Radius with
         ServerAddress => $user.proxyGroup.IPAddress & ":" & $user.proxyGroup.AuthPort,
@@ -340,19 +349,8 @@ proxy:
         Timeout => $user.proxyGroup.Timeout,
         Retries => $user.proxyGroup.Retries,
         PacketType => $packet.Packet-Type,
-        RequestMap => """
-            $* := $request.*;
-            delete $NAS-Port;
-            delete $NAS-IP-Address;
-            delete $NAS-Port-Id;
-        """,
-        SuccessMap => """
-            $reply.Class := $Class;
-            $reply.Framed-IP-Address := $Framed-IP-Address;
-            $reply.Reply-Message := $Reply-Message;
-            $reply.User-Password := $User-Password;
-            $reply.Framed-Protocol := $Framed-Protocol;
-        """,
+        RequestMap => "@${user.config.authProxyFilterOut}",
+        SuccessMap => "@${user.config.authProxyFilterIn}",
         FailureMap => """
             log level => warning, $user.userName & " Rejected by proxy server with " & $Reply-Message;
             $user.rejectMessage := "Rejected by proxy: " & $Reply-Message;
@@ -361,6 +359,162 @@ proxy:
         on failure
             // Turn into success
             return success;
+    endinvoke
+
+    return success;
+
+
+accountingRequest:
+
+    // Get Service-Name
+    // TODO: Add Cisco Cisco-AVPair=serviceName=<value>. If internet, then take Cico-AVPair=echo-string-1=<value>
+    if($request.HW-Service-Info->exists()) then
+        $user.serviceName := $request.HW-Service-Info->substring(1);
+    elsif $request.Alu-Sub-Serv-Activate->exists() then
+        $user.serviceName := $request.Alu-Sub-Serv-Activate;
+    elsif $client.client-class == "SRC" then
+        $user.serviceName := $request.Class;
+    endif;
+
+    // This could be more complex, both isServiceAccount and isSesssionAccounting being true
+    if $user.serviceName->exists() then
+        $user.isSessionAccounting := false;
+        $user.isServiceAccounting := true;
+    else
+        $user.isSessionAccounting := true;
+        $user.isServiceAccounting := false;
+    endif;
+
+    // Build syntethic attributes
+    $request.PSA-ServiceName := $user.serviceName;
+    foreach $temp.ClassPair in $request.Class loop
+        if $temp.ClassPair matches #/([A-Z]):([-_0-9a-zA-Z]+)/ then 
+            if $match.1 == "C" then 
+                $request.PSA-LegacyClientId := $match.2;
+            endif;
+        endif;
+    endloop;
+
+    // TODO: Read service config
+    if $user.isServiceAccounting then
+        invoke ReadUserFile with
+            Text => "@conf/ServiceConfig.txt",
+            SearchKey => $user.serviceName,
+            Map => """
+                $user.config.* := $check.*;
+            """
+        endinvoke
+    endif;
+
+    // Write Session CDR to file
+    if ($user.isSessionAccounting && $user.config.writeSessionCDR) then
+        foreach $temp.sessionCDRDir in $user.config.sessionCDRDirectories->toList(LS) loop
+            if $temp.sessionCDRDir.checkerName -> exists() && ! (evalfunc psa_checkers::$temp.sessionCDRDir.checkerName () )then
+                log level => debug, "Checker retunrs false";
+            else
+                invoke WriteDetailFile with
+                    Filename => "'" & ${temp.sessionCDRDir.path} & "'" & ${temp.sessionCDRDir.fileNamePattern},
+                    FilenameExtension => ${temp.sessionCDRDir.extension},
+                    RolloverMode => Custom,
+                    IdleTime => 200,
+                    LogInterim => true
+                endinvoke
+            endif;
+        endloop;
+    endif;
+
+    // Write Service CDR to file
+    if ($user.isServiceAccounting && $user.config.writeServiceCDR) then
+        foreach $temp.serviceCDRDir in $user.config.serviceCDRDirectories->toList(LS) loop
+            if $temp.serviceCDRDir.checkerName -> exists() && ! (evalfunc psa_checkers::$temp.serviceCDRDir.checkerName () )then
+                log level => debug, "Checker retunrs false";
+            else
+                invoke WriteDetailFile with
+                    Filename => "'" & ${temp.serviceCDRDir.path} & "'" & ${temp.serviceCDRDir.fileNamePattern},
+                    FilenameExtension => ${temp.serviceCDRDir.extension},
+                    RolloverMode => Custom,
+                    IdleTime => 200,
+                    LogInterim => true
+                endinvoke
+            endif;
+        endloop;
+    endif;
+
+    // Copy-Proxy
+    invoke ReadPropertyFile with
+        Filename => "conf/CopyTargets.txt",
+        Map => """
+            $user.copyTargets := $copyTargets;
+        """
+    endinvoke
+
+    foreach $user.copyTarget in $user.copyTargets->toList(LS) loop
+        if $user.copyTarget.checkerName -> exists() && ! (evalfunc psa_checkers::$user.copyTarget.checkerName () )then
+            log level => debug, $user.copyTarget.targetName & " Checker retunrs false";
+        else
+            invoke Call with
+                Method => proxyAcct,
+                WriteMap => """
+                    $inner.user.radiusProxyGroupName := $user.copyTarget.radiusProxyGroupName;
+                    $inner.user.config.acctProxyFilterOut := $user.copyTarget.filterName;
+                """,
+                CopyMode => true
+            endinvoke
+
+        endif;
+    endloop;
+
+    // Inline proxy
+    if $user.config.inlineProxyGroupName->exists() && !($user.config.inlineProxyGroupName == "none") && (($user.isSessionAccounting && $user.config.proxySessionAccounting) || ($user.isServiceAccounting && $user.config.proxyServiceAccounting)) then
+        invoke Call with
+            Method => proxyAcct,
+            WriteMap => """
+                $inner.user.radiusProxyGroupName:= $user.config.inlineProxyGroupName;
+            """,
+            CopyMode => true
+        endinvoke
+    else
+        log level => debug, "Not doing inline proxy";
+    endif;
+
+    return success;
+
+
+proxyAcct:
+
+    invoke ReadUserFile with
+        Text => "@conf/ProxyGroups.txt",
+        SearchKey => $user.radiusProxyGroupName,
+        Map => """
+            $user.proxyGroup.* := $check.*;
+            $user.proxyGroup.IPAddress := $check.IPAddress->toList(",");
+        """
+        endinvoke
+
+    invoke Failover with
+        CacheName => "proxy-status",
+        ListVariables => "user.proxyGroup.IPAddress",
+        Method => singleProxyAcct,
+        SortOrder => $user.proxyGroup.SortOrder | "NATURAL",
+        ClearOnNoChoice => $user.proxyGroup.ClearOnNoChoice | true,
+        DisabledTimeout => $user.proxyGroup.QuarantineTime | 3m,
+        ErrorThreshold => $user.proxyGroup.MaxErrors | 5,
+        Retries => count( $user.proxyGroup.IPAddress ) - 1,
+        on error
+            log level => warning, "No answer from " & $user.proxyGroup.IPAddress;
+        endinvoke
+
+    return success;
+
+singleProxyAcct:
+    log level => warning, "Acct proxy with RequestMap:" & ${user.config.acctProxyFilterOut};
+    invoke Radius with
+        ServerAddress => $user.proxyGroup.IPAddress & ":" & $user.proxyGroup.AcctPort,
+        Secret => $user.proxyGroup.Secret,
+        Timeout => $user.proxyGroup.Timeout,
+        Retries => $user.proxyGroup.Retries,
+        PacketType => $packet.Packet-Type,
+        RequestMap => "@${user.config.acctProxyFilterOut}"
     endinvoke
 
     return success;
